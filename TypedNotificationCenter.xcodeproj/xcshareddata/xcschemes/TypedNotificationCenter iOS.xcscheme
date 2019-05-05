@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7553355B227F163F0030F2FB"
-               BuildableName = "libTypedNotificationCenter.a"
-               BlueprintName = "TypedNotificationCenter"
+               BlueprintIdentifier = "756416BC227F34C20090F4D6"
+               BuildableName = "TypedNotificationCenter.framework"
+               BlueprintName = "TypedNotificationCenter iOS"
                ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7553355B227F163F0030F2FB"
-            BuildableName = "libTypedNotificationCenter.a"
-            BlueprintName = "TypedNotificationCenter"
+            BlueprintIdentifier = "756416BC227F34C20090F4D6"
+            BuildableName = "TypedNotificationCenter.framework"
+            BlueprintName = "TypedNotificationCenter iOS"
             ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7553355B227F163F0030F2FB"
-            BuildableName = "libTypedNotificationCenter.a"
-            BlueprintName = "TypedNotificationCenter"
+            BlueprintIdentifier = "756416BC227F34C20090F4D6"
+            BuildableName = "TypedNotificationCenter.framework"
+            BlueprintName = "TypedNotificationCenter iOS"
             ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
