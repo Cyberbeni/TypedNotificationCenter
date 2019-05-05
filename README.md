@@ -5,7 +5,7 @@ Typed version of Apple's NotificationCenter to avoid forgetting setting paramete
 - [x] Create initial version for iOS
 - [x] Add support for other platforms
 - [ ] Add example usage to readme
-- [ ] Add license to github
+- [x] Add license to github
 - [x] Write unit tests
 - [ ] Run tests on CI with code coverage
 - [ ] Translate UIKit/AppKit/etc. notifications into TypedNotifications with error handling (default is print, customizable through public API)
