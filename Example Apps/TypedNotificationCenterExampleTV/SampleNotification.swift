@@ -10,7 +10,7 @@ import Foundation
 import TypedNotificationCenter
 import UIKit
 
-class SampleNotification: TypedNotification {
+enum SampleNotification: TypedNotification {
     struct Payload {
         let type = "tv"
     }

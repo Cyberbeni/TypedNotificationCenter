@@ -10,13 +10,13 @@ import Foundation
 
 public final class TypedNotificationCenter {
     private let observerQueue = DispatchQueue(label: "TypedNotificationCenter.queue.\(UUID().uuidString)", qos: .userInitiated, attributes: [], autoreleaseFrequency: .inherit, target: nil)
-    private var observers = [TypedNotificationCenterObservation]()
+    private var observers = [TypedNotificationObservation]()
     
     // MARK: - Utility functions
     
-    private func filter<T: TypedNotification>(sender: T.Sender, payload: T.Payload) -> [_TypedNotificationCenterObservation<T>] {
-        return self.observers.compactMap { (observer) -> _TypedNotificationCenterObservation<T>? in
-            guard let observer = observer as? _TypedNotificationCenterObservation<T>,
+    private func filter<T: TypedNotification>(sender: T.Sender, payload: T.Payload) -> [_TypedNotificationObservation<T>] {
+        return self.observers.compactMap { (observer) -> _TypedNotificationObservation<T>? in
+            guard let observer = observer as? _TypedNotificationObservation<T>,
                 observer.isValid,
                 observer.sender == nil || observer.sender === sender else {
                     return nil
@@ -29,8 +29,8 @@ public final class TypedNotificationCenter {
     
     public static let `default` = TypedNotificationCenter()
     
-    public func observe<T: TypedNotification>(_ type: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationCenterObservation {
-        let observation = _TypedNotificationCenterObservation<T>(notificationCenter: self, sender: object, queue: queue, block: block)
+    public func observe<T: TypedNotification>(_ type: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+        let observation = _TypedNotificationObservation<T>(notificationCenter: self, sender: object, queue: queue, block: block)
         
         observerQueue.async {
             self.observers.append(observation)
@@ -48,7 +48,7 @@ public final class TypedNotificationCenter {
     }
     
     public func post<T: TypedNotification>(_ type: T.Type, sender: T.Sender, payload: T.Payload) {
-        var observationsToCall: [_TypedNotificationCenterObservation<T>]?
+        var observationsToCall: [_TypedNotificationObservation<T>]?
         observerQueue.sync {
             observationsToCall = self.filter(sender: sender, payload: payload)
         }

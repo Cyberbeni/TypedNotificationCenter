@@ -9,7 +9,7 @@
 import Foundation
 import TypedNotificationCenter
 
-class SampleNotification: TypedNotification {
+enum SampleNotification: TypedNotification {
     struct Payload {
         let type = "desktop"
     }

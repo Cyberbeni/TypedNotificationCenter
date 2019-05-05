@@ -7,28 +7,50 @@
 //
 
 import XCTest
+@testable import TypedNotificationCenter
 
 class TypedNotificationCenterTests: XCTestCase {
-    var observer: Any?
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    var observation: TypedNotificationObservation?
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        observation = nil
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testNotificationWithoutObject() {
+        var count = 0
+        
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { (sender, payload) in
+            count += 1
+        })
+        
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+        
+        XCTAssertEqual(count, 1, "Observer block should've been called once")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testNotificationWithDifferentObject() {
+        var count = 0
+        let otherObject = NSObject()
+        
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: otherObject, block: { (sender, payload) in
+            count += 1
+        })
+        
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+        
+        XCTAssertEqual(count, 0, "Observer block should've been called zero times")
+        
     }
-
+    
+    func testNotificationWithSameObject() {
+        var count = 0
+        
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { (sender, payload) in
+            count += 1
+        })
+        
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+        
+        XCTAssertEqual(count, 1, "Observer block should've been called once")
+    }
 }

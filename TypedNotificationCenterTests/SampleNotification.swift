@@ -1,18 +1,17 @@
 //
 //  SampleNotification.swift
-//  TypedNotificationCenterExampleWatch Extension
+//  TypedNotificationCenterTests
 //
 //  Created by Benedek Kozma on 2019. 05. 05..
 //  Copyright © 2019. Benedek Kozma. All rights reserved.
 //
 
 import Foundation
-import TypedNotificationCenter
-import WatchKit
+@testable import TypedNotificationCenter
 
 enum SampleNotification: TypedNotification {
     struct Payload {
-        let type = "watch"
+        let type = "test"
     }
-    typealias Sender = WKInterfaceController
+    typealias Sender = AnyObject
 }

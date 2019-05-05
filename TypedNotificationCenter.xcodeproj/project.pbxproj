@@ -20,13 +20,13 @@
 		7530BA76227F457A00D57E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7530BA75227F457A00D57E4F /* Assets.xcassets */; };
 		7530BA7A227F457A00D57E4F /* TNCExampleWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7530BA60227F457500D57E4F /* TNCExampleWatch.app */; };
 		7530BAB1227F48AB00D57E4F /* TypedNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */; };
-		7530BAB2227F48AB00D57E4F /* TypedNotificationCenterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationCenterObservation.swift */; };
+		7530BAB2227F48AB00D57E4F /* TypedNotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */; };
 		7530BAB3227F48AB00D57E4F /* TypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641658227F19AA0090F4D6 /* TypedNotification.swift */; };
 		7530BAB4227F48AC00D57E4F /* TypedNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */; };
-		7530BAB5227F48AC00D57E4F /* TypedNotificationCenterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationCenterObservation.swift */; };
+		7530BAB5227F48AC00D57E4F /* TypedNotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */; };
 		7530BAB6227F48AC00D57E4F /* TypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641658227F19AA0090F4D6 /* TypedNotification.swift */; };
 		7530BAB7227F48AC00D57E4F /* TypedNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */; };
-		7530BAB8227F48AC00D57E4F /* TypedNotificationCenterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationCenterObservation.swift */; };
+		7530BAB8227F48AC00D57E4F /* TypedNotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */; };
 		7530BAB9227F48AC00D57E4F /* TypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641658227F19AA0090F4D6 /* TypedNotification.swift */; };
 		7530BABA227F48AF00D57E4F /* TypedNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 756416AD227F338B0090F4D6 /* TypedNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7530BABB227F48B000D57E4F /* TypedNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 756416AD227F338B0090F4D6 /* TypedNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,8 +39,9 @@
 		75641673227F28C60090F4D6 /* SampleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641672227F28C60090F4D6 /* SampleNotification.swift */; };
 		756416CA227F34E70090F4D6 /* TypedNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 756416AD227F338B0090F4D6 /* TypedNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		756416CB227F351D0090F4D6 /* TypedNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */; };
-		756416CC227F351D0090F4D6 /* TypedNotificationCenterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationCenterObservation.swift */; };
+		756416CC227F351D0090F4D6 /* TypedNotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */; };
 		756416CD227F351D0090F4D6 /* TypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641658227F19AA0090F4D6 /* TypedNotification.swift */; };
+		75896018227F587D003F3EDD /* SampleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75896017227F587D003F3EDD /* SampleNotification.swift */; };
 		75AAB442227F4D3C005D7873 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAB441227F4D3C005D7873 /* AppDelegate.swift */; };
 		75AAB444227F4D40005D7873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75AAB443227F4D40005D7873 /* Assets.xcassets */; };
 		75AAB447227F4D40005D7873 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75AAB445227F4D40005D7873 /* MainMenu.xib */; };
@@ -194,7 +195,7 @@
 		7530BA9C227F482000D57E4F /* TypedNotificationCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TypedNotificationCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7530BAA9227F487400D57E4F /* TypedNotificationCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TypedNotificationCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationCenter.swift; sourceTree = "<group>"; };
-		75641656227F194A0090F4D6 /* TypedNotificationCenterObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationCenterObservation.swift; sourceTree = "<group>"; };
+		75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationObservation.swift; sourceTree = "<group>"; };
 		75641658227F19AA0090F4D6 /* TypedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotification.swift; sourceTree = "<group>"; };
 		7564165E227F28340090F4D6 /* TNCExampleiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCExampleiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75641660227F28340090F4D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -207,6 +208,7 @@
 		756416AD227F338B0090F4D6 /* TypedNotificationCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TypedNotificationCenter.h; path = TypedNotificationCenter/TypedNotificationCenter.h; sourceTree = SOURCE_ROOT; };
 		756416AE227F338B0090F4D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TypedNotificationCenter/Info.plist; sourceTree = SOURCE_ROOT; };
 		756416BD227F34C20090F4D6 /* TypedNotificationCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TypedNotificationCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75896017227F587D003F3EDD /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
 		75AAB43F227F4D3B005D7873 /* TNCExampleMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCExampleMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75AAB441227F4D3C005D7873 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75AAB443227F4D40005D7873 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -352,7 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */,
-				75641656227F194A0090F4D6 /* TypedNotificationCenterObservation.swift */,
+				75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */,
 				75641658227F19AA0090F4D6 /* TypedNotification.swift */,
 				756416AE227F338B0090F4D6 /* Info.plist */,
 				756416AD227F338B0090F4D6 /* TypedNotificationCenter.h */,
@@ -410,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				75BFD921227F553D0037271E /* TypedNotificationCenterTests.swift */,
+				75896017227F587D003F3EDD /* SampleNotification.swift */,
 				75BFD923227F553D0037271E /* Info.plist */,
 			);
 			path = TypedNotificationCenterTests;
@@ -820,7 +823,7 @@
 			files = (
 				7530BAB3227F48AB00D57E4F /* TypedNotification.swift in Sources */,
 				7530BAB1227F48AB00D57E4F /* TypedNotificationCenter.swift in Sources */,
-				7530BAB2227F48AB00D57E4F /* TypedNotificationCenterObservation.swift in Sources */,
+				7530BAB2227F48AB00D57E4F /* TypedNotificationObservation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,7 +833,7 @@
 			files = (
 				7530BAB6227F48AC00D57E4F /* TypedNotification.swift in Sources */,
 				7530BAB4227F48AC00D57E4F /* TypedNotificationCenter.swift in Sources */,
-				7530BAB5227F48AC00D57E4F /* TypedNotificationCenterObservation.swift in Sources */,
+				7530BAB5227F48AC00D57E4F /* TypedNotificationObservation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -840,7 +843,7 @@
 			files = (
 				7530BAB9227F48AC00D57E4F /* TypedNotification.swift in Sources */,
 				7530BAB7227F48AC00D57E4F /* TypedNotificationCenter.swift in Sources */,
-				7530BAB8227F48AC00D57E4F /* TypedNotificationCenterObservation.swift in Sources */,
+				7530BAB8227F48AC00D57E4F /* TypedNotificationObservation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,7 +863,7 @@
 			files = (
 				756416CD227F351D0090F4D6 /* TypedNotification.swift in Sources */,
 				756416CB227F351D0090F4D6 /* TypedNotificationCenter.swift in Sources */,
-				756416CC227F351D0090F4D6 /* TypedNotificationCenterObservation.swift in Sources */,
+				756416CC227F351D0090F4D6 /* TypedNotificationObservation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,6 +880,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75896018227F587D003F3EDD /* SampleNotification.swift in Sources */,
 				75BFD922227F553D0037271E /* TypedNotificationCenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  TypedNotificationCenterObservation.swift
+//  TypedNotificationObservation.swift
 //  TypedNotificationCenter
 //
 //  Created by Benedek Kozma on 2019. 05. 05..
@@ -8,16 +8,16 @@
 
 import Foundation
 
-public protocol TypedNotificationCenterObservation: AnyObject {
+public protocol TypedNotificationObservation: AnyObject {
     func invalidate()
     var isValid: Bool { get }
 }
 
-final class _TypedNotificationCenterObservation<T: TypedNotification>: TypedNotificationCenterObservation {
+final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificationObservation {
     init(notificationCenter: TypedNotificationCenter, sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
         self.notificationCenter = notificationCenter
         self.sender = sender
-        self.senderWasNil = sender == nil
+        senderWasNil = sender == nil
         self.queue = queue
         self.block = block
     }
@@ -43,6 +43,6 @@ final class _TypedNotificationCenterObservation<T: TypedNotification>: TypedNoti
     }
     
     deinit {
-        self.invalidate()
+        invalidate()
     }
 }
