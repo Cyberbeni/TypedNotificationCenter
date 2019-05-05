@@ -38,6 +38,7 @@ class TypedNotificationCenterAsyncTests: XCTestCase {
     }
 
     override func tearDown() {
+        observation = nil
     }
 
     func testSuspendedQueue() {
