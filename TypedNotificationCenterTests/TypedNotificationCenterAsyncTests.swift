@@ -31,10 +31,12 @@ class TypedNotificationCenterAsyncTests: XCTestCase {
     var queue = OperationQueue()
     var observation: TypedNotificationObservation?
     var count = 0
+    var sender: NSObject!
 
     override func setUp() {
         queue = OperationQueue()
         count = 0
+        sender = NSObject()
     }
 
     override func tearDown() {
@@ -45,12 +47,12 @@ class TypedNotificationCenterAsyncTests: XCTestCase {
         queue.isSuspended = true
         let expectation = self.expectation(description: "Call Block")
         
-        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: queue, block: { _, _ in
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, queue: queue, block: { _, _ in
             self.count += 1
             expectation.fulfill()
         })
         
-        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
         
         wait(2.0)
         

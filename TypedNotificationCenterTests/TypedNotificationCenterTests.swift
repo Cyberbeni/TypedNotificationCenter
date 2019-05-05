@@ -30,9 +30,11 @@ import XCTest
 class TypedNotificationCenterTests: XCTestCase {
     var observation: TypedNotificationObservation?
     var count = 0
+    var sender: NSObject!
     
     override func setUp() {
         count = 0
+        sender = NSObject()
     }
 
     override func tearDown() {
@@ -44,7 +46,7 @@ class TypedNotificationCenterTests: XCTestCase {
             self.count += 1
         })
         
-        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
         
         XCTAssertEqual(count, 1, "Observer block should've been called once")
     }
@@ -56,29 +58,29 @@ class TypedNotificationCenterTests: XCTestCase {
             self.count += 1
         })
         
-        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
         
         XCTAssertEqual(count, 0, "Observer block should've been called zero times")
     }
     
     func testNotificationWithSameObject() {
-        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { (sender, payload) in
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { (sender, payload) in
             self.count += 1
         })
         
-        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
         
         XCTAssertEqual(count, 1, "Observer block should've been called once")
     }
     
     func testInvalidateObserver() {
-        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { (sender, payload) in
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { (sender, payload) in
             self.count += 1
         })
         
         observation?.invalidate()
         
-        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
         
         observation?.invalidate()
         
