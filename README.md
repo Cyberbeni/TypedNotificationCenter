@@ -1,4 +1,7 @@
 # TypedNotificationCenter
+
+[![Build Status](https://travis-ci.org/Cyberbeni/TypedNotificationCenter.svg?branch=master)](https://travis-ci.org/Cyberbeni/TypedNotificationCenter) [![Code coverage](https://codecov.io/github/Cyberbeni/TypedNotificationCenter/coverage.svg?branch=master)](https://codecov.io/github/Cyberbeni/TypedNotificationCenter?branch=master)
+
 Typed version of Apple's NotificationCenter to avoid forgetting setting parameters in the userInfo dictionary and needing to handle not having those parameters.
 
 ## Example usage
@@ -31,7 +34,7 @@ TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payl
 - [x] Add example usage to readme
 - [x] Add license to github
 - [x] Write unit tests
-- [ ] Run tests on CI with code coverage
+- [x] Run tests on CI with code coverage
 - [ ] Translate UIKit/AppKit/etc. notifications into TypedNotifications with error handling (default is print, customizable through public API)
 - [ ] Add UI tests for the translated notifications
 - [ ] Write performance test for having a bunch of types and observations
