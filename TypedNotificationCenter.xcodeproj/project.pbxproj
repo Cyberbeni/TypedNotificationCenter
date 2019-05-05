@@ -42,6 +42,8 @@
 		756416CC227F351D0090F4D6 /* TypedNotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */; };
 		756416CD227F351D0090F4D6 /* TypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641658227F19AA0090F4D6 /* TypedNotification.swift */; };
 		75896018227F587D003F3EDD /* SampleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75896017227F587D003F3EDD /* SampleNotification.swift */; };
+		7589601A227F5C41003F3EDD /* TypedNotificationCenterAsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75896019227F5C41003F3EDD /* TypedNotificationCenterAsyncTests.swift */; };
+		7589601C227F5E7A003F3EDD /* XCTestCase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7589601B227F5E7A003F3EDD /* XCTestCase+Utils.swift */; };
 		75AAB442227F4D3C005D7873 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAB441227F4D3C005D7873 /* AppDelegate.swift */; };
 		75AAB444227F4D40005D7873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75AAB443227F4D40005D7873 /* Assets.xcassets */; };
 		75AAB447227F4D40005D7873 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75AAB445227F4D40005D7873 /* MainMenu.xib */; };
@@ -209,6 +211,8 @@
 		756416AE227F338B0090F4D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TypedNotificationCenter/Info.plist; sourceTree = SOURCE_ROOT; };
 		756416BD227F34C20090F4D6 /* TypedNotificationCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TypedNotificationCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75896017227F587D003F3EDD /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
+		75896019227F5C41003F3EDD /* TypedNotificationCenterAsyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationCenterAsyncTests.swift; sourceTree = "<group>"; };
+		7589601B227F5E7A003F3EDD /* XCTestCase+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Utils.swift"; sourceTree = "<group>"; };
 		75AAB43F227F4D3B005D7873 /* TNCExampleMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCExampleMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75AAB441227F4D3C005D7873 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75AAB443227F4D40005D7873 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -412,6 +416,8 @@
 			isa = PBXGroup;
 			children = (
 				75BFD921227F553D0037271E /* TypedNotificationCenterTests.swift */,
+				75896019227F5C41003F3EDD /* TypedNotificationCenterAsyncTests.swift */,
+				7589601B227F5E7A003F3EDD /* XCTestCase+Utils.swift */,
 				75896017227F587D003F3EDD /* SampleNotification.swift */,
 				75BFD923227F553D0037271E /* Info.plist */,
 			);
@@ -880,7 +886,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7589601C227F5E7A003F3EDD /* XCTestCase+Utils.swift in Sources */,
 				75896018227F587D003F3EDD /* SampleNotification.swift in Sources */,
+				7589601A227F5C41003F3EDD /* TypedNotificationCenterAsyncTests.swift in Sources */,
 				75BFD922227F553D0037271E /* TypedNotificationCenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

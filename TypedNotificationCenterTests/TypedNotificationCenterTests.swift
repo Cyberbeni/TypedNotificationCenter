@@ -11,16 +11,19 @@ import XCTest
 
 class TypedNotificationCenterTests: XCTestCase {
     var observation: TypedNotificationObservation?
+    var count = 0
+    
+    override func setUp() {
+        count = 0
+    }
 
     override func tearDown() {
         observation = nil
     }
 
     func testNotificationWithoutObject() {
-        var count = 0
-        
         observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { (sender, payload) in
-            count += 1
+            self.count += 1
         })
         
         TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
@@ -29,11 +32,10 @@ class TypedNotificationCenterTests: XCTestCase {
     }
     
     func testNotificationWithDifferentObject() {
-        var count = 0
         let otherObject = NSObject()
         
         observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: otherObject, block: { (sender, payload) in
-            count += 1
+            self.count += 1
         })
         
         TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
@@ -43,10 +45,8 @@ class TypedNotificationCenterTests: XCTestCase {
     }
     
     func testNotificationWithSameObject() {
-        var count = 0
-        
         observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { (sender, payload) in
-            count += 1
+            self.count += 1
         })
         
         TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
