@@ -20,12 +20,17 @@ enum SampleNotification: TypedNotification {
 
 ```
 // OtherFile.swift
+// Observe a notification and execute a block with the sender and the payload
 var observation: TypedNotificationObservation?
 observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { (sender, payload) in
             print(sender, payload)
         })
 
+// Post a notification
 TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+
+// Stop observing the notification, this is also called when the observation object deinitializes
+observation?.invalidate()
 ```
 
 ## Goals
