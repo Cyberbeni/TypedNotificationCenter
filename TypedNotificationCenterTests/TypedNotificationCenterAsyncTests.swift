@@ -27,8 +27,8 @@ class TypedNotificationCenterAsyncTests: XCTestCase {
         let expectation = self.expectation(description: "Call Block")
         
         observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: queue, block: { _, _ in
-            expectation.fulfill()
             self.count += 1
+            expectation.fulfill()
         })
         
         TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
