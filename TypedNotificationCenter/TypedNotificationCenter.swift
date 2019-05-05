@@ -15,14 +15,14 @@ public final class TypedNotificationCenter {
     // MARK: - Utility functions
     
     private func filter<T: TypedNotification>(sender: T.Sender, payload: T.Payload) -> [TypedNotificationCenterObservation<T>] {
-        return self.observers.compactMap({ (observer) -> TypedNotificationCenterObservation<T>? in
+        return self.observers.compactMap { (observer) -> TypedNotificationCenterObservation<T>? in
             guard let observer = observer as? TypedNotificationCenterObservation<T>,
                 observer.isValid,
                 observer.sender == nil || observer.sender === sender else {
                     return nil
             }
             return observer
-        })
+        }
     }
     
     // MARK: - Public interface
