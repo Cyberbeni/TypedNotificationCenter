@@ -304,11 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				7553355E227F163F0030F2FB /* TypedNotificationCenter */,
-				7564165F227F28340090F4D6 /* TypedNotificationCenterExample */,
-				7530BA61227F457500D57E4F /* TypedNotificationCenterExampleWatch */,
-				7530BA70227F457900D57E4F /* TypedNotificationCenterExampleWatch Extension */,
-				75AAB440227F4D3B005D7873 /* TypedNotificationCenterExampleMac */,
-				75D42F10227F4EDF00ABC500 /* TypedNotificationCenterExampleTV */,
+				75BFD91A227F54350037271E /* Example Apps */,
 				7553355D227F163F0030F2FB /* Products */,
 				75641670227F28490090F4D6 /* Frameworks */,
 			);
@@ -374,6 +370,18 @@
 				75AAB449227F4D40005D7873 /* TypedNotificationCenterExampleMac.entitlements */,
 			);
 			path = TypedNotificationCenterExampleMac;
+			sourceTree = "<group>";
+		};
+		75BFD91A227F54350037271E /* Example Apps */ = {
+			isa = PBXGroup;
+			children = (
+				7564165F227F28340090F4D6 /* TypedNotificationCenterExample */,
+				7530BA61227F457500D57E4F /* TypedNotificationCenterExampleWatch */,
+				7530BA70227F457900D57E4F /* TypedNotificationCenterExampleWatch Extension */,
+				75AAB440227F4D3B005D7873 /* TypedNotificationCenterExampleMac */,
+				75D42F10227F4EDF00ABC500 /* TypedNotificationCenterExampleTV */,
+			);
+			path = "Example Apps";
 			sourceTree = "<group>";
 		};
 		75D42F10227F4EDF00ABC500 /* TypedNotificationCenterExampleTV */ = {
@@ -900,7 +908,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V63P53K235;
-				INFOPLIST_FILE = "TypedNotificationCenterExampleWatch Extension/Info.plist";
+				INFOPLIST_FILE = "Example Apps/TypedNotificationCenterExampleWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -922,7 +930,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V63P53K235;
-				INFOPLIST_FILE = "TypedNotificationCenterExampleWatch Extension/Info.plist";
+				INFOPLIST_FILE = "Example Apps/TypedNotificationCenterExampleWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -946,7 +954,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V63P53K235;
 				IBSC_MODULE = TypedNotificationCenterExampleWatch_Extension;
-				INFOPLIST_FILE = TypedNotificationCenterExampleWatch/Info.plist;
+				INFOPLIST_FILE = "Example Apps/TypedNotificationCenterExampleWatch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.cyberbeni.TypedNotificationCenterExample.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -965,7 +973,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V63P53K235;
 				IBSC_MODULE = TypedNotificationCenterExampleWatch_Extension;
-				INFOPLIST_FILE = TypedNotificationCenterExampleWatch/Info.plist;
+				INFOPLIST_FILE = "Example Apps/TypedNotificationCenterExampleWatch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.cyberbeni.TypedNotificationCenterExample.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1295,7 +1303,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V63P53K235;
-				INFOPLIST_FILE = TypedNotificationCenterExample/Info.plist;
+				INFOPLIST_FILE = "Example Apps/TypedNotificationCenterExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1315,7 +1323,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V63P53K235;
-				INFOPLIST_FILE = TypedNotificationCenterExample/Info.plist;
+				INFOPLIST_FILE = "Example Apps/TypedNotificationCenterExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1408,7 +1416,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = V63P53K235;
-				INFOPLIST_FILE = TypedNotificationCenterExampleMac/Info.plist;
+				INFOPLIST_FILE = "Example Apps/TypedNotificationCenterExampleMac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1431,7 +1439,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = V63P53K235;
-				INFOPLIST_FILE = TypedNotificationCenterExampleMac/Info.plist;
+				INFOPLIST_FILE = "Example Apps/TypedNotificationCenterExampleMac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1452,7 +1460,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V63P53K235;
-				INFOPLIST_FILE = TypedNotificationCenterExampleTV/Info.plist;
+				INFOPLIST_FILE = "Example Apps/TypedNotificationCenterExampleTV/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1474,7 +1482,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V63P53K235;
-				INFOPLIST_FILE = TypedNotificationCenterExampleTV/Info.plist;
+				INFOPLIST_FILE = "Example Apps/TypedNotificationCenterExampleTV/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
