@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		75533560227F163F0030F2FB /* TypedNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */; };
+		75641657227F194A0090F4D6 /* TypedNotificationCenterObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationCenterObservation.swift */; };
+		75641659227F19AA0090F4D6 /* TypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641658227F19AA0090F4D6 /* TypedNotification.swift */; };
+		75641661227F28340090F4D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641660227F28340090F4D6 /* AppDelegate.swift */; };
+		75641663227F28340090F4D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641662227F28340090F4D6 /* ViewController.swift */; };
+		75641666227F28340090F4D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75641664227F28340090F4D6 /* Main.storyboard */; };
+		75641668227F283A0090F4D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75641667227F283A0090F4D6 /* Assets.xcassets */; };
+		7564166B227F283A0090F4D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75641669227F283A0090F4D6 /* LaunchScreen.storyboard */; };
+		75641671227F28490090F4D6 /* libTypedNotificationCenter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7553355C227F163F0030F2FB /* libTypedNotificationCenter.a */; };
+		75641673227F28C60090F4D6 /* SampleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641672227F28C60090F4D6 /* SampleNotification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +34,16 @@
 /* Begin PBXFileReference section */
 		7553355C227F163F0030F2FB /* libTypedNotificationCenter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTypedNotificationCenter.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationCenter.swift; sourceTree = "<group>"; };
+		75641656227F194A0090F4D6 /* TypedNotificationCenterObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationCenterObservation.swift; sourceTree = "<group>"; };
+		75641658227F19AA0090F4D6 /* TypedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotification.swift; sourceTree = "<group>"; };
+		7564165E227F28340090F4D6 /* TypedNotificationCenterExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypedNotificationCenterExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75641660227F28340090F4D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		75641662227F28340090F4D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		75641665227F28340090F4D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		75641667227F283A0090F4D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7564166A227F283A0090F4D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7564166C227F283A0090F4D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75641672227F28C60090F4D6 /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +54,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7564165B227F28340090F4D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75641671227F28490090F4D6 /* libTypedNotificationCenter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -42,7 +69,9 @@
 			isa = PBXGroup;
 			children = (
 				7553355E227F163F0030F2FB /* TypedNotificationCenter */,
+				7564165F227F28340090F4D6 /* TypedNotificationCenterExample */,
 				7553355D227F163F0030F2FB /* Products */,
+				75641670227F28490090F4D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -50,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				7553355C227F163F0030F2FB /* libTypedNotificationCenter.a */,
+				7564165E227F28340090F4D6 /* TypedNotificationCenterExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,8 +88,31 @@
 			isa = PBXGroup;
 			children = (
 				7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */,
+				75641656227F194A0090F4D6 /* TypedNotificationCenterObservation.swift */,
+				75641658227F19AA0090F4D6 /* TypedNotification.swift */,
 			);
 			path = TypedNotificationCenter;
+			sourceTree = "<group>";
+		};
+		7564165F227F28340090F4D6 /* TypedNotificationCenterExample */ = {
+			isa = PBXGroup;
+			children = (
+				75641660227F28340090F4D6 /* AppDelegate.swift */,
+				75641662227F28340090F4D6 /* ViewController.swift */,
+				75641664227F28340090F4D6 /* Main.storyboard */,
+				75641667227F283A0090F4D6 /* Assets.xcassets */,
+				75641669227F283A0090F4D6 /* LaunchScreen.storyboard */,
+				7564166C227F283A0090F4D6 /* Info.plist */,
+				75641672227F28C60090F4D6 /* SampleNotification.swift */,
+			);
+			path = TypedNotificationCenterExample;
+			sourceTree = "<group>";
+		};
+		75641670227F28490090F4D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +135,23 @@
 			productReference = 7553355C227F163F0030F2FB /* libTypedNotificationCenter.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		7564165D227F28340090F4D6 /* TypedNotificationCenterExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7564166D227F283A0090F4D6 /* Build configuration list for PBXNativeTarget "TypedNotificationCenterExample" */;
+			buildPhases = (
+				7564165A227F28340090F4D6 /* Sources */,
+				7564165B227F28340090F4D6 /* Frameworks */,
+				7564165C227F28340090F4D6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TypedNotificationCenterExample;
+			productName = TypedNotificationCenterExample;
+			productReference = 7564165E227F28340090F4D6 /* TypedNotificationCenterExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -95,6 +165,9 @@
 					7553355B227F163F0030F2FB = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
+					7564165D227F28340090F4D6 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 75533557227F163F0030F2FB /* Build configuration list for PBXProject "TypedNotificationCenter" */;
@@ -103,6 +176,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 75533553227F163F0030F2FB;
 			productRefGroup = 7553355D227F163F0030F2FB /* Products */;
@@ -110,20 +184,65 @@
 			projectRoot = "";
 			targets = (
 				7553355B227F163F0030F2FB /* TypedNotificationCenter */,
+				7564165D227F28340090F4D6 /* TypedNotificationCenterExample */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7564165C227F28340090F4D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7564166B227F283A0090F4D6 /* LaunchScreen.storyboard in Resources */,
+				75641668227F283A0090F4D6 /* Assets.xcassets in Resources */,
+				75641666227F28340090F4D6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		75533558227F163F0030F2FB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75641659227F19AA0090F4D6 /* TypedNotification.swift in Sources */,
 				75533560227F163F0030F2FB /* TypedNotificationCenter.swift in Sources */,
+				75641657227F194A0090F4D6 /* TypedNotificationCenterObservation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7564165A227F28340090F4D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75641673227F28C60090F4D6 /* SampleNotification.swift in Sources */,
+				75641663227F28340090F4D6 /* ViewController.swift in Sources */,
+				75641661227F28340090F4D6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		75641664227F28340090F4D6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75641665227F28340090F4D6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		75641669227F283A0090F4D6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7564166A227F283A0090F4D6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		75533561227F163F0030F2FB /* Debug */ = {
@@ -247,9 +366,12 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V63P53K235;
+				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -260,9 +382,48 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V63P53K235;
+				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7564166E227F283A0090F4D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V63P53K235;
+				INFOPLIST_FILE = TypedNotificationCenterExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hu.cyberbeni.TypedNotificationCenterExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7564166F227F283A0090F4D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V63P53K235;
+				INFOPLIST_FILE = TypedNotificationCenterExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hu.cyberbeni.TypedNotificationCenterExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -285,6 +446,15 @@
 			buildConfigurations = (
 				75533564227F163F0030F2FB /* Debug */,
 				75533565227F163F0030F2FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7564166D227F283A0090F4D6 /* Build configuration list for PBXNativeTarget "TypedNotificationCenterExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7564166E227F283A0090F4D6 /* Debug */,
+				7564166F227F283A0090F4D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
