@@ -43,6 +43,16 @@ public final class TypedNotificationCenter {
         }
     }
     
+    // MARK: - Internal functions
+    
+    func remove(observation: TypedNotificationObservation) {
+        observerQueue.async {
+            if let indexToRemove = self.observers.firstIndex(where: { $0 === observation }) {
+                self.observers.remove(at: indexToRemove)
+            }
+        }
+    }
+    
     // MARK: - Public interface
     
     public static let `default` = TypedNotificationCenter()
@@ -55,14 +65,6 @@ public final class TypedNotificationCenter {
         }
         
         return observation
-    }
-    
-    public func remove(observer: AnyObject) {
-        observerQueue.async {
-            if let indexToRemove = self.observers.firstIndex(where: { $0 === observer }) {
-                self.observers.remove(at: indexToRemove)
-            }
-        }
     }
     
     public func post<T: TypedNotification>(_ type: T.Type, sender: T.Sender, payload: T.Payload) {

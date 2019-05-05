@@ -59,7 +59,6 @@ class TypedNotificationCenterTests: XCTestCase {
         TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
         
         XCTAssertEqual(count, 0, "Observer block should've been called zero times")
-        
     }
     
     func testNotificationWithSameObject() {
@@ -70,5 +69,19 @@ class TypedNotificationCenterTests: XCTestCase {
         TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
         
         XCTAssertEqual(count, 1, "Observer block should've been called once")
+    }
+    
+    func testInvalidateObserver() {
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { (sender, payload) in
+            self.count += 1
+        })
+        
+        observation?.invalidate()
+        
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+        
+        observation?.invalidate()
+        
+        XCTAssertEqual(count, 0, "Observer block should've been called zero times")
     }
 }

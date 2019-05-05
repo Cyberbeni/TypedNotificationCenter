@@ -46,7 +46,7 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
     var queue: OperationQueue?
     var block: T.ObservationBlock?
     
-    private var isRemoved = false
+    var isRemoved = false
     
     public var isValid: Bool {
         return !isRemoved && (notificationCenter != nil) && !(!senderWasNil && sender == nil)
@@ -55,7 +55,7 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
     public func invalidate() {
         guard !isRemoved else { return }
         isRemoved = true
-        notificationCenter?.remove(observer: self)
+        notificationCenter?.remove(observation: self)
         block = nil
         queue = nil
     }
