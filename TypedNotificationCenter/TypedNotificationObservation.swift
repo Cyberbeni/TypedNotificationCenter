@@ -46,7 +46,7 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
     var queue: OperationQueue?
     var block: T.ObservationBlock?
     
-    var isRemoved = false
+    private var isRemoved = false
     
     public var isValid: Bool {
         return !isRemoved && (notificationCenter != nil) && !(!senderWasNil && sender == nil)
