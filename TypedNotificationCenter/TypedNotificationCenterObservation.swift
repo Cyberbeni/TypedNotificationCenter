@@ -8,7 +8,12 @@
 
 import Foundation
 
-public final class TypedNotificationCenterObservation<T: TypedNotification> {
+public protocol TypedNotificationCenterObservation: AnyObject {
+    func invalidate()
+    var isValid: Bool { get }
+}
+
+final class _TypedNotificationCenterObservation<T: TypedNotification>: TypedNotificationCenterObservation {
     init(notificationCenter: TypedNotificationCenter, sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
         self.notificationCenter = notificationCenter
         self.sender = sender
