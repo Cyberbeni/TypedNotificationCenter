@@ -44,3 +44,4 @@ observation?.invalidate()
 - [ ] Add UI tests for the translated notifications
 - [ ] Write performance test for having a bunch of types and observations
 - [ ] Measure performance of array vs hash based separation of notification types
+- [ ] Make the example usage section more detailed/useful
