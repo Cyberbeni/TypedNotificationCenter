@@ -47,3 +47,4 @@ observation?.invalidate()
 - [ ] Make the example usage section more detailed/useful
 - [ ] v1.0
 - [ ] Translate the other notifications and add UI tests for them
+- [ ] Add Linux + SPM support
