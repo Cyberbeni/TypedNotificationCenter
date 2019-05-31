@@ -55,7 +55,7 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
     public func invalidate() {
         guard !isRemoved else { return }
         isRemoved = true
-        notificationCenter?.remove(observation: self)
+        notificationCenter?.remove(observation: ObjectIdentifier(self))
         block = nil
         queue = nil
     }

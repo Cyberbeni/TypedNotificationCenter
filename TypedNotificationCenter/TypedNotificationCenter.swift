@@ -28,13 +28,13 @@ import Foundation
 
 public final class TypedNotificationCenter {
     private let observerQueue = DispatchQueue(label: "TypedNotificationCenter.queue.\(UUID().uuidString)", qos: .userInitiated, attributes: [], autoreleaseFrequency: .inherit, target: nil)
-    private var observers = [TypedNotificationObservation]()
+    private var observers = [WeakBox<AnyObject>]()
     
     // MARK: - Utility functions
     
     private func filter<T: TypedNotification>(sender: T.Sender, payload: T.Payload) -> [_TypedNotificationObservation<T>] {
-        return self.observers.compactMap { (observer) -> _TypedNotificationObservation<T>? in
-            guard let observer = observer as? _TypedNotificationObservation<T>,
+        return self.observers.compactMap { (container) -> _TypedNotificationObservation<T>? in
+            guard let observer = container.object as? _TypedNotificationObservation<T>,
                 observer.isValid,
                 observer.sender == nil || observer.sender === sender else {
                     return nil
@@ -45,9 +45,9 @@ public final class TypedNotificationCenter {
     
     // MARK: - Internal functions
     
-    func remove(observation: TypedNotificationObservation) {
+    func remove(observation: ObjectIdentifier) {
         observerQueue.async {
-            if let indexToRemove = self.observers.firstIndex(where: { $0 === observation }) {
+            if let indexToRemove = self.observers.firstIndex(where: { $0.identifier == observation }) {
                 self.observers.remove(at: indexToRemove)
             }
         }
@@ -61,7 +61,7 @@ public final class TypedNotificationCenter {
         let observation = _TypedNotificationObservation<T>(notificationCenter: self, sender: object, queue: queue, block: block)
         
         observerQueue.async {
-            self.observers.append(observation)
+            self.observers.append(WeakBox(observation))
         }
         
         return observation

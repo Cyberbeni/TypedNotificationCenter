@@ -55,6 +55,10 @@
 		75D42F1F227F4EFE00ABC500 /* SampleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D42F1E227F4EFE00ABC500 /* SampleNotification.swift */; };
 		75D42F20227F4FB700ABC500 /* TypedNotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7530BA9C227F482000D57E4F /* TypedNotificationCenter.framework */; };
 		75D42F21227F4FB700ABC500 /* TypedNotificationCenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7530BA9C227F482000D57E4F /* TypedNotificationCenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		75EA5FA222A1381B00462F7F /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA5FA122A1381B00462F7F /* WeakBox.swift */; };
+		75EA5FA322A1381B00462F7F /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA5FA122A1381B00462F7F /* WeakBox.swift */; };
+		75EA5FA422A1381B00462F7F /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA5FA122A1381B00462F7F /* WeakBox.swift */; };
+		75EA5FA522A1381B00462F7F /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA5FA122A1381B00462F7F /* WeakBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +229,7 @@
 		75D42F18227F4EE100ABC500 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75D42F1A227F4EE100ABC500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75D42F1E227F4EFE00ABC500 /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
+		75EA5FA122A1381B00462F7F /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,6 +360,7 @@
 				7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */,
 				75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */,
 				75641658227F19AA0090F4D6 /* TypedNotification.swift */,
+				75EA5FA122A1381B00462F7F /* WeakBox.swift */,
 				756416AE227F338B0090F4D6 /* Info.plist */,
 			);
 			path = TypedNotificationCenter;
@@ -818,6 +824,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7530BAB3227F48AB00D57E4F /* TypedNotification.swift in Sources */,
+				75EA5FA322A1381B00462F7F /* WeakBox.swift in Sources */,
 				7530BAB1227F48AB00D57E4F /* TypedNotificationCenter.swift in Sources */,
 				7530BAB2227F48AB00D57E4F /* TypedNotificationObservation.swift in Sources */,
 			);
@@ -828,6 +835,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7530BAB6227F48AC00D57E4F /* TypedNotification.swift in Sources */,
+				75EA5FA422A1381B00462F7F /* WeakBox.swift in Sources */,
 				7530BAB4227F48AC00D57E4F /* TypedNotificationCenter.swift in Sources */,
 				7530BAB5227F48AC00D57E4F /* TypedNotificationObservation.swift in Sources */,
 			);
@@ -838,6 +846,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7530BAB9227F48AC00D57E4F /* TypedNotification.swift in Sources */,
+				75EA5FA522A1381B00462F7F /* WeakBox.swift in Sources */,
 				7530BAB7227F48AC00D57E4F /* TypedNotificationCenter.swift in Sources */,
 				7530BAB8227F48AC00D57E4F /* TypedNotificationObservation.swift in Sources */,
 			);
@@ -858,6 +867,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				756416CD227F351D0090F4D6 /* TypedNotification.swift in Sources */,
+				75EA5FA222A1381B00462F7F /* WeakBox.swift in Sources */,
 				756416CB227F351D0090F4D6 /* TypedNotificationCenter.swift in Sources */,
 				756416CC227F351D0090F4D6 /* TypedNotificationObservation.swift in Sources */,
 			);

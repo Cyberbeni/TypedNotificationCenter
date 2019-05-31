@@ -86,4 +86,16 @@ class TypedNotificationCenterTests: XCTestCase {
         
         XCTAssertEqual(count, 0, "Observer block should've been called zero times")
     }
+    
+    func testDeallocateObserver() {
+        _ = {
+            _ = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { (sender, payload) in
+                self.count += 1
+            })
+        }()
+        
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+        
+        XCTAssertEqual(count, 0, "Observer block should've been called zero times")
+    }
 }
