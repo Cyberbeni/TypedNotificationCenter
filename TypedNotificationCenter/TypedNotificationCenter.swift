@@ -28,7 +28,7 @@ import Foundation
 
 public final class TypedNotificationCenter {
     private let observerQueue = DispatchQueue(label: "TypedNotificationCenter.queue.\(UUID().uuidString)", qos: .userInitiated, attributes: [], autoreleaseFrequency: .inherit, target: nil)
-    private var observers = [WeakBox<AnyObject>]()
+    private var observers = [WeakBox]()
     
     // MARK: - Utility functions
     
