@@ -48,6 +48,12 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
     
     private var isRemoved = false
     
+    deinit {
+        invalidate()
+    }
+    
+    // MARK: - TypedNotificationObservation conformance
+    
     public var isValid: Bool {
         return !isRemoved && (notificationCenter != nil) && !(!senderWasNil && sender == nil)
     }
@@ -60,7 +66,4 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
         queue = nil
     }
     
-    deinit {
-        invalidate()
-    }
 }

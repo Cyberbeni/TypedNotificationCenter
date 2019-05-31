@@ -27,7 +27,7 @@
 import Foundation
 
 public final class TypedNotificationCenter {
-    private let observerQueue = DispatchQueue(label: "TypedNotificationCenter.queue.\(UUID().uuidString)", qos: .userInitiated, attributes: [], autoreleaseFrequency: .inherit, target: nil)
+    private let observerQueue: DispatchQueue
     private var observers = [WeakBox]()
     
     // MARK: - Utility functions
@@ -55,7 +55,11 @@ public final class TypedNotificationCenter {
     
     // MARK: - Public interface
     
-    public static let `default` = TypedNotificationCenter()
+    public init(queueName: String = UUID().uuidString, queueQos: DispatchQoS = .userInitiated) {
+        observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", qos: queueQos, attributes: [], autoreleaseFrequency: .inherit, target: nil)
+    }
+    
+    public static let `default` = TypedNotificationCenter(queueName: "default")
     
     public func observe<T: TypedNotification>(_ type: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
         let observation = _TypedNotificationObservation<T>(notificationCenter: self, sender: object, queue: queue, block: block)
