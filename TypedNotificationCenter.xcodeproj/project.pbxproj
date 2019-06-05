@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C32934322A7EF4400DBA352 /* PerformanceTestsWithSubscribing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32934222A7EF4400DBA352 /* PerformanceTestsWithSubscribing.swift */; };
-		5C8195E122A7D10C00312EA9 /* PerformanceTestsWithoutSubscribing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E022A7D10C00312EA9 /* PerformanceTestsWithoutSubscribing.swift */; };
+		5C32934322A7EF4400DBA352 /* PerformanceTestsSubscribing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32934222A7EF4400DBA352 /* PerformanceTestsSubscribing.swift */; };
+		5C8195E122A7D10C00312EA9 /* PerformanceTestsPosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E022A7D10C00312EA9 /* PerformanceTestsPosting.swift */; };
 		5C8195E922A7D22100312EA9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E822A7D22100312EA9 /* main.swift */; };
 		5C8195EE22A7D69000312EA9 /* PerformanceTestNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */; };
 		75108927227F49DF00E9F003 /* TypedNotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756416BD227F34C20090F4D6 /* TypedNotificationCenter.framework */; };
@@ -196,8 +196,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5C32934222A7EF4400DBA352 /* PerformanceTestsWithSubscribing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTestsWithSubscribing.swift; sourceTree = "<group>"; };
-		5C8195E022A7D10C00312EA9 /* PerformanceTestsWithoutSubscribing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTestsWithoutSubscribing.swift; sourceTree = "<group>"; };
+		5C32934222A7EF4400DBA352 /* PerformanceTestsSubscribing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTestsSubscribing.swift; sourceTree = "<group>"; };
+		5C8195E022A7D10C00312EA9 /* PerformanceTestsPosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTestsPosting.swift; sourceTree = "<group>"; };
 		5C8195E622A7D22100312EA9 /* GenerateTestCode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GenerateTestCode; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8195E822A7D22100312EA9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTestNotifications.swift; sourceTree = "<group>"; };
@@ -452,8 +452,8 @@
 			children = (
 				75BFD921227F553D0037271E /* ApiTests.swift */,
 				75896019227F5C41003F3EDD /* AsyncApiTests.swift */,
-				5C8195E022A7D10C00312EA9 /* PerformanceTestsWithoutSubscribing.swift */,
-				5C32934222A7EF4400DBA352 /* PerformanceTestsWithSubscribing.swift */,
+				5C8195E022A7D10C00312EA9 /* PerformanceTestsPosting.swift */,
+				5C32934222A7EF4400DBA352 /* PerformanceTestsSubscribing.swift */,
 				7589601B227F5E7A003F3EDD /* XCTestCase+Utils.swift */,
 				5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */,
 				75896017227F587D003F3EDD /* SampleNotification.swift */,
@@ -954,12 +954,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7589601C227F5E7A003F3EDD /* XCTestCase+Utils.swift in Sources */,
-				5C32934322A7EF4400DBA352 /* PerformanceTestsWithSubscribing.swift in Sources */,
+				5C32934322A7EF4400DBA352 /* PerformanceTestsSubscribing.swift in Sources */,
 				5C8195EE22A7D69000312EA9 /* PerformanceTestNotifications.swift in Sources */,
 				75896018227F587D003F3EDD /* SampleNotification.swift in Sources */,
 				7589601A227F5C41003F3EDD /* AsyncApiTests.swift in Sources */,
 				75BFD922227F553D0037271E /* ApiTests.swift in Sources */,
-				5C8195E122A7D10C00312EA9 /* PerformanceTestsWithoutSubscribing.swift in Sources */,
+				5C8195E122A7D10C00312EA9 /* PerformanceTestsPosting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

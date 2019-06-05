@@ -1,5 +1,5 @@
 //
-//  PerformanceTestsWithoutSubscribing.swift
+//  PerformanceTestsPosting.swift
 //  TypedNotificationCenter
 // 
 //  Created by Benedek Kozma on 2019. 06. 05.
@@ -28,7 +28,7 @@ import XCTest
 import Foundation
 @testable import TypedNotificationCenter
 
-class PerformanceTestsWithoutSubscribing: XCTestCase {
+class PerformanceTestsPosting: XCTestCase {
     var sender: NSObject!
     
     // TypedNotificationCenter
@@ -59,7 +59,7 @@ class PerformanceTestsWithoutSubscribing: XCTestCase {
         aObservations = nil
     }
     
-    func testPerformanceIncludingSubscribing_own_all() {
+    func testPerformance_own_all() {
         for _ in 1...10 {
             TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
         }
@@ -71,7 +71,7 @@ class PerformanceTestsWithoutSubscribing: XCTestCase {
         }
     }
     
-    func testPerformanceIncludingSubscribing_apple_all() {
+    func testPerformance_apple_all() {
         for _ in 1...10 {
             for notificationName in TestData.notificationNames {
                 aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
@@ -87,7 +87,7 @@ class PerformanceTestsWithoutSubscribing: XCTestCase {
         }
     }
     
-    func testPerformanceIncludingSubscribing_own_20percent() {
+    func testPerformance_own_20percent() {
         let otherSender = NSObject()
         TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
         TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
@@ -102,7 +102,7 @@ class PerformanceTestsWithoutSubscribing: XCTestCase {
         }
     }
     
-    func testPerformanceIncludingSubscribing_apple_20percent() {
+    func testPerformance_apple_20percent() {
         let otherSender = NSObject()
         for notificationName in TestData.notificationNames {
             aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
@@ -123,7 +123,7 @@ class PerformanceTestsWithoutSubscribing: XCTestCase {
         }
     }
     
-    func testPerformanceIncludingSubscribing_own_1percent() {
+    func testPerformance_own_1percent() {
         var otherSenders = [NSObject]()
         for _ in 1...99 {
             otherSenders.append(NSObject())
@@ -140,7 +140,7 @@ class PerformanceTestsWithoutSubscribing: XCTestCase {
         }
     }
     
-    func testPerformanceIncludingSubscribing_apple_1percent() {
+    func testPerformance_apple_1percent() {
         var otherSenders = [NSObject]()
         for _ in 1...99 {
             otherSenders.append(NSObject())

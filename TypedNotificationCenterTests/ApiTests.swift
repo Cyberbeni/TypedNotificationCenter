@@ -88,14 +88,55 @@ class ApiTests: XCTestCase {
     }
     
     func testDeallocateObserver() {
-        _ = {
-            _ = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { (sender, payload) in
-                self.count += 1
-            })
-        }()
+        _ = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { (sender, payload) in
+            self.count += 1
+        })
         
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
         
         XCTAssertEqual(count, 0, "Observer block should've been called zero times")
+    }
+    
+    func testValidityRemoved() {
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { (sender, payload) in
+            self.count += 1
+        })
+        
+        XCTAssertEqual(observation!.isValid, true, "Observer should be valid after adding it")
+        
+        observation?.invalidate()
+        
+        XCTAssertEqual(observation!.isValid, false, "Observer should be invalid after invalidating it")
+    }
+    
+    func testValidityNotificationCenterDeallocated() {
+        var notificationCenter: TypedNotificationCenter? = TypedNotificationCenter()
+        observation = notificationCenter?.observe(SampleNotification.self, object: nil, block: { (sender, payload) in
+            self.count += 1
+        })
+        
+        XCTAssertEqual(observation!.isValid, true, "Observer should be valid after adding it")
+        
+        // Post syncs the queue, so TypedNotificationCenter won't be captured in any of the blocks anymore
+        notificationCenter?.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+        
+        notificationCenter = nil
+        
+        XCTAssertEqual(observation!.isValid, false, "Observer should be invalid after the notification center deallocated")
+    }
+    
+    func testValiditySenderDeallocated() {
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { (sender, payload) in
+            self.count += 1
+        })
+        
+        XCTAssertEqual(observation!.isValid, true, "Observer should be valid after adding it")
+        
+        // Post syncs the queue, so TypedNotificationCenter won't be captured in any of the blocks anymore
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+        
+        sender = nil
+        
+        XCTAssertEqual(observation!.isValid, false, "Observer should be invalid after the sender deallocated")
     }
 }

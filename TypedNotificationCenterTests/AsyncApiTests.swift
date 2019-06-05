@@ -64,4 +64,26 @@ class AsyncApiTests: XCTestCase {
         
         XCTAssertEqual(count, 1, "Observer block should've been called exactly once")
     }
+    
+    func testSuspendedQueueNilSender() {
+        queue.isSuspended = true
+        let expectation = self.expectation(description: "Call Block")
+        
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: queue, block: { _, _ in
+            self.count += 1
+            expectation.fulfill()
+        })
+        
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+        
+        wait(2.0)
+        
+        XCTAssertEqual(count, 0, "Observer block should've been called zero times on suspended queue")
+        
+        queue.isSuspended = false
+        
+        self.wait(for: [expectation], timeout: 2)
+        
+        XCTAssertEqual(count, 1, "Observer block should've been called exactly once")
+    }
 }
