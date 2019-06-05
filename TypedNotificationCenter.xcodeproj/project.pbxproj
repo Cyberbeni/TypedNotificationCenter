@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C8195E122A7D10C00312EA9 /* TypedNotificationCenterPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E022A7D10C00312EA9 /* TypedNotificationCenterPerformanceTests.swift */; };
+		5C32934322A7EF4400DBA352 /* PerformanceTestsWithSubscribing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32934222A7EF4400DBA352 /* PerformanceTestsWithSubscribing.swift */; };
+		5C8195E122A7D10C00312EA9 /* PerformanceTestsWithoutSubscribing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E022A7D10C00312EA9 /* PerformanceTestsWithoutSubscribing.swift */; };
 		5C8195E922A7D22100312EA9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E822A7D22100312EA9 /* main.swift */; };
 		5C8195EE22A7D69000312EA9 /* PerformanceTestNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */; };
 		75108927227F49DF00E9F003 /* TypedNotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756416BD227F34C20090F4D6 /* TypedNotificationCenter.framework */; };
@@ -41,12 +42,12 @@
 		756416CC227F351D0090F4D6 /* TypedNotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */; };
 		756416CD227F351D0090F4D6 /* TypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641658227F19AA0090F4D6 /* TypedNotification.swift */; };
 		75896018227F587D003F3EDD /* SampleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75896017227F587D003F3EDD /* SampleNotification.swift */; };
-		7589601A227F5C41003F3EDD /* TypedNotificationCenterAsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75896019227F5C41003F3EDD /* TypedNotificationCenterAsyncTests.swift */; };
+		7589601A227F5C41003F3EDD /* AsyncApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75896019227F5C41003F3EDD /* AsyncApiTests.swift */; };
 		7589601C227F5E7A003F3EDD /* XCTestCase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7589601B227F5E7A003F3EDD /* XCTestCase+Utils.swift */; };
 		75AAB442227F4D3C005D7873 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAB441227F4D3C005D7873 /* AppDelegate.swift */; };
 		75AAB444227F4D40005D7873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75AAB443227F4D40005D7873 /* Assets.xcassets */; };
 		75AAB447227F4D40005D7873 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75AAB445227F4D40005D7873 /* MainMenu.xib */; };
-		75BFD922227F553D0037271E /* TypedNotificationCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFD921227F553D0037271E /* TypedNotificationCenterTests.swift */; };
+		75BFD922227F553D0037271E /* ApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFD921227F553D0037271E /* ApiTests.swift */; };
 		75BFD924227F553D0037271E /* TypedNotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7530BAA9227F487400D57E4F /* TypedNotificationCenter.framework */; };
 		75D42F05227F4DD300ABC500 /* SampleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D42F04227F4DD300ABC500 /* SampleNotification.swift */; };
 		75D42F06227F4E3B00ABC500 /* TypedNotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7530BAA9227F487400D57E4F /* TypedNotificationCenter.framework */; };
@@ -195,7 +196,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5C8195E022A7D10C00312EA9 /* TypedNotificationCenterPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationCenterPerformanceTests.swift; sourceTree = "<group>"; };
+		5C32934222A7EF4400DBA352 /* PerformanceTestsWithSubscribing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTestsWithSubscribing.swift; sourceTree = "<group>"; };
+		5C8195E022A7D10C00312EA9 /* PerformanceTestsWithoutSubscribing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTestsWithoutSubscribing.swift; sourceTree = "<group>"; };
 		5C8195E622A7D22100312EA9 /* GenerateTestCode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GenerateTestCode; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8195E822A7D22100312EA9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTestNotifications.swift; sourceTree = "<group>"; };
@@ -226,7 +228,7 @@
 		756416AE227F338B0090F4D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TypedNotificationCenter/Info.plist; sourceTree = SOURCE_ROOT; };
 		756416BD227F34C20090F4D6 /* TypedNotificationCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TypedNotificationCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75896017227F587D003F3EDD /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
-		75896019227F5C41003F3EDD /* TypedNotificationCenterAsyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationCenterAsyncTests.swift; sourceTree = "<group>"; };
+		75896019227F5C41003F3EDD /* AsyncApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncApiTests.swift; sourceTree = "<group>"; };
 		7589601B227F5E7A003F3EDD /* XCTestCase+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Utils.swift"; sourceTree = "<group>"; };
 		75AAB43F227F4D3B005D7873 /* TNCExampleMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCExampleMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75AAB441227F4D3C005D7873 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -235,7 +237,7 @@
 		75AAB448227F4D40005D7873 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75AAB449227F4D40005D7873 /* TypedNotificationCenterExampleMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TypedNotificationCenterExampleMac.entitlements; sourceTree = "<group>"; };
 		75BFD91F227F553C0037271E /* TypedNotificationCenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TypedNotificationCenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		75BFD921227F553D0037271E /* TypedNotificationCenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationCenterTests.swift; sourceTree = "<group>"; };
+		75BFD921227F553D0037271E /* ApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTests.swift; sourceTree = "<group>"; };
 		75BFD923227F553D0037271E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75D42F04227F4DD300ABC500 /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
 		75D42F0F227F4EDF00ABC500 /* TNCExampleTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCExampleTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -448,11 +450,12 @@
 		75BFD920227F553D0037271E /* TypedNotificationCenterTests */ = {
 			isa = PBXGroup;
 			children = (
-				5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */,
-				75BFD921227F553D0037271E /* TypedNotificationCenterTests.swift */,
-				75896019227F5C41003F3EDD /* TypedNotificationCenterAsyncTests.swift */,
-				5C8195E022A7D10C00312EA9 /* TypedNotificationCenterPerformanceTests.swift */,
+				75BFD921227F553D0037271E /* ApiTests.swift */,
+				75896019227F5C41003F3EDD /* AsyncApiTests.swift */,
+				5C8195E022A7D10C00312EA9 /* PerformanceTestsWithoutSubscribing.swift */,
+				5C32934222A7EF4400DBA352 /* PerformanceTestsWithSubscribing.swift */,
 				7589601B227F5E7A003F3EDD /* XCTestCase+Utils.swift */,
+				5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */,
 				75896017227F587D003F3EDD /* SampleNotification.swift */,
 				75BFD923227F553D0037271E /* Info.plist */,
 			);
@@ -951,11 +954,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7589601C227F5E7A003F3EDD /* XCTestCase+Utils.swift in Sources */,
+				5C32934322A7EF4400DBA352 /* PerformanceTestsWithSubscribing.swift in Sources */,
 				5C8195EE22A7D69000312EA9 /* PerformanceTestNotifications.swift in Sources */,
 				75896018227F587D003F3EDD /* SampleNotification.swift in Sources */,
-				7589601A227F5C41003F3EDD /* TypedNotificationCenterAsyncTests.swift in Sources */,
-				75BFD922227F553D0037271E /* TypedNotificationCenterTests.swift in Sources */,
-				5C8195E122A7D10C00312EA9 /* TypedNotificationCenterPerformanceTests.swift in Sources */,
+				7589601A227F5C41003F3EDD /* AsyncApiTests.swift in Sources */,
+				75BFD922227F553D0037271E /* ApiTests.swift in Sources */,
+				5C8195E122A7D10C00312EA9 /* PerformanceTestsWithoutSubscribing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

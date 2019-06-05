@@ -1,5 +1,5 @@
 //
-//  TypedNotificationCenterTests.swift
+//  ApiTests.swift
 //  TypedNotificationCenterTests
 //
 //  Created by Benedek Kozma on 2019. 05. 05..
@@ -27,7 +27,7 @@
 import XCTest
 @testable import TypedNotificationCenter
 
-class TypedNotificationCenterTests: XCTestCase {
+class ApiTests: XCTestCase {
     var observation: TypedNotificationObservation?
     var count = 0
     var sender: NSObject!

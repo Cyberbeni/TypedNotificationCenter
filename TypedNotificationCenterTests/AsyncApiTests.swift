@@ -1,5 +1,5 @@
 //
-//  TypedNotificationCenterAsyncTests.swift
+//  AsyncApiTests.swift
 //  TypedNotificationCenterTests
 //
 //  Created by Benedek Kozma on 2019. 05. 05..
@@ -27,7 +27,7 @@
 import XCTest
 @testable import TypedNotificationCenter
 
-class TypedNotificationCenterAsyncTests: XCTestCase {
+class AsyncApiTests: XCTestCase {
     var queue = OperationQueue()
     var observation: TypedNotificationObservation?
     var count = 0

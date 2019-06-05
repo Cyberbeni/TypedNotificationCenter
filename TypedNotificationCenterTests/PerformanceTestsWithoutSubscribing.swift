@@ -1,5 +1,5 @@
 //
-//  TypedNotificationCenterPerformanceTests.swift
+//  PerformanceTestsWithoutSubscribing.swift
 //  TypedNotificationCenter
 // 
 //  Created by Benedek Kozma on 2019. 06. 05.
@@ -28,7 +28,7 @@ import XCTest
 import Foundation
 @testable import TypedNotificationCenter
 
-class TypedNotificationCenterPerformanceTests: XCTestCase {
+class PerformanceTestsWithoutSubscribing: XCTestCase {
     var sender: NSObject!
     
     // TypedNotificationCenter
@@ -60,10 +60,11 @@ class TypedNotificationCenterPerformanceTests: XCTestCase {
     }
     
     func testPerformanceIncludingSubscribing_own_all() {
+        for _ in 1...10 {
+            TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
+        }
+        notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
         measure {
-            for _ in 1...10 {
-                TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
-            }
             for _ in 1...100 {
                 TestData.postToAll(sender: sender, notificationCenter: notificationCenter)
             }
@@ -71,12 +72,13 @@ class TypedNotificationCenterPerformanceTests: XCTestCase {
     }
     
     func testPerformanceIncludingSubscribing_apple_all() {
-        measure {
-            for _ in 1...10 {
-                for notificationName in TestData.notificationNames {
-                    aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
-                }
+        for _ in 1...10 {
+            for notificationName in TestData.notificationNames {
+                aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
             }
+        }
+        aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
+        measure {
             for _ in 1...100 {
                 for notificationName in TestData.notificationNames {
                     aNotificationCenter.post(name: notificationName, object: sender, userInfo: [:])
@@ -86,13 +88,14 @@ class TypedNotificationCenterPerformanceTests: XCTestCase {
     }
     
     func testPerformanceIncludingSubscribing_own_20percent() {
+        let otherSender = NSObject()
+        TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
+        TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
+        for _ in 1...8 {
+            TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: otherSender)
+        }
+        notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
         measure {
-            let otherSender = NSObject()
-            TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
-            TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
-            for _ in 1...8 {
-                TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: otherSender)
-            }
             for _ in 1...100 {
                 TestData.postToAll(sender: sender, notificationCenter: notificationCenter)
             }
@@ -100,17 +103,18 @@ class TypedNotificationCenterPerformanceTests: XCTestCase {
     }
     
     func testPerformanceIncludingSubscribing_apple_20percent() {
-        measure {
-            let otherSender = NSObject()
+        let otherSender = NSObject()
+        for notificationName in TestData.notificationNames {
+            aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
+            aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
+        }
+        for _ in 1...8 {
             for notificationName in TestData.notificationNames {
-                aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
-                aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
+                aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: otherSender, queue: nil) { _ in })
             }
-            for _ in 1...8 {
-                for notificationName in TestData.notificationNames {
-                    aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: otherSender, queue: nil) { _ in })
-                }
-            }
+        }
+        aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
+        measure {
             for _ in 1...100 {
                 for notificationName in TestData.notificationNames {
                     aNotificationCenter.post(name: notificationName, object: sender, userInfo: [:])
@@ -120,15 +124,16 @@ class TypedNotificationCenterPerformanceTests: XCTestCase {
     }
     
     func testPerformanceIncludingSubscribing_own_1percent() {
+        var otherSenders = [NSObject]()
+        for _ in 1...99 {
+            otherSenders.append(NSObject())
+        }
+        TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
+        for otherSender in otherSenders {
+            TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: otherSender)
+        }
+        notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
         measure {
-            var otherSenders = [NSObject]()
-            for _ in 1...99 {
-                otherSenders.append(NSObject())
-            }
-            TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
-            for otherSender in otherSenders {
-                TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: otherSender)
-            }
             for _ in 1...10 {
                 TestData.postToAll(sender: sender, notificationCenter: notificationCenter)
             }
@@ -136,17 +141,18 @@ class TypedNotificationCenterPerformanceTests: XCTestCase {
     }
     
     func testPerformanceIncludingSubscribing_apple_1percent() {
+        var otherSenders = [NSObject]()
+        for _ in 1...99 {
+            otherSenders.append(NSObject())
+        }
+        for notificationName in TestData.notificationNames {
+            aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
+            for otherSender in otherSenders {
+                aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: otherSender, queue: nil) { _ in })
+            }
+        }
+        aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
         measure {
-            var otherSenders = [NSObject]()
-            for _ in 1...99 {
-                otherSenders.append(NSObject())
-            }
-            for notificationName in TestData.notificationNames {
-                aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
-                for otherSender in otherSenders {
-                    aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: otherSender, queue: nil) { _ in })
-                }
-            }
             for _ in 1...10 {
                 for notificationName in TestData.notificationNames {
                     aNotificationCenter.post(name: notificationName, object: sender, userInfo: [:])
