@@ -31,11 +31,14 @@ public protocol TypedNotificationObservation: AnyObject {
     var isValid: Bool { get }
 }
 
+let nilSenderIdentifier = ObjectIdentifier(WeakBox.self)
+
 final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificationObservation {
     init(notificationCenter: TypedNotificationCenter, sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
         self.notificationCenter = notificationCenter
         self.sender = sender
         senderWasNil = sender == nil
+        senderIdentifier = sender.map { SenderIdentifier($0) } ?? nilSenderIdentifier
         self.queue = queue
         self.block = block
     }
@@ -43,6 +46,7 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
     private weak var notificationCenter: TypedNotificationCenter?
     weak var sender: T.Sender?
     private let senderWasNil: Bool
+    var senderIdentifier: SenderIdentifier
     var queue: OperationQueue?
     var block: T.ObservationBlock?
     
@@ -61,7 +65,7 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
     public func invalidate() {
         guard !isRemoved else { return }
         isRemoved = true
-        notificationCenter?.remove(observation: ObjectIdentifier(self))
+        notificationCenter?.remove(observation: self)
         block = nil
         queue = nil
     }

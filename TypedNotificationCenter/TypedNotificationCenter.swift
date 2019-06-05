@@ -26,30 +26,40 @@
 
 import Foundation
 
+typealias NotificationIdentifier = ObjectIdentifier
+typealias SenderIdentifier = ObjectIdentifier
+
 public final class TypedNotificationCenter {
     private let observerQueue: DispatchQueue
-    private var observers = [WeakBox]()
+    private var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox]]]()
     
     // MARK: - Utility functions
     
-    private func filter<T: TypedNotification>(sender: T.Sender, payload: T.Payload) -> [_TypedNotificationObservation<T>] {
-        return self.observers.compactMap { (container) -> _TypedNotificationObservation<T>? in
+    private func filter<T: TypedNotification>(sender: T.Sender, payload: T.Payload) -> (nilObservations: [_TypedNotificationObservation<T>]?, objectObservations: [_TypedNotificationObservation<T>]?) {
+        let notificationIdentifier = NotificationIdentifier(T.self)
+        let senderIdentifier = SenderIdentifier(sender)
+        
+        let observationsForNotification = observers[notificationIdentifier]
+        let nilObservations = observationsForNotification?[nilSenderIdentifier]?.values.compactMap { $0.object as? _TypedNotificationObservation<T> }
+        let objectObservations = observationsForNotification?[senderIdentifier]?.values.compactMap { (container) -> _TypedNotificationObservation<T>? in
             guard let observer = container.object as? _TypedNotificationObservation<T>,
-                observer.isValid,
-                observer.sender == nil || observer.sender === sender else {
+                observer.isValid else {
                     return nil
             }
             return observer
         }
+        
+        return (nilObservations, objectObservations)
     }
     
     // MARK: - Internal functions
     
-    func remove(observation: ObjectIdentifier) {
+    func remove<T>(observation: _TypedNotificationObservation<T>) {
+        let notificationIdentifier = NotificationIdentifier(T.self)
+        let senderIdentifier = observation.senderIdentifier
+        let observerIdentifier = ObjectIdentifier(observation)
         observerQueue.async {
-            if let indexToRemove = self.observers.firstIndex(where: { $0.identifier == observation }) {
-                self.observers.remove(at: indexToRemove)
-            }
+            self.observers[notificationIdentifier]?[senderIdentifier]?.removeValue(forKey: observerIdentifier)
         }
     }
     
@@ -64,19 +74,36 @@ public final class TypedNotificationCenter {
     public func observe<T: TypedNotification>(_ type: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
         let observation = _TypedNotificationObservation<T>(notificationCenter: self, sender: object, queue: queue, block: block)
         
+        let notificationIdentifier = NotificationIdentifier(T.self)
+        let senderIdentifier = observation.senderIdentifier
+        let observerIdentifier = ObjectIdentifier(observation)
+        let boxedObservation = WeakBox(observation)
+        
         observerQueue.async {
-            self.observers.append(WeakBox(observation))
+            self.observers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
         }
         
         return observation
     }
     
     public func post<T: TypedNotification>(_ type: T.Type, sender: T.Sender, payload: T.Payload) {
-        var observationsToCall: [_TypedNotificationObservation<T>]?
+        var nilObservations: [_TypedNotificationObservation<T>]?
+        var objectObservations: [_TypedNotificationObservation<T>]?
         observerQueue.sync {
-            observationsToCall = self.filter(sender: sender, payload: payload)
+            (nilObservations, objectObservations) = self.filter(sender: sender, payload: payload)
         }
-        observationsToCall?.forEach { observation in
+        nilObservations?.forEach { observation in
+            if let queue = observation.queue,
+                let block = observation.block {
+                queue.addOperation {
+                    block(sender, payload)
+                }
+            } else {
+                observation.block?(sender, payload)
+            }
+        }
+        objectObservations?.forEach { observation in
+            guard observation.sender != nil else { return }
             if let queue = observation.queue,
                 let block = observation.block {
                 queue.addOperation {
