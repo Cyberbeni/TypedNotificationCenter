@@ -37,7 +37,6 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
     init(notificationCenter: TypedNotificationCenter, sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
         self.notificationCenter = notificationCenter
         self.sender = sender
-        senderWasNil = sender == nil
         senderIdentifier = sender.map { SenderIdentifier($0) } ?? nilSenderIdentifier
         self.queue = queue
         self.block = block
@@ -45,8 +44,7 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
     
     private weak var notificationCenter: TypedNotificationCenter?
     weak var sender: T.Sender?
-    private let senderWasNil: Bool
-    var senderIdentifier: SenderIdentifier
+    let senderIdentifier: SenderIdentifier
     var queue: OperationQueue?
     var block: T.ObservationBlock?
     
@@ -59,7 +57,7 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
     // MARK: - TypedNotificationObservation conformance
     
     public var isValid: Bool {
-        return !isRemoved && (notificationCenter != nil) && !(!senderWasNil && sender == nil)
+        return !isRemoved && (notificationCenter != nil) && !(senderIdentifier != nilSenderIdentifier && sender == nil)
     }
     
     public func invalidate() {
