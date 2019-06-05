@@ -35,19 +35,14 @@ public final class TypedNotificationCenter {
     
     // MARK: - Utility functions
     
-    private func filter<T: TypedNotification>(sender: T.Sender, payload: T.Payload) -> (nilObservations: [_TypedNotificationObservation<T>]?, objectObservations: [_TypedNotificationObservation<T>]?) {
+    private func filter<T: TypedNotification>(_: T.Type, sender: AnyObject) -> (nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?, objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?) {
         let notificationIdentifier = NotificationIdentifier(T.self)
         let senderIdentifier = SenderIdentifier(sender)
         
         let observationsForNotification = observers[notificationIdentifier]
-        let nilObservations = observationsForNotification?[nilSenderIdentifier]?.values.map { $0.object as! _TypedNotificationObservation<T> }
-        let objectObservations = observationsForNotification?[senderIdentifier]?.values.compactMap { (container) -> _TypedNotificationObservation<T>? in
-            guard let observer = container.object as? _TypedNotificationObservation<T>,
-                observer.isValid else {
-                    return nil
-            }
-            return observer
-        }
+        
+        let nilObservations = observationsForNotification?[nilSenderIdentifier]?.values
+        let objectObservations = observationsForNotification?[senderIdentifier]?.values
         
         return (nilObservations, objectObservations)
     }
@@ -90,12 +85,13 @@ public final class TypedNotificationCenter {
     }
     
     public func post<T: TypedNotification>(_ type: T.Type, sender: T.Sender, payload: T.Payload) {
-        var nilObservations: [_TypedNotificationObservation<T>]?
-        var objectObservations: [_TypedNotificationObservation<T>]?
+        var nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
+        var objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
         observerQueue.sync {
-            (nilObservations, objectObservations) = self.filter(sender: sender, payload: payload)
+            (nilObservations, objectObservations) = self.filter(T.self, sender: sender)
         }
         nilObservations?.forEach { observation in
+            guard let observation = observation.object as? _TypedNotificationObservation<T> else { return }
             if let queue = observation.queue,
                 let block = observation.block {
                 queue.addOperation {
@@ -106,7 +102,8 @@ public final class TypedNotificationCenter {
             }
         }
         objectObservations?.forEach { observation in
-            guard observation.sender != nil else { return }
+            guard let observation = observation.object as? _TypedNotificationObservation<T>,
+                observation.sender != nil else { return }
             if let queue = observation.queue,
                 let block = observation.block {
                 queue.addOperation {
