@@ -323,499 +323,499 @@ enum TestData {
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification2: TypedNotification {
+    enum PerformanceTestNotification2: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification3: TypedNotification {
+    enum PerformanceTestNotification3: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification4: TypedNotification {
+    enum PerformanceTestNotification4: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification5: TypedNotification {
+    enum PerformanceTestNotification5: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification6: TypedNotification {
+    enum PerformanceTestNotification6: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification7: TypedNotification {
+    enum PerformanceTestNotification7: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification8: TypedNotification {
+    enum PerformanceTestNotification8: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification9: TypedNotification {
+    enum PerformanceTestNotification9: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification10: TypedNotification {
+    enum PerformanceTestNotification10: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification11: TypedNotification {
+    enum PerformanceTestNotification11: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification12: TypedNotification {
+    enum PerformanceTestNotification12: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification13: TypedNotification {
+    enum PerformanceTestNotification13: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification14: TypedNotification {
+    enum PerformanceTestNotification14: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification15: TypedNotification {
+    enum PerformanceTestNotification15: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification16: TypedNotification {
+    enum PerformanceTestNotification16: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification17: TypedNotification {
+    enum PerformanceTestNotification17: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification18: TypedNotification {
+    enum PerformanceTestNotification18: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification19: TypedNotification {
+    enum PerformanceTestNotification19: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification20: TypedNotification {
+    enum PerformanceTestNotification20: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification21: TypedNotification {
+    enum PerformanceTestNotification21: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification22: TypedNotification {
+    enum PerformanceTestNotification22: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification23: TypedNotification {
+    enum PerformanceTestNotification23: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification24: TypedNotification {
+    enum PerformanceTestNotification24: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification25: TypedNotification {
+    enum PerformanceTestNotification25: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification26: TypedNotification {
+    enum PerformanceTestNotification26: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification27: TypedNotification {
+    enum PerformanceTestNotification27: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification28: TypedNotification {
+    enum PerformanceTestNotification28: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification29: TypedNotification {
+    enum PerformanceTestNotification29: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification30: TypedNotification {
+    enum PerformanceTestNotification30: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification31: TypedNotification {
+    enum PerformanceTestNotification31: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification32: TypedNotification {
+    enum PerformanceTestNotification32: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification33: TypedNotification {
+    enum PerformanceTestNotification33: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification34: TypedNotification {
+    enum PerformanceTestNotification34: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification35: TypedNotification {
+    enum PerformanceTestNotification35: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification36: TypedNotification {
+    enum PerformanceTestNotification36: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification37: TypedNotification {
+    enum PerformanceTestNotification37: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification38: TypedNotification {
+    enum PerformanceTestNotification38: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification39: TypedNotification {
+    enum PerformanceTestNotification39: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification40: TypedNotification {
+    enum PerformanceTestNotification40: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification41: TypedNotification {
+    enum PerformanceTestNotification41: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification42: TypedNotification {
+    enum PerformanceTestNotification42: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification43: TypedNotification {
+    enum PerformanceTestNotification43: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification44: TypedNotification {
+    enum PerformanceTestNotification44: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification45: TypedNotification {
+    enum PerformanceTestNotification45: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification46: TypedNotification {
+    enum PerformanceTestNotification46: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification47: TypedNotification {
+    enum PerformanceTestNotification47: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification48: TypedNotification {
+    enum PerformanceTestNotification48: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification49: TypedNotification {
+    enum PerformanceTestNotification49: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification50: TypedNotification {
+    enum PerformanceTestNotification50: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification51: TypedNotification {
+    enum PerformanceTestNotification51: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification52: TypedNotification {
+    enum PerformanceTestNotification52: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification53: TypedNotification {
+    enum PerformanceTestNotification53: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification54: TypedNotification {
+    enum PerformanceTestNotification54: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification55: TypedNotification {
+    enum PerformanceTestNotification55: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification56: TypedNotification {
+    enum PerformanceTestNotification56: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification57: TypedNotification {
+    enum PerformanceTestNotification57: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification58: TypedNotification {
+    enum PerformanceTestNotification58: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification59: TypedNotification {
+    enum PerformanceTestNotification59: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification60: TypedNotification {
+    enum PerformanceTestNotification60: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification61: TypedNotification {
+    enum PerformanceTestNotification61: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification62: TypedNotification {
+    enum PerformanceTestNotification62: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification63: TypedNotification {
+    enum PerformanceTestNotification63: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification64: TypedNotification {
+    enum PerformanceTestNotification64: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification65: TypedNotification {
+    enum PerformanceTestNotification65: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification66: TypedNotification {
+    enum PerformanceTestNotification66: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification67: TypedNotification {
+    enum PerformanceTestNotification67: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification68: TypedNotification {
+    enum PerformanceTestNotification68: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification69: TypedNotification {
+    enum PerformanceTestNotification69: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification70: TypedNotification {
+    enum PerformanceTestNotification70: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification71: TypedNotification {
+    enum PerformanceTestNotification71: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification72: TypedNotification {
+    enum PerformanceTestNotification72: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification73: TypedNotification {
+    enum PerformanceTestNotification73: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification74: TypedNotification {
+    enum PerformanceTestNotification74: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification75: TypedNotification {
+    enum PerformanceTestNotification75: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification76: TypedNotification {
+    enum PerformanceTestNotification76: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification77: TypedNotification {
+    enum PerformanceTestNotification77: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification78: TypedNotification {
+    enum PerformanceTestNotification78: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification79: TypedNotification {
+    enum PerformanceTestNotification79: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification80: TypedNotification {
+    enum PerformanceTestNotification80: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification81: TypedNotification {
+    enum PerformanceTestNotification81: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification82: TypedNotification {
+    enum PerformanceTestNotification82: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification83: TypedNotification {
+    enum PerformanceTestNotification83: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification84: TypedNotification {
+    enum PerformanceTestNotification84: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification85: TypedNotification {
+    enum PerformanceTestNotification85: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification86: TypedNotification {
+    enum PerformanceTestNotification86: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification87: TypedNotification {
+    enum PerformanceTestNotification87: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification88: TypedNotification {
+    enum PerformanceTestNotification88: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification89: TypedNotification {
+    enum PerformanceTestNotification89: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification90: TypedNotification {
+    enum PerformanceTestNotification90: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification91: TypedNotification {
+    enum PerformanceTestNotification91: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification92: TypedNotification {
+    enum PerformanceTestNotification92: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification93: TypedNotification {
+    enum PerformanceTestNotification93: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification94: TypedNotification {
+    enum PerformanceTestNotification94: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification95: TypedNotification {
+    enum PerformanceTestNotification95: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification96: TypedNotification {
+    enum PerformanceTestNotification96: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification97: TypedNotification {
+    enum PerformanceTestNotification97: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification98: TypedNotification {
+    enum PerformanceTestNotification98: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification99: TypedNotification {
+    enum PerformanceTestNotification99: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-            enum PerformanceTestNotification100: TypedNotification {
+    enum PerformanceTestNotification100: TypedNotification {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
 
-        }
+}

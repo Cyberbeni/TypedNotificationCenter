@@ -96,7 +96,7 @@ for name in names {
         typealias Payload = DummyPayload
     }
 
-        
+
 """)
 }
 
