@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C8195E122A7D10C00312EA9 /* TypedNotificationCenterPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E022A7D10C00312EA9 /* TypedNotificationCenterPerformanceTests.swift */; };
+		5C8195E922A7D22100312EA9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E822A7D22100312EA9 /* main.swift */; };
+		5C8195EE22A7D69000312EA9 /* PerformanceTestNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */; };
 		75108927227F49DF00E9F003 /* TypedNotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756416BD227F34C20090F4D6 /* TypedNotificationCenter.framework */; };
 		75108928227F49DF00E9F003 /* TypedNotificationCenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 756416BD227F34C20090F4D6 /* TypedNotificationCenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7510892C227F4A0500E9F003 /* TypedNotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7530BA8A227F476100D57E4F /* TypedNotificationCenter.framework */; };
@@ -114,6 +117,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5C8195E422A7D22100312EA9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		7510892B227F49E000E9F003 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,6 +195,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5C8195E022A7D10C00312EA9 /* TypedNotificationCenterPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationCenterPerformanceTests.swift; sourceTree = "<group>"; };
+		5C8195E622A7D22100312EA9 /* GenerateTestCode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GenerateTestCode; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C8195E822A7D22100312EA9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTestNotifications.swift; sourceTree = "<group>"; };
 		75108932227F4A4500E9F003 /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
 		7530BA60227F457500D57E4F /* TNCExampleWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCExampleWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7530BA63227F457500D57E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -233,6 +249,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5C8195E322A7D22100312EA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7530BA69227F457900D57E4F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -304,6 +327,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C8195E722A7D22100312EA9 /* GenerateTestCode */ = {
+			isa = PBXGroup;
+			children = (
+				5C8195E822A7D22100312EA9 /* main.swift */,
+			);
+			path = GenerateTestCode;
+			sourceTree = "<group>";
+		};
 		7530BA61227F457500D57E4F /* TypedNotificationCenterExampleWatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +363,7 @@
 				7553355E227F163F0030F2FB /* TypedNotificationCenter */,
 				75BFD920227F553D0037271E /* TypedNotificationCenterTests */,
 				75BFD91A227F54350037271E /* Example Apps */,
+				5C8195E722A7D22100312EA9 /* GenerateTestCode */,
 				7553355D227F163F0030F2FB /* Products */,
 				75641670227F28490090F4D6 /* Frameworks */,
 			);
@@ -350,6 +382,7 @@
 				75AAB43F227F4D3B005D7873 /* TNCExampleMac.app */,
 				75D42F0F227F4EDF00ABC500 /* TNCExampleTV.app */,
 				75BFD91F227F553C0037271E /* TypedNotificationCenterTests.xctest */,
+				5C8195E622A7D22100312EA9 /* GenerateTestCode */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -415,8 +448,10 @@
 		75BFD920227F553D0037271E /* TypedNotificationCenterTests */ = {
 			isa = PBXGroup;
 			children = (
+				5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */,
 				75BFD921227F553D0037271E /* TypedNotificationCenterTests.swift */,
 				75896019227F5C41003F3EDD /* TypedNotificationCenterAsyncTests.swift */,
+				5C8195E022A7D10C00312EA9 /* TypedNotificationCenterPerformanceTests.swift */,
 				7589601B227F5E7A003F3EDD /* XCTestCase+Utils.swift */,
 				75896017227F587D003F3EDD /* SampleNotification.swift */,
 				75BFD923227F553D0037271E /* Info.plist */,
@@ -471,6 +506,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		5C8195E522A7D22100312EA9 /* GenerateTestCode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C8195EA22A7D22100312EA9 /* Build configuration list for PBXNativeTarget "GenerateTestCode" */;
+			buildPhases = (
+				5C8195E222A7D22100312EA9 /* Sources */,
+				5C8195E322A7D22100312EA9 /* Frameworks */,
+				5C8195E422A7D22100312EA9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GenerateTestCode;
+			productName = GenerateTestCode;
+			productReference = 5C8195E622A7D22100312EA9 /* GenerateTestCode */;
+			productType = "com.apple.product-type.tool";
+		};
 		7530BA5F227F457500D57E4F /* TNCExampleWatch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7530BA7F227F457A00D57E4F /* Build configuration list for PBXNativeTarget "TNCExampleWatch" */;
@@ -666,6 +718,9 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Benedek Kozma";
 				TargetAttributes = {
+					5C8195E522A7D22100312EA9 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 					7530BA5F227F457500D57E4F = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
@@ -721,6 +776,7 @@
 				75AAB43E227F4D3B005D7873 /* TNCExampleMac */,
 				75D42F0E227F4EDF00ABC500 /* TNCExampleTV */,
 				75BFD91E227F553C0037271E /* TypedNotificationCenterTests */,
+				5C8195E522A7D22100312EA9 /* GenerateTestCode */,
 			);
 		};
 /* End PBXProject section */
@@ -809,6 +865,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5C8195E222A7D22100312EA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C8195E922A7D22100312EA9 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7530BA68227F457900D57E4F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -887,9 +951,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7589601C227F5E7A003F3EDD /* XCTestCase+Utils.swift in Sources */,
+				5C8195EE22A7D69000312EA9 /* PerformanceTestNotifications.swift in Sources */,
 				75896018227F587D003F3EDD /* SampleNotification.swift in Sources */,
 				7589601A227F5C41003F3EDD /* TypedNotificationCenterAsyncTests.swift in Sources */,
 				75BFD922227F553D0037271E /* TypedNotificationCenterTests.swift in Sources */,
+				5C8195E122A7D10C00312EA9 /* TypedNotificationCenterPerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,6 +1053,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5C8195EB22A7D22100312EA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 986R6FFN66;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5C8195EC22A7D22100312EA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 986R6FFN66;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		7530BA7C227F457A00D57E4F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1634,6 +1726,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5C8195EA22A7D22100312EA9 /* Build configuration list for PBXNativeTarget "GenerateTestCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C8195EB22A7D22100312EA9 /* Debug */,
+				5C8195EC22A7D22100312EA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7530BA7B227F457A00D57E4F /* Build configuration list for PBXNativeTarget "TypedNotificationCenterExampleWatch Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
