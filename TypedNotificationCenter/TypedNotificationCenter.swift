@@ -40,7 +40,7 @@ public final class TypedNotificationCenter {
         let senderIdentifier = SenderIdentifier(sender)
         
         let observationsForNotification = observers[notificationIdentifier]
-        let nilObservations = observationsForNotification?[nilSenderIdentifier]?.values.compactMap { $0.object as? _TypedNotificationObservation<T> }
+        let nilObservations = observationsForNotification?[nilSenderIdentifier]?.values.map { $0.object as! _TypedNotificationObservation<T> }
         let objectObservations = observationsForNotification?[senderIdentifier]?.values.compactMap { (container) -> _TypedNotificationObservation<T>? in
             guard let observer = container.object as? _TypedNotificationObservation<T>,
                 observer.isValid else {
@@ -60,6 +60,9 @@ public final class TypedNotificationCenter {
         let observerIdentifier = ObjectIdentifier(observation)
         observerQueue.async {
             self.observers[notificationIdentifier]?[senderIdentifier]?.removeValue(forKey: observerIdentifier)
+            if self.observers[notificationIdentifier]?[senderIdentifier]?.isEmpty == true {
+                self.observers[notificationIdentifier]?.removeValue(forKey: senderIdentifier)
+            }
         }
     }
     

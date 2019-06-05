@@ -30,6 +30,7 @@ import Foundation
 
 class TypedNotificationCenterPerformanceTests: XCTestCase {
     var sender: NSObject!
+    var otherSender: NSObject!
     
     // TypedNotificationCenter
     var notificationCenter: TypedNotificationCenter!
@@ -41,6 +42,7 @@ class TypedNotificationCenterPerformanceTests: XCTestCase {
     
     override func setUp() {
         sender = NSObject()
+        otherSender = NSObject()
         
         notificationCenter = TypedNotificationCenter()
         observations = [TypedNotificationObservation]()
@@ -49,10 +51,20 @@ class TypedNotificationCenterPerformanceTests: XCTestCase {
         aObservations = [Any]()
     }
     
+    override func tearDown() {
+        sender = nil
+        
+        notificationCenter = nil
+        observations = nil
+        
+        aNotificationCenter = nil
+        aObservations = nil
+    }
+    
     func testPerformanceIncludingSubscribing_own_all() {
         measure {
             for _ in 1...10 {
-                TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter)
+                TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
             }
             for _ in 1...100 {
                 TestData.postToAll(sender: sender, notificationCenter: notificationCenter)
@@ -65,6 +77,40 @@ class TypedNotificationCenterPerformanceTests: XCTestCase {
             for _ in 1...10 {
                 for notificationName in TestData.notificationNames {
                     aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
+                }
+            }
+            for _ in 1...100 {
+                for notificationName in TestData.notificationNames {
+                    aNotificationCenter.post(name: notificationName, object: sender, userInfo: [:])
+                }
+            }
+        }
+    }
+    
+    func testPerformanceIncludingSubscribing_own_20percent() {
+        measure {
+            TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
+            TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
+            for _ in 1...8 {
+                TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: otherSender)
+            }
+            for _ in 1...100 {
+                TestData.postToAll(sender: sender, notificationCenter: notificationCenter)
+            }
+        }
+    }
+    
+    func testPerformanceIncludingSubscribing_apple_20percent() {
+        measure {
+            for notificationName in TestData.notificationNames {
+                aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
+            }
+            for notificationName in TestData.notificationNames {
+                aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
+            }
+            for _ in 1...8 {
+                for notificationName in TestData.notificationNames {
+                    aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: otherSender, queue: nil) { _ in })
                 }
             }
             for _ in 1...100 {

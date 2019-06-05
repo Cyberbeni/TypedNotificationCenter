@@ -48,7 +48,7 @@ enum TestData {
         var name = "test"
     }
 
-    static func subscribeToAll(observationContainer: inout [TypedNotificationObservation], notificationCenter: TypedNotificationCenter) {
+    static func subscribeToAll(observationContainer: inout [TypedNotificationObservation], notificationCenter: TypedNotificationCenter, sender: AnyObject?) {
 
 """
 
@@ -56,7 +56,7 @@ for i in 1...numberOfNotifications {
     let newName = "\(baseName)\(i)"
     names.append(newName)
     output.append("""
-        observationContainer.append(notificationCenter.observe(\(newName).self, object: nil) { _, _ in })
+        observationContainer.append(notificationCenter.observe(\(newName).self, object: sender) { _, _ in })
 
 """)
 }
