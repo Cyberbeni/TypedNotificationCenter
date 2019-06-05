@@ -54,9 +54,9 @@ class TypedNotificationCenterPerformanceTests: XCTestCase {
             for _ in 1...10 {
                 TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter)
             }
-//            for _ in 1...1000 {
+            for _ in 1...100 {
                 TestData.postToAll(sender: sender, notificationCenter: notificationCenter)
-//            }
+            }
         }
     }
     
@@ -67,11 +67,11 @@ class TypedNotificationCenterPerformanceTests: XCTestCase {
                     aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
                 }
             }
-//            for _ in 1...1000 {
-            for notificationName in TestData.notificationNames {
-                aNotificationCenter.post(name: notificationName, object: sender, userInfo: [:])
+            for _ in 1...100 {
+                for notificationName in TestData.notificationNames {
+                    aNotificationCenter.post(name: notificationName, object: sender, userInfo: [:])
+                }
             }
-//            }
         }
     }
 }
