@@ -1,9 +1,9 @@
 //
-//  SampleNotification.swift
-//  TypedNotificationCenterExample
-//
-//  Created by Benedek Kozma on 2019. 05. 05..
-//  Copyright © 2019. Benedek Kozma.
+//  TypedNotificationCenteriOSUITests.swift
+//  TypedNotificationCenter
+// 
+//  Created by Benedek Kozma on 2019. 06. 06.
+//  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,13 +24,27 @@
 // THE SOFTWARE.
 //
 
-import UIKit
-import Foundation
-import TypedNotificationCenter
+import XCTest
 
-enum SampleNotification: TypedNotification {
-    struct Payload {
-        let type = "phone"
+class TypedNotificationCenteriOSUITests: XCTestCase {
+    let application = XCUIApplication()
+
+    override func setUp() {
+        super.setUp()
+        
+        
+        continueAfterFailure = false
+        application.launch()
     }
-    typealias Sender = UIViewController
+
+    override func tearDown() {
+        super.tearDown()
+        application.terminate()
+    }
+
+    func testKeyboardNotifications() {
+        application.textFields["testingTextField"].tap()
+        application.textFields["testingTextField"].typeText("a\n")
+        XCTAssertTrue(application.staticTexts["KeyboardNotificationTesting passed"].waitForExistence(timeout: 1))
+    }
 }

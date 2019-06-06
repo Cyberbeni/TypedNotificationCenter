@@ -3,6 +3,10 @@ osx_image: xcode10.2
 
 script:
   - xcodebuild test -scheme TypedNotificationCenter\ macOS
+  - xcodebuild test -scheme TypedNotificationCenter\ iOS
+  - xcodebuild test -scheme TypedNotificationCenter\ tvOS
+  - xcodebuild test -scheme TypedNotificationCenter\ watchOS
+  - xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone X,OS=11.4'
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'

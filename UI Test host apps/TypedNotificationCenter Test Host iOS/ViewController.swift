@@ -28,20 +28,43 @@ import UIKit
 import TypedNotificationCenter
 
 class ViewController: UIViewController {
-    var observation: Any?
+    @IBOutlet var testingTextField: UITextField! {
+        didSet {
+            testingTextField.accessibilityIdentifier = "testingTextField"
+        }
+    }
+    @IBOutlet var testResultLabel: UILabel! {
+        didSet {
+            testResultLabel.text = "KeyboardNotificationTesting in progress"
+        }
+    }
+    
+    var observations = [TypedNotificationObservation]()
+    let notificationCenter = TypedNotificationCenter.default
+    var receivedNotifications = Set<ObjectIdentifier>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         self.observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { (sender, payload) in
-            print("IT WORKS! sender: \(sender), payload: \(payload)")
-        })
+        self.observe(UIResponder.KeyboardWillShowNotification.self)
+        self.observe(UIResponder.KeyboardDidShowNotification.self)
+        self.observe(UIResponder.KeyboardWillHideNotification.self)
+        self.observe(UIResponder.KeyboardDidHideNotification.self)
+        self.observe(UIResponder.KeyboardWillChangeFrameNotification.self)
+        self.observe(UIResponder.KeyboardDidChangeFrameNotification.self)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+    private func observe<T: BridgedNotification>(_ type: T.Type) {
+        self.observations.append(notificationCenter.observe(type.self, object: nil, block: { [weak self] sender, payload in
+            self?.addToReceivedNotifications(type.self)
+        }))
+    }
+    
+    private func addToReceivedNotifications<T: BridgedNotification>(_ type: T.Type) {
+        receivedNotifications.insert(ObjectIdentifier(type))
+        if receivedNotifications.count == 6 {
+            testResultLabel.text = "KeyboardNotificationTesting passed"
+        }
     }
 }
 

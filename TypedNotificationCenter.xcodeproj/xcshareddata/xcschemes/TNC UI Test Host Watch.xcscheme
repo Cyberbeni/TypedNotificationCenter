@@ -42,6 +42,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5CA2FC6C22A9216F00625F8D"
+               BuildableName = "BridgedNotificationiOSUITests.xctest"
+               BlueprintName = "BridgedNotificationiOSUITests"
+               ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TNCExampleiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TNCUITestHostiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cqy-7H-EXf"/>
                         <viewControllerLayoutGuide type="bottom" id="Zmo-ef-NBm"/>
@@ -20,8 +20,34 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gkU-Wd-v2O" customClass="TextField" customModule="TNCUITestHostiOS" customModuleProvider="target">
+                                <rect key="frame" x="20" y="44" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jY3-Sj-02X">
+                                <rect key="frame" x="20" y="82" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="jY3-Sj-02X" secondAttribute="trailing" id="3rk-gj-aSO"/>
+                            <constraint firstItem="jY3-Sj-02X" firstAttribute="top" secondItem="gkU-Wd-v2O" secondAttribute="bottom" constant="8" id="6gW-AV-xgO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gkU-Wd-v2O" secondAttribute="trailing" id="8x1-An-djX"/>
+                            <constraint firstItem="gkU-Wd-v2O" firstAttribute="top" secondItem="Cqy-7H-EXf" secondAttribute="bottom" id="DhB-4I-P5h"/>
+                            <constraint firstItem="jY3-Sj-02X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gUa-s2-AaW"/>
+                            <constraint firstItem="gkU-Wd-v2O" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="nez-rY-YYE"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="testResultLabel" destination="jY3-Sj-02X" id="TYS-Nf-ylu"/>
+                        <outlet property="testingTextField" destination="gkU-Wd-v2O" id="iQz-39-bTZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
