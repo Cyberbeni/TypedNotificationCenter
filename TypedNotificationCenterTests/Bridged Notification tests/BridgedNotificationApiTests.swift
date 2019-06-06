@@ -45,7 +45,7 @@ class BridgedNotificationApiTests: XCTestCase {
         }
         NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey:stringToSend])
         wait(for: [expectation], timeout: 1)
-        observation.invalidate()
+        _ = observation
     }
     
     func testCrossSendingFromTypedNotificationCenter() {
@@ -69,7 +69,7 @@ class BridgedNotificationApiTests: XCTestCase {
         }
         TypedNotificationCenter.default.post(SampleBridgedNotification.self, sender: sender, payload: SampleBridgedNotification.Payload(samplePayloadProperty: stringToSend))
         wait(for: [expectation], timeout: 1)
-        observation.invalidate()
+        _ = observation
     }
     
     func testInvalidSender() {
@@ -83,7 +83,7 @@ class BridgedNotificationApiTests: XCTestCase {
         }
         NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: nil, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey:stringToSend])
         wait(for: [expectation], timeout: 1)
-        observation.invalidate()
+        _ = observation
     }
     
     func testInvalidPayload() {
@@ -96,6 +96,6 @@ class BridgedNotificationApiTests: XCTestCase {
         }
         NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: nil)
         wait(for: [expectation], timeout: 1)
-        observation.invalidate()
+        _ = observation
     }
 }
