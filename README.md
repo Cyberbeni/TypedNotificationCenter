@@ -42,9 +42,10 @@ observation?.invalidate()
 - [x] Run tests on CI with code coverage
 - [x] Write performance test for having a bunch of types and observations
 - [x] Measure performance of array vs hash based separation of notification types (Most likely ObjectIdentifier is the best solution for doing it since it provides a pointer based hash to types and objects - https://github.com/apple/swift/blob/b8722fd7d4fc070d685dee2e1173ce180b4896c6/stdlib/public/core/ObjectIdentifier.swift#L18 )
-- [ ] Create a workflow to translate UIKit/AppKit/etc. notifications (with 1 class for example) into TypedNotifications with error handling (default is print, customizable through public API)
-- [ ] Add UI tests for the translated notifications
+- [x] Create a workflow to translate UIKit/AppKit/etc. notifications (with 1 class for example) into TypedNotifications with error handling (default is print, customizable through public API)
+- [x] Add UI tests for the translated notifications
 - [ ] Make the example usage section more detailed/useful
 - [ ] v1.0
-- [ ] Translate the other notifications and add UI tests for them
+- [ ] Translate the other notifications and add unit/UI tests for them (also improve UI testing structure)
 - [ ] Add Linux + SPM support
+- [ ] Add Cocoapods support
