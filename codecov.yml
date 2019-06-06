@@ -1,3 +1,7 @@
+ignore:
+    - "TypedNotificationCenterTests/**"
+    - "TypedNotificationCenter/BridgedNotifications/Core/BridgedNotification+ErrorHandlingCustomization.*"
+
 codecov:
   notify:
     require_ci_to_pass: yes
@@ -11,9 +15,6 @@ coverage:
     project: yes
     patch: yes
     changes: no
-
-  ignore:
-    - "TypedNotificationCenter/BridgedNotifications/Core/BridgedNotification+ErrorHandlingCustomization.swift"
 
 parsers:
   gcov:
