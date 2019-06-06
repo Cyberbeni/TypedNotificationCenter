@@ -1,5 +1,5 @@
 //
-//  TypedNotificationCenter+BridgedNotification.swift
+//  BridgedNotification+ErrorHandlingCustomization.swift
 //  TypedNotificationCenter
 // 
 //  Created by Benedek Kozma on 2019. 06. 06.
@@ -27,15 +27,10 @@
 import Foundation
 
 extension TypedNotificationCenter {
-    public func observe<T: BridgedNotification>(_ type: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
-        let object = T.Sender.self is NSNull.Type ? nil : object
-        
-        let observation = _BridgedNotificationObservation<T>(sender: object, queue: queue, block: block)
-        
-        return observation
+    static var invalidSenderBlock: (Any?, Notification.Name) -> () = { sender, notificationName in
+        assertionFailure("Invalid sender(\(sender ?? NSNull())) for \"\(notificationName)\"")
     }
-    
-    public func post<T: BridgedNotification>(_ type: T.Type, sender: T.Sender, payload: T.Payload) {
-        NotificationCenter.default.post(name: T.notificationName, object: sender, userInfo: payload.asDictionary())
+    static var invalidPayloadBlock: (Error, [AnyHashable: Any]?, Notification.Name) -> () = { error, _, _ in
+        assertionFailure(error.localizedDescription)
     }
 }
