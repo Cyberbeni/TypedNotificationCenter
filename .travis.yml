@@ -6,7 +6,7 @@ script:
   - xcodebuild test -scheme TypedNotificationCenter\ iOS
   - xcodebuild test -scheme TypedNotificationCenter\ tvOS
   - xcodebuild test -scheme TypedNotificationCenter\ watchOS
-  - xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone X,OS=11.4'
+  - xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
