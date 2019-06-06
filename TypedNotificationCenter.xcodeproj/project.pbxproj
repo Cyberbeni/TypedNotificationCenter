@@ -1582,7 +1582,7 @@
 				);
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_LDFLAGS = "-fprofile-instr-generate";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "hu.cyberbeni.TypedNotificationCenter-macOS";
 				PRODUCT_MODULE_NAME = TypedNotificationCenter;
 				PRODUCT_NAME = TypedNotificationCenter;
