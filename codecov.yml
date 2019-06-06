@@ -1,5 +1,4 @@
 ignore:
-  - "Example Apps/**"
   - "TypedNotificationCenterTests/**"
   - "TypedNotificationCenter/BridgedNotifications/Core/BridgedNotification+ErrorHandlingCustomization.swift"
 
