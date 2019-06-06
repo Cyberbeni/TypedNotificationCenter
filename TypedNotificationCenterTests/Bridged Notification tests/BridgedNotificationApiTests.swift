@@ -29,6 +29,13 @@ import XCTest
 @testable import TypedNotificationCenter
 
 class BridgedNotificationApiTests: XCTestCase {
+    let sender = MySender()
+    
+    override func tearDown() {
+        TypedNotificationCenter.invalidSenderBlock = { _, _ in }
+        TypedNotificationCenter.invalidPayloadBlock = { _, _, _ in }
+    }
+    
     func testCrossSendingFromNotificationCenter() {
         let stringToSend = "TestString"
         let expectation = self.expectation(description: "Notification should arrive")
@@ -36,9 +43,9 @@ class BridgedNotificationApiTests: XCTestCase {
             XCTAssert(payload.samplePayloadProperty == stringToSend, "Sent and received string should be the same")
             expectation.fulfill()
         }
-        NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: nil, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey:stringToSend])
+        NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey:stringToSend])
         wait(for: [expectation], timeout: 1)
-        _ = observation
+        observation.invalidate()
     }
     
     func testCrossSendingFromTypedNotificationCenter() {
@@ -48,9 +55,9 @@ class BridgedNotificationApiTests: XCTestCase {
             XCTAssert(stringToSend == notification.userInfo?[SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey] as? String)
             expectation.fulfill()
         }
-        TypedNotificationCenter.default.post(SampleBridgedNotification.self, sender: NSNull(), payload: SampleBridgedNotification.Payload(samplePayloadProperty: stringToSend))
+        TypedNotificationCenter.default.post(SampleBridgedNotification.self, sender: sender, payload: SampleBridgedNotification.Payload(samplePayloadProperty: stringToSend))
         wait(for: [expectation], timeout: 1)
-        _ = observation
+        NotificationCenter.default.removeObserver(observation)
     }
     
     func testSending() {
@@ -60,8 +67,35 @@ class BridgedNotificationApiTests: XCTestCase {
             XCTAssert(payload.samplePayloadProperty == stringToSend, "Sent and received string should be the same")
             expectation.fulfill()
         }
-        TypedNotificationCenter.default.post(SampleBridgedNotification.self, sender: NSNull(), payload: SampleBridgedNotification.Payload(samplePayloadProperty: stringToSend))
+        TypedNotificationCenter.default.post(SampleBridgedNotification.self, sender: sender, payload: SampleBridgedNotification.Payload(samplePayloadProperty: stringToSend))
         wait(for: [expectation], timeout: 1)
-        _ = observation
+        observation.invalidate()
+    }
+    
+    func testInvalidSender() {
+        let stringToSend = "TestString"
+        let expectation = self.expectation(description: "Invalid sender block should be called")
+        TypedNotificationCenter.invalidSenderBlock = { _, _ in
+            expectation.fulfill()
+        }
+        let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { sender, payload in
+            XCTFail("Notification should not arrive")
+        }
+        NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: nil, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey:stringToSend])
+        wait(for: [expectation], timeout: 1)
+        observation.invalidate()
+    }
+    
+    func testInvalidPayload() {
+        let expectation = self.expectation(description: "Invalid payload block should be called")
+        TypedNotificationCenter.invalidPayloadBlock = { _, _, _ in
+            expectation.fulfill()
+        }
+        let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { sender, payload in
+            XCTFail("Notification should not arrive")
+        }
+        NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: nil)
+        wait(for: [expectation], timeout: 1)
+        observation.invalidate()
     }
 }

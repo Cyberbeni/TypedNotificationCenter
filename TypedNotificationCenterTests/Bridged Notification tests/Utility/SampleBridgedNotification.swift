@@ -27,6 +27,8 @@
 import Foundation
 @testable import TypedNotificationCenter
 
+class MySender: NSObject {}
+
 enum SampleBridgedNotification: BridgedNotification {
     static var notificationName = Notification.Name("TypedNotificationCenter.SampleBridgedNotification")
     
@@ -55,5 +57,5 @@ enum SampleBridgedNotification: BridgedNotification {
 
     }
     
-    typealias Sender = AnyObject
+    typealias Sender = MySender
 }
