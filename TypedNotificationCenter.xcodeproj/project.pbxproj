@@ -1445,7 +1445,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				OTHER_LDFLAGS = "-fprofile-instr-generate";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "hu.cyberbeni.TypedNotificationCenter-watchOS";
 				PRODUCT_MODULE_NAME = TypedNotificationCenter;
 				PRODUCT_NAME = TypedNotificationCenter;
@@ -1512,7 +1512,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				OTHER_LDFLAGS = "-fprofile-instr-generate";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "hu.cyberbeni.TypedNotificationCenter-tvOS";
 				PRODUCT_MODULE_NAME = TypedNotificationCenter;
 				PRODUCT_NAME = TypedNotificationCenter;
@@ -1811,7 +1811,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				OTHER_LDFLAGS = "-fprofile-instr-generate";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "hu.cyberbeni.TypedNotificationCenter-iOS";
 				PRODUCT_MODULE_NAME = TypedNotificationCenter;
 				PRODUCT_NAME = TypedNotificationCenter;
