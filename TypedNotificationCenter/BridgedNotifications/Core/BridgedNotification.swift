@@ -26,12 +26,12 @@
 
 import Foundation
 
-public struct NotificationDecodingError: Error {
+public struct NotificationDecodingError: LocalizedError {
     var type: Any.Type
-    var dictionary: [AnyHashable: Any]
+    var source: [AnyHashable: Any]
     
-    var localizedDescription: String {
-        return "DecodingError(type: \(String(reflecting: type)), source: \(dictionary)"
+    public var errorDescription: String? {
+        return String(describing: self)
     }
 }
 

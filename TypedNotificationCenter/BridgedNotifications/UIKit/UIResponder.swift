@@ -36,11 +36,11 @@ public extension UIResponder {
                 let keyboardAnimationDuration = dictionary[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
                 let keyboardFrameBegin = dictionary[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue,
                 let keyboardFrameEnd = dictionary[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
-                    throw NotificationDecodingError(type: type(of: self), dictionary: dictionary)
+                    throw NotificationDecodingError(type: type(of: self), source: dictionary)
             }
             if #available(iOSApplicationExtension 9.0, *) {
                 guard let keyboardIsLocal = dictionary[UIResponder.keyboardIsLocalUserInfoKey] as? NSNumber else {
-                    throw NotificationDecodingError(type: type(of: self), dictionary: dictionary)
+                    throw NotificationDecodingError(type: type(of: self), source: dictionary)
                 }
                 self.keyboardIsLocal = keyboardIsLocal.boolValue
             } else {

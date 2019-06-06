@@ -88,7 +88,8 @@ class BridgedNotificationApiTests: XCTestCase {
     
     func testInvalidPayload() {
         let expectation = self.expectation(description: "Invalid payload block should be called")
-        TypedNotificationCenter.invalidPayloadBlock = { _, _, _ in
+        TypedNotificationCenter.invalidPayloadBlock = { error, _, _ in
+            XCTAssertEqual(error.localizedDescription, String(describing: error))
             expectation.fulfill()
         }
         let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { sender, payload in

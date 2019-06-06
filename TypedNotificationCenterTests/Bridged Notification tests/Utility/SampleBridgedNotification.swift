@@ -39,7 +39,7 @@ enum SampleBridgedNotification: BridgedNotification {
         
         init(_ dictionary: [AnyHashable : Any]) throws {
             guard let samplePayloadProperty = dictionary[Payload.samplePayloadPropertyUserInfoKey] as? String else {
-                throw NotificationDecodingError(type: type(of: self), dictionary: dictionary)
+                throw NotificationDecodingError(type: type(of: self), source: dictionary)
             }
             self.samplePayloadProperty = samplePayloadProperty
         }
