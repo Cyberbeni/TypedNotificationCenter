@@ -31,6 +31,10 @@ enum SampleBridgedNotification: BridgedNotification {
     static var notificationName = Notification.Name("TypedNotificationCenter.SampleBridgedNotification")
     
     struct Payload: DictionaryRepresentable {
+        init(samplePayloadProperty: String) {
+            self.samplePayloadProperty = samplePayloadProperty
+        }
+        
         init(_ dictionary: [AnyHashable : Any]) throws {
             guard let samplePayloadProperty = dictionary[Payload.samplePayloadPropertyUserInfoKey] as? String else {
                 throw NotificationDecodingError(type: type(of: self), dictionary: dictionary)
@@ -48,6 +52,7 @@ enum SampleBridgedNotification: BridgedNotification {
         
         static let samplePayloadPropertyUserInfoKey = "samplePayloadPropertyUserInfoKey"
         let samplePayloadProperty: String
+
     }
     
     typealias Sender = AnyObject

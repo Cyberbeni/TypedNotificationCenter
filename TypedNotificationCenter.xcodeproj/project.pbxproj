@@ -416,7 +416,6 @@
 			children = (
 				5C03EC7722A8FDC800C9BCFD /* Utility */,
 				5C03EC7422A8F8F400C9BCFD /* BridgedNotificationApiTests.swift */,
-				5C03EC7A22A8FF0500C9BCFD /* UIKit */,
 			);
 			path = "Bridged Notification tests";
 			sourceTree = "<group>";
@@ -436,13 +435,6 @@
 				5C03EC7822A8FDDD00C9BCFD /* SampleBridgedNotification.swift */,
 			);
 			path = Utility;
-			sourceTree = "<group>";
-		};
-		5C03EC7A22A8FF0500C9BCFD /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UIKit;
 			sourceTree = "<group>";
 		};
 		5C8195E722A7D22100312EA9 /* GenerateTestCode */ = {

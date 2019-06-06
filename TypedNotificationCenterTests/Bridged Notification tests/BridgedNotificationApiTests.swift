@@ -29,7 +29,7 @@ import XCTest
 @testable import TypedNotificationCenter
 
 class BridgedNotificationApiTests: XCTestCase {
-    func testSendingFromNotificationCenter() {
+    func testCrossSendingFromNotificationCenter() {
         let stringToSend = "TestString"
         let expectation = self.expectation(description: "Notification should arrive")
         let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { sender, payload in
@@ -38,6 +38,30 @@ class BridgedNotificationApiTests: XCTestCase {
         }
         NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: nil, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey:stringToSend])
         wait(for: [expectation], timeout: 1)
-        XCTAssert(observation.isValid) // Removes unused variable warning
+        _ = observation
+    }
+    
+    func testCrossSendingFromTypedNotificationCenter() {
+        let stringToSend = "TestString"
+        let expectation = self.expectation(description: "Notification should arrive")
+        let observation = NotificationCenter.default.addObserver(forName: SampleBridgedNotification.notificationName, object: nil, queue: nil) { notification in
+            XCTAssert(stringToSend == notification.userInfo?[SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey] as? String)
+            expectation.fulfill()
+        }
+        TypedNotificationCenter.default.post(SampleBridgedNotification.self, sender: NSNull(), payload: SampleBridgedNotification.Payload(samplePayloadProperty: stringToSend))
+        wait(for: [expectation], timeout: 1)
+        _ = observation
+    }
+    
+    func testSending() {
+        let stringToSend = "TestString"
+        let expectation = self.expectation(description: "Notification should arrive")
+        let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { sender, payload in
+            XCTAssert(payload.samplePayloadProperty == stringToSend, "Sent and received string should be the same")
+            expectation.fulfill()
+        }
+        TypedNotificationCenter.default.post(SampleBridgedNotification.self, sender: NSNull(), payload: SampleBridgedNotification.Payload(samplePayloadProperty: stringToSend))
+        wait(for: [expectation], timeout: 1)
+        _ = observation
     }
 }
