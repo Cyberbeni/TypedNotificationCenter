@@ -70,6 +70,8 @@ public final class TypedNotificationCenter {
     public static let `default` = TypedNotificationCenter(queueName: "default")
     
     public func observe<T: TypedNotification>(_ type: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+        let object = T.Sender.self is NSNull.Type ? nil : object
+        
         let observation = _TypedNotificationObservation<T>(notificationCenter: self, sender: object, queue: queue, block: block)
         
         let notificationIdentifier = NotificationIdentifier(T.self)

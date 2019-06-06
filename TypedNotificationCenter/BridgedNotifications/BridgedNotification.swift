@@ -1,8 +1,8 @@
 //
-//  WeakBox.swift
+//  BridgedNotification.swift
 //  TypedNotificationCenter
 // 
-//  Created by Kozma Benedek on 2019. 05. 31.
+//  Created by Benedek Kozma on 2019. 06. 05.
 //  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,12 +26,20 @@
 
 import Foundation
 
-final class WeakBox {
-    var identifier: ObjectIdentifier
-    weak var object: AnyObject?
+public struct NotificationDecodingError: Error {
+    var type: Any.Type
+    var dictionary: [AnyHashable: Any]
     
-    init(_ object: AnyObject) {
-        self.object = object
-        identifier = ObjectIdentifier(object)
+    var localizedDescription: String {
+        return "DecodingError(type: \(String(reflecting: type)), source: \(dictionary)"
     }
+}
+
+public protocol DictionaryRepresentable {
+    init(_ dictionary: [AnyHashable : Any]) throws
+    func asDictionary() -> [AnyHashable : Any]
+}
+
+public protocol BridgedNotification: TypedNotification where Payload: DictionaryRepresentable {
+    static var notificationName: Notification.Name { get }
 }
