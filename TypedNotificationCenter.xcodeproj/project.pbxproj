@@ -416,6 +416,7 @@
 			children = (
 				5C03EC7722A8FDC800C9BCFD /* Utility */,
 				5C03EC7422A8F8F400C9BCFD /* BridgedNotificationApiTests.swift */,
+				5C03EC7A22A8FF0500C9BCFD /* UIKit */,
 			);
 			path = "Bridged Notification tests";
 			sourceTree = "<group>";
@@ -435,6 +436,13 @@
 				5C03EC7822A8FDDD00C9BCFD /* SampleBridgedNotification.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		5C03EC7A22A8FF0500C9BCFD /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		5C8195E722A7D22100312EA9 /* GenerateTestCode */ = {
@@ -1779,7 +1787,14 @@
 				SDKROOT = "";
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_VERSION = 5.0;
-				VALID_ARCHS = "i386 x86_64 arm64 arm64_32 armv7k arm64e armv7 armv7s";
+				VALID_ARCHS = "";
+				"VALID_ARCHS[sdk=appletvos*]" = arm64;
+				"VALID_ARCHS[sdk=appletvsimulator*]" = x86_64;
+				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
+				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
+				"VALID_ARCHS[sdk=macosx*]" = "i386 x86_64";
+				"VALID_ARCHS[sdk=watchos*]" = armv7k;
+				"VALID_ARCHS[sdk=watchsimulator*]" = i386;
 			};
 			name = Debug;
 		};
@@ -1803,7 +1818,14 @@
 				SDKROOT = "";
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_VERSION = 5.0;
-				VALID_ARCHS = "i386 x86_64 arm64 arm64_32 armv7k arm64e armv7 armv7s";
+				VALID_ARCHS = "";
+				"VALID_ARCHS[sdk=appletvos*]" = arm64;
+				"VALID_ARCHS[sdk=appletvsimulator*]" = x86_64;
+				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
+				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
+				"VALID_ARCHS[sdk=macosx*]" = "i386 x86_64";
+				"VALID_ARCHS[sdk=watchos*]" = armv7k;
+				"VALID_ARCHS[sdk=watchsimulator*]" = i386;
 			};
 			name = Release;
 		};

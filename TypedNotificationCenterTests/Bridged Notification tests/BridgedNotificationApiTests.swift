@@ -29,5 +29,15 @@ import XCTest
 @testable import TypedNotificationCenter
 
 class BridgedNotificationApiTests: XCTestCase {
-    
+    func testSendingFromNotificationCenter() {
+        let stringToSend = "TestString"
+        let expectation = self.expectation(description: "Notification should arrive")
+        let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { sender, payload in
+            XCTAssert(payload.samplePayloadProperty == stringToSend, "Sent and received string should be the same")
+            expectation.fulfill()
+        }
+        NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: nil, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey:stringToSend])
+        wait(for: [expectation], timeout: 1)
+        XCTAssert(observation.isValid) // Removes unused variable warning
+    }
 }

@@ -25,3 +25,30 @@
 //
 
 import Foundation
+@testable import TypedNotificationCenter
+
+enum SampleBridgedNotification: BridgedNotification {
+    static var notificationName = Notification.Name("TypedNotificationCenter.SampleBridgedNotification")
+    
+    struct Payload: DictionaryRepresentable {
+        init(_ dictionary: [AnyHashable : Any]) throws {
+            guard let samplePayloadProperty = dictionary[Payload.samplePayloadPropertyUserInfoKey] as? String else {
+                throw NotificationDecodingError(type: type(of: self), dictionary: dictionary)
+            }
+            self.samplePayloadProperty = samplePayloadProperty
+        }
+        
+        func asDictionary() -> [AnyHashable : Any] {
+            var retVal = [AnyHashable : Any]()
+            
+            retVal[Payload.samplePayloadPropertyUserInfoKey] = samplePayloadProperty as NSString
+            
+            return retVal
+        }
+        
+        static let samplePayloadPropertyUserInfoKey = "samplePayloadPropertyUserInfoKey"
+        let samplePayloadProperty: String
+    }
+    
+    typealias Sender = AnyObject
+}
