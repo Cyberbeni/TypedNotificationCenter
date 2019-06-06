@@ -246,7 +246,7 @@
 		7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationCenter.swift; sourceTree = "<group>"; };
 		75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationObservation.swift; sourceTree = "<group>"; };
 		75641658227F19AA0090F4D6 /* TypedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotification.swift; sourceTree = "<group>"; };
-		7564165E227F28340090F4D6 /* TNCExampleiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCExampleiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7564165E227F28340090F4D6 /* TNCUITestHostiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCUITestHostiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75641660227F28340090F4D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75641662227F28340090F4D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		75641665227F28340090F4D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 		75896017227F587D003F3EDD /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
 		75896019227F5C41003F3EDD /* AsyncApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncApiTests.swift; sourceTree = "<group>"; };
 		7589601B227F5E7A003F3EDD /* XCTestCase+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Utils.swift"; sourceTree = "<group>"; };
-		75AAB43F227F4D3B005D7873 /* TNCExampleMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCExampleMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75AAB43F227F4D3B005D7873 /* TNCUITestHostMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCUITestHostMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75AAB441227F4D3C005D7873 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75AAB443227F4D40005D7873 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75AAB446227F4D40005D7873 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 		75BFD921227F553D0037271E /* ApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTests.swift; sourceTree = "<group>"; };
 		75BFD923227F553D0037271E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75D42F04227F4DD300ABC500 /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
-		75D42F0F227F4EDF00ABC500 /* TNCExampleTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCExampleTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75D42F0F227F4EDF00ABC500 /* TNCUITestHostTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCUITestHostTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D42F11227F4EDF00ABC500 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75D42F13227F4EDF00ABC500 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		75D42F16227F4EDF00ABC500 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -451,17 +451,17 @@
 			path = GenerateTestCode;
 			sourceTree = "<group>";
 		};
-		7530BA61227F457500D57E4F /* TypedNotificationCenterExampleWatch */ = {
+		7530BA61227F457500D57E4F /* TypedNotificationCenter Test Hot Watch */ = {
 			isa = PBXGroup;
 			children = (
 				7530BA62227F457500D57E4F /* Interface.storyboard */,
 				7530BA65227F457900D57E4F /* Assets.xcassets */,
 				7530BA67227F457900D57E4F /* Info.plist */,
 			);
-			path = TypedNotificationCenterExampleWatch;
+			path = "TypedNotificationCenter Test Hot Watch";
 			sourceTree = "<group>";
 		};
-		7530BA70227F457900D57E4F /* TypedNotificationCenterExampleWatch Extension */ = {
+		7530BA70227F457900D57E4F /* TypedNotificationCenter Test Host Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
 				7530BA71227F457900D57E4F /* InterfaceController.swift */,
@@ -470,7 +470,7 @@
 				7530BA75227F457A00D57E4F /* Assets.xcassets */,
 				7530BA77227F457A00D57E4F /* Info.plist */,
 			);
-			path = "TypedNotificationCenterExampleWatch Extension";
+			path = "TypedNotificationCenter Test Host Watch Extension";
 			sourceTree = "<group>";
 		};
 		75533553227F163F0030F2FB = {
@@ -478,7 +478,7 @@
 			children = (
 				7553355E227F163F0030F2FB /* TypedNotificationCenter */,
 				75BFD920227F553D0037271E /* TypedNotificationCenterTests */,
-				75BFD91A227F54350037271E /* Example Apps */,
+				75BFD91A227F54350037271E /* UI Test host apps */,
 				5C8195E722A7D22100312EA9 /* GenerateTestCode */,
 				7553355D227F163F0030F2FB /* Products */,
 				75641670227F28490090F4D6 /* Frameworks */,
@@ -488,15 +488,15 @@
 		7553355D227F163F0030F2FB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7564165E227F28340090F4D6 /* TNCExampleiOS.app */,
+				7564165E227F28340090F4D6 /* TNCUITestHostiOS.app */,
 				756416BD227F34C20090F4D6 /* TypedNotificationCenter.framework */,
 				7530BA60227F457500D57E4F /* TNCExampleWatch.app */,
 				7530BA6C227F457900D57E4F /* TypedNotificationCenterExampleWatch Extension.appex */,
 				7530BA8A227F476100D57E4F /* TypedNotificationCenter.framework */,
 				7530BA9C227F482000D57E4F /* TypedNotificationCenter.framework */,
 				7530BAA9227F487400D57E4F /* TypedNotificationCenter.framework */,
-				75AAB43F227F4D3B005D7873 /* TNCExampleMac.app */,
-				75D42F0F227F4EDF00ABC500 /* TNCExampleTV.app */,
+				75AAB43F227F4D3B005D7873 /* TNCUITestHostMac.app */,
+				75D42F0F227F4EDF00ABC500 /* TNCUITestHostTV.app */,
 				75BFD91F227F553C0037271E /* TypedNotificationCenterTests.xctest */,
 				5C8195E622A7D22100312EA9 /* GenerateTestCode */,
 			);
@@ -513,7 +513,7 @@
 			path = TypedNotificationCenter;
 			sourceTree = "<group>";
 		};
-		7564165F227F28340090F4D6 /* TypedNotificationCenterExample */ = {
+		7564165F227F28340090F4D6 /* TypedNotificationCenter Test Host iOS */ = {
 			isa = PBXGroup;
 			children = (
 				75641660227F28340090F4D6 /* AppDelegate.swift */,
@@ -524,7 +524,7 @@
 				75641669227F283A0090F4D6 /* LaunchScreen.storyboard */,
 				7564166C227F283A0090F4D6 /* Info.plist */,
 			);
-			path = TypedNotificationCenterExample;
+			path = "TypedNotificationCenter Test Host iOS";
 			sourceTree = "<group>";
 		};
 		75641670227F28490090F4D6 /* Frameworks */ = {
@@ -534,7 +534,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		75AAB440227F4D3B005D7873 /* TypedNotificationCenterExampleMac */ = {
+		75AAB440227F4D3B005D7873 /* TypedNotificationCenter Test Host Mac */ = {
 			isa = PBXGroup;
 			children = (
 				75AAB441227F4D3C005D7873 /* AppDelegate.swift */,
@@ -544,19 +544,19 @@
 				75AAB448227F4D40005D7873 /* Info.plist */,
 				75AAB449227F4D40005D7873 /* TypedNotificationCenterExampleMac.entitlements */,
 			);
-			path = TypedNotificationCenterExampleMac;
+			path = "TypedNotificationCenter Test Host Mac";
 			sourceTree = "<group>";
 		};
-		75BFD91A227F54350037271E /* Example Apps */ = {
+		75BFD91A227F54350037271E /* UI Test host apps */ = {
 			isa = PBXGroup;
 			children = (
-				7564165F227F28340090F4D6 /* TypedNotificationCenterExample */,
-				7530BA61227F457500D57E4F /* TypedNotificationCenterExampleWatch */,
-				7530BA70227F457900D57E4F /* TypedNotificationCenterExampleWatch Extension */,
-				75AAB440227F4D3B005D7873 /* TypedNotificationCenterExampleMac */,
-				75D42F10227F4EDF00ABC500 /* TypedNotificationCenterExampleTV */,
+				7564165F227F28340090F4D6 /* TypedNotificationCenter Test Host iOS */,
+				7530BA61227F457500D57E4F /* TypedNotificationCenter Test Hot Watch */,
+				7530BA70227F457900D57E4F /* TypedNotificationCenter Test Host Watch Extension */,
+				75AAB440227F4D3B005D7873 /* TypedNotificationCenter Test Host Mac */,
+				75D42F10227F4EDF00ABC500 /* TypedNotificationCenter Test Host TV */,
 			);
-			path = "Example Apps";
+			path = "UI Test host apps";
 			sourceTree = "<group>";
 		};
 		75BFD920227F553D0037271E /* TypedNotificationCenterTests */ = {
@@ -570,7 +570,7 @@
 			path = TypedNotificationCenterTests;
 			sourceTree = "<group>";
 		};
-		75D42F10227F4EDF00ABC500 /* TypedNotificationCenterExampleTV */ = {
+		75D42F10227F4EDF00ABC500 /* TypedNotificationCenter Test Host TV */ = {
 			isa = PBXGroup;
 			children = (
 				75D42F11227F4EDF00ABC500 /* AppDelegate.swift */,
@@ -580,7 +580,7 @@
 				75D42F18227F4EE100ABC500 /* Assets.xcassets */,
 				75D42F1A227F4EE100ABC500 /* Info.plist */,
 			);
-			path = TypedNotificationCenterExampleTV;
+			path = "TypedNotificationCenter Test Host TV";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -724,9 +724,9 @@
 			productReference = 7530BAA9227F487400D57E4F /* TypedNotificationCenter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7564165D227F28340090F4D6 /* TNCExampleiOS */ = {
+		7564165D227F28340090F4D6 /* TNCUITestHostiOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7564166D227F283A0090F4D6 /* Build configuration list for PBXNativeTarget "TNCExampleiOS" */;
+			buildConfigurationList = 7564166D227F283A0090F4D6 /* Build configuration list for PBXNativeTarget "TNCUITestHostiOS" */;
 			buildPhases = (
 				7564165A227F28340090F4D6 /* Sources */,
 				7564165B227F28340090F4D6 /* Frameworks */,
@@ -740,9 +740,9 @@
 				7530BA79227F457A00D57E4F /* PBXTargetDependency */,
 				7510892A227F49DF00E9F003 /* PBXTargetDependency */,
 			);
-			name = TNCExampleiOS;
+			name = TNCUITestHostiOS;
 			productName = TypedNotificationCenterExample;
-			productReference = 7564165E227F28340090F4D6 /* TNCExampleiOS.app */;
+			productReference = 7564165E227F28340090F4D6 /* TNCUITestHostiOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 		756416BC227F34C20090F4D6 /* TypedNotificationCenter iOS */ = {
@@ -763,9 +763,9 @@
 			productReference = 756416BD227F34C20090F4D6 /* TypedNotificationCenter.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		75AAB43E227F4D3B005D7873 /* TNCExampleMac */ = {
+		75AAB43E227F4D3B005D7873 /* TNCUITestHostMac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 75AAB44C227F4D40005D7873 /* Build configuration list for PBXNativeTarget "TNCExampleMac" */;
+			buildConfigurationList = 75AAB44C227F4D40005D7873 /* Build configuration list for PBXNativeTarget "TNCUITestHostMac" */;
 			buildPhases = (
 				75AAB43B227F4D3B005D7873 /* Sources */,
 				75AAB43C227F4D3B005D7873 /* Frameworks */,
@@ -777,9 +777,9 @@
 			dependencies = (
 				75D42F09227F4E3B00ABC500 /* PBXTargetDependency */,
 			);
-			name = TNCExampleMac;
+			name = TNCUITestHostMac;
 			productName = TypedNotificationCenterExampleMac;
-			productReference = 75AAB43F227F4D3B005D7873 /* TNCExampleMac.app */;
+			productReference = 75AAB43F227F4D3B005D7873 /* TNCUITestHostMac.app */;
 			productType = "com.apple.product-type.application";
 		};
 		75BFD91E227F553C0037271E /* TypedNotificationCenterTests */ = {
@@ -800,9 +800,9 @@
 			productReference = 75BFD91F227F553C0037271E /* TypedNotificationCenterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		75D42F0E227F4EDF00ABC500 /* TNCExampleTV */ = {
+		75D42F0E227F4EDF00ABC500 /* TNCUITestHostTV */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 75D42F1B227F4EE100ABC500 /* Build configuration list for PBXNativeTarget "TNCExampleTV" */;
+			buildConfigurationList = 75D42F1B227F4EE100ABC500 /* Build configuration list for PBXNativeTarget "TNCUITestHostTV" */;
 			buildPhases = (
 				75D42F0B227F4EDF00ABC500 /* Sources */,
 				75D42F0C227F4EDF00ABC500 /* Frameworks */,
@@ -814,9 +814,9 @@
 			dependencies = (
 				75D42F23227F4FB700ABC500 /* PBXTargetDependency */,
 			);
-			name = TNCExampleTV;
+			name = TNCUITestHostTV;
 			productName = TypedNotificationCenterExampleTV;
-			productReference = 75D42F0F227F4EDF00ABC500 /* TNCExampleTV.app */;
+			productReference = 75D42F0F227F4EDF00ABC500 /* TNCUITestHostTV.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -881,11 +881,11 @@
 				7530BA89227F476100D57E4F /* TypedNotificationCenter watchOS */,
 				7530BA9B227F482000D57E4F /* TypedNotificationCenter tvOS */,
 				7530BAA8227F487400D57E4F /* TypedNotificationCenter macOS */,
-				7564165D227F28340090F4D6 /* TNCExampleiOS */,
+				7564165D227F28340090F4D6 /* TNCUITestHostiOS */,
 				7530BA5F227F457500D57E4F /* TNCExampleWatch */,
 				7530BA6B227F457900D57E4F /* TypedNotificationCenterExampleWatch Extension */,
-				75AAB43E227F4D3B005D7873 /* TNCExampleMac */,
-				75D42F0E227F4EDF00ABC500 /* TNCExampleTV */,
+				75AAB43E227F4D3B005D7873 /* TNCUITestHostMac */,
+				75D42F0E227F4EDF00ABC500 /* TNCUITestHostTV */,
 				75BFD91E227F553C0037271E /* TypedNotificationCenterTests */,
 				5C8195E522A7D22100312EA9 /* GenerateTestCode */,
 			);
@@ -1941,7 +1941,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7564166D227F283A0090F4D6 /* Build configuration list for PBXNativeTarget "TNCExampleiOS" */ = {
+		7564166D227F283A0090F4D6 /* Build configuration list for PBXNativeTarget "TNCUITestHostiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7564166E227F283A0090F4D6 /* Debug */,
@@ -1959,7 +1959,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		75AAB44C227F4D40005D7873 /* Build configuration list for PBXNativeTarget "TNCExampleMac" */ = {
+		75AAB44C227F4D40005D7873 /* Build configuration list for PBXNativeTarget "TNCUITestHostMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75AAB44A227F4D40005D7873 /* Debug */,
@@ -1977,7 +1977,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		75D42F1B227F4EE100ABC500 /* Build configuration list for PBXNativeTarget "TNCExampleTV" */ = {
+		75D42F1B227F4EE100ABC500 /* Build configuration list for PBXNativeTarget "TNCUITestHostTV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				75D42F1C227F4EE100ABC500 /* Debug */,

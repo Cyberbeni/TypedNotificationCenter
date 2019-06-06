@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "75AAB43E227F4D3B005D7873"
-               BuildableName = "TNCExampleMac.app"
-               BlueprintName = "TNCExampleMac"
+               BlueprintIdentifier = "7530BA5F227F457500D57E4F"
+               BuildableName = "TNCExampleWatch.app"
+               BlueprintName = "TNCExampleWatch"
+               ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7564165D227F28340090F4D6"
+               BuildableName = "TNCUITestHostiOS.app"
+               BlueprintName = "TNCUITestHostiOS"
                ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +46,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "75AAB43E227F4D3B005D7873"
-            BuildableName = "TNCExampleMac.app"
-            BlueprintName = "TNCExampleMac"
+            BlueprintIdentifier = "7530BA5F227F457500D57E4F"
+            BuildableName = "TNCExampleWatch.app"
+            BlueprintName = "TNCExampleWatch"
             ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,16 +65,27 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/TypedNotificationCenterExample">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "75AAB43E227F4D3B005D7873"
-            BuildableName = "TNCExampleMac.app"
-            BlueprintName = "TNCExampleMac"
+            BlueprintIdentifier = "7530BA5F227F457500D57E4F"
+            BuildableName = "TNCExampleWatch.app"
+            BlueprintName = "TNCExampleWatch"
             ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7530BA5F227F457500D57E4F"
+            BuildableName = "TNCExampleWatch.app"
+            BlueprintName = "TNCExampleWatch"
+            ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +95,27 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/TypedNotificationCenterExample">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "75AAB43E227F4D3B005D7873"
-            BuildableName = "TNCExampleMac.app"
-            BlueprintName = "TNCExampleMac"
+            BlueprintIdentifier = "7530BA5F227F457500D57E4F"
+            BuildableName = "TNCExampleWatch.app"
+            BlueprintName = "TNCExampleWatch"
             ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7530BA5F227F457500D57E4F"
+            BuildableName = "TNCExampleWatch.app"
+            BlueprintName = "TNCExampleWatch"
+            ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
