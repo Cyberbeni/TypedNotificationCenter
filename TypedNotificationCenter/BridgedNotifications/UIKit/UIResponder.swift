@@ -31,14 +31,14 @@ import UIKit
 
 public extension UIResponder {
     struct KeyboardNotificationPayload: DictionaryRepresentable {
-        init(_ dictionary: [AnyHashable : Any]) throws {
+        public init(_ dictionary: [AnyHashable : Any]) throws {
             guard let keyboardAnimationCurve = (dictionary[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber).flatMap({ UIView.AnimationCurve(rawValue: $0.intValue) }),
                 let keyboardAnimationDuration = dictionary[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
                 let keyboardFrameBegin = dictionary[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue,
                 let keyboardFrameEnd = dictionary[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
                     throw NotificationDecodingError(type: type(of: self), dictionary: dictionary)
             }
-            if #available(iOS 9.0, *) {
+            if #available(iOSApplicationExtension 9.0, *) {
                 guard let keyboardIsLocal = dictionary[UIResponder.keyboardIsLocalUserInfoKey] as? NSNumber else {
                     throw NotificationDecodingError(type: type(of: self), dictionary: dictionary)
                 }
@@ -54,6 +54,16 @@ public extension UIResponder {
         
         public func asDictionary() -> [AnyHashable : Any] {
             var retVal = [AnyHashable : Any]()
+            
+            retVal[UIResponder.keyboardAnimationCurveUserInfoKey] = NSNumber(value: keyboardAnimationCurve.rawValue)
+            retVal[UIResponder.keyboardAnimationDurationUserInfoKey] = NSNumber(value: keyboardAnimationDuration)
+            if #available(iOSApplicationExtension 9.0, *) {
+                retVal[UIResponder.keyboardIsLocalUserInfoKey] = NSNumber(value: keyboardIsLocal)
+            }
+            retVal[UIResponder.keyboardFrameBeginUserInfoKey] = NSValue(cgRect: keyboardFrameBegin)
+            retVal[UIResponder.keyboardFrameEndUserInfoKey] = NSValue(cgRect: keyboardFrameEnd)
+            
+            return retVal
         }
         
         public let keyboardAnimationCurve: UIView.AnimationCurve
@@ -64,32 +74,32 @@ public extension UIResponder {
         public let keyboardFrameEnd: CGRect
     }
     enum KeyboardWillShowNotification: BridgedNotification {
-        static var notificationName: Notification.Name = UIResponder.keyboardWillShowNotification
+        public static var notificationName: Notification.Name = UIResponder.keyboardWillShowNotification
         public typealias Sender = NSNull
         public typealias Payload = KeyboardNotificationPayload
     }
     enum KeyboardDidShowNotification: BridgedNotification {
-        static var notificationName: Notification.Name = UIResponder.keyboardDidShowNotification
+        public static var notificationName: Notification.Name = UIResponder.keyboardDidShowNotification
         public typealias Sender = NSNull
         public typealias Payload = KeyboardNotificationPayload
     }
     enum KeyboardWillHideNotification: BridgedNotification {
-        static var notificationName: Notification.Name = UIResponder.keyboardWillHideNotification
+        public static var notificationName: Notification.Name = UIResponder.keyboardWillHideNotification
         public typealias Sender = NSNull
         public typealias Payload = KeyboardNotificationPayload
     }
     enum KeyboardDidHideNotification: BridgedNotification {
-        static var notificationName: Notification.Name = UIResponder.keyboardDidHideNotification
+        public static var notificationName: Notification.Name = UIResponder.keyboardDidHideNotification
         public typealias Sender = NSNull
         public typealias Payload = KeyboardNotificationPayload
     }
     enum KeyboardWillChangeFrameNotification: BridgedNotification {
-        static var notificationName: Notification.Name = UIResponder.keyboardWillChangeFrameNotification
+        public static var notificationName: Notification.Name = UIResponder.keyboardWillChangeFrameNotification
         public typealias Sender = NSNull
         public typealias Payload = KeyboardNotificationPayload
     }
     enum KeyboardDidChangeFrameNotification: BridgedNotification {
-        static var notificationName: Notification.Name = UIResponder.keyboardDidChangeFrameNotification
+        public static var notificationName: Notification.Name = UIResponder.keyboardDidChangeFrameNotification
         public typealias Sender = NSNull
         public typealias Payload = KeyboardNotificationPayload
     }

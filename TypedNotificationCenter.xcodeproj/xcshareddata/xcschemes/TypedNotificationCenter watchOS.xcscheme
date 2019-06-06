@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "75BFD91E227F553C0037271E"
+               BuildableName = "TypedNotificationCenterTests.xctest"
+               BlueprintName = "TypedNotificationCenterTests"
+               ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7530BA89227F476100D57E4F"
+            BuildableName = "TypedNotificationCenter.framework"
+            BlueprintName = "TypedNotificationCenter watchOS"
+            ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

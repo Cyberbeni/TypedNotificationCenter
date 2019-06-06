@@ -23,6 +23,8 @@
 		5C03EC6722A8EE8900C9BCFD /* TypedNotificationObservation+BridgedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C03EC6522A8EE8900C9BCFD /* TypedNotificationObservation+BridgedNotification.swift */; };
 		5C03EC6822A8EE8900C9BCFD /* TypedNotificationObservation+BridgedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C03EC6522A8EE8900C9BCFD /* TypedNotificationObservation+BridgedNotification.swift */; };
 		5C03EC6922A8EE8900C9BCFD /* TypedNotificationObservation+BridgedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C03EC6522A8EE8900C9BCFD /* TypedNotificationObservation+BridgedNotification.swift */; };
+		5C03EC7522A8F8F400C9BCFD /* BridgedNotificationApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C03EC7422A8F8F400C9BCFD /* BridgedNotificationApiTests.swift */; };
+		5C03EC7922A8FDDD00C9BCFD /* SampleBridgedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C03EC7822A8FDDD00C9BCFD /* SampleBridgedNotification.swift */; };
 		5C32934322A7EF4400DBA352 /* PerformanceTestsSubscribing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32934222A7EF4400DBA352 /* PerformanceTestsSubscribing.swift */; };
 		5C8195E122A7D10C00312EA9 /* PerformanceTestsPosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E022A7D10C00312EA9 /* PerformanceTestsPosting.swift */; };
 		5C8195E922A7D22100312EA9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E822A7D22100312EA9 /* main.swift */; };
@@ -216,6 +218,8 @@
 		5C03EC5B22A80F0500C9BCFD /* BridgedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgedNotification.swift; sourceTree = "<group>"; };
 		5C03EC6022A8EE4100C9BCFD /* TypedNotificationCenter+BridgedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedNotificationCenter+BridgedNotification.swift"; sourceTree = "<group>"; };
 		5C03EC6522A8EE8900C9BCFD /* TypedNotificationObservation+BridgedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedNotificationObservation+BridgedNotification.swift"; sourceTree = "<group>"; };
+		5C03EC7422A8F8F400C9BCFD /* BridgedNotificationApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgedNotificationApiTests.swift; sourceTree = "<group>"; };
+		5C03EC7822A8FDDD00C9BCFD /* SampleBridgedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBridgedNotification.swift; sourceTree = "<group>"; };
 		5C32934222A7EF4400DBA352 /* PerformanceTestsSubscribing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTestsSubscribing.swift; sourceTree = "<group>"; };
 		5C8195E022A7D10C00312EA9 /* PerformanceTestsPosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTestsPosting.swift; sourceTree = "<group>"; };
 		5C8195E622A7D22100312EA9 /* GenerateTestCode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GenerateTestCode; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -363,9 +367,7 @@
 		5C03EC5422A80E5D00C9BCFD /* BridgedNotifications */ = {
 			isa = PBXGroup;
 			children = (
-				5C03EC5B22A80F0500C9BCFD /* BridgedNotification.swift */,
-				5C03EC6022A8EE4100C9BCFD /* TypedNotificationCenter+BridgedNotification.swift */,
-				5C03EC6522A8EE8900C9BCFD /* TypedNotificationObservation+BridgedNotification.swift */,
+				5C03EC7022A8F84300C9BCFD /* Core */,
 				5C03EC5A22A80E9C00C9BCFD /* UIKit */,
 			);
 			path = BridgedNotifications;
@@ -377,6 +379,62 @@
 				5C03EC5522A80E8500C9BCFD /* UIResponder.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		5C03EC7022A8F84300C9BCFD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5C03EC5B22A80F0500C9BCFD /* BridgedNotification.swift */,
+				5C03EC6022A8EE4100C9BCFD /* TypedNotificationCenter+BridgedNotification.swift */,
+				5C03EC6522A8EE8900C9BCFD /* TypedNotificationObservation+BridgedNotification.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5C03EC7122A8F86300C9BCFD /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				7589601B227F5E7A003F3EDD /* XCTestCase+Utils.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		5C03EC7222A8F86F00C9BCFD /* Core tests */ = {
+			isa = PBXGroup;
+			children = (
+				5C03EC7622A8FDBF00C9BCFD /* Utility */,
+				75BFD921227F553D0037271E /* ApiTests.swift */,
+				75896019227F5C41003F3EDD /* AsyncApiTests.swift */,
+				5C8195E022A7D10C00312EA9 /* PerformanceTestsPosting.swift */,
+				5C32934222A7EF4400DBA352 /* PerformanceTestsSubscribing.swift */,
+			);
+			path = "Core tests";
+			sourceTree = "<group>";
+		};
+		5C03EC7322A8F88600C9BCFD /* Bridged Notification tests */ = {
+			isa = PBXGroup;
+			children = (
+				5C03EC7722A8FDC800C9BCFD /* Utility */,
+				5C03EC7422A8F8F400C9BCFD /* BridgedNotificationApiTests.swift */,
+			);
+			path = "Bridged Notification tests";
+			sourceTree = "<group>";
+		};
+		5C03EC7622A8FDBF00C9BCFD /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */,
+				75896017227F587D003F3EDD /* SampleNotification.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		5C03EC7722A8FDC800C9BCFD /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				5C03EC7822A8FDDD00C9BCFD /* SampleBridgedNotification.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		5C8195E722A7D22100312EA9 /* GenerateTestCode */ = {
@@ -498,13 +556,9 @@
 		75BFD920227F553D0037271E /* TypedNotificationCenterTests */ = {
 			isa = PBXGroup;
 			children = (
-				75BFD921227F553D0037271E /* ApiTests.swift */,
-				75896019227F5C41003F3EDD /* AsyncApiTests.swift */,
-				5C8195E022A7D10C00312EA9 /* PerformanceTestsPosting.swift */,
-				5C32934222A7EF4400DBA352 /* PerformanceTestsSubscribing.swift */,
-				7589601B227F5E7A003F3EDD /* XCTestCase+Utils.swift */,
-				5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */,
-				75896017227F587D003F3EDD /* SampleNotification.swift */,
+				5C03EC7322A8F88600C9BCFD /* Bridged Notification tests */,
+				5C03EC7222A8F86F00C9BCFD /* Core tests */,
+				5C03EC7122A8F86300C9BCFD /* Utility */,
 				75BFD923227F553D0037271E /* Info.plist */,
 			);
 			path = TypedNotificationCenterTests;
@@ -1020,6 +1074,8 @@
 				7589601C227F5E7A003F3EDD /* XCTestCase+Utils.swift in Sources */,
 				5C32934322A7EF4400DBA352 /* PerformanceTestsSubscribing.swift in Sources */,
 				5C8195EE22A7D69000312EA9 /* PerformanceTestNotifications.swift in Sources */,
+				5C03EC7922A8FDDD00C9BCFD /* SampleBridgedNotification.swift in Sources */,
+				5C03EC7522A8F8F400C9BCFD /* BridgedNotificationApiTests.swift in Sources */,
 				75896018227F587D003F3EDD /* SampleNotification.swift in Sources */,
 				7589601A227F5C41003F3EDD /* AsyncApiTests.swift in Sources */,
 				75BFD922227F553D0037271E /* ApiTests.swift in Sources */,
@@ -1720,8 +1776,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hu.cyberbeni.TypedNotificationCenterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
+				SDKROOT = "";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_VERSION = 5.0;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64_32 armv7k arm64e armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1742,8 +1800,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hu.cyberbeni.TypedNotificationCenterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = macosx;
+				SDKROOT = "";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_VERSION = 5.0;
+				VALID_ARCHS = "i386 x86_64 arm64 arm64_32 armv7k arm64e armv7 armv7s";
 			};
 			name = Release;
 		};
