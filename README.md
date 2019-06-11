@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Cyberbeni/TypedNotificationCenter.svg?branch=master)](https://travis-ci.org/Cyberbeni/TypedNotificationCenter) [![Code coverage](https://codecov.io/github/Cyberbeni/TypedNotificationCenter/coverage.svg?branch=master)](https://codecov.io/github/Cyberbeni/TypedNotificationCenter?branch=master)
 
-Typed version of Apple's NotificationCenter to avoid forgetting setting parameters in the userInfo dictionary and needing to handle not having those parameters.
+This framework is about rethinking Apple's NotificationCenter to be more typesafe and about removing uncertainity of the needed value being present in the userInfo dictionary.
 
 ## Example usage
 
@@ -14,17 +14,17 @@ enum SampleNotification: TypedNotification {
     struct Payload {
         let type = "test"
     }
-    typealias Sender = AnyObject
+    typealias Sender = MyCustomView
 }
 ```
 
 ```
 // OtherFile.swift
 // Observe a notification and execute a block with the sender and the payload
-var observation: TypedNotificationObservation?
-observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { (sender, payload) in
-            print(sender, payload)
-        })
+var observations = [TypedNotificationObservation]()
+observations.append(TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { (sender, payload) in
+    print(sender, payload)
+}))
 
 // Post a notification
 TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
@@ -44,8 +44,8 @@ observation?.invalidate()
 - [x] Measure performance of array vs hash based separation of notification types (Most likely ObjectIdentifier is the best solution for doing it since it provides a pointer based hash to types and objects - https://github.com/apple/swift/blob/b8722fd7d4fc070d685dee2e1173ce180b4896c6/stdlib/public/core/ObjectIdentifier.swift#L18 )
 - [x] Create a workflow to translate UIKit/AppKit/etc. notifications (with 1 class for example) into TypedNotifications with error handling (default is print, customizable through public API)
 - [x] Add UI tests for the translated notifications
-- [ ] Make the example usage section more detailed/useful
-- [ ] v1.0
-- [ ] Translate the other notifications and add unit/UI tests for them (also improve UI testing structure)
+- [x] Make the example usage section more detailed/useful
+- [x] v1.0
 - [ ] Add Linux + SPM support
 - [ ] Add Cocoapods support
+- [ ] Translate other notifications and add unit/UI tests for them (also improve UI testing structure)
