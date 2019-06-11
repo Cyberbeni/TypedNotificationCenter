@@ -86,4 +86,32 @@ class AsyncApiTests: XCTestCase {
         
         XCTAssertEqual(count, 1, "Observer block should've been called exactly once")
     }
+    
+    func testSendingFromDifferentQueue() {
+        let queue1 = DispatchQueue(label: "testQueue1")
+        let queue2 = DispatchQueue(label: "testQueue2")
+        let lock = NSLock()
+        
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: nil, block: { _, _ in
+            lock.lock()
+            self.count += 1
+            lock.unlock()
+        })
+        
+        queue1.async {
+            for _ in 1...1000 {
+                TypedNotificationCenter.default.post(SampleNotification.self, sender: self.sender, payload: SampleNotification.Payload())
+            }
+        }
+        
+        queue2.async {
+            for _ in 1...1000 {
+                TypedNotificationCenter.default.post(SampleNotification.self, sender: self.sender, payload: SampleNotification.Payload())
+            }
+        }
+        
+        wait(1)
+        
+        XCTAssertEqual(self.count, 2000)
+    }
 }
