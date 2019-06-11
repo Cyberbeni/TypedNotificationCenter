@@ -69,7 +69,7 @@ public final class TypedNotificationCenter {
     
     public static let `default` = TypedNotificationCenter(queueName: "default")
     
-    public func observe<T: TypedNotification>(_ type: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+    public func observe<T: TypedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
         let object = T.Sender.self is NSNull.Type ? nil : object
         
         let observation = _TypedNotificationObservation<T>(notificationCenter: self, sender: object, queue: queue, block: block)
@@ -86,7 +86,7 @@ public final class TypedNotificationCenter {
         return observation
     }
     
-    public func post<T: TypedNotification>(_ type: T.Type, sender: T.Sender, payload: T.Payload) {
+    public func post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
         var nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
         var objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
         observerQueue.sync {
