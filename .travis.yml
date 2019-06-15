@@ -13,8 +13,6 @@ jobs:
       os: osx
       osx_image: xcode10.2
       script:
-        - xcrun simctl boot "Apple TV 4k"
-        - open -a Simulator
         - xcodebuild test -scheme TypedNotificationCenter\ tvOS -destination 'platform=tvOS Simulator,name=Apple TV 4k,OS=12.2'
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
@@ -23,8 +21,6 @@ jobs:
       os: osx
       osx_image: xcode10.2
       script:
-        - xcrun simctl boot "iPhone 8"
-        - open -a Simulator
         - xcodebuild test -scheme TypedNotificationCenter\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
@@ -33,8 +29,6 @@ jobs:
       os: osx
       osx_image: xcode10.2
       script:
-        - xcrun simctl boot "iPhone 8"
-        - open -a Simulator
         - xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'

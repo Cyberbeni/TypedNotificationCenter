@@ -56,6 +56,7 @@ class ViewController: UIViewController {
     
     private func observe<T: BridgedNotification>(_ type: T.Type) {
         self.observations.append(notificationCenter.observe(type.self, object: nil, block: { [weak self] sender, payload in
+            _ = payload.asDictionary()
             self?.addToReceivedNotifications(type.self)
         }))
     }
