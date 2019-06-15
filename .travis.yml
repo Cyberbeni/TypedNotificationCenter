@@ -2,7 +2,6 @@ jobs:
   include:
     - stage: "Tests"
       name: "macOS"
-      language: swift
       osx_image: xcode10.2
       script:
         - xcodebuild test -scheme TypedNotificationCenter\ macOS
@@ -14,5 +13,8 @@ jobs:
         - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
 
     - name: "Linux"
+      os: linux
+      install:
+        - eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
       script:
         - swift test
