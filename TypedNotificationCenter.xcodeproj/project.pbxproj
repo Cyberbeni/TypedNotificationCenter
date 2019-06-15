@@ -124,13 +124,6 @@
 			remoteGlobalIDString = 7530BA5F227F457500D57E4F;
 			remoteInfo = TypedNotificationCenterExampleWatch;
 		};
-		75BFD925227F553D0037271E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75533554227F163F0030F2FB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7530BAA8227F487400D57E4F;
-			remoteInfo = "TypedNotificationCenter macOS";
-		};
 		75D42F08227F4E3B00ABC500 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75533554227F163F0030F2FB /* Project object */;
@@ -851,7 +844,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				75BFD926227F553D0037271E /* PBXTargetDependency */,
 			);
 			name = TypedNotificationCenterTests;
 			productName = TypedNotificationCenterTests;
@@ -1229,11 +1221,6 @@
 			isa = PBXTargetDependency;
 			target = 7530BA5F227F457500D57E4F /* TNCExampleWatch */;
 			targetProxy = 7530BA78227F457A00D57E4F /* PBXContainerItemProxy */;
-		};
-		75BFD926227F553D0037271E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7530BAA8227F487400D57E4F /* TypedNotificationCenter macOS */;
-			targetProxy = 75BFD925227F553D0037271E /* PBXContainerItemProxy */;
 		};
 		75D42F09227F4E3B00ABC500 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
