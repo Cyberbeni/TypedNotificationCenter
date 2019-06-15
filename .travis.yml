@@ -1,33 +1,28 @@
+os: osx
+osx_image: xcode10.2
+
 jobs:
   include:
     - stage: "Tests"
       name: "macOS"
-      os: osx
-      osx_image: xcode10.2
       script:
         - xcodebuild test -scheme TypedNotificationCenter\ macOS -destination 'platform=OS X,arch=x86_64'
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
 
     - name: "tvOS"
-      os: osx
-      osx_image: xcode10.2
       script:
         - xcodebuild test -scheme TypedNotificationCenter\ tvOS -destination 'platform=tvOS Simulator,name=Apple TV 4k,OS=12.2'
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
 
     - name: "iOS"
-      os: osx
-      osx_image: xcode10.2
       script:
         - xcodebuild test -scheme TypedNotificationCenter\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
 
     - name: "iOS UI"
-      os: osx
-      osx_image: xcode10.2
       script:
         - xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
       after_success:
