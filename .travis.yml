@@ -1,12 +1,18 @@
-language: swift
-osx_image: xcode10.2
+jobs:
+  include:
+    - stage: "Tests"
+      name: "macOS"
+      language: swift
+      osx_image: xcode10.2
+      script:
+        - xcodebuild test -scheme TypedNotificationCenter\ macOS
+        - xcodebuild test -scheme TypedNotificationCenter\ iOS OTHER_LDFLAGS="-fprofile-instr-generate"
+        - xcodebuild test -scheme TypedNotificationCenter\ tvOS OTHER_LDFLAGS="-fprofile-instr-generate"
+        - xcodebuild test -scheme TypedNotificationCenter\ watchOS OTHER_LDFLAGS="-fprofile-instr-generate"
+        - xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
+      after_success:
+        - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
 
-script:
-  - xcodebuild test -scheme TypedNotificationCenter\ macOS
-  - xcodebuild test -scheme TypedNotificationCenter\ iOS OTHER_LDFLAGS="-fprofile-instr-generate"
-  - xcodebuild test -scheme TypedNotificationCenter\ tvOS OTHER_LDFLAGS="-fprofile-instr-generate"
-  - xcodebuild test -scheme TypedNotificationCenter\ watchOS OTHER_LDFLAGS="-fprofile-instr-generate"
-  - xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
+    - name: "Linux"
+      script:
+        - swift test
