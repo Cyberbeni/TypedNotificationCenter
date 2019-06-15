@@ -124,13 +124,6 @@
 			remoteGlobalIDString = 7530BA5F227F457500D57E4F;
 			remoteInfo = TypedNotificationCenterExampleWatch;
 		};
-		75BFD925227F553D0037271E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75533554227F163F0030F2FB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7530BAA8227F487400D57E4F;
-			remoteInfo = "TypedNotificationCenter macOS";
-		};
 		75D42F08227F4E3B00ABC500 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75533554227F163F0030F2FB /* Project object */;
@@ -846,11 +839,11 @@
 				75BFD91B227F553C0037271E /* Sources */,
 				75BFD91C227F553C0037271E /* Frameworks */,
 				75BFD91D227F553C0037271E /* Resources */,
+				75E86B8122B50AFA009F1DD2 /* Generate linux main */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				75BFD926227F553D0037271E /* PBXTargetDependency */,
 			);
 			name = TypedNotificationCenterTests;
 			productName = TypedNotificationCenterTests;
@@ -1044,6 +1037,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		75E86B8122B50AFA009F1DD2 /* Generate linux main */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate linux main";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nswift test --generate-linuxmain\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5C8195E222A7D22100312EA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1207,11 +1221,6 @@
 			isa = PBXTargetDependency;
 			target = 7530BA5F227F457500D57E4F /* TNCExampleWatch */;
 			targetProxy = 7530BA78227F457A00D57E4F /* PBXContainerItemProxy */;
-		};
-		75BFD926227F553D0037271E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7530BAA8227F487400D57E4F /* TypedNotificationCenter macOS */;
-			targetProxy = 75BFD925227F553D0037271E /* PBXContainerItemProxy */;
 		};
 		75D42F09227F4E3B00ABC500 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1926,7 +1935,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = "";
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator";
 				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "";
@@ -1935,8 +1944,6 @@
 				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
 				"VALID_ARCHS[sdk=macosx*]" = "i386 x86_64";
-				"VALID_ARCHS[sdk=watchos*]" = armv7k;
-				"VALID_ARCHS[sdk=watchsimulator*]" = i386;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
@@ -1960,7 +1967,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = "";
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator";
 				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "";
@@ -1969,8 +1976,6 @@
 				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
 				"VALID_ARCHS[sdk=macosx*]" = "i386 x86_64";
-				"VALID_ARCHS[sdk=watchos*]" = armv7k;
-				"VALID_ARCHS[sdk=watchsimulator*]" = i386;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;

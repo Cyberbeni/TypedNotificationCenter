@@ -38,14 +38,14 @@ public extension UIResponder {
                 let keyboardFrameEnd = dictionary[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
                     throw NotificationDecodingError(type: type(of: self), source: dictionary)
             }
+            var keyboardIsLocal = true
             if #available(iOSApplicationExtension 9.0, *) {
-                guard let keyboardIsLocal = dictionary[UIResponder.keyboardIsLocalUserInfoKey] as? NSNumber else {
+                guard let keyboardIsLocalNumber = dictionary[UIResponder.keyboardIsLocalUserInfoKey] as? NSNumber else {
                     throw NotificationDecodingError(type: type(of: self), source: dictionary)
                 }
-                self.keyboardIsLocal = keyboardIsLocal.boolValue
-            } else {
-                self.keyboardIsLocal = true
+                keyboardIsLocal = keyboardIsLocalNumber.boolValue
             }
+            self.keyboardIsLocal = keyboardIsLocal
             self.keyboardAnimationCurve = keyboardAnimationCurve
             self.keyboardAnimationDuration = keyboardAnimationDuration.doubleValue
             self.keyboardFrameBegin = keyboardFrameBegin.cgRectValue
