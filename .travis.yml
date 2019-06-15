@@ -30,7 +30,6 @@ jobs:
       osx_image: xcode10.2
       script:
         - xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
-        - xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 4S,OS=8.4'
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
 
