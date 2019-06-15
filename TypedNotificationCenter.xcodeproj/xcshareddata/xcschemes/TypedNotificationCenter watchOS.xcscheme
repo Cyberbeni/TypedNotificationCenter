@@ -29,16 +29,6 @@
       codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "75BFD91E227F553C0037271E"
-               BuildableName = "TypedNotificationCenterTests.xctest"
-               BlueprintName = "TypedNotificationCenterTests"
-               ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

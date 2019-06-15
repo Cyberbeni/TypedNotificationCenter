@@ -1948,7 +1948,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = "";
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator";
 				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "";
@@ -1957,8 +1957,6 @@
 				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
 				"VALID_ARCHS[sdk=macosx*]" = "i386 x86_64";
-				"VALID_ARCHS[sdk=watchos*]" = armv7k;
-				"VALID_ARCHS[sdk=watchsimulator*]" = i386;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
@@ -1982,7 +1980,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = "";
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator";
 				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "";
@@ -1991,8 +1989,6 @@
 				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
 				"VALID_ARCHS[sdk=macosx*]" = "i386 x86_64";
-				"VALID_ARCHS[sdk=watchos*]" = armv7k;
-				"VALID_ARCHS[sdk=watchsimulator*]" = i386;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
