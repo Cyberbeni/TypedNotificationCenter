@@ -46,6 +46,6 @@ observation?.invalidate()
 - [x] Add UI tests for the translated notifications
 - [x] Make the example usage section more detailed/useful
 - [x] v1.0
-- [ ] Add Linux + SPM support
+- [x] Add Linux + SPM support
 - [ ] Add Cocoapods support
 - [ ] Translate other notifications and add unit/UI tests for them (also improve UI testing structure)

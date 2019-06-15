@@ -5,6 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "TypedNotificationCenter",
+    platforms: [
+        .macOS(.v10_10),
+        .iOS(.v8),
+        .watchOS(.v2),
+        .tvOS(.v9),
+    ],
     products: [
         .library(
             name: "TypedNotificationCenter",
@@ -19,5 +25,9 @@ let package = Package(
         .testTarget(
             name: "TypedNotificationCenterTests",
             dependencies: ["TypedNotificationCenter"]),
+    ],
+    swiftLanguageVersions: [
+        .v5,
+        .version("5.1"),
     ]
 )
