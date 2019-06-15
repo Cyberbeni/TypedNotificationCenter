@@ -2,6 +2,7 @@ jobs:
   include:
     - stage: "Tests"
       name: "macOS"
+      os: osx
       osx_image: xcode10.2
       script:
         - xcodebuild test -scheme TypedNotificationCenter\ macOS

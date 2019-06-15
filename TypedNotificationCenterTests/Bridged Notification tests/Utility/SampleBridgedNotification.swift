@@ -30,7 +30,7 @@ import Foundation
 class MySender: NSObject {}
 
 enum SampleBridgedNotification: BridgedNotification {
-    static var notificationName = Notification.Name("TypedNotificationCenter.SampleBridgedNotification")
+    static var notificationName = Notification.Name(rawValue: "TypedNotificationCenter.SampleBridgedNotification")
     
     struct Payload: DictionaryRepresentable {
         init(samplePayloadProperty: String) {
