@@ -56,7 +56,13 @@ class ViewController: UIViewController {
     
     private func observe<T: BridgedNotification>(_ type: T.Type) {
         self.observations.append(notificationCenter.observe(type.self, object: nil, block: { [weak self] sender, payload in
-            _ = payload.asDictionary()
+            var userInfo = payload.asDictionary()
+            if #available(iOS 9.0, *) {
+                userInfo.removeValue(forKey: UIResponder.keyboardIsLocalUserInfoKey)
+                _ = try? UIResponder.KeyboardNotificationPayload(userInfo)
+            }
+            userInfo.removeValue(forKey: UIResponder.keyboardFrameEndUserInfoKey)
+            _ = try? UIResponder.KeyboardNotificationPayload(userInfo)
             self?.addToReceivedNotifications(type.self)
         }))
     }
