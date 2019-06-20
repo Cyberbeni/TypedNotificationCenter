@@ -52,6 +52,7 @@ extension PerformanceTestsPosting {
         ("testPerformance_own_1percent", testPerformance_own_1percent),
         ("testPerformance_own_20percent", testPerformance_own_20percent),
         ("testPerformance_own_all", testPerformance_own_all),
+        ("testPerformance_own_all_concurrentPost", testPerformance_own_all_concurrentPost),
     ]
 }
 

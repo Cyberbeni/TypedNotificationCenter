@@ -45,6 +45,8 @@ class PerformanceTestsPosting: XCTestCase {
     var aNotificationCenter: NotificationCenter!
     var aObservations: [Any]!
     
+    // MARK: - With reference test
+    
     override func setUp() {
         sender = NSObject()
         
@@ -73,6 +75,29 @@ class PerformanceTestsPosting: XCTestCase {
         measure {
             for _ in 1...500 {
                 TestData.postToAll(sender: sender, notificationCenter: notificationCenter)
+            }
+        }
+    }
+    
+    func testPerformance_own_all_concurrentPost() {
+        for _ in 1...10 {
+            TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
+        }
+        notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
+        var queues = [DispatchQueue]()
+        for i in 1...5 {
+            queues.append(DispatchQueue(label: "TestQueue\(i)"))
+        }
+        measure {
+            for queue in queues {
+                queue.async {
+                    for _ in 1...100 {
+                        TestData.postToAll(sender: self.sender, notificationCenter: self.notificationCenter)
+                    }
+                }
+            }
+            for queue in queues {
+                queue.sync {}
             }
         }
     }
