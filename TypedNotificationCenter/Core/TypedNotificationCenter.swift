@@ -53,7 +53,7 @@ public final class TypedNotificationCenter {
         let notificationIdentifier = NotificationIdentifier(T.self)
         let senderIdentifier = observation.senderIdentifier
         let observerIdentifier = ObjectIdentifier(observation)
-        observerQueue.async {
+        observerQueue.async(flags: .barrier) {
             self.observers[notificationIdentifier]?[senderIdentifier]?.removeValue(forKey: observerIdentifier)
             if self.observers[notificationIdentifier]?[senderIdentifier]?.isEmpty == true {
                 self.observers[notificationIdentifier]?.removeValue(forKey: senderIdentifier)
@@ -64,7 +64,7 @@ public final class TypedNotificationCenter {
     // MARK: - Public interface
     
     public init(queueName: String = UUID().uuidString, queueQos: DispatchQoS = .userInitiated) {
-        observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", qos: queueQos, attributes: [], autoreleaseFrequency: .inherit, target: nil)
+        observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", qos: queueQos, attributes: [.concurrent], autoreleaseFrequency: .inherit, target: nil)
     }
     
     public static let `default` = TypedNotificationCenter(queueName: "default")
@@ -79,7 +79,7 @@ public final class TypedNotificationCenter {
         let observerIdentifier = ObjectIdentifier(observation)
         let boxedObservation = WeakBox(observation)
         
-        observerQueue.async {
+        observerQueue.async(flags: .barrier) {
             self.observers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
         }
         
