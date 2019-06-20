@@ -45,8 +45,6 @@ class PerformanceTestsPosting: XCTestCase {
     var aNotificationCenter: NotificationCenter!
     var aObservations: [Any]!
     
-    // MARK: - With reference test
-    
     override func setUp() {
         sender = NSObject()
         
