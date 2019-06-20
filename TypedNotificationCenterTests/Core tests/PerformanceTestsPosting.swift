@@ -77,6 +77,29 @@ class PerformanceTestsPosting: XCTestCase {
         }
     }
     
+    func testPerformance_own_all_concurrentPost() {
+        for _ in 1...10 {
+            TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
+        }
+        notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
+        var queues = [DispatchQueue]()
+        for i in 1...5 {
+            queues.append(DispatchQueue(label: "TestQueue\(i)"))
+        }
+        measure {
+            for queue in queues {
+                queue.async {
+                    for _ in 1...100 {
+                        TestData.postToAll(sender: self.sender, notificationCenter: self.notificationCenter)
+                    }
+                }
+            }
+            for queue in queues {
+                queue.sync {}
+            }
+        }
+    }
+    
     func testPerformance_apple_all() {
         for _ in 1...10 {
             for notificationName in TestData.notificationNames {
