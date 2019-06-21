@@ -27,7 +27,7 @@
 import XCTest
 @testable import TypedNotificationCenter
 
-class AsyncApiTests: XCTestCase {
+class AsyncApiTests: TestCase {
     var queue = OperationQueue()
     var observation: TypedNotificationObservation?
     var count = 0

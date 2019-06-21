@@ -28,7 +28,7 @@ import Foundation
 import XCTest
 @testable import TypedNotificationCenter
 
-class BridgedNotificationApiTests: XCTestCase {
+class BridgedNotificationApiTests: TestCase {
     let sender = MySender()
     
     override func tearDown() {
