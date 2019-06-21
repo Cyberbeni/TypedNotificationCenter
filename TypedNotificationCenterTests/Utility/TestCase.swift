@@ -27,23 +27,25 @@
 import XCTest
 
 class TestCase: XCTestCase {
-    // https://indiestack.com/2018/02/xcodes-secret-performance-tests/
-    override class var defaultPerformanceMetrics: [XCTPerformanceMetric] {
-        return [
-//            .wallClockTime,
-//            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_UserTime"),
-            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_RunTime"),
-//            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_SystemTime"),
-//            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientVMAllocationsKilobytes"),
-//            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TemporaryHeapAllocationsKilobytes"),
-//            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_HighWaterMarkForVMAllocations"),
-//            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TotalHeapAllocationsKilobytes"),
-//            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentVMAllocations"),
+    #if !os(Linux)
+        // https://indiestack.com/2018/02/xcodes-secret-performance-tests/
+        override class var defaultPerformanceMetrics: [XCTPerformanceMetric] {
+            return [
+                .wallClockTime,
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_UserTime"),
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_RunTime"),
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_SystemTime"),
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientVMAllocationsKilobytes"),
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TemporaryHeapAllocationsKilobytes"),
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_HighWaterMarkForVMAllocations"),
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TotalHeapAllocationsKilobytes"),
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentVMAllocations"),
             XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentHeapAllocations"),
-//            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientHeapAllocationsKilobytes"),
-//            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentHeapAllocationsNodes"),
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientHeapAllocationsKilobytes"),
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentHeapAllocationsNodes"),
             XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_HighWaterMarkForHeapAllocations"),
-//            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientHeapAllocationsNodes"),
-        ]
-    }
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientHeapAllocationsNodes"),
+            ]
+        }
+    #endif
 }
