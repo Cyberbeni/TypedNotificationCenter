@@ -82,6 +82,7 @@
 		75D42F1F227F4EFE00ABC500 /* SampleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D42F1E227F4EFE00ABC500 /* SampleNotification.swift */; };
 		75D42F20227F4FB700ABC500 /* TypedNotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7530BA9C227F482000D57E4F /* TypedNotificationCenter.framework */; };
 		75D42F21227F4FB700ABC500 /* TypedNotificationCenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7530BA9C227F482000D57E4F /* TypedNotificationCenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		75E66CB322BD5EA5002A9EBF /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E66CB222BD5EA5002A9EBF /* TestCase.swift */; };
 		75EA5FA222A1381B00462F7F /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA5FA122A1381B00462F7F /* WeakBox.swift */; };
 		75EA5FA322A1381B00462F7F /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA5FA122A1381B00462F7F /* WeakBox.swift */; };
 		75EA5FA422A1381B00462F7F /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA5FA122A1381B00462F7F /* WeakBox.swift */; };
@@ -281,6 +282,7 @@
 		75D42F18227F4EE100ABC500 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75D42F1A227F4EE100ABC500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75D42F1E227F4EFE00ABC500 /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
+		75E66CB222BD5EA5002A9EBF /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
 		75EA5FA122A1381B00462F7F /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -413,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				7589601B227F5E7A003F3EDD /* XCTestCase+Utils.swift */,
+				75E66CB222BD5EA5002A9EBF /* TestCase.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1173,6 +1176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7589601C227F5E7A003F3EDD /* XCTestCase+Utils.swift in Sources */,
+				75E66CB322BD5EA5002A9EBF /* TestCase.swift in Sources */,
 				5C32934322A7EF4400DBA352 /* PerformanceTestsSubscribing.swift in Sources */,
 				5C8195EE22A7D69000312EA9 /* PerformanceTestNotifications.swift in Sources */,
 				5C03EC7922A8FDDD00C9BCFD /* SampleBridgedNotification.swift in Sources */,

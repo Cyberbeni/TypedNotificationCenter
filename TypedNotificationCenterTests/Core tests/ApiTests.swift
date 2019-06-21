@@ -27,7 +27,7 @@
 import XCTest
 @testable import TypedNotificationCenter
 
-class ApiTests: XCTestCase {
+class ApiTests: TestCase {
     var observation: TypedNotificationObservation?
     var count = 0
     var sender: NSObject!

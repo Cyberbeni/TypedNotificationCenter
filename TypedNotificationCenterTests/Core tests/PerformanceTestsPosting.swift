@@ -28,7 +28,7 @@ import XCTest
 import Foundation
 @testable import TypedNotificationCenter
 
-class PerformanceTestsPosting: XCTestCase {
+class PerformanceTestsPosting: TestCase {
     var sender: NSObject!
     
     // TypedNotificationCenter
