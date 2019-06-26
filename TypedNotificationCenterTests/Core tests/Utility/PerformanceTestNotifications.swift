@@ -4,7 +4,6 @@ import Foundation
 @testable import TypedNotificationCenter
 
 enum TestData {
-
     struct DummyPayload {
         var name = "test"
     }
@@ -817,5 +816,4 @@ enum TestData {
         typealias Sender = AnyObject
         typealias Payload = DummyPayload
     }
-
 }
