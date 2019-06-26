@@ -17,7 +17,6 @@
 		7530BA72227F457900D57E4F /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7530BA71227F457900D57E4F /* InterfaceController.swift */; };
 		7530BA74227F457900D57E4F /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7530BA73227F457900D57E4F /* ExtensionDelegate.swift */; };
 		7530BA76227F457A00D57E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7530BA75227F457A00D57E4F /* Assets.xcassets */; };
-		7530BA7A227F457A00D57E4F /* TNCExampleWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7530BA60227F457500D57E4F /* TNCExampleWatch.app */; };
 		75641661227F28340090F4D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641660227F28340090F4D6 /* AppDelegate.swift */; };
 		75641663227F28340090F4D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641662227F28340090F4D6 /* ViewController.swift */; };
 		75641666227F28340090F4D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75641664227F28340090F4D6 /* Main.storyboard */; };
@@ -57,13 +56,6 @@
 			remoteGlobalIDString = 7530BA6B227F457900D57E4F;
 			remoteInfo = "TypedNotificationCenterExampleWatch Extension";
 		};
-		7530BA78227F457A00D57E4F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75533554227F163F0030F2FB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7530BA5F227F457500D57E4F;
-			remoteInfo = TypedNotificationCenterExampleWatch;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -96,17 +88,6 @@
 				7530BA6D227F457900D57E4F /* TypedNotificationCenterExampleWatch Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7530BA82227F457A00D57E4F /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				7530BA7A227F457A00D57E4F /* TNCExampleWatch.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		75D42F0A227F4E3B00ABC500 /* Embed Frameworks */ = {
@@ -449,13 +430,11 @@
 				7564165A227F28340090F4D6 /* Sources */,
 				7564165B227F28340090F4D6 /* Frameworks */,
 				7564165C227F28340090F4D6 /* Resources */,
-				7530BA82227F457A00D57E4F /* Embed Watch Content */,
 				7510892B227F49E000E9F003 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7530BA79227F457A00D57E4F /* PBXTargetDependency */,
 			);
 			name = TNCUITestHostiOS;
 			productName = TypedNotificationCenterExample;
@@ -679,11 +658,6 @@
 			isa = PBXTargetDependency;
 			target = 7530BA6B227F457900D57E4F /* TypedNotificationCenterExampleWatch Extension */;
 			targetProxy = 7530BA6E227F457900D57E4F /* PBXContainerItemProxy */;
-		};
-		7530BA79227F457A00D57E4F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7530BA5F227F457500D57E4F /* TNCExampleWatch */;
-			targetProxy = 7530BA78227F457A00D57E4F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
