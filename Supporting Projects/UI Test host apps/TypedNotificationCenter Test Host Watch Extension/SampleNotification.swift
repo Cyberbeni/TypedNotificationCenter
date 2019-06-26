@@ -25,13 +25,13 @@
 //
 
 import Foundation
-//import TypedNotificationCenter
+import TypedNotificationCenter
 import WatchKit
 
-//enum SampleNotification: TypedNotification {
-//    struct Payload {
-//        let type = "watch"
-//    }
-//
-//    typealias Sender = WKInterfaceController
-//}
+enum SampleNotification: TypedNotification {
+    struct Payload {
+        let type = "watch"
+    }
+
+    typealias Sender = WKInterfaceController
+}
