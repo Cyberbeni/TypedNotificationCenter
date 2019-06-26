@@ -1,7 +1,7 @@
 //
 //  TestCase.swift
 //  TypedNotificationCenter
-// 
+//
 //  Created by Kozma Benedek on 2019. 06. 21.
 //  Copyright (c) 2019. Benedek Kozma
 //
@@ -11,10 +11,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -32,7 +32,7 @@ class TestCase: XCTestCase {
         override class var defaultPerformanceMetrics: [XCTPerformanceMetric] {
             return [
                 .wallClockTime,
-//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_UserTime"),
+                //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_UserTime"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_RunTime"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_SystemTime"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientVMAllocationsKilobytes"),
@@ -40,10 +40,10 @@ class TestCase: XCTestCase {
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_HighWaterMarkForVMAllocations"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TotalHeapAllocationsKilobytes"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentVMAllocations"),
-            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentHeapAllocations"),
-//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientHeapAllocationsKilobytes"),
+                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentHeapAllocations"),
+                //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientHeapAllocationsKilobytes"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentHeapAllocationsNodes"),
-            XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_HighWaterMarkForHeapAllocations"),
+                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_HighWaterMarkForHeapAllocations"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientHeapAllocationsNodes"),
             ]
         }

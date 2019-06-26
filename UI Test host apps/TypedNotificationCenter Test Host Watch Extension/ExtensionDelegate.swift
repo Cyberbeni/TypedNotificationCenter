@@ -11,10 +11,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -27,7 +27,6 @@
 import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
-
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
     }
@@ -42,8 +41,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
 
     @available(watchOSApplicationExtension 3.0, *)
-    func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
+    func handle(_: Set<WKRefreshBackgroundTask>) {
         // Sent when the system needs to launch the application in the background to process tasks. Tasks arrive in a set, so loop through and process each one.
     }
-
 }

@@ -11,10 +11,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,8 +24,8 @@
 // THE SOFTWARE.
 //
 
-import UIKit
 import TypedNotificationCenter
+import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet var testingTextField: UITextField! {
@@ -33,29 +33,30 @@ class ViewController: UIViewController {
             testingTextField.accessibilityIdentifier = "testingTextField"
         }
     }
+
     @IBOutlet var testResultLabel: UILabel! {
         didSet {
             testResultLabel.text = "KeyboardNotificationTesting in progress"
         }
     }
-    
+
     var observations = [TypedNotificationObservation]()
     let notificationCenter = TypedNotificationCenter.default
     var receivedNotifications = Set<ObjectIdentifier>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.observe(UIResponder.KeyboardWillShowNotification.self)
-        self.observe(UIResponder.KeyboardDidShowNotification.self)
-        self.observe(UIResponder.KeyboardWillHideNotification.self)
-        self.observe(UIResponder.KeyboardDidHideNotification.self)
-        self.observe(UIResponder.KeyboardWillChangeFrameNotification.self)
-        self.observe(UIResponder.KeyboardDidChangeFrameNotification.self)
+
+        observe(UIResponder.KeyboardWillShowNotification.self)
+        observe(UIResponder.KeyboardDidShowNotification.self)
+        observe(UIResponder.KeyboardWillHideNotification.self)
+        observe(UIResponder.KeyboardDidHideNotification.self)
+        observe(UIResponder.KeyboardWillChangeFrameNotification.self)
+        observe(UIResponder.KeyboardDidChangeFrameNotification.self)
     }
-    
+
     private func observe<T: BridgedNotification>(_ type: T.Type) {
-        self.observations.append(notificationCenter.observe(type.self, object: nil, block: { [weak self] sender, payload in
+        observations.append(notificationCenter.observe(type.self, object: nil, block: { [weak self] _, payload in
             var userInfo = payload.asDictionary()
             if #available(iOS 9.0, *) {
                 userInfo.removeValue(forKey: UIResponder.keyboardIsLocalUserInfoKey)
@@ -66,7 +67,7 @@ class ViewController: UIViewController {
             self?.addToReceivedNotifications(type.self)
         }))
     }
-    
+
     private func addToReceivedNotifications<T: BridgedNotification>(_ type: T.Type) {
         receivedNotifications.insert(ObjectIdentifier(type))
         if receivedNotifications.count == 6 {
@@ -74,4 +75,3 @@ class ViewController: UIViewController {
         }
     }
 }
-

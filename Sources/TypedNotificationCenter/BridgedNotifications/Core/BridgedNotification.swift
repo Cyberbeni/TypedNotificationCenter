@@ -1,8 +1,8 @@
 //
-//  TypedNotificationCenter+BridgedNotification.swift
+//  BridgedNotification.swift
 //  TypedNotificationCenter
-// 
-//  Created by Benedek Kozma on 2019. 06. 06.
+//
+//  Created by Benedek Kozma on 2019. 06. 05.
 //  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -11,10 +11,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,16 +26,20 @@
 
 import Foundation
 
-extension TypedNotificationCenter {
-    public func observe<T: BridgedNotification>(_ type: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
-        let object = T.Sender.self is NSNull.Type ? nil : object
-        
-        let observation = _BridgedNotificationObservation<T>(sender: object, queue: queue, block: block)
-        
-        return observation
+public struct NotificationDecodingError: LocalizedError {
+    var type: Any.Type
+    var source: [AnyHashable: Any]
+
+    public var errorDescription: String? {
+        return String(describing: self)
     }
-    
-    public func post<T: BridgedNotification>(_ type: T.Type, sender: T.Sender, payload: T.Payload) {
-        NotificationCenter.default.post(name: T.notificationName, object: sender, userInfo: payload.asDictionary())
-    }
+}
+
+public protocol DictionaryRepresentable {
+    init(_ dictionary: [AnyHashable: Any]) throws
+    func asDictionary() -> [AnyHashable: Any]
+}
+
+public protocol BridgedNotification: TypedNotification where Payload: DictionaryRepresentable {
+    static var notificationName: Notification.Name { get }
 }

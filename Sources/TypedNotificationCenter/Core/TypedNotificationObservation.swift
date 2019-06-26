@@ -11,10 +11,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -41,25 +41,25 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
         self.queue = queue
         self.block = block
     }
-    
+
     private weak var notificationCenter: TypedNotificationCenter?
     weak var sender: T.Sender?
     let senderIdentifier: SenderIdentifier
     var queue: OperationQueue?
     var block: T.ObservationBlock?
-    
+
     private var isRemoved = false
-    
+
     deinit {
         invalidate()
     }
-    
+
     // MARK: - TypedNotificationObservation conformance
-    
+
     public var isValid: Bool {
         return !isRemoved && (notificationCenter != nil) && !(senderIdentifier != nilSenderIdentifier && sender == nil)
     }
-    
+
     public func invalidate() {
         guard !isRemoved else { return }
         isRemoved = true
@@ -67,5 +67,4 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
         block = nil
         queue = nil
     }
-    
 }

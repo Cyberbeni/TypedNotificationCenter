@@ -1,7 +1,7 @@
 //
 //  BridgedNotificationApiTests.swift
 //  TypedNotificationCenter
-// 
+//
 //  Created by Benedek Kozma on 2019. 06. 06.
 //  Copyright (c) 2019. Benedek Kozma
 //
@@ -11,10 +11,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -25,29 +25,29 @@
 //
 
 import Foundation
-import XCTest
 @testable import TypedNotificationCenter
+import XCTest
 
 class BridgedNotificationApiTests: TestCase {
     let sender = MySender()
-    
+
     override func tearDown() {
         TypedNotificationCenter.invalidSenderBlock = { _, _ in }
         TypedNotificationCenter.invalidPayloadBlock = { _, _, _ in }
     }
-    
+
     func testCrossSendingFromNotificationCenter() {
         let stringToSend = "TestString"
         let expectation = self.expectation(description: "Notification should arrive")
-        let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { sender, payload in
+        let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { _, payload in
             XCTAssert(payload.samplePayloadProperty == stringToSend, "Sent and received string should be the same")
             expectation.fulfill()
         }
-        NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey:stringToSend])
+        NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend])
         wait(for: [expectation], timeout: 1)
         _ = observation
     }
-    
+
     func testCrossSendingFromTypedNotificationCenter() {
         let stringToSend = "TestString"
         let expectation = self.expectation(description: "Notification should arrive")
@@ -59,11 +59,11 @@ class BridgedNotificationApiTests: TestCase {
         wait(for: [expectation], timeout: 1)
         NotificationCenter.default.removeObserver(observation)
     }
-    
+
     func testSending() {
         let stringToSend = "TestString"
         let expectation = self.expectation(description: "Notification should arrive")
-        let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { sender, payload in
+        let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { _, payload in
             XCTAssert(payload.samplePayloadProperty == stringToSend, "Sent and received string should be the same")
             expectation.fulfill()
         }
@@ -71,28 +71,28 @@ class BridgedNotificationApiTests: TestCase {
         wait(for: [expectation], timeout: 1)
         _ = observation
     }
-    
+
     func testInvalidSender() {
         let stringToSend = "TestString"
         let expectation = self.expectation(description: "Invalid sender block should be called")
         TypedNotificationCenter.invalidSenderBlock = { _, _ in
             expectation.fulfill()
         }
-        let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { sender, payload in
+        let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { _, _ in
             XCTFail("Notification should not arrive")
         }
-        NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: nil, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey:stringToSend])
+        NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: nil, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend])
         wait(for: [expectation], timeout: 1)
         _ = observation
     }
-    
+
     func testInvalidPayload() {
         let expectation = self.expectation(description: "Invalid payload block should be called")
         TypedNotificationCenter.invalidPayloadBlock = { error, _, _ in
             XCTAssertEqual(error.localizedDescription, String(describing: error))
             expectation.fulfill()
         }
-        let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { sender, payload in
+        let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { _, _ in
             XCTFail("Notification should not arrive")
         }
         NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: nil)

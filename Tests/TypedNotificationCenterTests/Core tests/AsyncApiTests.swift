@@ -24,8 +24,8 @@
 // THE SOFTWARE.
 //
 
-import XCTest
 @testable import TypedNotificationCenter
+import XCTest
 
 class AsyncApiTests: TestCase {
     var queue = OperationQueue()
@@ -46,72 +46,72 @@ class AsyncApiTests: TestCase {
     func testSuspendedQueue() {
         queue.isSuspended = true
         let expectation = self.expectation(description: "Call Block")
-        
+
         observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, queue: queue, block: { _, _ in
             self.count += 1
             expectation.fulfill()
         })
-        
+
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
-        
+
         wait(2.0)
-        
+
         XCTAssertEqual(count, 0, "Observer block should've been called zero times on suspended queue")
-        
+
         queue.isSuspended = false
-        
-        self.wait(for: [expectation], timeout: 2)
-        
+
+        wait(for: [expectation], timeout: 2)
+
         XCTAssertEqual(count, 1, "Observer block should've been called exactly once")
     }
-    
+
     func testSuspendedQueueNilSender() {
         queue.isSuspended = true
         let expectation = self.expectation(description: "Call Block")
-        
+
         observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: queue, block: { _, _ in
             self.count += 1
             expectation.fulfill()
         })
-        
+
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
-        
+
         wait(2.0)
-        
+
         XCTAssertEqual(count, 0, "Observer block should've been called zero times on suspended queue")
-        
+
         queue.isSuspended = false
-        
-        self.wait(for: [expectation], timeout: 2)
-        
+
+        wait(for: [expectation], timeout: 2)
+
         XCTAssertEqual(count, 1, "Observer block should've been called exactly once")
     }
-    
+
     func testSendingFromDifferentQueue() {
         let queue1 = DispatchQueue(label: "testQueue1")
         let queue2 = DispatchQueue(label: "testQueue2")
         let lock = NSLock()
-        
+
         observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: nil, block: { _, _ in
             lock.lock()
             self.count += 1
             lock.unlock()
         })
-        
+
         queue1.async {
-            for _ in 1...1000 {
+            for _ in 1 ... 1000 {
                 TypedNotificationCenter.default.post(SampleNotification.self, sender: self.sender, payload: SampleNotification.Payload())
             }
         }
-        
+
         queue2.async {
-            for _ in 1...1000 {
+            for _ in 1 ... 1000 {
                 TypedNotificationCenter.default.post(SampleNotification.self, sender: self.sender, payload: SampleNotification.Payload())
             }
         }
-        
+
         wait(1)
-        
-        XCTAssertEqual(self.count, 2000)
+
+        XCTAssertEqual(count, 2000)
     }
 }

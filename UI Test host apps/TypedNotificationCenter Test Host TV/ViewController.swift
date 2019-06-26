@@ -11,10 +11,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,23 +24,23 @@
 // THE SOFTWARE.
 //
 
-import UIKit
 import TypedNotificationCenter
+import UIKit
 
 class ViewController: UIViewController {
     var observation: Any?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { (sender, payload) in
+
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { sender, payload in
             print("IT WORKS! sender: \(sender), payload: \(payload)")
         })
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
+        super.viewDidAppear(animated)
+
         TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
     }
 }

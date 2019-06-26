@@ -11,10 +11,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,33 +24,32 @@
 // THE SOFTWARE.
 //
 
-import WatchKit
 import Foundation
 import TypedNotificationCenter
+import WatchKit
 
 class InterfaceController: WKInterfaceController {
     var observation: Any?
-    
+
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
+
         // Configure interface objects here.
     }
-    
+
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        
-        self.observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { (sender, payload) in
+
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { sender, payload in
             print("IT WORKS! sender: \(sender), payload: \(payload)")
         })
-        
+
         TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
     }
-    
+
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-    
 }

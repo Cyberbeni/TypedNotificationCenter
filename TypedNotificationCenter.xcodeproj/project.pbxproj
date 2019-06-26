@@ -46,7 +46,6 @@
 		7530BA72227F457900D57E4F /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7530BA71227F457900D57E4F /* InterfaceController.swift */; };
 		7530BA74227F457900D57E4F /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7530BA73227F457900D57E4F /* ExtensionDelegate.swift */; };
 		7530BA76227F457A00D57E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7530BA75227F457A00D57E4F /* Assets.xcassets */; };
-		7530BA7A227F457A00D57E4F /* TNCExampleWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7530BA60227F457500D57E4F /* TNCExampleWatch.app */; };
 		7530BAB1227F48AB00D57E4F /* TypedNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */; };
 		7530BAB2227F48AB00D57E4F /* TypedNotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */; };
 		7530BAB3227F48AB00D57E4F /* TypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641658227F19AA0090F4D6 /* TypedNotification.swift */; };
@@ -118,13 +117,6 @@
 			remoteGlobalIDString = 7530BA6B227F457900D57E4F;
 			remoteInfo = "TypedNotificationCenterExampleWatch Extension";
 		};
-		7530BA78227F457A00D57E4F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75533554227F163F0030F2FB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7530BA5F227F457500D57E4F;
-			remoteInfo = TypedNotificationCenterExampleWatch;
-		};
 		75D42F08227F4E3B00ABC500 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75533554227F163F0030F2FB /* Project object */;
@@ -182,17 +174,6 @@
 				7530BA6D227F457900D57E4F /* TypedNotificationCenterExampleWatch Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7530BA82227F457A00D57E4F /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				7530BA7A227F457A00D57E4F /* TNCExampleWatch.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		75D42F0A227F4E3B00ABC500 /* Embed Frameworks */ = {
@@ -260,7 +241,7 @@
 		75641667227F283A0090F4D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7564166A227F283A0090F4D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7564166C227F283A0090F4D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		756416AE227F338B0090F4D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TypedNotificationCenter/Info.plist; sourceTree = SOURCE_ROOT; };
+		756416AE227F338B0090F4D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		756416BD227F34C20090F4D6 /* TypedNotificationCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TypedNotificationCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75896017227F587D003F3EDD /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
 		75896019227F5C41003F3EDD /* AsyncApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncApiTests.swift; sourceTree = "<group>"; };
@@ -544,7 +525,8 @@
 				5C03EC5422A80E5D00C9BCFD /* BridgedNotifications */,
 				756416AE227F338B0090F4D6 /* Info.plist */,
 			);
-			path = TypedNotificationCenter;
+			name = TypedNotificationCenter;
+			path = Sources/TypedNotificationCenter;
 			sourceTree = "<group>";
 		};
 		7564165F227F28340090F4D6 /* TypedNotificationCenter Test Host iOS */ = {
@@ -602,7 +584,8 @@
 				5C03EC7122A8F86300C9BCFD /* Utility */,
 				75BFD923227F553D0037271E /* Info.plist */,
 			);
-			path = TypedNotificationCenterTests;
+			name = TypedNotificationCenterTests;
+			path = Tests/TypedNotificationCenterTests;
 			sourceTree = "<group>";
 		};
 		75D42F10227F4EDF00ABC500 /* TypedNotificationCenter Test Host TV */ = {
@@ -784,13 +767,11 @@
 				7564165A227F28340090F4D6 /* Sources */,
 				7564165B227F28340090F4D6 /* Frameworks */,
 				7564165C227F28340090F4D6 /* Resources */,
-				7530BA82227F457A00D57E4F /* Embed Watch Content */,
 				7510892B227F49E000E9F003 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7530BA79227F457A00D57E4F /* PBXTargetDependency */,
 				7510892A227F49DF00E9F003 /* PBXTargetDependency */,
 			);
 			name = TNCUITestHostiOS;
@@ -879,7 +860,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Benedek Kozma";
 				TargetAttributes = {
 					5C8195E522A7D22100312EA9 = {
@@ -1221,11 +1202,6 @@
 			target = 7530BA6B227F457900D57E4F /* TypedNotificationCenterExampleWatch Extension */;
 			targetProxy = 7530BA6E227F457900D57E4F /* PBXContainerItemProxy */;
 		};
-		7530BA79227F457A00D57E4F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7530BA5F227F457500D57E4F /* TNCExampleWatch */;
-			targetProxy = 7530BA78227F457A00D57E4F /* PBXContainerItemProxy */;
-		};
 		75D42F09227F4E3B00ABC500 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7530BAA8227F487400D57E4F /* TypedNotificationCenter macOS */;
@@ -1287,7 +1263,8 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 986R6FFN66;
+				DEVELOPMENT_TEAM = V63P53K235;
+				ENABLE_HARDENED_RUNTIME = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1300,7 +1277,8 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 986R6FFN66;
+				DEVELOPMENT_TEAM = V63P53K235;
+				ENABLE_HARDENED_RUNTIME = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1450,7 +1428,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TypedNotificationCenter/Info.plist;
+				INFOPLIST_FILE = Sources/TypedNotificationCenter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1484,7 +1462,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TypedNotificationCenter/Info.plist;
+				INFOPLIST_FILE = Sources/TypedNotificationCenter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1517,7 +1495,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TypedNotificationCenter/Info.plist;
+				INFOPLIST_FILE = Sources/TypedNotificationCenter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1551,7 +1529,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TypedNotificationCenter/Info.plist;
+				INFOPLIST_FILE = Sources/TypedNotificationCenter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1576,7 +1554,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1586,7 +1564,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = TypedNotificationCenter/Info.plist;
+				INFOPLIST_FILE = Sources/TypedNotificationCenter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1612,7 +1590,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1622,7 +1600,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = TypedNotificationCenter/Info.plist;
+				INFOPLIST_FILE = Sources/TypedNotificationCenter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1807,7 +1785,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1815,7 +1793,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TypedNotificationCenter/Info.plist;
+				INFOPLIST_FILE = Sources/TypedNotificationCenter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1843,7 +1821,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1851,7 +1829,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TypedNotificationCenter/Info.plist;
+				INFOPLIST_FILE = Sources/TypedNotificationCenter/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1884,6 +1862,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = V63P53K235;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/UI Test host apps/TypedNotificationCenter Test Host Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1907,6 +1886,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = V63P53K235;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/UI Test host apps/TypedNotificationCenter Test Host Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1927,7 +1907,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = TypedNotificationCenterTests/Info.plist;
+				INFOPLIST_FILE = Tests/TypedNotificationCenterTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1959,7 +1939,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = TypedNotificationCenterTests/Info.plist;
+				INFOPLIST_FILE = Tests/TypedNotificationCenterTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

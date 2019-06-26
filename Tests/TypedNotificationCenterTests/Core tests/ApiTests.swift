@@ -11,10 +11,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,14 +24,14 @@
 // THE SOFTWARE.
 //
 
-import XCTest
 @testable import TypedNotificationCenter
+import XCTest
 
 class ApiTests: TestCase {
     var observation: TypedNotificationObservation?
     var count = 0
     var sender: NSObject!
-    
+
     override func setUp() {
         count = 0
         sender = NSObject()
@@ -42,101 +42,101 @@ class ApiTests: TestCase {
     }
 
     func testNotificationWithoutObject() {
-        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { (sender, payload) in
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { _, _ in
             self.count += 1
         })
-        
+
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
-        
+
         XCTAssertEqual(count, 1, "Observer block should've been called once")
     }
-    
+
     func testNotificationWithDifferentObject() {
         let otherObject = NSObject()
-        
-        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: otherObject, block: { (sender, payload) in
+
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: otherObject, block: { _, _ in
             self.count += 1
         })
-        
+
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
-        
+
         XCTAssertEqual(count, 0, "Observer block should've been called zero times")
     }
-    
+
     func testNotificationWithSameObject() {
-        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { (sender, payload) in
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { _, _ in
             self.count += 1
         })
-        
+
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
-        
+
         XCTAssertEqual(count, 1, "Observer block should've been called once")
     }
-    
+
     func testInvalidateObserver() {
-        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { (sender, payload) in
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { _, _ in
             self.count += 1
         })
-        
+
         observation?.invalidate()
-        
+
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
-        
+
         observation?.invalidate()
-        
+
         XCTAssertEqual(count, 0, "Observer block should've been called zero times")
     }
-    
+
     func testDeallocateObserver() {
-        _ = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { (sender, payload) in
+        _ = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { _, _ in
             self.count += 1
         })
-        
+
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
-        
+
         XCTAssertEqual(count, 0, "Observer block should've been called zero times")
     }
-    
+
     func testValidityRemoved() {
-        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { (sender, payload) in
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { _, _ in
             self.count += 1
         })
-        
+
         XCTAssertEqual(observation!.isValid, true, "Observer should be valid after adding it")
-        
+
         observation?.invalidate()
-        
+
         XCTAssertEqual(observation!.isValid, false, "Observer should be invalid after invalidating it")
     }
-    
+
     func testValidityNotificationCenterDeallocated() {
         var notificationCenter: TypedNotificationCenter? = TypedNotificationCenter()
-        observation = notificationCenter?.observe(SampleNotification.self, object: nil, block: { (sender, payload) in
+        observation = notificationCenter?.observe(SampleNotification.self, object: nil, block: { _, _ in
             self.count += 1
         })
-        
+
         XCTAssertEqual(observation!.isValid, true, "Observer should be valid after adding it")
-        
+
         // Post syncs the queue, so TypedNotificationCenter won't be captured in any of the blocks anymore
         notificationCenter?.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
-        
+
         notificationCenter = nil
-        
+
         XCTAssertEqual(observation!.isValid, false, "Observer should be invalid after the notification center deallocated")
     }
-    
+
     func testValiditySenderDeallocated() {
-        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { (sender, payload) in
+        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { _, _ in
             self.count += 1
         })
-        
+
         XCTAssertEqual(observation!.isValid, true, "Observer should be valid after adding it")
-        
+
         // Post syncs the queue, so TypedNotificationCenter won't be captured in any of the blocks anymore
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
-        
+
         sender = nil
-        
+
         XCTAssertEqual(observation!.isValid, false, "Observer should be invalid after the sender deallocated")
     }
 }

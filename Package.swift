@@ -14,20 +14,22 @@ let package = Package(
     products: [
         .library(
             name: "TypedNotificationCenter",
-            targets: ["TypedNotificationCenter"]),
+            targets: ["TypedNotificationCenter"]
+        ),
     ],
     dependencies: [
     ],
     targets: [
         .target(
             name: "TypedNotificationCenter",
-            dependencies: []),
+            dependencies: []
+        ),
         .testTarget(
             name: "TypedNotificationCenterTests",
-            dependencies: ["TypedNotificationCenter"]),
+            dependencies: ["TypedNotificationCenter"]
+        ),
     ],
     swiftLanguageVersions: [
         .v5,
-        .version("5.1"),
     ]
 )

@@ -1,7 +1,7 @@
 //
 //  SampleBridgedNotification.swift
 //  TypedNotificationCenter
-// 
+//
 //  Created by Benedek Kozma on 2019. 06. 06.
 //  Copyright (c) 2019. Benedek Kozma
 //
@@ -11,10 +11,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -31,31 +31,30 @@ class MySender: NSObject {}
 
 enum SampleBridgedNotification: BridgedNotification {
     static var notificationName = Notification.Name(rawValue: "TypedNotificationCenter.SampleBridgedNotification")
-    
+
     struct Payload: DictionaryRepresentable {
         init(samplePayloadProperty: String) {
             self.samplePayloadProperty = samplePayloadProperty
         }
-        
-        init(_ dictionary: [AnyHashable : Any]) throws {
+
+        init(_ dictionary: [AnyHashable: Any]) throws {
             guard let samplePayloadProperty = dictionary[Payload.samplePayloadPropertyUserInfoKey] as? String else {
                 throw NotificationDecodingError(type: type(of: self), source: dictionary)
             }
             self.samplePayloadProperty = samplePayloadProperty
         }
-        
-        func asDictionary() -> [AnyHashable : Any] {
-            var retVal = [AnyHashable : Any]()
-            
+
+        func asDictionary() -> [AnyHashable: Any] {
+            var retVal = [AnyHashable: Any]()
+
             retVal[Payload.samplePayloadPropertyUserInfoKey] = samplePayloadProperty as NSString
-            
+
             return retVal
         }
-        
+
         static let samplePayloadPropertyUserInfoKey = "samplePayloadPropertyUserInfoKey"
         let samplePayloadProperty: String
-
     }
-    
+
     typealias Sender = MySender
 }
