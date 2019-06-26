@@ -1,6 +1,7 @@
 ignore:
-    - "TypedNotificationCenterTests/**"
-    - "TypedNotificationCenter/BridgedNotifications/Core/BridgedNotification\+ErrorHandlingCustomization\.swift"
+    - "Tests/**"
+    - "Supporting Projects/**"
+    - "Sources/TypedNotificationCenter/BridgedNotifications/Core/BridgedNotification\+ErrorHandlingCustomization\.swift"
 
 codecov:
   notify:

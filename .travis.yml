@@ -6,25 +6,25 @@ jobs:
     - stage: "Tests"
       name: "macOS"
       script:
-        - xcodebuild test -scheme TypedNotificationCenter\ macOS -destination 'platform=OS X,arch=x86_64'
+        - xcodebuild test -scheme TypedNotificationCenter-Package -destination 'platform=OS X,arch=x86_64'
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
 
     - name: "tvOS"
       script:
-        - xcodebuild test -scheme TypedNotificationCenter\ tvOS -destination 'platform=tvOS Simulator,name=Apple TV 4k,OS=12.2'
+        - xcodebuild test -scheme TypedNotificationCenter-Package -destination 'platform=tvOS Simulator,name=Apple TV 4k,OS=12.2'
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
 
     - name: "iOS"
       script:
-        - xcodebuild test -scheme TypedNotificationCenter\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
+        - xcodebuild test -scheme TypedNotificationCenter-Package -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
 
     - name: "iOS UI"
       script:
-        - xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
+        - xcodebuild test -scheme TNCUITestHostiOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
       after_success:
         - bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
 
