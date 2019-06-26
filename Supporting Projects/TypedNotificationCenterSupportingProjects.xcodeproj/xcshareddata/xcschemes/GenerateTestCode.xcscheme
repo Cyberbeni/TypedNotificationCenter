@@ -35,7 +35,7 @@
             BlueprintIdentifier = "5C8195E522A7D22100312EA9"
             BuildableName = "GenerateTestCode"
             BlueprintName = "GenerateTestCode"
-            ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
+            ReferencedContainer = "container:TypedNotificationCenterSupportingProjects.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,12 +58,12 @@
             BlueprintIdentifier = "5C8195E522A7D22100312EA9"
             BuildableName = "GenerateTestCode"
             BlueprintName = "GenerateTestCode"
-            ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
+            ReferencedContainer = "container:TypedNotificationCenterSupportingProjects.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "${PROJECT_DIR}/TypedNotificationCenterTests/Core tests/Utility/PerformanceTestNotifications.swift"
+            argument = "&quot;${PROJECT_DIR}/../Tests/TypedNotificationCenterTests/Core tests/Utility/PerformanceTestNotifications.swift&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
