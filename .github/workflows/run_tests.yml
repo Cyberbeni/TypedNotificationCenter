@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Install Swift
-      run: eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
-    - name: Run the tests
-      run: swift test
+    - name: Install Swift & Run tests
+      run: |
+        eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
+        swift test
       
   test-macos:
     runs-on: macos-latest
