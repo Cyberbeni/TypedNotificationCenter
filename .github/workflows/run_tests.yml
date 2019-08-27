@@ -1,0 +1,43 @@
+name: run_tests
+
+on: push, pull_request
+
+jobs:
+  test-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Swift
+      run: eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
+    - name: Run the tests
+      run: swift test
+      
+  test-macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run the tests
+      run: xcodebuild test -scheme TypedNotificationCenter\ macOS -destination 'platform=OS X,arch=x86_64'
+      
+  test-ios:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run the tests
+      run: xcodebuild test -scheme TypedNotificationCenter\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
+      
+  test-tvos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run the tests
+      run: xcodebuild test -scheme TypedNotificationCenter\ tvOS -destination 'platform=tvOS Simulator,name=Apple TV 4k,OS=12.2'
+      
+  test-ios-ui:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run the tests
+      run: xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
+      
+    
