@@ -11,9 +11,6 @@ jobs:
       run: |
         eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
         swift test
-    - uses: codecov/codecov-action@v1.0.2
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
       
   test-macos:
     runs-on: macos-latest
@@ -21,9 +18,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run the tests
       run: xcodebuild test -scheme TypedNotificationCenter\ macOS -destination 'platform=OS X,arch=x86_64'
-    - uses: codecov/codecov-action@v1.0.2
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
+    - name: Codecov
+      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
       
   test-ios:
     runs-on: macos-latest
@@ -31,9 +27,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run the tests
       run: xcodebuild test -scheme TypedNotificationCenter\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
-    - uses: codecov/codecov-action@v1.0.2
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
+    - name: Codecov
+      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
       
   test-tvos:
     runs-on: macos-latest
@@ -41,9 +36,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run the tests
       run: xcodebuild test -scheme TypedNotificationCenter\ tvOS -destination 'platform=tvOS Simulator,name=Apple TV 4k,OS=12.2'
-    - uses: codecov/codecov-action@v1.0.2
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
+    - name: Codecov
+      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
       
   test-ios-ui:
     runs-on: macos-latest
@@ -51,8 +45,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run the tests
       run: xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
-    - uses: codecov/codecov-action@v1.0.2
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
+    - name: Codecov
+      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
       
     
