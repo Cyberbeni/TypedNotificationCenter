@@ -28,7 +28,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run the tests
-      run: xcodebuild test -scheme TypedNotificationCenter\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
+      run: xcodebuild test -scheme TypedNotificationCenter\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.4'
     - name: Codecov
       run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'ios' -F 'ios'
       env:
@@ -39,7 +39,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run the tests
-      run: xcodebuild test -scheme TypedNotificationCenter\ tvOS -destination 'platform=tvOS Simulator,name=Apple TV 4k,OS=12.2'
+      run: xcodebuild test -scheme TypedNotificationCenter\ tvOS -destination 'platform=tvOS Simulator,name=Apple TV 4k,OS=12.4'
     - name: Codecov
       run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'tvos' -F 'tvos'
       env:
@@ -50,7 +50,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run the tests
-      run: xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
+      run: xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.4'
     - name: Codecov
       run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'ios-ui' -F 'ios'
       env:

@@ -35,12 +35,6 @@ class PerformanceTestsPosting: TestCase {
     var notificationCenter: TypedNotificationCenter!
     var observations: [TypedNotificationObservation]!
 
-    #if os(Linux)
-        let speedup = 100
-    #else
-        let speedup = 1
-    #endif
-
     // Apple's NotificationCenter
     var aNotificationCenter: NotificationCenter!
     var aObservations: [Any]!
@@ -108,7 +102,7 @@ class PerformanceTestsPosting: TestCase {
         }
         aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
         measure {
-            for _ in 1 ... (500 / speedup) {
+            for _ in 1 ... 500 {
                 for notificationName in TestData.notificationNames {
                     aNotificationCenter.post(name: notificationName, object: sender, userInfo: [:])
                 }
@@ -144,7 +138,7 @@ class PerformanceTestsPosting: TestCase {
         }
         aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
         measure {
-            for _ in 1 ... (500 / speedup) {
+            for _ in 1 ... 500 {
                 for notificationName in TestData.notificationNames {
                     aNotificationCenter.post(name: notificationName, object: sender, userInfo: [:])
                 }
@@ -182,7 +176,7 @@ class PerformanceTestsPosting: TestCase {
         }
         aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
         measure {
-            for _ in 1 ... (1000 / speedup) {
+            for _ in 1 ... 1000 {
                 for notificationName in TestData.notificationNames {
                     aNotificationCenter.post(name: notificationName, object: sender, userInfo: [:])
                 }
