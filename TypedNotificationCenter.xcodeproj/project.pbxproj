@@ -40,6 +40,10 @@
 		7510892C227F4A0500E9F003 /* TypedNotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7530BA8A227F476100D57E4F /* TypedNotificationCenter.framework */; };
 		7510892D227F4A0500E9F003 /* TypedNotificationCenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7530BA8A227F476100D57E4F /* TypedNotificationCenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		75108933227F4A4500E9F003 /* SampleNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75108932227F4A4500E9F003 /* SampleNotification.swift */; };
+		7514EF0C2318794F00492A64 /* TypedNotification+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514EF0B2318794F00492A64 /* TypedNotification+Combine.swift */; };
+		7514EF0D2318794F00492A64 /* TypedNotification+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514EF0B2318794F00492A64 /* TypedNotification+Combine.swift */; };
+		7514EF0E2318794F00492A64 /* TypedNotification+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514EF0B2318794F00492A64 /* TypedNotification+Combine.swift */; };
+		7514EF0F2318794F00492A64 /* TypedNotification+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514EF0B2318794F00492A64 /* TypedNotification+Combine.swift */; };
 		7530BA64227F457500D57E4F /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7530BA62227F457500D57E4F /* Interface.storyboard */; };
 		7530BA66227F457900D57E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7530BA65227F457900D57E4F /* Assets.xcassets */; };
 		7530BA6D227F457900D57E4F /* TypedNotificationCenterExampleWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7530BA6C227F457900D57E4F /* TypedNotificationCenterExampleWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -219,6 +223,7 @@
 		5CA2FC7822A924D500625F8D /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		5CA2FC8022A936B500625F8D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		75108932227F4A4500E9F003 /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
+		7514EF0B2318794F00492A64 /* TypedNotification+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedNotification+Combine.swift"; sourceTree = "<group>"; };
 		7530BA60227F457500D57E4F /* TNCExampleWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCExampleWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7530BA63227F457500D57E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		7530BA65227F457900D57E4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -464,6 +469,14 @@
 			path = "UIView subclasses";
 			sourceTree = "<group>";
 		};
+		7514EF0A2318792400492A64 /* Combine */ = {
+			isa = PBXGroup;
+			children = (
+				7514EF0B2318794F00492A64 /* TypedNotification+Combine.swift */,
+			);
+			path = Combine;
+			sourceTree = "<group>";
+		};
 		7530BA61227F457500D57E4F /* TypedNotificationCenter Test Hot Watch */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +536,7 @@
 			children = (
 				5C03EC5322A80E3900C9BCFD /* Core */,
 				5C03EC5422A80E5D00C9BCFD /* BridgedNotifications */,
+				7514EF0A2318792400492A64 /* Combine */,
 				756416AE227F338B0090F4D6 /* Info.plist */,
 			);
 			name = TypedNotificationCenter;
@@ -1073,6 +1087,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7514EF0D2318794F00492A64 /* TypedNotification+Combine.swift in Sources */,
 				5C03EC6222A8EE4100C9BCFD /* TypedNotificationCenter+BridgedNotification.swift in Sources */,
 				5C03EC5D22A80F0500C9BCFD /* BridgedNotification.swift in Sources */,
 				7530BAB3227F48AB00D57E4F /* TypedNotification.swift in Sources */,
@@ -1089,6 +1104,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7514EF0E2318794F00492A64 /* TypedNotification+Combine.swift in Sources */,
 				5C03EC6322A8EE4100C9BCFD /* TypedNotificationCenter+BridgedNotification.swift in Sources */,
 				5C03EC5E22A80F0500C9BCFD /* BridgedNotification.swift in Sources */,
 				7530BAB6227F48AC00D57E4F /* TypedNotification.swift in Sources */,
@@ -1105,6 +1121,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7514EF0F2318794F00492A64 /* TypedNotification+Combine.swift in Sources */,
 				5C03EC6422A8EE4100C9BCFD /* TypedNotificationCenter+BridgedNotification.swift in Sources */,
 				5C03EC5F22A80F0500C9BCFD /* BridgedNotification.swift in Sources */,
 				7530BAB9227F48AC00D57E4F /* TypedNotification.swift in Sources */,
@@ -1131,6 +1148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7514EF0C2318794F00492A64 /* TypedNotification+Combine.swift in Sources */,
 				5C03EC6122A8EE4100C9BCFD /* TypedNotificationCenter+BridgedNotification.swift in Sources */,
 				5C03EC5C22A80F0500C9BCFD /* BridgedNotification.swift in Sources */,
 				756416CD227F351D0090F4D6 /* TypedNotification.swift in Sources */,
