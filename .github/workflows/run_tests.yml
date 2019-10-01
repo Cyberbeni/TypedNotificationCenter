@@ -19,7 +19,7 @@ jobs:
     - name: Run the tests
       run: xcodebuild test -scheme TypedNotificationCenter\ macOS -destination 'platform=OS X,arch=x86_64'
     - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
+      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'macos' -F 'macos'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
@@ -30,7 +30,7 @@ jobs:
     - name: Run the tests
       run: xcodebuild test -scheme TypedNotificationCenter\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
     - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
+      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'ios' -F 'ios'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
@@ -41,7 +41,7 @@ jobs:
     - name: Run the tests
       run: xcodebuild test -scheme TypedNotificationCenter\ tvOS -destination 'platform=tvOS Simulator,name=Apple TV 4k,OS=12.2'
     - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
+      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'tvos' -F 'tvos'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
@@ -52,7 +52,7 @@ jobs:
     - name: Run the tests
       run: xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
     - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
+      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'ios-ui' -F 'ios'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
