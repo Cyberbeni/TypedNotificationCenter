@@ -42,8 +42,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
     }
-
-    func applicationWillTerminate(_: Notification) {
-        // Insert code here to tear down your application
-    }
 }
