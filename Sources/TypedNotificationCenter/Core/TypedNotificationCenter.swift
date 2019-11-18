@@ -62,9 +62,17 @@ public final class TypedNotificationCenter {
     }
 
     // MARK: - Public interface
-
-    public init(queueName: String = UUID().uuidString, queueQos: DispatchQoS = .userInitiated) {
+    @available(OSX 10.10, *)
+    public init(queueName: String = UUID().uuidString, queueQos: DispatchQoS) {
         observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", qos: queueQos, attributes: [.concurrent], autoreleaseFrequency: .inherit, target: nil)
+    }
+    
+    public init(queueName: String = UUID().uuidString) {
+        if #available(OSX 10.10, *) {
+            observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", qos: .userInitiated, attributes: [.concurrent], autoreleaseFrequency: .inherit, target: nil)
+        } else {
+            observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", attributes: [.concurrent], autoreleaseFrequency: .inherit, target: nil)
+        }
     }
 
     public static let `default` = TypedNotificationCenter(queueName: "default")
