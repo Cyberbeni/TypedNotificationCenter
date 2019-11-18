@@ -34,10 +34,10 @@ public extension TypedNotification {
 }
 
 public final class AnyPayloadTypedNotification<Sender> {
-    let observeBlock: (TypedNotificationCenter, Sender?, @escaping (Sender) -> Void) -> TypedNotificationObservation
+    let observeBlock: (TypedNotificationCenter, Sender?, OperationQueue?, @escaping (Sender) -> Void) -> TypedNotificationObservation
     init<T: TypedNotification>(_ notification: T.Type) where T.Sender == Sender {
-        observeBlock = { notificationCenter, sender, notificationBlock in
-            return notificationCenter.observe(T.self, object: sender) { sender, _ in
+        observeBlock = { notificationCenter, sender, queue, notificationBlock in
+            return notificationCenter.observe(T.self, object: sender, queue: queue) { sender, _ in
                 notificationBlock(sender)
             }
         }
@@ -46,7 +46,7 @@ public final class AnyPayloadTypedNotification<Sender> {
 
 public extension TypedNotificationCenter {
     func observe<Sender>(_ proxy: AnyPayloadTypedNotification<Sender>, object: Sender?, queue: OperationQueue? = nil, block: @escaping (Sender) -> Void) -> TypedNotificationObservation {
-        return proxy.observeBlock(self, object, block)
+        return proxy.observeBlock(self, object, queue, block)
     }
 }
 
@@ -58,10 +58,10 @@ public extension TypedNotification {
 }
 
 public final class AnyTypedNotification {
-    let observeBlock: (TypedNotificationCenter, @escaping () -> Void) -> TypedNotificationObservation
+    let observeBlock: (TypedNotificationCenter, OperationQueue?, @escaping () -> Void) -> TypedNotificationObservation
     init<T: TypedNotification>(_ notification: T.Type) {
-        observeBlock = { notificationCenter, notificationBlock in
-            return notificationCenter.observe(T.self, object: nil) { _, _ in
+        observeBlock = { notificationCenter, queue, notificationBlock in
+            return notificationCenter.observe(T.self, object: nil, queue: queue) { _, _ in
                 notificationBlock()
             }
         }
@@ -70,6 +70,6 @@ public final class AnyTypedNotification {
 
 public extension TypedNotificationCenter {
     func observe(_ proxy: AnyTypedNotification, queue: OperationQueue? = nil, block: @escaping () -> Void) -> TypedNotificationObservation {
-        return proxy.observeBlock(self, block)
+        return proxy.observeBlock(self, queue, block)
     }
 }
