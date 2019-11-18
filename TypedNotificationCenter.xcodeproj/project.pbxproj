@@ -35,6 +35,10 @@
 		5CA2FC6822A91F5C00625F8D /* BridgedNotification+ErrorHandlingCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA2FC6422A91F5C00625F8D /* BridgedNotification+ErrorHandlingCustomization.swift */; };
 		5CA2FC7022A9216F00625F8D /* TypedNotificationCenteriOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA2FC6F22A9216F00625F8D /* TypedNotificationCenteriOSUITests.swift */; };
 		5CA2FC7922A924D500625F8D /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA2FC7822A924D500625F8D /* TextField.swift */; };
+		5CA441E02382BFFB0026A002 /* TypeErasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA441DF2382BFFB0026A002 /* TypeErasure.swift */; };
+		5CA441E12382BFFB0026A002 /* TypeErasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA441DF2382BFFB0026A002 /* TypeErasure.swift */; };
+		5CA441E22382BFFB0026A002 /* TypeErasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA441DF2382BFFB0026A002 /* TypeErasure.swift */; };
+		5CA441E32382BFFB0026A002 /* TypeErasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA441DF2382BFFB0026A002 /* TypeErasure.swift */; };
 		75108927227F49DF00E9F003 /* TypedNotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756416BD227F34C20090F4D6 /* TypedNotificationCenter.framework */; };
 		75108928227F49DF00E9F003 /* TypedNotificationCenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 756416BD227F34C20090F4D6 /* TypedNotificationCenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7510892C227F4A0500E9F003 /* TypedNotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7530BA8A227F476100D57E4F /* TypedNotificationCenter.framework */; };
@@ -218,6 +222,7 @@
 		5CA2FC7122A9216F00625F8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CA2FC7822A924D500625F8D /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		5CA2FC8022A936B500625F8D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		5CA441DF2382BFFB0026A002 /* TypeErasure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeErasure.swift; sourceTree = "<group>"; };
 		75108932227F4A4500E9F003 /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
 		7530BA60227F457500D57E4F /* TNCExampleWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TNCExampleWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7530BA63227F457500D57E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -360,6 +365,7 @@
 				75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */,
 				75641658227F19AA0090F4D6 /* TypedNotification.swift */,
 				75EA5FA122A1381B00462F7F /* WeakBox.swift */,
+				5CA441DF2382BFFB0026A002 /* TypeErasure.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1074,6 +1080,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C03EC6222A8EE4100C9BCFD /* TypedNotificationCenter+BridgedNotification.swift in Sources */,
+				5CA441E12382BFFB0026A002 /* TypeErasure.swift in Sources */,
 				5C03EC5D22A80F0500C9BCFD /* BridgedNotification.swift in Sources */,
 				7530BAB3227F48AB00D57E4F /* TypedNotification.swift in Sources */,
 				5CA2FC6622A91F5C00625F8D /* BridgedNotification+ErrorHandlingCustomization.swift in Sources */,
@@ -1090,6 +1097,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C03EC6322A8EE4100C9BCFD /* TypedNotificationCenter+BridgedNotification.swift in Sources */,
+				5CA441E22382BFFB0026A002 /* TypeErasure.swift in Sources */,
 				5C03EC5E22A80F0500C9BCFD /* BridgedNotification.swift in Sources */,
 				7530BAB6227F48AC00D57E4F /* TypedNotification.swift in Sources */,
 				5CA2FC6722A91F5C00625F8D /* BridgedNotification+ErrorHandlingCustomization.swift in Sources */,
@@ -1106,6 +1114,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C03EC6422A8EE4100C9BCFD /* TypedNotificationCenter+BridgedNotification.swift in Sources */,
+				5CA441E32382BFFB0026A002 /* TypeErasure.swift in Sources */,
 				5C03EC5F22A80F0500C9BCFD /* BridgedNotification.swift in Sources */,
 				7530BAB9227F48AC00D57E4F /* TypedNotification.swift in Sources */,
 				5CA2FC6822A91F5C00625F8D /* BridgedNotification+ErrorHandlingCustomization.swift in Sources */,
@@ -1132,6 +1141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C03EC6122A8EE4100C9BCFD /* TypedNotificationCenter+BridgedNotification.swift in Sources */,
+				5CA441E02382BFFB0026A002 /* TypeErasure.swift in Sources */,
 				5C03EC5C22A80F0500C9BCFD /* BridgedNotification.swift in Sources */,
 				756416CD227F351D0090F4D6 /* TypedNotification.swift in Sources */,
 				5CA2FC6522A91F5C00625F8D /* BridgedNotification+ErrorHandlingCustomization.swift in Sources */,
