@@ -10,12 +10,8 @@ jobs:
     - name: Install Swift & Run tests
       run: |
         eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
-        git clone https://github.com/thii/xcbeautify.git --depth 1
-        cd xcbeautify
-        swift build --configuration release --disable-sandbox
-        export PATH="$PATH:$(pwd)/.build/release"
-        cd ..
-        swift test | xcbeautify
+        gem install --user-install xcpretty
+        swift test | xcpretty
       
   test-macos:
     runs-on: macos-latest
