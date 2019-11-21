@@ -12,7 +12,8 @@ jobs:
         eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
         git clone https://github.com/thii/xcbeautify.git --depth 1
         cd xcbeautify
-        make install
+        swift build --configuration release --disable-sandbox
+        export PATH="$PATH:$(pwd)/.build/release"
         cd ..
         swift test | xcbeautify
       
