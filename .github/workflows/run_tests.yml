@@ -10,7 +10,11 @@ jobs:
     - name: Install Swift & Run tests
       run: |
         eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
-        swift test
+        git clone https://github.com/thii/xcbeautify.git --depth 1
+        cd xcbeautify
+        make install
+        cd ..
+        swift test | xcbeautify
       
   test-macos:
     runs-on: macos-latest
