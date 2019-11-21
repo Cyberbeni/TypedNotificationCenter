@@ -53,7 +53,7 @@ class PerformanceTestsSubscribing: TestCase {
         aObservations = nil
     }
 
-    func testPerformance_own_nilSenders() {
+    func testPerformance_nilSenders_own() {
         measure {
             let notificationCenter = TypedNotificationCenter()
             for _ in 1 ... 500 {
@@ -63,7 +63,7 @@ class PerformanceTestsSubscribing: TestCase {
         }
     }
 
-    func testPerformance_apple_nilSenders() {
+    func testPerformance_nilSenders_apple() {
         measure {
             let aNotificationCenter = NotificationCenter()
             for _ in 1 ... 500 {
@@ -75,7 +75,7 @@ class PerformanceTestsSubscribing: TestCase {
         }
     }
 
-    func testPerformance_own_2senders() {
+    func testPerformance_2senders_own() {
         measure {
             let notificationCenter = TypedNotificationCenter()
             let otherSender = NSObject()
@@ -90,7 +90,7 @@ class PerformanceTestsSubscribing: TestCase {
         }
     }
 
-    func testPerformance_apple_2senders() {
+    func testPerformance_2senders_apple() {
         measure {
             let aNotificationCenter = NotificationCenter()
             let otherSender = NSObject()
@@ -109,7 +109,7 @@ class PerformanceTestsSubscribing: TestCase {
         }
     }
 
-    func testPerformance_own_100senders() {
+    func testPerformance_100senders_own() {
         measure {
             let notificationCenter = TypedNotificationCenter()
             var otherSenders = [NSObject]()
@@ -126,7 +126,7 @@ class PerformanceTestsSubscribing: TestCase {
         }
     }
 
-    func testPerformance_apple_100senders() {
+    func testPerformance_100senders_apple() {
         measure {
             let aNotificationCenter = NotificationCenter()
             var otherSenders = [NSObject]()
