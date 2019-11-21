@@ -32,7 +32,7 @@ class TestCase: XCTestCase {
         override class var defaultPerformanceMetrics: [XCTPerformanceMetric] {
             return [
                 .wallClockTime,
-                //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_UserTime"),
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_UserTime"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_RunTime"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_SystemTime"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientVMAllocationsKilobytes"),
@@ -41,7 +41,7 @@ class TestCase: XCTestCase {
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TotalHeapAllocationsKilobytes"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentVMAllocations"),
                 XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentHeapAllocations"),
-                //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientHeapAllocationsKilobytes"),
+//                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientHeapAllocationsKilobytes"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_PersistentHeapAllocationsNodes"),
                 XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_HighWaterMarkForHeapAllocations"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_TransientHeapAllocationsNodes"),

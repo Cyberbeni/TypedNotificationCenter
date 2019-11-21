@@ -59,7 +59,7 @@ class PerformanceTestsPosting: TestCase {
         aObservations = nil
     }
 
-    func testPerformance_own_all() {
+    func testPerformance_all_own() {
         for _ in 1 ... 10 {
             TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
         }
@@ -71,7 +71,7 @@ class PerformanceTestsPosting: TestCase {
         }
     }
 
-    func testPerformance_own_all_concurrentPost() {
+    func testPerformance_all_own_concurrentPost() {
         for _ in 1 ... 10 {
             TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
         }
@@ -94,7 +94,7 @@ class PerformanceTestsPosting: TestCase {
         }
     }
 
-    func testPerformance_apple_all() {
+    func testPerformance_all_apple() {
         for _ in 1 ... 10 {
             for notificationName in TestData.notificationNames {
                 aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
@@ -110,7 +110,7 @@ class PerformanceTestsPosting: TestCase {
         }
     }
 
-    func testPerformance_own_20percent() {
+    func testPerformance_20percent_own() {
         let otherSender = NSObject()
         TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
         TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
@@ -125,7 +125,7 @@ class PerformanceTestsPosting: TestCase {
         }
     }
 
-    func testPerformance_apple_20percent() {
+    func testPerformance_20percent_apple() {
         let otherSender = NSObject()
         for notificationName in TestData.notificationNames {
             aObservations.append(aNotificationCenter!.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
@@ -146,7 +146,7 @@ class PerformanceTestsPosting: TestCase {
         }
     }
 
-    func testPerformance_own_1percent() {
+    func testPerformance_1percent_own() {
         var otherSenders = [NSObject]()
         for _ in 1 ... 99 {
             otherSenders.append(NSObject())
@@ -163,7 +163,7 @@ class PerformanceTestsPosting: TestCase {
         }
     }
 
-    func testPerformance_apple_1percent() {
+    func testPerformance_1percent_apple() {
         var otherSenders = [NSObject]()
         for _ in 1 ... 99 {
             otherSenders.append(NSObject())

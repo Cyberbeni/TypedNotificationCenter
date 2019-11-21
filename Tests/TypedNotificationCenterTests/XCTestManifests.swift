@@ -46,13 +46,13 @@ extension PerformanceTestsPosting {
     //   `swift test --generate-linuxmain`
     // to regenerate.
     static let __allTests__PerformanceTestsPosting = [
-        ("testPerformance_apple_1percent", testPerformance_apple_1percent),
-        ("testPerformance_apple_20percent", testPerformance_apple_20percent),
-        ("testPerformance_apple_all", testPerformance_apple_all),
-        ("testPerformance_own_1percent", testPerformance_own_1percent),
-        ("testPerformance_own_20percent", testPerformance_own_20percent),
-        ("testPerformance_own_all", testPerformance_own_all),
-        ("testPerformance_own_all_concurrentPost", testPerformance_own_all_concurrentPost),
+        ("testPerformance_1percent_apple", testPerformance_1percent_apple),
+        ("testPerformance_1percent_own", testPerformance_1percent_own),
+        ("testPerformance_20percent_apple", testPerformance_20percent_apple),
+        ("testPerformance_20percent_own", testPerformance_20percent_own),
+        ("testPerformance_all_apple", testPerformance_all_apple),
+        ("testPerformance_all_own", testPerformance_all_own),
+        ("testPerformance_all_own_concurrentPost", testPerformance_all_own_concurrentPost),
     ]
 }
 
@@ -61,12 +61,12 @@ extension PerformanceTestsSubscribing {
     //   `swift test --generate-linuxmain`
     // to regenerate.
     static let __allTests__PerformanceTestsSubscribing = [
-        ("testPerformance_apple_100senders", testPerformance_apple_100senders),
-        ("testPerformance_apple_2senders", testPerformance_apple_2senders),
-        ("testPerformance_apple_nilSenders", testPerformance_apple_nilSenders),
-        ("testPerformance_own_100senders", testPerformance_own_100senders),
-        ("testPerformance_own_2senders", testPerformance_own_2senders),
-        ("testPerformance_own_nilSenders", testPerformance_own_nilSenders),
+        ("testPerformance_100senders_apple", testPerformance_100senders_apple),
+        ("testPerformance_100senders_own", testPerformance_100senders_own),
+        ("testPerformance_2senders_apple", testPerformance_2senders_apple),
+        ("testPerformance_2senders_own", testPerformance_2senders_own),
+        ("testPerformance_nilSenders_apple", testPerformance_nilSenders_apple),
+        ("testPerformance_nilSenders_own", testPerformance_nilSenders_own),
     ]
 }
 

@@ -54,13 +54,13 @@ class AsyncApiTests: TestCase {
 
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
-        wait(2.0)
+        wait(0.1)
 
         XCTAssertEqual(count, 0, "Observer block should've been called zero times on suspended queue")
 
         queue.isSuspended = false
 
-        wait(for: [expectation], timeout: 2)
+        wait(for: [expectation], timeout: 1)
 
         XCTAssertEqual(count, 1, "Observer block should've been called exactly once")
     }
@@ -76,13 +76,13 @@ class AsyncApiTests: TestCase {
 
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
-        wait(2.0)
+        wait(0.1)
 
         XCTAssertEqual(count, 0, "Observer block should've been called zero times on suspended queue")
 
         queue.isSuspended = false
 
-        wait(for: [expectation], timeout: 2)
+        wait(for: [expectation], timeout: 1)
 
         XCTAssertEqual(count, 1, "Observer block should've been called exactly once")
     }
@@ -110,7 +110,7 @@ class AsyncApiTests: TestCase {
             }
         }
 
-        wait(1)
+        wait(0.1)
 
         XCTAssertEqual(count, 2000)
     }
