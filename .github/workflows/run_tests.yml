@@ -1,4 +1,4 @@
-name: run_tests
+name: Test latest OSs
 
 on: [push, pull_request]
 
