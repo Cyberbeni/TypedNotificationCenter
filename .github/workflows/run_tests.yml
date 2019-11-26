@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: YOCKOW/Action-setup-swift@master
-    - name: Install Swift & Run tests
+    - name: Run tests
       run: swift test
       
   test-macos:
