@@ -18,7 +18,7 @@ jobs:
     - name: Test
       run: |
         set -o pipefail
-        swift test 2>&1 | xcbeautify
+        swift test | xcbeautify
       
   test-macos:
     runs-on: macos-latest
