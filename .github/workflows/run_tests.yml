@@ -16,7 +16,9 @@ jobs:
         url: https://github.com/Cyberbeni/xcbeautify
         branch: linux-fixes
     - name: Test
-      run: swift test | xcbeautify
+      run: |
+        set -o pipefail
+        swift test | xcbeautify
       
   test-macos:
     runs-on: macos-latest
