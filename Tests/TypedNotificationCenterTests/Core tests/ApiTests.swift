@@ -40,10 +40,6 @@ class ApiTests: TestCase {
     override func tearDown() {
         observation = nil
     }
-    
-    func testFail() {
-        XCTFail("Testing for xcbeautify")
-    }
 
     func testNotificationWithoutObject() {
         observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { _, _ in
