@@ -11,12 +11,12 @@ jobs:
     - name: Install Swift
       uses: YOCKOW/Action-setup-swift@master
     - name: Install xcbeautify
-      uses: Cyberbeni/install-swift-tool@releases/v1
+      uses: Cyberbeni/install-swift-tool@v1
       with:
-        url: https://github.com/thii/xcbeautify
-        branch: master
+        url: https://github.com/Cyberbeni/xcbeautify
+        branch: linux-fixes
     - name: Test
-      run: swift test
+      run: swift test | xcbeautify
       
   test-macos:
     runs-on: macos-latest
