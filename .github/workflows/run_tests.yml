@@ -8,6 +8,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: YOCKOW/Action-setup-swift@master
+    - uses: Cyberbeni/action-install-swift-tool@releases/v1
+      url: https://github.com/thii/xcbeautify
+      branch: master
     - name: Run the tests
       run: swift test
       
