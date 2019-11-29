@@ -6,16 +6,32 @@ jobs:
   test-linux:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: YOCKOW/Action-setup-swift@master
-    - name: Run the tests
-      run: swift test
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Install Swift
+      uses: YOCKOW/Action-setup-swift@master
+    - name: Install xcbeautify
+      uses: Cyberbeni/install-swift-tool@master
+      with:
+        url: https://github.com/Cyberbeni/xcbeautify
+        branch: linux-fixes
+    - name: Test
+      run: |
+        set -o pipefail
+        swift test --enable-code-coverage | xcbeautify
+    - name: Codecov
+      run: |
+        llvm-cov export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
+        bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'linux' -F 'linux'
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
   test-macos:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Run the tests
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Test
       run: fastlane scan --scheme "TypedNotificationCenter macOS"
     - name: Codecov
       run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'macos' -F 'macos'
@@ -25,8 +41,9 @@ jobs:
   test-ios:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Run the tests
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Test
       run: fastlane scan --scheme "TypedNotificationCenter iOS"
     - name: Codecov
       run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'ios' -F 'ios'
@@ -36,8 +53,9 @@ jobs:
   test-tvos:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Run the tests
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Test
       run: fastlane scan --scheme "TypedNotificationCenter tvOS"
     - name: Codecov
       run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'tvos' -F 'tvos'
@@ -47,8 +65,9 @@ jobs:
   test-ios-ui:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Run the tests
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Test
       run: fastlane scan --scheme "TNC UI Test Host iOS"
     - name: Codecov
       run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'ios-ui' -F 'ios'
