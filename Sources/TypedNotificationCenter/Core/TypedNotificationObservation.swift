@@ -28,18 +28,18 @@ import Foundation
 
 public class TypedNotificationObservation: Hashable {
     internal init() {}
-    
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(self))
     }
-    
+
     public static func == (lhs: TypedNotificationObservation, rhs: TypedNotificationObservation) -> Bool {
         lhs === rhs
     }
-    
+
     public func invalidate() {}
     public var isValid: Bool {
-        return false
+        false
     }
 }
 
@@ -69,7 +69,7 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
     // MARK: - TypedNotificationObservation conformance
 
     override var isValid: Bool {
-        return !isRemoved && (notificationCenter != nil) && !(senderIdentifier != nilSenderIdentifier && sender == nil)
+        !isRemoved && (notificationCenter != nil) && !(senderIdentifier != nilSenderIdentifier && sender == nil)
     }
 
     override func invalidate() {

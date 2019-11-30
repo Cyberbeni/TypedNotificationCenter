@@ -31,7 +31,7 @@ public struct NotificationDecodingError: LocalizedError {
     var source: [AnyHashable: Any]
 
     public var errorDescription: String? {
-        return String(describing: self)
+        String(describing: self)
     }
 }
 

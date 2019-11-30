@@ -30,7 +30,7 @@ class TestCase: XCTestCase {
     #if !os(Linux)
         // https://indiestack.com/2018/02/xcodes-secret-performance-tests/
         override class var defaultPerformanceMetrics: [XCTPerformanceMetric] {
-            return [
+            [
                 .wallClockTime,
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_UserTime"),
 //                XCTPerformanceMetric(rawValue: "com.apple.XCTPerformanceMetric_RunTime"),
