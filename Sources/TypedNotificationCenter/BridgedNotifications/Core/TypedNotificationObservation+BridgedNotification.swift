@@ -51,10 +51,11 @@ final class _BridgedNotificationObservation<T: BridgedNotification>: TypedNotifi
 
     // MARK: - TypedNotificationObservation conformance
 
-    func invalidate() {
-        isValid = false
+    override func invalidate() {
+        _isValid = false
         NotificationCenter.default.removeObserver(observation)
     }
 
-    var isValid: Bool = true
+    private var _isValid = true
+    override var isValid: Bool { _isValid }
 }

@@ -26,9 +26,19 @@
 
 import Foundation
 
-public protocol TypedNotificationObservation: AnyObject {
-    func invalidate()
-    var isValid: Bool { get }
+public class TypedNotificationObservation: Hashable {
+    internal init() {}
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
+
+    public static func == (lhs: TypedNotificationObservation, rhs: TypedNotificationObservation) -> Bool {
+        lhs === rhs
+    }
+
+    public func invalidate() {}
+    public var isValid: Bool { false }
 }
 
 let nilSenderIdentifier = ObjectIdentifier(WeakBox.self)
@@ -56,11 +66,11 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
 
     // MARK: - TypedNotificationObservation conformance
 
-    public var isValid: Bool {
-        return !isRemoved && (notificationCenter != nil) && !(senderIdentifier != nilSenderIdentifier && sender == nil)
+    override var isValid: Bool {
+        !isRemoved && (notificationCenter != nil) && !(senderIdentifier != nilSenderIdentifier && sender == nil)
     }
 
-    public func invalidate() {
+    override func invalidate() {
         guard !isRemoved else { return }
         isRemoved = true
         notificationCenter?.remove(observation: self)

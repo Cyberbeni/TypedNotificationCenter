@@ -39,13 +39,22 @@ class BridgedNotificationApiTests: TestCase {
     func testCrossSendingFromNotificationCenter() {
         let stringToSend = "TestString"
         let expectation = self.expectation(description: "Notification should arrive")
+        var count = 0
         let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { _, payload in
             XCTAssert(payload.samplePayloadProperty == stringToSend, "Sent and received string should be the same")
+            count += 1
             expectation.fulfill()
         }
         NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend])
         wait(for: [expectation], timeout: 1)
-        _ = observation
+        XCTAssertEqual(count, 1, "Observer block should've been called once")
+
+        XCTAssertTrue(observation.isValid, "Observation should be valid by default")
+        observation.invalidate()
+        XCTAssertFalse(observation.isValid, "Observation should become invalid after calling invalidate")
+        NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend])
+        wait(0.1)
+        XCTAssertEqual(count, 1, "Observer block should've been called once")
     }
 
     func testCrossSendingFromTypedNotificationCenter() {

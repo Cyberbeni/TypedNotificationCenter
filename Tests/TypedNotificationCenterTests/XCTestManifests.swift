@@ -7,10 +7,15 @@ extension ApiTests {
     // to regenerate.
     static let __allTests__ApiTests = [
         ("testDeallocateObserver", testDeallocateObserver),
+        ("testEquality", testEquality),
         ("testInvalidateObserver", testInvalidateObserver),
+        ("testInvalidBaseObservation", testInvalidBaseObservation),
         ("testNotificationWithDifferentObject", testNotificationWithDifferentObject),
         ("testNotificationWithoutObject", testNotificationWithoutObject),
         ("testNotificationWithSameObject", testNotificationWithSameObject),
+        ("testTypeErasureAnyType", testTypeErasureAnyType),
+        ("testTypeErasureSameSender", testTypeErasureSameSender),
+        ("testTypeErasureSameType", testTypeErasureSameType),
         ("testValidityNotificationCenterDeallocated", testValidityNotificationCenterDeallocated),
         ("testValidityRemoved", testValidityRemoved),
         ("testValiditySenderDeallocated", testValiditySenderDeallocated),

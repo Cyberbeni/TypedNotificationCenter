@@ -1,8 +1,8 @@
 //
-//  BridgedNotification.swift
+//  AnyTypedNotification.swift
 //  TypedNotificationCenter
 //
-//  Created by Benedek Kozma on 2019. 06. 05.
+//  Created by Kozma Benedek on 2019. 12. 01.
 //  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,20 +26,27 @@
 
 import Foundation
 
-public struct NotificationDecodingError: LocalizedError {
-    var type: Any.Type
-    var source: [AnyHashable: Any]
+// MARK: Unrelated types
 
-    public var errorDescription: String? {
-        String(describing: self)
+public extension TypedNotification {
+    static func eraseTypes() -> AnyTypedNotification {
+        AnyTypedNotification(self)
     }
 }
 
-public protocol DictionaryRepresentable {
-    init(_ dictionary: [AnyHashable: Any]) throws
-    func asDictionary() -> [AnyHashable: Any]
+public final class AnyTypedNotification {
+    let observeBlock: (TypedNotificationCenter, OperationQueue?, @escaping () -> Void) -> TypedNotificationObservation
+    init<T: TypedNotification>(_: T.Type) {
+        observeBlock = { notificationCenter, queue, notificationBlock in
+            notificationCenter.observe(T.self, object: nil, queue: queue) { _, _ in
+                notificationBlock()
+            }
+        }
+    }
 }
 
-public protocol BridgedNotification: TypedNotification where Payload: DictionaryRepresentable {
-    static var notificationName: Notification.Name { get }
+public extension TypedNotificationCenter {
+    func observe(_ proxy: AnyTypedNotification, queue: OperationQueue? = nil, block: @escaping () -> Void) -> TypedNotificationObservation {
+        proxy.observeBlock(self, queue, block)
+    }
 }

@@ -1,4 +1,4 @@
-name: run_tests
+name: Test latest OSs
 
 on: [push, pull_request]
 
@@ -11,7 +11,7 @@ jobs:
     - name: Install Swift
       uses: YOCKOW/Action-setup-swift@master
     - name: Install xcbeautify
-      uses: Cyberbeni/install-swift-tool@master
+      uses: Cyberbeni/install-swift-tool@v1
       with:
         url: https://github.com/Cyberbeni/xcbeautify
         branch: linux-fixes
