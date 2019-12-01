@@ -27,6 +27,12 @@
 import XCTest
 
 class TestCase: XCTestCase {
+    override func setUp() {
+        super.setUp()
+
+        continueAfterFailure = false
+    }
+
     #if !os(Linux)
         // https://indiestack.com/2018/02/xcodes-secret-performance-tests/
         override class var defaultPerformanceMetrics: [XCTPerformanceMetric] {

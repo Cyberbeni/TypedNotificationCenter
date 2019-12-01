@@ -49,7 +49,9 @@ class BridgedNotificationApiTests: TestCase {
         wait(for: [expectation], timeout: 1)
         XCTAssertEqual(count, 1, "Observer block should've been called once")
 
+        XCTAssertTrue(observation.isValid, "Observation should be valid by default")
         observation.invalidate()
+        XCTAssertFalse(observation.isValid, "Observation should become invalid after calling invalidate")
         NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend])
         wait(0.1)
         XCTAssertEqual(count, 1, "Observer block should've been called once")
