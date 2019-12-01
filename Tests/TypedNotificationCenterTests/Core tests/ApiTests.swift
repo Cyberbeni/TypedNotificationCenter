@@ -201,10 +201,13 @@ class ApiTests: TestCase {
         let makeObservation = {
             TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: block)
         }
+
+        observation = makeObservation()
         observations.insert(makeObservation())
         XCTAssertEqual(observations.count, 1, "Observation set should contain 1 element")
-        observation = makeObservation()
-        XCTAssertNil(observations.remove(observation!), "Observations with same parameters shouldn't be equal")
+        let otherObservation = makeObservation()
+        XCTAssertNotEqual(observation, otherObservation, "The two observations shouldn't be equal")
+        XCTAssertNil(observations.remove(otherObservation), "Observations with same parameters shouldn't be equal")
         XCTAssertEqual(observations.count, 1, "Observation set should contain 1 element")
     }
 
