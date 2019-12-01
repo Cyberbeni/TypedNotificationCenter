@@ -139,4 +139,57 @@ class ApiTests: TestCase {
 
         XCTAssertEqual(observation!.isValid, false, "Observer should be invalid after the sender deallocated")
     }
+    
+    func testTypeErasureSameType() {
+        let otherSender = NSObject()
+        let notificationProxy = SampleNotification.eraseNotificationName()
+        observation = TypedNotificationCenter.default.observe(notificationProxy, object: sender) { _, _ in
+            self.count += 1
+        }
+        
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: otherSender, payload: SampleNotification.Payload())
+        XCTAssertEqual(count, 0, "Observer block should've been called 0 times")
+
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+        XCTAssertEqual(count, 1, "Observer block should've been called once")
+        
+        observation?.invalidate()
+        
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+        XCTAssertEqual(count, 1, "Observer block should've been called once")
+    }
+    
+    func testTypeErasureSameSender() {
+        let otherSender = NSObject()
+        let notificationProxy = SampleNotification.erasePayloadType()
+        observation = TypedNotificationCenter.default.observe(notificationProxy, object: sender) { _ in
+            self.count += 1
+        }
+        
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: otherSender, payload: SampleNotification.Payload())
+        XCTAssertEqual(count, 0, "Observer block should've been called 0 times")
+
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+        XCTAssertEqual(count, 1, "Observer block should've been called once")
+        
+        observation?.invalidate()
+        
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+        XCTAssertEqual(count, 1, "Observer block should've been called once")
+    }
+    
+    func testTypeErasureAnyType() {
+        let notificationProxy = SampleNotification.eraseTypes()
+        observation = TypedNotificationCenter.default.observe(notificationProxy, block: {
+            self.count += 1
+        })
+        
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+        XCTAssertEqual(count, 1, "Observer block should've been called once")
+        
+        observation?.invalidate()
+        
+        TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+        XCTAssertEqual(count, 1, "Observer block should've been called once")
+    }
 }

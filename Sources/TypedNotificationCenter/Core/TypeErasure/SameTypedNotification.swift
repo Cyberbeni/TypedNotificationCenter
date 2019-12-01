@@ -29,7 +29,7 @@ import Foundation
 // MARK: Same Sender and Payload type
 
 public extension TypedNotification {
-    static func erasePayloadType() -> SameTypedNotification<Sender, Payload> {
+    static func eraseNotificationName() -> SameTypedNotification<Sender, Payload> {
         SameTypedNotification<Sender, Payload>(self)
     }
 }
