@@ -22,56 +22,36 @@ jobs:
     - name: Codecov
       run: |
         llvm-cov export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
-        bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'linux' -F 'linux'
+        bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'Linux' -F 'Linux'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
-  test-macos:
+  test-darwin-unit:
+    strategy:
+      matrix:
+        os: [macOS, iOS, tvOS]
     runs-on: macos-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v1
     - name: Test
-      run: fastlane scan --scheme "TypedNotificationCenter macOS"
+      run: fastlane scan --scheme "TypedNotificationCenter ${{ matrix.os }}"
     - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'macos' -F 'macos'
+      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n '${{ matrix.os }}' -F '${{ matrix.os }}'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
-  test-ios:
+  test-darwin-ui:
+    strategy:
+      matrix:
+        os: [iOS]
     runs-on: macos-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v1
     - name: Test
-      run: fastlane scan --scheme "TypedNotificationCenter iOS"
+      run: fastlane scan --scheme "TNC UI Test Host ${{ matrix.os }}"
     - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'ios' -F 'ios'
+      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n '${{ matrix.os }}-ui' -F '${{ matrix.os }}'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      
-  test-tvos:
-    runs-on: macos-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: Test
-      run: fastlane scan --scheme "TypedNotificationCenter tvOS"
-    - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'tvos' -F 'tvos'
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      
-  test-ios-ui:
-    runs-on: macos-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: Test
-      run: fastlane scan --scheme "TNC UI Test Host iOS"
-    - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'ios-ui' -F 'ios'
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      
-    
