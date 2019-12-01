@@ -148,7 +148,7 @@ class ApiTests: TestCase {
         }
 
         TypedNotificationCenter.default.post(SampleNotification.self, sender: otherSender, payload: SampleNotification.Payload())
-        XCTAssertEqual(count, 0, "Observer block should've been called 0 times")
+        XCTAssertEqual(count, 0, "Observer block should've been called zero times")
 
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
         XCTAssertEqual(count, 1, "Observer block should've been called once")
