@@ -1,8 +1,8 @@
 //
-//  TypeErasure.swift
+//  AnyPayloadTypedNotification.swift
 //  TypedNotificationCenter
 //
-//  Created by Benedek Kozma on 2019. 11. 18.
+//  Created by Kozma Benedek on 2019. 12. 01.
 //  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +26,7 @@
 
 import Foundation
 
-// MARK: - Same Sender type
+// MARK: Same Sender type
 
 public extension TypedNotification {
     static func erasePayloadType() -> AnyPayloadTypedNotification<Sender> {
@@ -48,30 +48,5 @@ public final class AnyPayloadTypedNotification<Sender> {
 public extension TypedNotificationCenter {
     func observe<Sender>(_ proxy: AnyPayloadTypedNotification<Sender>, object: Sender?, queue: OperationQueue? = nil, block: @escaping (Sender) -> Void) -> TypedNotificationObservation {
         proxy.observeBlock(self, object, queue, block)
-    }
-}
-
-// MARK: - Unrelated types
-
-public extension TypedNotification {
-    static func eraseTypes() -> AnyTypedNotification {
-        AnyTypedNotification(self)
-    }
-}
-
-public final class AnyTypedNotification {
-    let observeBlock: (TypedNotificationCenter, OperationQueue?, @escaping () -> Void) -> TypedNotificationObservation
-    init<T: TypedNotification>(_: T.Type) {
-        observeBlock = { notificationCenter, queue, notificationBlock in
-            notificationCenter.observe(T.self, object: nil, queue: queue) { _, _ in
-                notificationBlock()
-            }
-        }
-    }
-}
-
-public extension TypedNotificationCenter {
-    func observe(_ proxy: AnyTypedNotification, queue: OperationQueue? = nil, block: @escaping () -> Void) -> TypedNotificationObservation {
-        proxy.observeBlock(self, queue, block)
     }
 }
