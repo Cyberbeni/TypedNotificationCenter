@@ -38,9 +38,7 @@ public class TypedNotificationObservation: Hashable {
     }
 
     public func invalidate() {}
-    public var isValid: Bool {
-        false
-    }
+    public var isValid: Bool { false }
 }
 
 let nilSenderIdentifier = ObjectIdentifier(WeakBox.self)

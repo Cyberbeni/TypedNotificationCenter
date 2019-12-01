@@ -48,7 +48,7 @@ class BridgedNotificationApiTests: TestCase {
         NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend])
         wait(for: [expectation], timeout: 1)
         XCTAssertEqual(count, 1, "Observer block should've been called once")
-        
+
         observation.invalidate()
         NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend])
         wait(0.1)
