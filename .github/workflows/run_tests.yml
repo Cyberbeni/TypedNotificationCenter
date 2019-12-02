@@ -13,8 +13,7 @@ jobs:
     - name: Install xcbeautify
       uses: Cyberbeni/install-swift-tool@v1
       with:
-        url: https://github.com/Cyberbeni/xcbeautify
-        branch: linux-fixes
+        url: https://github.com/thii/xcbeautify
     - name: Test
       run: |
         set -o pipefail
