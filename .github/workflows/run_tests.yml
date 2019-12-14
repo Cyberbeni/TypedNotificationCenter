@@ -48,6 +48,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: Select latest Xcode
+      run: sudo xcode-select "/Applications/$(ls "/Applications" | grep ".*Xcode_[\.0-9]*app" | sort -V | tail -1)"
     - name: Test
       run: fastlane scan --scheme "TNC UI Test Host ${{ matrix.os }}"
     - name: Codecov
