@@ -34,7 +34,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Select latest Xcode
-      run: sudo xcode-select --switch "/Applications/$(ls "/Applications" | grep ".*Xcode_[\.0-9]*app" | sort -V | tail -1)/Contents/Developer"
+      run: |
+        sudo xcode-select --switch "/Applications/$(ls "/Applications" | grep "Xcode_[\.0-9]*app" | sort -V | tail -1)/Contents/Developer"
+        xcodebuild -version
     - name: Test
       run: fastlane scan --scheme "TypedNotificationCenter ${{ matrix.os }}"
     - name: Codecov
@@ -51,7 +53,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Select latest Xcode
-      run: sudo xcode-select --switch "/Applications/$(ls "/Applications" | grep ".*Xcode_[\.0-9]*app" | sort -V | tail -1)/Contents/Developer"
+      run: |
+        sudo xcode-select --switch "/Applications/$(ls "/Applications" | grep ".*Xcode_[\.0-9]*app" | sort -V | tail -1)/Contents/Developer"
+        xcodebuild -version
     - name: Test
       run: fastlane scan --scheme "TNC UI Test Host ${{ matrix.os }}"
     - name: Codecov
