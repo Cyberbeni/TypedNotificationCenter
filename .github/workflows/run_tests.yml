@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: Install Swift
       uses: YOCKOW/Action-setup-swift@master
     - name: Install xcbeautify
@@ -32,7 +32,7 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: Select latest Xcode
       run: sudo xcode-select --switch "/Applications/$(ls "/Applications" | grep ".*Xcode_[\.0-9]*app" | sort -V | tail -1)/Contents/Developer"
     - name: Test
@@ -49,7 +49,7 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: Select latest Xcode
       run: sudo xcode-select --switch "/Applications/$(ls "/Applications" | grep ".*Xcode_[\.0-9]*app" | sort -V | tail -1)/Contents/Developer"
     - name: Test
