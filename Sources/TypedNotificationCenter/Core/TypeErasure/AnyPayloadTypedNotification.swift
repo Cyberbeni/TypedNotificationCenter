@@ -35,7 +35,7 @@ public extension TypedNotification {
 }
 
 public final class AnyPayloadTypedNotification<Sender> {
-    let observeBlock: (TypedNotificationCenter, Sender?, OperationQueue?, @escaping (Sender) -> Void) -> TypedNotificationObservation
+    fileprivate let observeBlock: (TypedNotificationCenter, Sender?, OperationQueue?, @escaping (Sender) -> Void) -> TypedNotificationObservation
     init<T: TypedNotification>(_: T.Type) where T.Sender == Sender {
         observeBlock = { notificationCenter, sender, queue, notificationBlock in
             notificationCenter.observe(T.self, object: sender, queue: queue) { sender, _ in
