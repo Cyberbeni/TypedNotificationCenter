@@ -39,7 +39,7 @@ import Foundation
                     throw NotificationDecodingError(type: type(of: self), source: dictionary)
                 }
                 var keyboardIsLocal = true
-                if #available(iOSApplicationExtension 9.0, *) {
+                if #available(iOS 9.0, *) {
                     guard let keyboardIsLocalNumber = dictionary[UIResponder.keyboardIsLocalUserInfoKey] as? NSNumber else {
                         throw NotificationDecodingError(type: type(of: self), source: dictionary)
                     }
@@ -57,7 +57,7 @@ import Foundation
 
                 retVal[UIResponder.keyboardAnimationCurveUserInfoKey] = NSNumber(value: keyboardAnimationCurve.rawValue)
                 retVal[UIResponder.keyboardAnimationDurationUserInfoKey] = NSNumber(value: keyboardAnimationDuration)
-                if #available(iOSApplicationExtension 9.0, *) {
+                if #available(iOS 9.0, *) {
                     retVal[UIResponder.keyboardIsLocalUserInfoKey] = NSNumber(value: keyboardIsLocal)
                 }
                 retVal[UIResponder.keyboardFrameBeginUserInfoKey] = NSValue(cgRect: keyboardFrameBegin)

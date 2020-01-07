@@ -27,7 +27,7 @@
 import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
-    @available(watchOSApplicationExtension 3.0, *)
+    @available(watchOS 3.0, *)
     func handle(_: Set<WKRefreshBackgroundTask>) {
         // Sent when the system needs to launch the application in the background to process tasks. Tasks arrive in a set, so loop through and process each one.
     }
