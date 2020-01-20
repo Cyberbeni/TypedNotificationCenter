@@ -47,11 +47,8 @@ public final class AnyTypedNotification {
 }
 
 public extension TypedNotificationCenter {
-    func observe(
-        _ proxy: AnyTypedNotification,
-        queue: OperationQueue? = nil,
-        block: @escaping () -> Void
-    ) -> TypedNotificationObservation {
+    func observe(_ proxy: AnyTypedNotification, queue: OperationQueue? = nil,
+                 block: @escaping () -> Void) -> TypedNotificationObservation {
         proxy.observeBlock(self, queue, block)
     }
 }

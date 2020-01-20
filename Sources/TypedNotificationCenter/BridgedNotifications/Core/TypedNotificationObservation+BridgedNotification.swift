@@ -31,24 +31,19 @@ final class _BridgedNotificationObservation<T: BridgedNotification>: TypedNotifi
 
     init(sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
         observation = NotificationCenter.default
-            .addObserver(
-                forName: T.notificationName,
-                object: sender,
-                queue: queue,
-                using: { notification in
-                    guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
-                        TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
-                        return
-                    }
-                    do {
-                        let payload = try T.Payload(notification.userInfo ?? [:])
-                        block(sender, payload)
-                    } catch {
-                        TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
-                        return
-                    }
+            .addObserver(forName: T.notificationName, object: sender, queue: queue, using: { notification in
+                guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
+                    TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
+                    return
                 }
-            )
+                do {
+                    let payload = try T.Payload(notification.userInfo ?? [:])
+                    block(sender, payload)
+                } catch {
+                    TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
+                    return
+                }
+        })
     }
 
     deinit {

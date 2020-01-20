@@ -34,13 +34,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         observation = TypedNotificationCenter.default
-            .observe(
-                SampleNotification.self,
-                object: self,
-                block: { sender, payload in
-                    print("IT WORKS! sender: \(sender), payload: \(payload)")
-                }
-            )
+            .observe(SampleNotification.self, object: self, block: { sender, payload in
+                print("IT WORKS! sender: \(sender), payload: \(payload)")
+        })
     }
 
     override func viewDidAppear(_ animated: Bool) {

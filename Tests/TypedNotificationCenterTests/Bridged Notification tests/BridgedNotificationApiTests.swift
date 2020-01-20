@@ -47,11 +47,8 @@ class BridgedNotificationApiTests: TestCase {
                 expectation.fulfill()
             }
         NotificationCenter.default
-            .post(
-                name: SampleBridgedNotification.notificationName,
-                object: sender,
-                userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend]
-            )
+            .post(name: SampleBridgedNotification.notificationName, object: sender,
+                  userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend])
         wait(for: [expectation], timeout: 1)
         XCTAssertEqual(count, 1, "Observer block should've been called once")
 
@@ -59,11 +56,8 @@ class BridgedNotificationApiTests: TestCase {
         observation.invalidate()
         XCTAssertFalse(observation.isValid, "Observation should become invalid after calling invalidate")
         NotificationCenter.default
-            .post(
-                name: SampleBridgedNotification.notificationName,
-                object: sender,
-                userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend]
-            )
+            .post(name: SampleBridgedNotification.notificationName, object: sender,
+                  userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend])
         wait(0.1)
         XCTAssertEqual(count, 1, "Observer block should've been called once")
     }
@@ -71,21 +65,15 @@ class BridgedNotificationApiTests: TestCase {
     func testCrossSendingFromTypedNotificationCenter() {
         let stringToSend = "TestString"
         let expectation = self.expectation(description: "Notification should arrive")
-        let observation = NotificationCenter.default.addObserver(
-            forName: SampleBridgedNotification.notificationName,
-            object: nil,
-            queue: nil
-        ) { notification in
+        let observation = NotificationCenter.default.addObserver(forName: SampleBridgedNotification.notificationName,
+                                                                 object: nil, queue: nil) { notification in
             XCTAssert(stringToSend == notification
                 .userInfo?[SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey] as? String)
             expectation.fulfill()
         }
         TypedNotificationCenter.default
-            .post(
-                SampleBridgedNotification.self,
-                sender: sender,
-                payload: SampleBridgedNotification.Payload(samplePayloadProperty: stringToSend)
-            )
+            .post(SampleBridgedNotification.self, sender: sender,
+                  payload: SampleBridgedNotification.Payload(samplePayloadProperty: stringToSend))
         wait(for: [expectation], timeout: 1)
         NotificationCenter.default.removeObserver(observation)
     }
@@ -99,11 +87,8 @@ class BridgedNotificationApiTests: TestCase {
                 expectation.fulfill()
             }
         TypedNotificationCenter.default
-            .post(
-                SampleBridgedNotification.self,
-                sender: sender,
-                payload: SampleBridgedNotification.Payload(samplePayloadProperty: stringToSend)
-            )
+            .post(SampleBridgedNotification.self, sender: sender,
+                  payload: SampleBridgedNotification.Payload(samplePayloadProperty: stringToSend))
         wait(for: [expectation], timeout: 1)
         _ = observation
     }
@@ -118,11 +103,8 @@ class BridgedNotificationApiTests: TestCase {
             XCTFail("Notification should not arrive")
         }
         NotificationCenter.default
-            .post(
-                name: SampleBridgedNotification.notificationName,
-                object: nil,
-                userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend]
-            )
+            .post(name: SampleBridgedNotification.notificationName, object: nil,
+                  userInfo: [SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey: stringToSend])
         wait(for: [expectation], timeout: 1)
         _ = observation
     }

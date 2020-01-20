@@ -38,8 +38,7 @@ import Foundation
                     let keyboardAnimationDuration =
                     dictionary[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
                     let keyboardFrameBegin = dictionary[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue,
-                    let keyboardFrameEnd = dictionary[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-                else {
+                    let keyboardFrameEnd = dictionary[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
                     throw NotificationDecodingError(type: type(of: self), source: dictionary)
                 }
                 var keyboardIsLocal = true

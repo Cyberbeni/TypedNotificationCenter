@@ -58,11 +58,8 @@ class PerformanceTestsSubscribing: TestCase {
             let notificationCenter = TypedNotificationCenter()
             for _ in 1 ... 500 {
                 TestData
-                    .subscribeToAll(
-                        observationContainer: &observations,
-                        notificationCenter: notificationCenter,
-                        sender: nil
-                    )
+                    .subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter,
+                                    sender: nil)
             }
             notificationCenter
                 .post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
@@ -75,11 +72,9 @@ class PerformanceTestsSubscribing: TestCase {
             for _ in 1 ... 500 {
                 for notificationName in TestData.notificationNames {
                     aObservations
-                        .append(
-                            aNotificationCenter
-                                .addObserver(forName: notificationName, object: nil, queue: nil) { _ in
-                                }
-                        )
+                        .append(aNotificationCenter
+                            .addObserver(forName: notificationName, object: nil, queue: nil) { _ in
+                        })
                 }
             }
             aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
@@ -92,24 +87,15 @@ class PerformanceTestsSubscribing: TestCase {
             let otherSender = NSObject()
             for _ in 1 ... 5 {
                 TestData
-                    .subscribeToAll(
-                        observationContainer: &observations,
-                        notificationCenter: notificationCenter,
-                        sender: sender
-                    )
+                    .subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter,
+                                    sender: sender)
                 TestData
-                    .subscribeToAll(
-                        observationContainer: &observations,
-                        notificationCenter: notificationCenter,
-                        sender: nil
-                    )
+                    .subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter,
+                                    sender: nil)
                 for _ in 1 ... 98 {
                     TestData
-                        .subscribeToAll(
-                            observationContainer: &observations,
-                            notificationCenter: notificationCenter,
-                            sender: otherSender
-                        )
+                        .subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter,
+                                        sender: otherSender)
                 }
             }
             notificationCenter
@@ -124,24 +110,18 @@ class PerformanceTestsSubscribing: TestCase {
             for _ in 1 ... 5 {
                 for notificationName in TestData.notificationNames {
                     aObservations
-                        .append(
-                            aNotificationCenter
-                                .addObserver(forName: notificationName, object: sender, queue: nil) { _ in }
-                        )
+                        .append(aNotificationCenter
+                            .addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
                     aObservations
-                        .append(
-                            aNotificationCenter
-                                .addObserver(forName: notificationName, object: nil, queue: nil) { _ in
-                                }
-                        )
+                        .append(aNotificationCenter
+                            .addObserver(forName: notificationName, object: nil, queue: nil) { _ in
+                        })
                 }
                 for _ in 1 ... 98 {
                     for notificationName in TestData.notificationNames {
                         aObservations
-                            .append(
-                                aNotificationCenter
-                                    .addObserver(forName: notificationName, object: otherSender, queue: nil) { _ in }
-                            )
+                            .append(aNotificationCenter
+                                .addObserver(forName: notificationName, object: otherSender, queue: nil) { _ in })
                     }
                 }
             }
@@ -158,18 +138,12 @@ class PerformanceTestsSubscribing: TestCase {
                     otherSenders.append(NSObject())
                 }
                 TestData
-                    .subscribeToAll(
-                        observationContainer: &observations,
-                        notificationCenter: notificationCenter,
-                        sender: sender
-                    )
+                    .subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter,
+                                    sender: sender)
                 for otherSender in otherSenders {
                     TestData
-                        .subscribeToAll(
-                            observationContainer: &observations,
-                            notificationCenter: notificationCenter,
-                            sender: otherSender
-                        )
+                        .subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter,
+                                        sender: otherSender)
                 }
             }
             notificationCenter
@@ -187,16 +161,12 @@ class PerformanceTestsSubscribing: TestCase {
                 }
                 for notificationName in TestData.notificationNames {
                     aObservations
-                        .append(
-                            aNotificationCenter
-                                .addObserver(forName: notificationName, object: sender, queue: nil) { _ in }
-                        )
+                        .append(aNotificationCenter
+                            .addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
                     for otherSender in otherSenders {
                         aObservations
-                            .append(
-                                aNotificationCenter
-                                    .addObserver(forName: notificationName, object: otherSender, queue: nil) { _ in }
-                            )
+                            .append(aNotificationCenter
+                                .addObserver(forName: notificationName, object: otherSender, queue: nil) { _ in })
                     }
                 }
             }
