@@ -480,14 +480,14 @@
 			path = "UIView subclasses";
 			sourceTree = "<group>";
 		};
-		7530BA61227F457500D57E4F /* TypedNotificationCenter Test Hot Watch */ = {
+		7530BA61227F457500D57E4F /* TypedNotificationCenter Test Host Watch */ = {
 			isa = PBXGroup;
 			children = (
 				7530BA62227F457500D57E4F /* Interface.storyboard */,
 				7530BA65227F457900D57E4F /* Assets.xcassets */,
 				7530BA67227F457900D57E4F /* Info.plist */,
 			);
-			path = "TypedNotificationCenter Test Hot Watch";
+			path = "TypedNotificationCenter Test Host Watch";
 			sourceTree = "<group>";
 		};
 		7530BA70227F457900D57E4F /* TypedNotificationCenter Test Host Watch Extension */ = {
@@ -594,7 +594,7 @@
 			isa = PBXGroup;
 			children = (
 				7564165F227F28340090F4D6 /* TypedNotificationCenter Test Host iOS */,
-				7530BA61227F457500D57E4F /* TypedNotificationCenter Test Hot Watch */,
+				7530BA61227F457500D57E4F /* TypedNotificationCenter Test Host Watch */,
 				7530BA70227F457900D57E4F /* TypedNotificationCenter Test Host Watch Extension */,
 				75AAB440227F4D3B005D7873 /* TypedNotificationCenter Test Host Mac */,
 				75D42F10227F4EDF00ABC500 /* TypedNotificationCenter Test Host TV */,
