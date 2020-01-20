@@ -35,7 +35,8 @@ public extension TypedNotification {
 }
 
 public final class AnyTypedNotification {
-    fileprivate let observeBlock: (TypedNotificationCenter, OperationQueue?, @escaping () -> Void) -> TypedNotificationObservation
+    fileprivate let observeBlock: (TypedNotificationCenter, OperationQueue?, @escaping () -> Void)
+        -> TypedNotificationObservation
     init<T: TypedNotification>(_: T.Type) {
         observeBlock = { notificationCenter, queue, notificationBlock in
             notificationCenter.observe(T.self, object: nil, queue: queue) { _, _ in
@@ -46,7 +47,11 @@ public final class AnyTypedNotification {
 }
 
 public extension TypedNotificationCenter {
-    func observe(_ proxy: AnyTypedNotification, queue: OperationQueue? = nil, block: @escaping () -> Void) -> TypedNotificationObservation {
+    func observe(
+        _ proxy: AnyTypedNotification,
+        queue: OperationQueue? = nil,
+        block: @escaping () -> Void
+    ) -> TypedNotificationObservation {
         proxy.observeBlock(self, queue, block)
     }
 }

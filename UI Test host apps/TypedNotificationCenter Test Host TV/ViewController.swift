@@ -33,14 +33,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { sender, payload in
-            print("IT WORKS! sender: \(sender), payload: \(payload)")
-        })
+        observation = TypedNotificationCenter.default
+            .observe(
+                SampleNotification.self,
+                object: self,
+                block: { sender, payload in
+                    print("IT WORKS! sender: \(sender), payload: \(payload)")
+                }
+            )
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+        TypedNotificationCenter.default
+            .post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
     }
 }
