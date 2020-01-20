@@ -26,8 +26,8 @@
 
 import Foundation
 
-extension TypedNotificationCenter {
-    public func observe<T: BridgedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+public extension TypedNotificationCenter {
+    func observe<T: BridgedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
         let object = T.Sender.self is NSNull.Type ? nil : object
 
         let observation = _BridgedNotificationObservation<T>(sender: object, queue: queue, block: block)
@@ -35,7 +35,7 @@ extension TypedNotificationCenter {
         return observation
     }
 
-    public func post<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
+    func post<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
         NotificationCenter.default.post(name: T.notificationName, object: sender, userInfo: payload.asDictionary())
     }
 }

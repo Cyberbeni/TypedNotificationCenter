@@ -26,7 +26,7 @@
 
 import Foundation
 
-extension TypedNotificationCenter {
+public extension TypedNotificationCenter {
     static var invalidSenderBlock: (Any?, Notification.Name) -> Void = { sender, notificationName in
         assertionFailure("Invalid sender(\(sender ?? NSNull())) for \"\(notificationName)\"")
     }
