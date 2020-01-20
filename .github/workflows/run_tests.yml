@@ -21,7 +21,7 @@ jobs:
     - name: Codecov
       run: |
         llvm-cov export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
-        bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n 'Linux' -F 'Linux'
+        bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
@@ -38,9 +38,9 @@ jobs:
         sudo xcode-select --switch "/Applications/$(ls "/Applications" | grep "Xcode_[\.0-9]*app" | sort -V | tail -1)/Contents/Developer"
         xcodebuild -version
     - name: Test
-      run: fastlane scan --scheme "TypedNotificationCenter ${{ matrix.os }}"
+      run: fastlane scan --scheme "TypedNotificationCenter ${{ matrix.os }}" --disable_slide_to_type false
     - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n '${{ matrix.os }}' -F '${{ matrix.os }}'
+      run: bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n '${{ matrix.os }}' -F '${{ matrix.os }}'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
@@ -59,6 +59,6 @@ jobs:
     - name: Test
       run: fastlane scan --scheme "TNC UI Test Host ${{ matrix.os }}"
     - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter' -n '${{ matrix.os }}-ui' -F '${{ matrix.os }}'
+      run: bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n '${{ matrix.os }}-ui' -F '${{ matrix.os }}'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

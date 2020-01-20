@@ -147,16 +147,20 @@ class ApiTests: TestCase {
             self.count += 1
         }
 
+        TypedNotificationCenter.default.post(notificationProxy, sender: otherSender, payload: SampleNotification.Payload())
         TypedNotificationCenter.default.post(SampleNotification.self, sender: otherSender, payload: SampleNotification.Payload())
         XCTAssertEqual(count, 0, "Observer block should've been called zero times")
 
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
         XCTAssertEqual(count, 1, "Observer block should've been called once")
+        TypedNotificationCenter.default.post(notificationProxy, sender: sender, payload: SampleNotification.Payload())
+        XCTAssertEqual(count, 2, "Observer block should've been called once")
 
         observation?.invalidate()
 
+        TypedNotificationCenter.default.post(notificationProxy, sender: sender, payload: SampleNotification.Payload())
         TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
-        XCTAssertEqual(count, 1, "Observer block should've been called once")
+        XCTAssertEqual(count, 2, "Observer block should've been called once")
     }
 
     func testTypeErasureSameSender() {
