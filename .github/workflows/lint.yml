@@ -14,5 +14,5 @@ jobs:
       uses: Cyberbeni/install-swift-tool@v1
       with:
         url: https://github.com/nicklockwood/SwiftFormat
-    - name: Test
+    - name: Lint
       run: swiftformat --lint .
