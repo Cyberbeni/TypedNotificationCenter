@@ -3,7 +3,7 @@ name: Lint
 on: pull_request
 
 jobs:
-  swiftlint:
+  swiftformat-lint:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
