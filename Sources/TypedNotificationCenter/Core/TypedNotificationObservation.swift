@@ -44,7 +44,12 @@ public class TypedNotificationObservation: Hashable {
 let nilSenderIdentifier = ObjectIdentifier(WeakBox.self)
 
 final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificationObservation {
-    init(notificationCenter: TypedNotificationCenter, sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
+    init(
+        notificationCenter: TypedNotificationCenter,
+        sender: T.Sender?,
+        queue: OperationQueue?,
+        block: @escaping T.ObservationBlock
+    ) {
         self.notificationCenter = notificationCenter
         self.sender = sender
         senderIdentifier = sender.map { SenderIdentifier($0) } ?? nilSenderIdentifier
