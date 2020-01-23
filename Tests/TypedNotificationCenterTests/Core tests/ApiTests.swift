@@ -46,8 +46,7 @@ class ApiTests: TestCase {
 			self.count += 1
         })
 
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
 		XCTAssertEqual(count, 1, "Observer block should've been called once")
 	}
@@ -55,13 +54,11 @@ class ApiTests: TestCase {
 	func testNotificationWithDifferentObject() {
 		let otherObject = NSObject()
 
-		observation = TypedNotificationCenter.default
-			.observe(SampleNotification.self, object: otherObject, block: { _, _ in
-				self.count += 1
+		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: otherObject, block: { _, _ in
+			self.count += 1
         })
 
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
 		XCTAssertEqual(count, 0, "Observer block should've been called zero times")
 	}
@@ -71,8 +68,7 @@ class ApiTests: TestCase {
 			self.count += 1
         })
 
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
 		XCTAssertEqual(count, 1, "Observer block should've been called once")
 	}
@@ -84,8 +80,7 @@ class ApiTests: TestCase {
 
 		observation?.invalidate()
 
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
 		observation?.invalidate()
 
@@ -97,8 +92,7 @@ class ApiTests: TestCase {
 			self.count += 1
         })
 
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
 		XCTAssertEqual(count, 0, "Observer block should've been called zero times")
 	}
@@ -128,8 +122,7 @@ class ApiTests: TestCase {
 
 		notificationCenter = nil
 
-		XCTAssertEqual(observation!.isValid, false,
-							"Observer should be invalid after the notification center deallocated")
+		XCTAssertEqual(observation!.isValid, false, "Observer should be invalid after the notification center deallocated")
 	}
 
 	func testValiditySenderDeallocated() {
@@ -140,8 +133,7 @@ class ApiTests: TestCase {
 		XCTAssertEqual(observation!.isValid, true, "Observer should be valid after adding it")
 
 		// Post syncs the queue, so TypedNotificationCenter won't be captured in any of the blocks anymore
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
 		sender = nil
 
@@ -155,14 +147,11 @@ class ApiTests: TestCase {
 			self.count += 1
 		}
 
-		TypedNotificationCenter.default
-			.post(notificationProxy, sender: otherSender, payload: SampleNotification.Payload())
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: otherSender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(notificationProxy, sender: otherSender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: otherSender, payload: SampleNotification.Payload())
 		XCTAssertEqual(count, 0, "Observer block should've been called zero times")
 
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 		XCTAssertEqual(count, 1, "Observer block should've been called once")
 		TypedNotificationCenter.default.post(notificationProxy, sender: sender, payload: SampleNotification.Payload())
 		XCTAssertEqual(count, 2, "Observer block should've been called once")
@@ -170,8 +159,7 @@ class ApiTests: TestCase {
 		observation?.invalidate()
 
 		TypedNotificationCenter.default.post(notificationProxy, sender: sender, payload: SampleNotification.Payload())
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 		XCTAssertEqual(count, 2, "Observer block should've been called once")
 	}
 
@@ -182,18 +170,15 @@ class ApiTests: TestCase {
 			self.count += 1
 		}
 
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: otherSender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: otherSender, payload: SampleNotification.Payload())
 		XCTAssertEqual(count, 0, "Observer block should've been called 0 times")
 
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 		XCTAssertEqual(count, 1, "Observer block should've been called once")
 
 		observation?.invalidate()
 
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 		XCTAssertEqual(count, 1, "Observer block should've been called once")
 	}
 
@@ -203,14 +188,12 @@ class ApiTests: TestCase {
 			self.count += 1
         })
 
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 		XCTAssertEqual(count, 1, "Observer block should've been called once")
 
 		observation?.invalidate()
 
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 		XCTAssertEqual(count, 1, "Observer block should've been called once")
 	}
 
