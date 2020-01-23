@@ -69,7 +69,7 @@ import Foundation
 
             public let keyboardAnimationCurve: UIView.AnimationCurve
             public let keyboardAnimationDuration: Double
-            // Only available since iOS 9.0, constant true on earlier iOS versions
+            /// Only available since iOS 9.0, constant true on earlier iOS versions
             public let keyboardIsLocal: Bool
             public let keyboardFrameBegin: CGRect
             public let keyboardFrameEnd: CGRect
