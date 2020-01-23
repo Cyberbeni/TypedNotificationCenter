@@ -32,19 +32,16 @@ import Foundation
     public extension UIResponder {
         struct KeyboardNotificationPayload: DictionaryRepresentable {
             public init(_ dictionary: [AnyHashable: Any]) throws {
-                guard let keyboardAnimationCurve =
-                    (dictionary[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)
-                    .flatMap({ UIView.AnimationCurve(rawValue: $0.intValue) }),
-                    let keyboardAnimationDuration =
-                    dictionary[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
+                guard let keyboardAnimationCurve = (dictionary[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber).flatMap({ UIView.AnimationCurve(rawValue: $0.intValue) }),
+                    let keyboardAnimationDuration = dictionary[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber,
                     let keyboardFrameBegin = dictionary[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue,
-                    let keyboardFrameEnd = dictionary[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+                    let keyboardFrameEnd = dictionary[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+                else {
                     throw NotificationDecodingError(type: type(of: self), source: dictionary)
                 }
                 var keyboardIsLocal = true
                 if #available(iOS 9.0, *) {
-                    guard let keyboardIsLocalNumber = dictionary[UIResponder.keyboardIsLocalUserInfoKey] as? NSNumber
-                    else {
+                    guard let keyboardIsLocalNumber = dictionary[UIResponder.keyboardIsLocalUserInfoKey] as? NSNumber else {
                         throw NotificationDecodingError(type: type(of: self), source: dictionary)
                     }
                     keyboardIsLocal = keyboardIsLocalNumber.boolValue

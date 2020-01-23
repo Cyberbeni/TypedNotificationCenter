@@ -35,12 +35,7 @@ public extension TypedNotification {
 }
 
 public final class SameTypedNotification<Sender, Payload> {
-    fileprivate let observeBlock: (
-        TypedNotificationCenter,
-        Sender?,
-        OperationQueue?,
-        @escaping (Sender, Payload) -> Void
-    ) -> TypedNotificationObservation
+    fileprivate let observeBlock: (TypedNotificationCenter, Sender?, OperationQueue?, @escaping (Sender, Payload) -> Void) -> TypedNotificationObservation
     fileprivate let postBlock: (TypedNotificationCenter, Sender, Payload) -> Void
     init<T: TypedNotification>(_: T.Type) where T.Sender == Sender, T.Payload == Payload {
         observeBlock = { notificationCenter, sender, queue, notificationBlock in
@@ -55,12 +50,7 @@ public final class SameTypedNotification<Sender, Payload> {
 }
 
 public extension TypedNotificationCenter {
-    func observe<Sender, Payload>(
-        _ proxy: SameTypedNotification<Sender, Payload>,
-        object: Sender?,
-        queue: OperationQueue? = nil,
-        block: @escaping (Sender, Payload) -> Void
-    ) -> TypedNotificationObservation {
+    func observe<Sender, Payload>( _ proxy: SameTypedNotification<Sender, Payload>, object: Sender?, queue: OperationQueue? = nil, block: @escaping (Sender, Payload) -> Void) -> TypedNotificationObservation {
         proxy.observeBlock(self, object, queue, block)
     }
 

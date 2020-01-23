@@ -26,30 +26,30 @@
 
 import Foundation
 
-public class TypedNotificationObservation: Hashable {
+public class TypedNotificationObservation {
     internal init() {}
-
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(self))
-    }
-
-    public static func == (lhs: TypedNotificationObservation, rhs: TypedNotificationObservation) -> Bool {
-        lhs === rhs
+    deinit {
+        invalidate()
     }
 
     public func invalidate() {}
     public var isValid: Bool { false }
 }
 
+extension TypedNotificationObservation: Hashable {
+    public final func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
+
+    public static func == (lhs: TypedNotificationObservation, rhs: TypedNotificationObservation) -> Bool {
+        lhs === rhs
+    }
+}
+
 let nilSenderIdentifier = ObjectIdentifier(WeakBox.self)
 
 final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificationObservation {
-    init(
-        notificationCenter: TypedNotificationCenter,
-        sender: T.Sender?,
-        queue: OperationQueue?,
-        block: @escaping T.ObservationBlock
-    ) {
+    init(notificationCenter: TypedNotificationCenter, sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
         self.notificationCenter = notificationCenter
         self.sender = sender
         senderIdentifier = sender.map { SenderIdentifier($0) } ?? nilSenderIdentifier
@@ -64,10 +64,6 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
     var block: T.ObservationBlock?
 
     private var isRemoved = false
-
-    deinit {
-        invalidate()
-    }
 
     // MARK: - TypedNotificationObservation conformance
 

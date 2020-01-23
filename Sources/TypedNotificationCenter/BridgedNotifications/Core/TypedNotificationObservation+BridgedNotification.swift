@@ -30,8 +30,7 @@ final class _BridgedNotificationObservation<T: BridgedNotification>: TypedNotifi
     private var observation: Any
 
     init(sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
-        observation = NotificationCenter.default
-            .addObserver(forName: T.notificationName, object: sender, queue: queue, using: { notification in
+        observation = NotificationCenter.default .addObserver(forName: T.notificationName, object: sender, queue: queue, using: { notification in
                 guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
                     TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
                     return
@@ -44,10 +43,6 @@ final class _BridgedNotificationObservation<T: BridgedNotification>: TypedNotifi
                     return
                 }
         })
-    }
-
-    deinit {
-        invalidate()
     }
 
     // MARK: - TypedNotificationObservation conformance
