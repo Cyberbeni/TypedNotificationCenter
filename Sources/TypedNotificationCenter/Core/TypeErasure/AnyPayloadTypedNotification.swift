@@ -2,7 +2,7 @@
 //  AnyPayloadTypedNotification.swift
 //  TypedNotificationCenter
 //
-//  Created by Kozma Benedek on 2019. 12. 01.
+//  Created by Benedek Kozma on 2019. 12. 01.
 //  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
