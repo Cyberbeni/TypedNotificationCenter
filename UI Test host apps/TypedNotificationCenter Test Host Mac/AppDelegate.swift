@@ -36,12 +36,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDidFinishLaunching(_: Notification) {
 		// Insert code here to initialize your application
 
-		observation = TypedNotificationCenter.default
-			.observe(SampleNotification.self, object: self, block: { sender, payload in
-				print("IT WORKS! sender: \(sender), payload: \(payload)")
+		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { sender, payload in
+			print("IT WORKS! sender: \(sender), payload: \(payload)")
         })
 
-		TypedNotificationCenter.default
-			.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
 	}
 }
