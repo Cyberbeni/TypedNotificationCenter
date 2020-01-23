@@ -2,8 +2,8 @@
 //  TypedNotificationObservation.swift
 //  TypedNotificationCenter
 //
-//  Created by Benedek Kozma on 2019. 05. 05..
-//  Copyright © 2019. Benedek Kozma.
+//  Created by Benedek Kozma on 2019. 05. 05.
+//  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,60 +26,56 @@
 
 import Foundation
 
-public class TypedNotificationObservation: Hashable {
-    internal init() {}
+public class TypedNotificationObservation {
+	internal init() {}
+	deinit {
+		invalidate()
+	}
 
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(self))
-    }
+	public func invalidate() {}
+	public var isValid: Bool { false }
+}
 
-    public static func == (lhs: TypedNotificationObservation, rhs: TypedNotificationObservation) -> Bool {
-        lhs === rhs
-    }
+extension TypedNotificationObservation: Hashable {
+	public final func hash(into hasher: inout Hasher) {
+		hasher.combine(ObjectIdentifier(self))
+	}
 
-    public func invalidate() {}
-    public var isValid: Bool { false }
+	public static func == (lhs: TypedNotificationObservation, rhs: TypedNotificationObservation) -> Bool {
+		lhs === rhs
+	}
 }
 
 let nilSenderIdentifier = ObjectIdentifier(WeakBox.self)
 
 final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificationObservation {
-    init(
-        notificationCenter: TypedNotificationCenter,
-        sender: T.Sender?,
-        queue: OperationQueue?,
-        block: @escaping T.ObservationBlock
-    ) {
-        self.notificationCenter = notificationCenter
-        self.sender = sender
-        senderIdentifier = sender.map { SenderIdentifier($0) } ?? nilSenderIdentifier
-        self.queue = queue
-        self.block = block
-    }
+	init(notificationCenter: TypedNotificationCenter, sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
+		self.notificationCenter = notificationCenter
+		self.sender = sender
+		senderIdentifier = sender.map { SenderIdentifier($0) } ?? nilSenderIdentifier
+		self.queue = queue
+		self.block = block
+	}
 
-    private weak var notificationCenter: TypedNotificationCenter?
-    weak var sender: T.Sender?
-    let senderIdentifier: SenderIdentifier
-    var queue: OperationQueue?
-    var block: T.ObservationBlock?
+	private weak var notificationCenter: TypedNotificationCenter?
+	weak var sender: T.Sender?
+	let senderIdentifier: SenderIdentifier
+	var queue: OperationQueue?
+	var block: T.ObservationBlock?
 
-    private var isRemoved = false
+	private var isRemoved = false
 
-    deinit {
-        invalidate()
-    }
+	// MARK: - TypedNotificationObservation conformance
 
-    // MARK: - TypedNotificationObservation conformance
+	override var isValid: Bool {
+		!isRemoved && (notificationCenter != nil) && !(senderIdentifier != nilSenderIdentifier && sender == nil)
+	}
 
-    override var isValid: Bool {
-        !isRemoved && (notificationCenter != nil) && !(senderIdentifier != nilSenderIdentifier && sender == nil)
-    }
-
-    override func invalidate() {
-        guard !isRemoved else { return }
-        isRemoved = true
-        notificationCenter?.remove(observation: self)
-        block = nil
-        queue = nil
-    }
+	override func invalidate() {
+		guard !isRemoved else { return }
+		isRemoved = true
+		notificationCenter?.remove(observation: self)
+		block = nil
+		queue = nil
+	}
 }

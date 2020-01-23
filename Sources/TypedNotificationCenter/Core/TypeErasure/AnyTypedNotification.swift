@@ -2,7 +2,7 @@
 //  AnyTypedNotification.swift
 //  TypedNotificationCenter
 //
-//  Created by Kozma Benedek on 2019. 12. 01.
+//  Created by Benedek Kozma on 2019. 12. 01.
 //  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,26 +29,24 @@ import Foundation
 // MARK: Unrelated types
 
 public extension TypedNotification {
-    static func eraseTypes() -> AnyTypedNotification {
-        AnyTypedNotification(self)
-    }
+	static func eraseTypes() -> AnyTypedNotification {
+		AnyTypedNotification(self)
+	}
 }
 
 public final class AnyTypedNotification {
-    fileprivate let observeBlock: (TypedNotificationCenter, OperationQueue?, @escaping () -> Void)
-        -> TypedNotificationObservation
-    init<T: TypedNotification>(_: T.Type) {
-        observeBlock = { notificationCenter, queue, notificationBlock in
-            notificationCenter.observe(T.self, object: nil, queue: queue) { _, _ in
-                notificationBlock()
-            }
-        }
-    }
+	fileprivate let observeBlock: (TypedNotificationCenter, OperationQueue?, @escaping () -> Void) -> TypedNotificationObservation
+	init<T: TypedNotification>(_: T.Type) {
+		observeBlock = { notificationCenter, queue, notificationBlock in
+			notificationCenter.observe(T.self, object: nil, queue: queue) { _, _ in
+				notificationBlock()
+			}
+		}
+	}
 }
 
 public extension TypedNotificationCenter {
-    func observe(_ proxy: AnyTypedNotification, queue: OperationQueue? = nil,
-                 block: @escaping () -> Void) -> TypedNotificationObservation {
-        proxy.observeBlock(self, queue, block)
-    }
+	func observe(_ proxy: AnyTypedNotification, queue: OperationQueue? = nil, block: @escaping () -> Void) -> TypedNotificationObservation {
+		proxy.observeBlock(self, queue, block)
+	}
 }

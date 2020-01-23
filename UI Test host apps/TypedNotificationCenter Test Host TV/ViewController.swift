@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  TypedNotificationCenterExampleTV
 //
-//  Created by Benedek Kozma on 2019. 05. 05..
-//  Copyright © 2019. Benedek Kozma.
+//  Created by Benedek Kozma on 2019. 05. 05.
+//  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,21 +28,21 @@ import TypedNotificationCenter
 import UIKit
 
 class ViewController: UIViewController {
-    var observation: Any?
+	var observation: Any?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
-        observation = TypedNotificationCenter.default
-            .observe(SampleNotification.self, object: self, block: { sender, payload in
-                print("IT WORKS! sender: \(sender), payload: \(payload)")
+		observation = TypedNotificationCenter.default
+			.observe(SampleNotification.self, object: self, block: { sender, payload in
+				print("IT WORKS! sender: \(sender), payload: \(payload)")
         })
-    }
+	}
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
 
-        TypedNotificationCenter.default
-            .post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
-    }
+		TypedNotificationCenter.default
+			.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+	}
 }

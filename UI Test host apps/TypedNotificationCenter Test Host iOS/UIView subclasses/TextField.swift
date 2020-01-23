@@ -27,14 +27,14 @@
 import UIKit
 
 class TextField: UITextField, UITextFieldDelegate {
-    override func awakeFromNib() {
-        super.awakeFromNib()
+	override func awakeFromNib() {
+		super.awakeFromNib()
 
-        delegate = self
-    }
+		delegate = self
+	}
 
-    func textFieldShouldReturn(_: UITextField) -> Bool {
-        resignFirstResponder()
-        return true
-    }
+	func textFieldShouldReturn(_: UITextField) -> Bool {
+		resignFirstResponder()
+		return true
+	}
 }

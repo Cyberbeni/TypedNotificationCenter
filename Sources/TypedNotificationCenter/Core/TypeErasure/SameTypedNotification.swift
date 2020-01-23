@@ -2,7 +2,7 @@
 //  SameTypedNotification.swift
 //  TypedNotificationCenter
 //
-//  Created by Kozma Benedek on 2019. 12. 01.
+//  Created by Benedek Kozma on 2019. 12. 01.
 //  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,42 +29,33 @@ import Foundation
 // MARK: Same Sender and Payload type
 
 public extension TypedNotification {
-    static func eraseNotificationName() -> SameTypedNotification<Sender, Payload> {
-        SameTypedNotification<Sender, Payload>(self)
-    }
+	static func eraseNotificationName() -> SameTypedNotification<Sender, Payload> {
+		SameTypedNotification<Sender, Payload>(self)
+	}
 }
 
 public final class SameTypedNotification<Sender, Payload> {
-    fileprivate let observeBlock: (
-        TypedNotificationCenter,
-        Sender?,
-        OperationQueue?,
-        @escaping (Sender, Payload) -> Void
-    ) -> TypedNotificationObservation
-    fileprivate let postBlock: (TypedNotificationCenter, Sender, Payload) -> Void
-    init<T: TypedNotification>(_: T.Type) where T.Sender == Sender, T.Payload == Payload {
-        observeBlock = { notificationCenter, sender, queue, notificationBlock in
-            notificationCenter.observe(T.self, object: sender, queue: queue) { sender, payload in
-                notificationBlock(sender, payload)
-            }
-        }
-        postBlock = { notificationCenter, sender, payload in
-            notificationCenter.post(T.self, sender: sender, payload: payload)
-        }
-    }
+	fileprivate let observeBlock: (TypedNotificationCenter, Sender?, OperationQueue?, @escaping (Sender, Payload) -> Void) -> TypedNotificationObservation
+	fileprivate let postBlock: (TypedNotificationCenter, Sender, Payload) -> Void
+	init<T: TypedNotification>(_: T.Type) where T.Sender == Sender, T.Payload == Payload {
+		observeBlock = { notificationCenter, sender, queue, notificationBlock in
+			notificationCenter.observe(T.self, object: sender, queue: queue) { sender, payload in
+				notificationBlock(sender, payload)
+			}
+		}
+		postBlock = { notificationCenter, sender, payload in
+			notificationCenter.post(T.self, sender: sender, payload: payload)
+		}
+	}
 }
 
 public extension TypedNotificationCenter {
-    func observe<Sender, Payload>(
-        _ proxy: SameTypedNotification<Sender, Payload>,
-        object: Sender?,
-        queue: OperationQueue? = nil,
-        block: @escaping (Sender, Payload) -> Void
-    ) -> TypedNotificationObservation {
-        proxy.observeBlock(self, object, queue, block)
-    }
+	func observe<Sender, Payload>(_ proxy: SameTypedNotification<Sender, Payload>, object: Sender?, queue: OperationQueue? = nil,
+											block: @escaping (Sender, Payload) -> Void) -> TypedNotificationObservation {
+		proxy.observeBlock(self, object, queue, block)
+	}
 
-    func post<Sender, Payload>(_ proxy: SameTypedNotification<Sender, Payload>, sender: Sender, payload: Payload) {
-        proxy.postBlock(self, sender, payload)
-    }
+	func post<Sender, Payload>(_ proxy: SameTypedNotification<Sender, Payload>, sender: Sender, payload: Payload) {
+		proxy.postBlock(self, sender, payload)
+	}
 }

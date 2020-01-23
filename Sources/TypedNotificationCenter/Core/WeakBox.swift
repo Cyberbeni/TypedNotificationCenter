@@ -2,7 +2,7 @@
 //  WeakBox.swift
 //  TypedNotificationCenter
 //
-//  Created by Kozma Benedek on 2019. 05. 31.
+//  Created by Benedek Kozma on 2019. 05. 31.
 //  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,9 +27,9 @@
 import Foundation
 
 final class WeakBox {
-    weak var object: AnyObject?
+	weak var object: AnyObject?
 
-    init(_ object: AnyObject) {
-        self.object = object
-    }
+	init(_ object: AnyObject) {
+		self.object = object
+	}
 }
