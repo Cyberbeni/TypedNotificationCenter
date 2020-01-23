@@ -28,9 +28,9 @@ import Foundation
 @testable import TypedNotificationCenter
 
 enum SampleNotification: TypedNotification {
-    struct Payload {
-        let type = "test"
-    }
+	struct Payload {
+		let type = "test"
+	}
 
-    typealias Sender = AnyObject
+	typealias Sender = AnyObject
 }

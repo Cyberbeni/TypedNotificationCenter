@@ -27,7 +27,7 @@
 import Foundation
 
 public protocol TypedNotification {
-    typealias ObservationBlock = (Self.Sender, Self.Payload) -> Void
-    associatedtype Payload
-    associatedtype Sender: AnyObject
+	typealias ObservationBlock = (Self.Sender, Self.Payload) -> Void
+	associatedtype Payload
+	associatedtype Sender: AnyObject
 }

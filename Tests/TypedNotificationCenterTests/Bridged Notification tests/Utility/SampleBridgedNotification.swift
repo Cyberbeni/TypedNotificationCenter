@@ -30,31 +30,31 @@ import Foundation
 class MySender: NSObject {}
 
 enum SampleBridgedNotification: BridgedNotification {
-    static var notificationName = Notification.Name(rawValue: "TypedNotificationCenter.SampleBridgedNotification")
+	static var notificationName = Notification.Name(rawValue: "TypedNotificationCenter.SampleBridgedNotification")
 
-    struct Payload: DictionaryRepresentable {
-        init(samplePayloadProperty: String) {
-            self.samplePayloadProperty = samplePayloadProperty
-        }
+	struct Payload: DictionaryRepresentable {
+		init(samplePayloadProperty: String) {
+			self.samplePayloadProperty = samplePayloadProperty
+		}
 
-        init(_ dictionary: [AnyHashable: Any]) throws {
-            guard let samplePayloadProperty = dictionary[Payload.samplePayloadPropertyUserInfoKey] as? String else {
-                throw NotificationDecodingError(type: type(of: self), source: dictionary)
-            }
-            self.samplePayloadProperty = samplePayloadProperty
-        }
+		init(_ dictionary: [AnyHashable: Any]) throws {
+			guard let samplePayloadProperty = dictionary[Payload.samplePayloadPropertyUserInfoKey] as? String else {
+				throw NotificationDecodingError(type: type(of: self), source: dictionary)
+			}
+			self.samplePayloadProperty = samplePayloadProperty
+		}
 
-        func asDictionary() -> [AnyHashable: Any] {
-            var retVal = [AnyHashable: Any]()
+		func asDictionary() -> [AnyHashable: Any] {
+			var retVal = [AnyHashable: Any]()
 
-            retVal[Payload.samplePayloadPropertyUserInfoKey] = samplePayloadProperty as NSString
+			retVal[Payload.samplePayloadPropertyUserInfoKey] = samplePayloadProperty as NSString
 
-            return retVal
-        }
+			return retVal
+		}
 
-        static let samplePayloadPropertyUserInfoKey = "samplePayloadPropertyUserInfoKey"
-        let samplePayloadProperty: String
-    }
+		static let samplePayloadPropertyUserInfoKey = "samplePayloadPropertyUserInfoKey"
+		let samplePayloadProperty: String
+	}
 
-    typealias Sender = MySender
+	typealias Sender = MySender
 }

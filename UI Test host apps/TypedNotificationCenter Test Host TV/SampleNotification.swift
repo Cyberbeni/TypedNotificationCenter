@@ -29,9 +29,9 @@ import TypedNotificationCenter
 import UIKit
 
 enum SampleNotification: TypedNotification {
-    struct Payload {
-        let type = "tv"
-    }
+	struct Payload {
+		let type = "tv"
+	}
 
-    typealias Sender = UIViewController
+	typealias Sender = UIViewController
 }

@@ -27,9 +27,9 @@
 import Foundation
 
 final class WeakBox {
-    weak var object: AnyObject?
+	weak var object: AnyObject?
 
-    init(_ object: AnyObject) {
-        self.object = object
-    }
+	init(_ object: AnyObject) {
+		self.object = object
+	}
 }

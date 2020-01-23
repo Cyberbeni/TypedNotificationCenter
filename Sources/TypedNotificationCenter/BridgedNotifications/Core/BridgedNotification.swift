@@ -27,19 +27,19 @@
 import Foundation
 
 public struct NotificationDecodingError: LocalizedError {
-    var type: Any.Type
-    var source: [AnyHashable: Any]
+	var type: Any.Type
+	var source: [AnyHashable: Any]
 
-    public var errorDescription: String? {
-        String(describing: self)
-    }
+	public var errorDescription: String? {
+		String(describing: self)
+	}
 }
 
 public protocol DictionaryRepresentable {
-    init(_ dictionary: [AnyHashable: Any]) throws
-    func asDictionary() -> [AnyHashable: Any]
+	init(_ dictionary: [AnyHashable: Any]) throws
+	func asDictionary() -> [AnyHashable: Any]
 }
 
 public protocol BridgedNotification: TypedNotification where Payload: DictionaryRepresentable {
-    static var notificationName: Notification.Name { get }
+	static var notificationName: Notification.Name { get }
 }

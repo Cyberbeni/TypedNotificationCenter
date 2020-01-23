@@ -29,9 +29,9 @@ import TypedNotificationCenter
 import WatchKit
 
 enum SampleNotification: TypedNotification {
-    struct Payload {
-        let type = "watch"
-    }
+	struct Payload {
+		let type = "watch"
+	}
 
-    typealias Sender = WKInterfaceController
+	typealias Sender = WKInterfaceController
 }

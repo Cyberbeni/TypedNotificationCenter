@@ -27,11 +27,11 @@
 import Foundation
 
 public extension TypedNotificationCenter {
-    static var invalidSenderBlock: (Any?, Notification.Name) -> Void = { sender, notificationName in
-        assertionFailure("Invalid sender(\(sender ?? NSNull())) for \"\(notificationName)\"")
-    }
+	static var invalidSenderBlock: (Any?, Notification.Name) -> Void = { sender, notificationName in
+		assertionFailure("Invalid sender(\(sender ?? NSNull())) for \"\(notificationName)\"")
+	}
 
-    static var invalidPayloadBlock: (Error, [AnyHashable: Any]?, Notification.Name) -> Void = { error, _, _ in
-        assertionFailure(error.localizedDescription)
-    }
+	static var invalidPayloadBlock: (Error, [AnyHashable: Any]?, Notification.Name) -> Void = { error, _, _ in
+		assertionFailure(error.localizedDescription)
+	}
 }

@@ -29,18 +29,18 @@ import TypedNotificationCenter
 import WatchKit
 
 class InterfaceController: WKInterfaceController {
-    var observation: Any?
+	var observation: Any?
 
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
+	override func willActivate() {
+		// This method is called when watch view controller is about to be visible to user
+		super.willActivate()
 
-        observation = TypedNotificationCenter.default
-            .observe(SampleNotification.self, object: self, block: { sender, payload in
-                print("IT WORKS! sender: \(sender), payload: \(payload)")
+		observation = TypedNotificationCenter.default
+			.observe(SampleNotification.self, object: self, block: { sender, payload in
+				print("IT WORKS! sender: \(sender), payload: \(payload)")
         })
 
-        TypedNotificationCenter.default
-            .post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
-    }
+		TypedNotificationCenter.default
+			.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+	}
 }

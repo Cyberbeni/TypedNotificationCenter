@@ -6,817 +6,817 @@ import Foundation
 
 enum TestData {
 
-    struct DummyPayload {
-        var name = "test"
-    }
-
-    static func subscribeToAll(observationContainer: inout [TypedNotificationObservation], notificationCenter: TypedNotificationCenter, sender: AnyObject?) {
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification1.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification2.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification3.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification4.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification5.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification6.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification7.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification8.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification9.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification10.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification11.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification12.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification13.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification14.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification15.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification16.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification17.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification18.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification19.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification20.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification21.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification22.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification23.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification24.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification25.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification26.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification27.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification28.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification29.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification30.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification31.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification32.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification33.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification34.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification35.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification36.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification37.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification38.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification39.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification40.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification41.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification42.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification43.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification44.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification45.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification46.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification47.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification48.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification49.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification50.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification51.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification52.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification53.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification54.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification55.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification56.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification57.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification58.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification59.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification60.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification61.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification62.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification63.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification64.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification65.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification66.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification67.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification68.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification69.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification70.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification71.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification72.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification73.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification74.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification75.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification76.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification77.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification78.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification79.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification80.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification81.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification82.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification83.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification84.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification85.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification86.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification87.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification88.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification89.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification90.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification91.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification92.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification93.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification94.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification95.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification96.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification97.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification98.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification99.self, object: sender) { _, _ in })
-        observationContainer.append(notificationCenter.observe(PerformanceTestNotification100.self, object: sender) { _, _ in })
-    }
-
-    static func postToAll(sender: AnyObject, notificationCenter: TypedNotificationCenter) {
-        notificationCenter.post(PerformanceTestNotification1.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification2.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification3.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification4.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification5.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification6.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification7.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification8.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification9.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification10.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification11.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification12.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification13.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification14.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification15.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification16.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification17.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification18.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification19.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification20.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification21.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification22.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification23.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification24.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification25.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification26.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification27.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification28.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification29.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification30.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification31.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification32.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification33.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification34.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification35.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification36.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification37.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification38.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification39.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification40.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification41.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification42.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification43.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification44.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification45.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification46.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification47.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification48.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification49.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification50.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification51.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification52.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification53.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification54.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification55.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification56.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification57.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification58.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification59.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification60.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification61.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification62.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification63.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification64.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification65.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification66.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification67.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification68.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification69.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification70.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification71.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification72.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification73.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification74.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification75.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification76.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification77.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification78.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification79.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification80.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification81.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification82.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification83.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification84.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification85.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification86.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification87.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification88.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification89.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification90.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification91.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification92.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification93.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification94.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification95.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification96.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification97.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification98.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification99.self, sender: sender, payload: DummyPayload())
-        notificationCenter.post(PerformanceTestNotification100.self, sender: sender, payload: DummyPayload())
-    }
-
-    static var notificationNames: [Notification.Name] = [
-        Notification.Name(rawValue: "PerformanceTestNotification1"),
-        Notification.Name(rawValue: "PerformanceTestNotification2"),
-        Notification.Name(rawValue: "PerformanceTestNotification3"),
-        Notification.Name(rawValue: "PerformanceTestNotification4"),
-        Notification.Name(rawValue: "PerformanceTestNotification5"),
-        Notification.Name(rawValue: "PerformanceTestNotification6"),
-        Notification.Name(rawValue: "PerformanceTestNotification7"),
-        Notification.Name(rawValue: "PerformanceTestNotification8"),
-        Notification.Name(rawValue: "PerformanceTestNotification9"),
-        Notification.Name(rawValue: "PerformanceTestNotification10"),
-        Notification.Name(rawValue: "PerformanceTestNotification11"),
-        Notification.Name(rawValue: "PerformanceTestNotification12"),
-        Notification.Name(rawValue: "PerformanceTestNotification13"),
-        Notification.Name(rawValue: "PerformanceTestNotification14"),
-        Notification.Name(rawValue: "PerformanceTestNotification15"),
-        Notification.Name(rawValue: "PerformanceTestNotification16"),
-        Notification.Name(rawValue: "PerformanceTestNotification17"),
-        Notification.Name(rawValue: "PerformanceTestNotification18"),
-        Notification.Name(rawValue: "PerformanceTestNotification19"),
-        Notification.Name(rawValue: "PerformanceTestNotification20"),
-        Notification.Name(rawValue: "PerformanceTestNotification21"),
-        Notification.Name(rawValue: "PerformanceTestNotification22"),
-        Notification.Name(rawValue: "PerformanceTestNotification23"),
-        Notification.Name(rawValue: "PerformanceTestNotification24"),
-        Notification.Name(rawValue: "PerformanceTestNotification25"),
-        Notification.Name(rawValue: "PerformanceTestNotification26"),
-        Notification.Name(rawValue: "PerformanceTestNotification27"),
-        Notification.Name(rawValue: "PerformanceTestNotification28"),
-        Notification.Name(rawValue: "PerformanceTestNotification29"),
-        Notification.Name(rawValue: "PerformanceTestNotification30"),
-        Notification.Name(rawValue: "PerformanceTestNotification31"),
-        Notification.Name(rawValue: "PerformanceTestNotification32"),
-        Notification.Name(rawValue: "PerformanceTestNotification33"),
-        Notification.Name(rawValue: "PerformanceTestNotification34"),
-        Notification.Name(rawValue: "PerformanceTestNotification35"),
-        Notification.Name(rawValue: "PerformanceTestNotification36"),
-        Notification.Name(rawValue: "PerformanceTestNotification37"),
-        Notification.Name(rawValue: "PerformanceTestNotification38"),
-        Notification.Name(rawValue: "PerformanceTestNotification39"),
-        Notification.Name(rawValue: "PerformanceTestNotification40"),
-        Notification.Name(rawValue: "PerformanceTestNotification41"),
-        Notification.Name(rawValue: "PerformanceTestNotification42"),
-        Notification.Name(rawValue: "PerformanceTestNotification43"),
-        Notification.Name(rawValue: "PerformanceTestNotification44"),
-        Notification.Name(rawValue: "PerformanceTestNotification45"),
-        Notification.Name(rawValue: "PerformanceTestNotification46"),
-        Notification.Name(rawValue: "PerformanceTestNotification47"),
-        Notification.Name(rawValue: "PerformanceTestNotification48"),
-        Notification.Name(rawValue: "PerformanceTestNotification49"),
-        Notification.Name(rawValue: "PerformanceTestNotification50"),
-        Notification.Name(rawValue: "PerformanceTestNotification51"),
-        Notification.Name(rawValue: "PerformanceTestNotification52"),
-        Notification.Name(rawValue: "PerformanceTestNotification53"),
-        Notification.Name(rawValue: "PerformanceTestNotification54"),
-        Notification.Name(rawValue: "PerformanceTestNotification55"),
-        Notification.Name(rawValue: "PerformanceTestNotification56"),
-        Notification.Name(rawValue: "PerformanceTestNotification57"),
-        Notification.Name(rawValue: "PerformanceTestNotification58"),
-        Notification.Name(rawValue: "PerformanceTestNotification59"),
-        Notification.Name(rawValue: "PerformanceTestNotification60"),
-        Notification.Name(rawValue: "PerformanceTestNotification61"),
-        Notification.Name(rawValue: "PerformanceTestNotification62"),
-        Notification.Name(rawValue: "PerformanceTestNotification63"),
-        Notification.Name(rawValue: "PerformanceTestNotification64"),
-        Notification.Name(rawValue: "PerformanceTestNotification65"),
-        Notification.Name(rawValue: "PerformanceTestNotification66"),
-        Notification.Name(rawValue: "PerformanceTestNotification67"),
-        Notification.Name(rawValue: "PerformanceTestNotification68"),
-        Notification.Name(rawValue: "PerformanceTestNotification69"),
-        Notification.Name(rawValue: "PerformanceTestNotification70"),
-        Notification.Name(rawValue: "PerformanceTestNotification71"),
-        Notification.Name(rawValue: "PerformanceTestNotification72"),
-        Notification.Name(rawValue: "PerformanceTestNotification73"),
-        Notification.Name(rawValue: "PerformanceTestNotification74"),
-        Notification.Name(rawValue: "PerformanceTestNotification75"),
-        Notification.Name(rawValue: "PerformanceTestNotification76"),
-        Notification.Name(rawValue: "PerformanceTestNotification77"),
-        Notification.Name(rawValue: "PerformanceTestNotification78"),
-        Notification.Name(rawValue: "PerformanceTestNotification79"),
-        Notification.Name(rawValue: "PerformanceTestNotification80"),
-        Notification.Name(rawValue: "PerformanceTestNotification81"),
-        Notification.Name(rawValue: "PerformanceTestNotification82"),
-        Notification.Name(rawValue: "PerformanceTestNotification83"),
-        Notification.Name(rawValue: "PerformanceTestNotification84"),
-        Notification.Name(rawValue: "PerformanceTestNotification85"),
-        Notification.Name(rawValue: "PerformanceTestNotification86"),
-        Notification.Name(rawValue: "PerformanceTestNotification87"),
-        Notification.Name(rawValue: "PerformanceTestNotification88"),
-        Notification.Name(rawValue: "PerformanceTestNotification89"),
-        Notification.Name(rawValue: "PerformanceTestNotification90"),
-        Notification.Name(rawValue: "PerformanceTestNotification91"),
-        Notification.Name(rawValue: "PerformanceTestNotification92"),
-        Notification.Name(rawValue: "PerformanceTestNotification93"),
-        Notification.Name(rawValue: "PerformanceTestNotification94"),
-        Notification.Name(rawValue: "PerformanceTestNotification95"),
-        Notification.Name(rawValue: "PerformanceTestNotification96"),
-        Notification.Name(rawValue: "PerformanceTestNotification97"),
-        Notification.Name(rawValue: "PerformanceTestNotification98"),
-        Notification.Name(rawValue: "PerformanceTestNotification99"),
-        Notification.Name(rawValue: "PerformanceTestNotification100"),
-    ]
-
-    enum PerformanceTestNotification1: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification2: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification3: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification4: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification5: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification6: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification7: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification8: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification9: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification10: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification11: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification12: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification13: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification14: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification15: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification16: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification17: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification18: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification19: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification20: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification21: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification22: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification23: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification24: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification25: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification26: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification27: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification28: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification29: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification30: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification31: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification32: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification33: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification34: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification35: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification36: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification37: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification38: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification39: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification40: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification41: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification42: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification43: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification44: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification45: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification46: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification47: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification48: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification49: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification50: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification51: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification52: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification53: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification54: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification55: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification56: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification57: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification58: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification59: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification60: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification61: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification62: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification63: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification64: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification65: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification66: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification67: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification68: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification69: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification70: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification71: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification72: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification73: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification74: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification75: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification76: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification77: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification78: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification79: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification80: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification81: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification82: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification83: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification84: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification85: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification86: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification87: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification88: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification89: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification90: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification91: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification92: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification93: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification94: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification95: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification96: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification97: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification98: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification99: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
-
-    enum PerformanceTestNotification100: TypedNotification {
-        typealias Sender = AnyObject
-        typealias Payload = DummyPayload
-    }
+	struct DummyPayload {
+		var name = "test"
+	}
+
+	static func subscribeToAll(observationContainer: inout [TypedNotificationObservation], notificationCenter: TypedNotificationCenter, sender: AnyObject?) {
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification1.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification2.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification3.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification4.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification5.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification6.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification7.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification8.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification9.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification10.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification11.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification12.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification13.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification14.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification15.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification16.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification17.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification18.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification19.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification20.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification21.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification22.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification23.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification24.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification25.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification26.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification27.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification28.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification29.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification30.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification31.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification32.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification33.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification34.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification35.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification36.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification37.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification38.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification39.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification40.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification41.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification42.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification43.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification44.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification45.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification46.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification47.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification48.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification49.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification50.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification51.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification52.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification53.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification54.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification55.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification56.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification57.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification58.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification59.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification60.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification61.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification62.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification63.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification64.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification65.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification66.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification67.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification68.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification69.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification70.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification71.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification72.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification73.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification74.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification75.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification76.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification77.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification78.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification79.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification80.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification81.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification82.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification83.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification84.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification85.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification86.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification87.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification88.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification89.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification90.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification91.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification92.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification93.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification94.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification95.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification96.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification97.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification98.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification99.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification100.self, object: sender) { _, _ in })
+	}
+
+	static func postToAll(sender: AnyObject, notificationCenter: TypedNotificationCenter) {
+		notificationCenter.post(PerformanceTestNotification1.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification2.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification3.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification4.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification5.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification6.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification7.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification8.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification9.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification10.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification11.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification12.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification13.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification14.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification15.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification16.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification17.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification18.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification19.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification20.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification21.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification22.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification23.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification24.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification25.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification26.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification27.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification28.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification29.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification30.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification31.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification32.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification33.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification34.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification35.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification36.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification37.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification38.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification39.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification40.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification41.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification42.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification43.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification44.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification45.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification46.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification47.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification48.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification49.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification50.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification51.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification52.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification53.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification54.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification55.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification56.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification57.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification58.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification59.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification60.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification61.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification62.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification63.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification64.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification65.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification66.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification67.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification68.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification69.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification70.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification71.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification72.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification73.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification74.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification75.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification76.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification77.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification78.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification79.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification80.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification81.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification82.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification83.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification84.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification85.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification86.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification87.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification88.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification89.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification90.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification91.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification92.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification93.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification94.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification95.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification96.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification97.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification98.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification99.self, sender: sender, payload: DummyPayload())
+		notificationCenter.post(PerformanceTestNotification100.self, sender: sender, payload: DummyPayload())
+	}
+
+	static var notificationNames: [Notification.Name] = [
+		Notification.Name(rawValue: "PerformanceTestNotification1"),
+		Notification.Name(rawValue: "PerformanceTestNotification2"),
+		Notification.Name(rawValue: "PerformanceTestNotification3"),
+		Notification.Name(rawValue: "PerformanceTestNotification4"),
+		Notification.Name(rawValue: "PerformanceTestNotification5"),
+		Notification.Name(rawValue: "PerformanceTestNotification6"),
+		Notification.Name(rawValue: "PerformanceTestNotification7"),
+		Notification.Name(rawValue: "PerformanceTestNotification8"),
+		Notification.Name(rawValue: "PerformanceTestNotification9"),
+		Notification.Name(rawValue: "PerformanceTestNotification10"),
+		Notification.Name(rawValue: "PerformanceTestNotification11"),
+		Notification.Name(rawValue: "PerformanceTestNotification12"),
+		Notification.Name(rawValue: "PerformanceTestNotification13"),
+		Notification.Name(rawValue: "PerformanceTestNotification14"),
+		Notification.Name(rawValue: "PerformanceTestNotification15"),
+		Notification.Name(rawValue: "PerformanceTestNotification16"),
+		Notification.Name(rawValue: "PerformanceTestNotification17"),
+		Notification.Name(rawValue: "PerformanceTestNotification18"),
+		Notification.Name(rawValue: "PerformanceTestNotification19"),
+		Notification.Name(rawValue: "PerformanceTestNotification20"),
+		Notification.Name(rawValue: "PerformanceTestNotification21"),
+		Notification.Name(rawValue: "PerformanceTestNotification22"),
+		Notification.Name(rawValue: "PerformanceTestNotification23"),
+		Notification.Name(rawValue: "PerformanceTestNotification24"),
+		Notification.Name(rawValue: "PerformanceTestNotification25"),
+		Notification.Name(rawValue: "PerformanceTestNotification26"),
+		Notification.Name(rawValue: "PerformanceTestNotification27"),
+		Notification.Name(rawValue: "PerformanceTestNotification28"),
+		Notification.Name(rawValue: "PerformanceTestNotification29"),
+		Notification.Name(rawValue: "PerformanceTestNotification30"),
+		Notification.Name(rawValue: "PerformanceTestNotification31"),
+		Notification.Name(rawValue: "PerformanceTestNotification32"),
+		Notification.Name(rawValue: "PerformanceTestNotification33"),
+		Notification.Name(rawValue: "PerformanceTestNotification34"),
+		Notification.Name(rawValue: "PerformanceTestNotification35"),
+		Notification.Name(rawValue: "PerformanceTestNotification36"),
+		Notification.Name(rawValue: "PerformanceTestNotification37"),
+		Notification.Name(rawValue: "PerformanceTestNotification38"),
+		Notification.Name(rawValue: "PerformanceTestNotification39"),
+		Notification.Name(rawValue: "PerformanceTestNotification40"),
+		Notification.Name(rawValue: "PerformanceTestNotification41"),
+		Notification.Name(rawValue: "PerformanceTestNotification42"),
+		Notification.Name(rawValue: "PerformanceTestNotification43"),
+		Notification.Name(rawValue: "PerformanceTestNotification44"),
+		Notification.Name(rawValue: "PerformanceTestNotification45"),
+		Notification.Name(rawValue: "PerformanceTestNotification46"),
+		Notification.Name(rawValue: "PerformanceTestNotification47"),
+		Notification.Name(rawValue: "PerformanceTestNotification48"),
+		Notification.Name(rawValue: "PerformanceTestNotification49"),
+		Notification.Name(rawValue: "PerformanceTestNotification50"),
+		Notification.Name(rawValue: "PerformanceTestNotification51"),
+		Notification.Name(rawValue: "PerformanceTestNotification52"),
+		Notification.Name(rawValue: "PerformanceTestNotification53"),
+		Notification.Name(rawValue: "PerformanceTestNotification54"),
+		Notification.Name(rawValue: "PerformanceTestNotification55"),
+		Notification.Name(rawValue: "PerformanceTestNotification56"),
+		Notification.Name(rawValue: "PerformanceTestNotification57"),
+		Notification.Name(rawValue: "PerformanceTestNotification58"),
+		Notification.Name(rawValue: "PerformanceTestNotification59"),
+		Notification.Name(rawValue: "PerformanceTestNotification60"),
+		Notification.Name(rawValue: "PerformanceTestNotification61"),
+		Notification.Name(rawValue: "PerformanceTestNotification62"),
+		Notification.Name(rawValue: "PerformanceTestNotification63"),
+		Notification.Name(rawValue: "PerformanceTestNotification64"),
+		Notification.Name(rawValue: "PerformanceTestNotification65"),
+		Notification.Name(rawValue: "PerformanceTestNotification66"),
+		Notification.Name(rawValue: "PerformanceTestNotification67"),
+		Notification.Name(rawValue: "PerformanceTestNotification68"),
+		Notification.Name(rawValue: "PerformanceTestNotification69"),
+		Notification.Name(rawValue: "PerformanceTestNotification70"),
+		Notification.Name(rawValue: "PerformanceTestNotification71"),
+		Notification.Name(rawValue: "PerformanceTestNotification72"),
+		Notification.Name(rawValue: "PerformanceTestNotification73"),
+		Notification.Name(rawValue: "PerformanceTestNotification74"),
+		Notification.Name(rawValue: "PerformanceTestNotification75"),
+		Notification.Name(rawValue: "PerformanceTestNotification76"),
+		Notification.Name(rawValue: "PerformanceTestNotification77"),
+		Notification.Name(rawValue: "PerformanceTestNotification78"),
+		Notification.Name(rawValue: "PerformanceTestNotification79"),
+		Notification.Name(rawValue: "PerformanceTestNotification80"),
+		Notification.Name(rawValue: "PerformanceTestNotification81"),
+		Notification.Name(rawValue: "PerformanceTestNotification82"),
+		Notification.Name(rawValue: "PerformanceTestNotification83"),
+		Notification.Name(rawValue: "PerformanceTestNotification84"),
+		Notification.Name(rawValue: "PerformanceTestNotification85"),
+		Notification.Name(rawValue: "PerformanceTestNotification86"),
+		Notification.Name(rawValue: "PerformanceTestNotification87"),
+		Notification.Name(rawValue: "PerformanceTestNotification88"),
+		Notification.Name(rawValue: "PerformanceTestNotification89"),
+		Notification.Name(rawValue: "PerformanceTestNotification90"),
+		Notification.Name(rawValue: "PerformanceTestNotification91"),
+		Notification.Name(rawValue: "PerformanceTestNotification92"),
+		Notification.Name(rawValue: "PerformanceTestNotification93"),
+		Notification.Name(rawValue: "PerformanceTestNotification94"),
+		Notification.Name(rawValue: "PerformanceTestNotification95"),
+		Notification.Name(rawValue: "PerformanceTestNotification96"),
+		Notification.Name(rawValue: "PerformanceTestNotification97"),
+		Notification.Name(rawValue: "PerformanceTestNotification98"),
+		Notification.Name(rawValue: "PerformanceTestNotification99"),
+		Notification.Name(rawValue: "PerformanceTestNotification100"),
+	]
+
+	enum PerformanceTestNotification1: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification2: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification3: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification4: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification5: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification6: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification7: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification8: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification9: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification10: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification11: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification12: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification13: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification14: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification15: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification16: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification17: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification18: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification19: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification20: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification21: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification22: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification23: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification24: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification25: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification26: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification27: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification28: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification29: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification30: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification31: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification32: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification33: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification34: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification35: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification36: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification37: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification38: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification39: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification40: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification41: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification42: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification43: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification44: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification45: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification46: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification47: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification48: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification49: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification50: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification51: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification52: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification53: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification54: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification55: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification56: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification57: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification58: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification59: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification60: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification61: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification62: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification63: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification64: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification65: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification66: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification67: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification68: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification69: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification70: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification71: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification72: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification73: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification74: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification75: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification76: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification77: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification78: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification79: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification80: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification81: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification82: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification83: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification84: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification85: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification86: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification87: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification88: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification89: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification90: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification91: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification92: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification93: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification94: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification95: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification96: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification97: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification98: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification99: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
+
+	enum PerformanceTestNotification100: TypedNotification {
+		typealias Sender = AnyObject
+		typealias Payload = DummyPayload
+	}
 
 }

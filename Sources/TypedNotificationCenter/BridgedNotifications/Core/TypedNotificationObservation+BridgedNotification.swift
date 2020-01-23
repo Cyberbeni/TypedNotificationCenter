@@ -27,31 +27,31 @@
 import Foundation
 
 final class _BridgedNotificationObservation<T: BridgedNotification>: TypedNotificationObservation {
-    private var observation: Any
+	private var observation: Any
 
-    init(sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
-        observation = NotificationCenter.default.addObserver(forName: T.notificationName, object: sender, queue: queue, using: { notification in
-            guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
-                TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
-                return
-            }
-            do {
-                let payload = try T.Payload(notification.userInfo ?? [:])
-                block(sender, payload)
-            } catch {
-                TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
-                return
-            }
+	init(sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
+		observation = NotificationCenter.default.addObserver(forName: T.notificationName, object: sender, queue: queue, using: { notification in
+			guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
+				TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
+				return
+			}
+			do {
+				let payload = try T.Payload(notification.userInfo ?? [:])
+				block(sender, payload)
+			} catch {
+				TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
+				return
+			}
         })
-    }
+	}
 
-    // MARK: - TypedNotificationObservation conformance
+	// MARK: - TypedNotificationObservation conformance
 
-    override func invalidate() {
-        _isValid = false
-        NotificationCenter.default.removeObserver(observation)
-    }
+	override func invalidate() {
+		_isValid = false
+		NotificationCenter.default.removeObserver(observation)
+	}
 
-    private var _isValid = true
-    override var isValid: Bool { _isValid }
+	private var _isValid = true
+	override var isValid: Bool { _isValid }
 }

@@ -28,11 +28,11 @@ import Foundation
 import XCTest
 
 extension XCTestCase {
-    func wait(_ seconds: Double) {
-        let expectation = self.expectation(description: "Wait")
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: seconds + 1)
-    }
+	func wait(_ seconds: Double) {
+		let expectation = self.expectation(description: "Wait")
+		DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+			expectation.fulfill()
+		}
+		wait(for: [expectation], timeout: seconds + 1)
+	}
 }
