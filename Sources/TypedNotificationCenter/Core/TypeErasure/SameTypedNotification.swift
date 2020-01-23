@@ -50,7 +50,8 @@ public final class SameTypedNotification<Sender, Payload> {
 }
 
 public extension TypedNotificationCenter {
-    func observe<Sender, Payload>( _ proxy: SameTypedNotification<Sender, Payload>, object: Sender?, queue: OperationQueue? = nil, block: @escaping (Sender, Payload) -> Void) -> TypedNotificationObservation {
+    func observe<Sender, Payload>(_ proxy: SameTypedNotification<Sender, Payload>, object: Sender?, queue: OperationQueue? = nil,
+                                  block: @escaping (Sender, Payload) -> Void) -> TypedNotificationObservation {
         proxy.observeBlock(self, object, queue, block)
     }
 

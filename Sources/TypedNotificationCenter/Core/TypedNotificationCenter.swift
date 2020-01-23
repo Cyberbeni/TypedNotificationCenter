@@ -35,7 +35,8 @@ public final class TypedNotificationCenter {
 
     // MARK: - Utility functions
 
-    private func filter<T: TypedNotification>(_: T.Type, sender: AnyObject) -> (nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?, objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?) {
+    private func filter<T: TypedNotification>(_: T.Type, sender: AnyObject)
+        -> (nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?, objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?) {
         let notificationIdentifier = NotificationIdentifier(T.self)
         let senderIdentifier = SenderIdentifier(sender)
 
@@ -95,8 +96,7 @@ public final class TypedNotificationCenter {
         nilObservations?.forEach { observation in
             guard let observation = observation.object as? _TypedNotificationObservation<T> else { return }
             if let queue = observation.queue,
-                let block = observation.block
-            {
+                let block = observation.block {
                 queue.addOperation {
                     block(sender, payload)
                 }
@@ -109,8 +109,7 @@ public final class TypedNotificationCenter {
                 observation.sender != nil
             else { return }
             if let queue = observation.queue,
-                let block = observation.block
-            {
+                let block = observation.block {
                 queue.addOperation {
                     block(sender, payload)
                 }
