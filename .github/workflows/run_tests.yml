@@ -17,7 +17,7 @@ jobs:
     - name: Test
       run: |
         set -o pipefail
-        swift test --enable-code-coverage | xcbeautify
+        swift test --enable-test-discovery --enable-code-coverage | xcbeautify
     - name: Codecov
       run: |
         llvm-cov export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
