@@ -849,7 +849,6 @@
 				75BFD91B227F553C0037271E /* Sources */,
 				75BFD91C227F553C0037271E /* Frameworks */,
 				75BFD91D227F553C0037271E /* Resources */,
-				75E86B8122B50AFA009F1DD2 /* Generate linux main */,
 			);
 			buildRules = (
 			);
@@ -1046,27 +1045,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		75E86B8122B50AFA009F1DD2 /* Generate linux main */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Generate linux main";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nswift test --generate-linuxmain\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5C8195E222A7D22100312EA9 /* Sources */ = {

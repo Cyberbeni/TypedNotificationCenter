@@ -1,8 +1,1 @@
-import XCTest
-
-import TypedNotificationCenterTests
-
-var tests = [XCTestCaseEntry]()
-tests += TypedNotificationCenterTests.__allTests()
-
-XCTMain(tests)
+fatalError("Use the `--enable-test-discovery` flag to run the tests")
