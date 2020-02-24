@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = 'TypedNotificationCenter'
-    s.version = '1.5.0'
+    s.version = 'INSERT VERSION HERE'
     s.license = 'MIT'
     s.summary = 'Swiftier version of Apple\'s NotificationCenter.'
     s.homepage = 'https://github.com/Cyberbeni/TypedNotificationCenter'
