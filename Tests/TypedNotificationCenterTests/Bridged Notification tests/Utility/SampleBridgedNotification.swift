@@ -25,7 +25,7 @@
 //
 
 import Foundation
-@testable import TypedNotificationCenter
+import TypedNotificationCenter
 
 class MySender: NSObject {}
 

@@ -25,7 +25,7 @@
 //
 
 import Foundation
-@testable import TypedNotificationCenter
+import TypedNotificationCenter
 import XCTest
 
 class BridgedNotificationApiTests: TestCase {
@@ -108,4 +108,18 @@ class BridgedNotificationApiTests: TestCase {
 		wait(for: [expectation], timeout: 1)
 		_ = observation
 	}
+    
+    func testGenericWrapper() {
+        var count = 0
+        let observation = subscribeToBridgedNotification(SampleBridgedNotification.self) { _, _ in
+            count += 1
+        }
+        NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: SampleBridgedNotification.Payload(samplePayloadProperty: "a").asDictionary())
+        XCTAssertEqual(count, 1, "Observer block should've been called once")
+        _ = observation
+    }
+    
+    func subscribeToBridgedNotification<T: TypedNotification>(_ type: T.Type, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+        return TypedNotificationCenter.default.observe(T.self, object: nil, block: block)
+    }
 }

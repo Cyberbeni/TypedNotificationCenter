@@ -30,4 +30,8 @@ public protocol TypedNotification {
 	typealias ObservationBlock = (Self.Sender, Self.Payload) -> Void
 	associatedtype Payload
 	associatedtype Sender: AnyObject
+    
+    static func eraseNotificationName() -> SameTypedNotification<Sender, Payload>
+    static func erasePayloadType() -> AnyPayloadTypedNotification<Sender>
+    static func eraseTypes() -> AnyTypedNotification
 }

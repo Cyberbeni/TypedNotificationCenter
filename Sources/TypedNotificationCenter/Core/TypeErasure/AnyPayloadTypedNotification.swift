@@ -34,15 +34,28 @@ public extension TypedNotification {
 	}
 }
 
+public extension BridgedNotification {
+    static func erasePayloadType() -> AnyPayloadTypedNotification<Sender> {
+        AnyPayloadTypedNotification<Sender>(self)
+    }
+}
+
 public final class AnyPayloadTypedNotification<Sender> {
 	fileprivate let observeBlock: (TypedNotificationCenter, Sender?, OperationQueue?, @escaping (Sender) -> Void) -> TypedNotificationObservation
 	init<T: TypedNotification>(_: T.Type) where T.Sender == Sender {
 		observeBlock = { notificationCenter, sender, queue, notificationBlock in
-			notificationCenter.observe(T.self, object: sender, queue: queue) { sender, _ in
+			notificationCenter._observe(T.self, object: sender, queue: queue) { sender, _ in
 				notificationBlock(sender)
 			}
 		}
 	}
+    init<T: BridgedNotification>(_: T.Type) where T.Sender == Sender {
+        observeBlock = { notificationCenter, sender, queue, notificationBlock in
+            notificationCenter._observe(T.self, object: sender, queue: queue) { sender, _ in
+                notificationBlock(sender)
+            }
+        }
+    }
 }
 
 public extension TypedNotificationCenter {
