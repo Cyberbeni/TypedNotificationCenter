@@ -25,7 +25,7 @@
 //
 
 import Foundation
-@testable import TypedNotificationCenter
+import TypedNotificationCenter
 
 enum SampleNotification: TypedNotification {
 	struct Payload {

@@ -62,15 +62,7 @@ public final class TypedNotificationCenter {
 		}
 	}
 
-	// MARK: - Public interface
-
-	public init(queueName: String = UUID().uuidString, queueQos: DispatchQoS = .userInitiated) {
-		observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", qos: queueQos, attributes: [.concurrent], autoreleaseFrequency: .inherit, target: nil)
-	}
-
-	public static let `default` = TypedNotificationCenter(queueName: "default")
-
-	public func observe<T: TypedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+	func _observe<T: TypedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
 		let object = T.Sender.self is NSNull.Type ? nil : object
 
 		let observation = _TypedNotificationObservation<T>(notificationCenter: self, sender: object, queue: queue, block: block)
@@ -87,7 +79,7 @@ public final class TypedNotificationCenter {
 		return observation
 	}
 
-	public func post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
+	func _post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
 		var nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
 		var objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
 		observerQueue.sync {
@@ -116,6 +108,32 @@ public final class TypedNotificationCenter {
 			} else {
 				observation.block?(sender, payload)
 			}
+		}
+	}
+
+	// MARK: - Public interface
+
+	public init(queueName: String = UUID().uuidString, queueQos: DispatchQoS = .userInitiated) {
+		observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", qos: queueQos, attributes: [.concurrent], autoreleaseFrequency: .inherit, target: nil)
+	}
+
+	public static let `default` = TypedNotificationCenter(queueName: "default")
+
+	public func observe<T: TypedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+		if T.Payload.self is DictionaryRepresentable.Type {
+			let proxy = T.eraseNotificationName()
+			return observe(proxy, object: object, queue: queue, block: block)
+		} else {
+			return _observe(T.self, object: object, queue: queue, block: block)
+		}
+	}
+
+	public func post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
+		if T.Payload.self is DictionaryRepresentable.Type {
+			let proxy = T.eraseNotificationName()
+			post(proxy, sender: sender, payload: payload)
+		} else {
+			_post(T.self, sender: sender, payload: payload)
 		}
 	}
 }

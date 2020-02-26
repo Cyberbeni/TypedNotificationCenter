@@ -24,7 +24,7 @@
 // THE SOFTWARE.
 //
 
-@testable import TypedNotificationCenter
+import TypedNotificationCenter
 import XCTest
 
 class ApiTests: TestCase {
@@ -213,12 +213,5 @@ class ApiTests: TestCase {
 		XCTAssertNotEqual(observation, otherObservation, "The two observations shouldn't be equal")
 		XCTAssertNil(observations.remove(otherObservation), "Observations with same parameters shouldn't be equal")
 		XCTAssertEqual(observations.count, 1, "Observation set should contain 1 element")
-	}
-
-	func testInvalidBaseObservation() {
-		observation = TypedNotificationObservation()
-		XCTAssertFalse(observation!.isValid, "Base class' init should produce invalid observation")
-		observation?.invalidate()
-		XCTAssertFalse(observation!.isValid, "Observation should stay invalid after calling invalidate")
 	}
 }

@@ -24,7 +24,7 @@
 // THE SOFTWARE.
 //
 
-@testable import TypedNotificationCenter
+import TypedNotificationCenter
 import XCTest
 
 class AsyncApiTests: TestCase {

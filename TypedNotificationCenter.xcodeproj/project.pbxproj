@@ -98,6 +98,7 @@
 		75EA5FA322A1381B00462F7F /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA5FA122A1381B00462F7F /* WeakBox.swift */; };
 		75EA5FA422A1381B00462F7F /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA5FA122A1381B00462F7F /* WeakBox.swift */; };
 		75EA5FA522A1381B00462F7F /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA5FA122A1381B00462F7F /* WeakBox.swift */; };
+		75FD8B0D240712700064D6C7 /* InternalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FD8B0C240712700064D6C7 /* InternalTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -280,6 +281,7 @@
 		75D42F1E227F4EFE00ABC500 /* SampleNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleNotification.swift; sourceTree = "<group>"; };
 		75E66CB222BD5EA5002A9EBF /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
 		75EA5FA122A1381B00462F7F /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
+		75FD8B0C240712700064D6C7 /* InternalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -605,6 +607,7 @@
 		75BFD920227F553D0037271E /* TypedNotificationCenterTests */ = {
 			isa = PBXGroup;
 			children = (
+				75FD8B0B240712410064D6C7 /* Internal tests */,
 				5C03EC7322A8F88600C9BCFD /* Bridged Notification tests */,
 				5C03EC7222A8F86F00C9BCFD /* Core tests */,
 				5C03EC7122A8F86300C9BCFD /* Utility */,
@@ -625,6 +628,14 @@
 				75D42F1A227F4EE100ABC500 /* Info.plist */,
 			);
 			path = "TypedNotificationCenter Test Host TV";
+			sourceTree = "<group>";
+		};
+		75FD8B0B240712410064D6C7 /* Internal tests */ = {
+			isa = PBXGroup;
+			children = (
+				75FD8B0C240712700064D6C7 /* InternalTests.swift */,
+			);
+			path = "Internal tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1178,6 +1189,7 @@
 				5C8195EE22A7D69000312EA9 /* PerformanceTestNotifications.swift in Sources */,
 				5C03EC7922A8FDDD00C9BCFD /* SampleBridgedNotification.swift in Sources */,
 				5C03EC7522A8F8F400C9BCFD /* BridgedNotificationApiTests.swift in Sources */,
+				75FD8B0D240712700064D6C7 /* InternalTests.swift in Sources */,
 				75896018227F587D003F3EDD /* SampleNotification.swift in Sources */,
 				7589601A227F5C41003F3EDD /* AsyncApiTests.swift in Sources */,
 				75BFD922227F553D0037271E /* ApiTests.swift in Sources */,
