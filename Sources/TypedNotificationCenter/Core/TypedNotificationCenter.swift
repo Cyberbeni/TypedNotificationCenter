@@ -120,12 +120,20 @@ public final class TypedNotificationCenter {
 	public static let `default` = TypedNotificationCenter(queueName: "default")
 
 	public func observe<T: TypedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
-		let proxy = T.eraseNotificationName()
-		return observe(proxy, object: object, queue: queue, block: block)
+		if T.Payload.self is DictionaryRepresentable.Type {
+			let proxy = T.eraseNotificationName()
+			return observe(proxy, object: object, queue: queue, block: block)
+		} else {
+			return _observe(T.self, object: object, queue: queue, block: block)
+		}
 	}
 
 	public func post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
-		let proxy = T.eraseNotificationName()
-		post(proxy, sender: sender, payload: payload)
+		if T.Payload.self is DictionaryRepresentable.Type {
+			let proxy = T.eraseNotificationName()
+			post(proxy, sender: sender, payload: payload)
+		} else {
+			_post(T.self, sender: sender, payload: payload)
+		}
 	}
 }
