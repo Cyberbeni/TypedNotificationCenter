@@ -29,11 +29,11 @@ import Foundation
 public struct NotificationDecodingError: LocalizedError {
 	public var type: Any.Type
 	public var source: [AnyHashable: Any]
-    
-    public init(type: Any.Type, source: [AnyHashable: Any]) {
-        self.type = type
-        self.source = source
-    }
+
+	public init(type: Any.Type, source: [AnyHashable: Any]) {
+		self.type = type
+		self.source = source
+	}
 
 	public var errorDescription: String? {
 		String(describing: self)

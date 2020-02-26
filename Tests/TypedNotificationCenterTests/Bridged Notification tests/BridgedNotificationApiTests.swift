@@ -108,18 +108,32 @@ class BridgedNotificationApiTests: TestCase {
 		wait(for: [expectation], timeout: 1)
 		_ = observation
 	}
-    
-    func testGenericWrapper() {
-        var count = 0
-        let observation = subscribeToBridgedNotification(SampleBridgedNotification.self) { _, _ in
-            count += 1
-        }
-        NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: SampleBridgedNotification.Payload(samplePayloadProperty: "a").asDictionary())
-        XCTAssertEqual(count, 1, "Observer block should've been called once")
-        _ = observation
-    }
-    
-    func subscribeToBridgedNotification<T: TypedNotification>(_ type: T.Type, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
-        return TypedNotificationCenter.default.observe(T.self, object: nil, block: block)
-    }
+
+	func testGenericWrapperObserving() {
+		var count = 0
+		let observation = subscribeToBridgedNotification(SampleBridgedNotification.self) { _, _ in
+			count += 1
+		}
+		NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: SampleBridgedNotification.Payload(samplePayloadProperty: "a").asDictionary())
+		XCTAssertEqual(count, 1, "Observer block should've been called once")
+		_ = observation
+	}
+
+	func subscribeToBridgedNotification<T: TypedNotification>(_: T.Type, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+		TypedNotificationCenter.default.observe(T.self, object: nil, block: block)
+	}
+
+	func testGenericWrapperPosting() {
+		var count = 0
+		let observation = NotificationCenter.default.addObserver(forName: SampleBridgedNotification.notificationName, object: nil, queue: nil) { _ in
+			count += 1
+		}
+		postToBridgedNotification(SampleBridgedNotification.self, sender: sender, payload: SampleBridgedNotification.Payload(samplePayloadProperty: "a"))
+		XCTAssertEqual(count, 1, "Observer block should've been called once")
+		NotificationCenter.default.removeObserver(observation)
+	}
+
+	func postToBridgedNotification<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
+		TypedNotificationCenter.default.post(T.self, sender: sender, payload: payload)
+	}
 }

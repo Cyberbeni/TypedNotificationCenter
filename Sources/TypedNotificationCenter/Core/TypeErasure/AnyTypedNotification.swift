@@ -35,9 +35,9 @@ public extension TypedNotification {
 }
 
 public extension BridgedNotification {
-    static func eraseTypes() -> AnyTypedNotification {
-        AnyTypedNotification(self)
-    }
+	static func eraseTypes() -> AnyTypedNotification {
+		AnyTypedNotification(self)
+	}
 }
 
 public final class AnyTypedNotification {
@@ -49,13 +49,14 @@ public final class AnyTypedNotification {
 			}
 		}
 	}
-    init<T: BridgedNotification>(_: T.Type) {
-        observeBlock = { notificationCenter, queue, notificationBlock in
-            notificationCenter._observe(T.self, object: nil, queue: queue) { _, _ in
-                notificationBlock()
-            }
-        }
-    }
+
+	init<T: BridgedNotification>(_: T.Type) {
+		observeBlock = { notificationCenter, queue, notificationBlock in
+			notificationCenter._observe(T.self, object: nil, queue: queue) { _, _ in
+				notificationBlock()
+			}
+		}
+	}
 }
 
 public extension TypedNotificationCenter {
