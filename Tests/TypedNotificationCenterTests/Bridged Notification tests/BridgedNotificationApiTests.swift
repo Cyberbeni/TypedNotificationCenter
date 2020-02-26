@@ -111,16 +111,21 @@ class BridgedNotificationApiTests: TestCase {
 
 	func testGenericWrapperObserving() {
 		var count = 0
-		let observation = subscribeToBridgedNotification(SampleBridgedNotification.self) { _, _ in
+		let observations = subscribeToBridgedNotification(SampleBridgedNotification.self) {
 			count += 1
 		}
 		NotificationCenter.default.post(name: SampleBridgedNotification.notificationName, object: sender, userInfo: SampleBridgedNotification.Payload(samplePayloadProperty: "a").asDictionary())
-		XCTAssertEqual(count, 1, "Observer block should've been called once")
-		_ = observation
+		XCTAssertEqual(count, observations.count, "Observer block should've been called as many times as the notification was observed")
+		_ = observations
 	}
 
-	func subscribeToBridgedNotification<T: TypedNotification>(_: T.Type, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
-		TypedNotificationCenter.default.observe(T.self, object: nil, block: block)
+	func subscribeToBridgedNotification<T: TypedNotification>(_: T.Type, block: @escaping () -> Void) -> [TypedNotificationObservation] {
+		var observations = [TypedNotificationObservation]()
+		observations.append(TypedNotificationCenter.default.observe(T.self, object: nil, block: { _, _ in block() }))
+		observations.append(TypedNotificationCenter.default.observe(T.eraseNotificationName(), object: nil, block: { _, _ in block() }))
+		observations.append(TypedNotificationCenter.default.observe(T.erasePayloadType(), object: nil, block: { _ in block() }))
+		observations.append(TypedNotificationCenter.default.observe(T.eraseTypes(), block: { block() }))
+		return observations
 	}
 
 	func testGenericWrapperPosting() {
