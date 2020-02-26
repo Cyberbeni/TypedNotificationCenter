@@ -41,7 +41,7 @@ var output = """
 // swiftformat:disable all
 
 import Foundation
-@testable import TypedNotificationCenter
+import TypedNotificationCenter
 
 enum TestData {
 
