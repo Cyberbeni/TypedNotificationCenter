@@ -20,6 +20,7 @@ jobs:
         set -o pipefail
         swift test --enable-test-discovery --enable-code-coverage | xcbeautify
     - name: Codecov
+      shell: bash
       run: |
         llvm-cov export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
         bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux'
