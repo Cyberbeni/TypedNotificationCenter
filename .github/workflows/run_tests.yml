@@ -15,8 +15,8 @@ jobs:
       with:
         url: https://github.com/thii/xcbeautify
     - name: Test
+      shell: bash
       run: |
-        /bin/bash --login
         set -o pipefail
         swift test --enable-test-discovery --enable-code-coverage | xcbeautify
     - name: Codecov
