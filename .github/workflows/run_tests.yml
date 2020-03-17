@@ -23,6 +23,7 @@ jobs:
       shell: bash
       run: |
         llvm-cov export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
+        apt update
         apt install curl
         bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux'
       env:
