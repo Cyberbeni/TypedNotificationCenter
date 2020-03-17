@@ -5,22 +5,26 @@ on: [push, pull_request]
 jobs:
   test-linux:
     runs-on: ubuntu-latest
+    container:
+      image: swift:latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Install Swift
-      uses: YOCKOW/Action-setup-swift@master
     - name: Install xcbeautify
       uses: Cyberbeni/install-swift-tool@v1
       with:
         url: https://github.com/thii/xcbeautify
     - name: Test
+      shell: bash
       run: |
         set -o pipefail
         swift test --enable-test-discovery --enable-code-coverage | xcbeautify
     - name: Codecov
+      shell: bash
       run: |
         llvm-cov export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
+        apt update
+        apt install curl
         bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

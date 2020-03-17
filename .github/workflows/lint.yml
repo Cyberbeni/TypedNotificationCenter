@@ -5,11 +5,11 @@ on: pull_request
 jobs:
   swiftformat-lint:
     runs-on: ubuntu-latest
+    container:
+      image: swift:latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Install Swift
-      uses: YOCKOW/Action-setup-swift@master
     - name: Install SwiftFormat
       uses: Cyberbeni/install-swift-tool@v1
       with:
