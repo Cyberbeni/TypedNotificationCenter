@@ -6,7 +6,7 @@ jobs:
   swiftformat-lint:
     runs-on: ubuntu-latest
     container:
-      image: swift:latest-slim
+      image: swift:slim
     steps:
     - name: Checkout
       uses: actions/checkout@v2
