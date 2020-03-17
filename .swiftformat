@@ -1,3 +1,5 @@
+--swiftversion 5.1.5
+
 --exclude Tests/TypedNotificationCenterTests/Core\ tests/Utility/PerformanceTestNotifications.swift
 
 --maxwidth 200
