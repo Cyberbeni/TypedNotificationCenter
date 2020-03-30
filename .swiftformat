@@ -1,4 +1,4 @@
---swiftversion 5.1.5
+--swiftversion 5.2
 
 --exclude Tests/TypedNotificationCenterTests/Core\ tests/Utility/PerformanceTestNotifications.swift
 
