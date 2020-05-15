@@ -11,7 +11,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Install xcbeautify
-      uses: Cyberbeni/install-swift-tool@v1
+      uses: Cyberbeni/install-swift-tool@v2
       with:
         url: https://github.com/thii/xcbeautify
     - name: Test
