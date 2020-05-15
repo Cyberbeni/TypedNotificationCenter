@@ -11,9 +11,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Install xcbeautify
-      uses: Cyberbeni/install-swift-tool@v1
+      uses: Cyberbeni/install-swift-tool@cache-build-2
       with:
         url: https://github.com/thii/xcbeautify
+        save-to-cache: true
+        restore-from-cache: true
     - name: Test
       shell: bash
       run: |
