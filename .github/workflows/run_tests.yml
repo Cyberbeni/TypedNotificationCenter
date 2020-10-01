@@ -5,8 +5,6 @@ on: [push, pull_request]
 jobs:
   test-linux:
     runs-on: ubuntu-latest
-    container:
-      image: swift:latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
