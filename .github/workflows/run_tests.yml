@@ -35,11 +35,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Select latest Xcode
-      run: |
-        ls -l "/Applications" | grep "Xcode"
-        sudo xcode-select --switch "$(find /Applications -mindepth 1 -maxdepth 1 ! -type l | grep "Xcode_[\.0-9]*app" | sort -V | tail -1)/Contents/Developer"
-        xcodebuild -version
     - name: Test
       run: fastlane scan --scheme "TypedNotificationCenter ${{ matrix.os }}" --disable_slide_to_type false
     - name: Codecov
@@ -55,11 +50,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Select latest Xcode
-      run: |
-        ls -l "/Applications" | grep "Xcode"
-        sudo xcode-select --switch "$(find /Applications -mindepth 1 -maxdepth 1 ! -type l | grep "Xcode_[\.0-9]*app" | sort -V | tail -1)/Contents/Developer"
-        xcodebuild -version
     - name: Test
       run: fastlane scan --scheme "TNC UI Test Host ${{ matrix.os }}"
     - name: Codecov
