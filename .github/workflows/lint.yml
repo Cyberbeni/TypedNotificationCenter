@@ -5,8 +5,6 @@ on: pull_request
 jobs:
   swiftformat-lint:
     runs-on: ubuntu-latest
-    container:
-      image: swift:latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2

@@ -44,7 +44,7 @@ class ApiTests: TestCase {
 	func testNotificationWithoutObject() {
 		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { _, _ in
 			self.count += 1
-        })
+		})
 
 		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
@@ -56,7 +56,7 @@ class ApiTests: TestCase {
 
 		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: otherObject, block: { _, _ in
 			self.count += 1
-        })
+		})
 
 		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
@@ -66,7 +66,7 @@ class ApiTests: TestCase {
 	func testNotificationWithSameObject() {
 		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { _, _ in
 			self.count += 1
-        })
+		})
 
 		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
@@ -76,7 +76,7 @@ class ApiTests: TestCase {
 	func testInvalidateObserver() {
 		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { _, _ in
 			self.count += 1
-        })
+		})
 
 		observation?.invalidate()
 
@@ -90,7 +90,7 @@ class ApiTests: TestCase {
 	func testDeallocateObserver() {
 		_ = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { _, _ in
 			self.count += 1
-        })
+		})
 
 		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
@@ -100,7 +100,7 @@ class ApiTests: TestCase {
 	func testValidityRemoved() {
 		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, block: { _, _ in
 			self.count += 1
-        })
+		})
 
 		XCTAssertEqual(observation!.isValid, true, "Observer should be valid after adding it")
 
@@ -113,7 +113,7 @@ class ApiTests: TestCase {
 		var notificationCenter: TypedNotificationCenter? = TypedNotificationCenter()
 		observation = notificationCenter?.observe(SampleNotification.self, object: nil, block: { _, _ in
 			self.count += 1
-        })
+		})
 
 		XCTAssertEqual(observation!.isValid, true, "Observer should be valid after adding it")
 
@@ -128,7 +128,7 @@ class ApiTests: TestCase {
 	func testValiditySenderDeallocated() {
 		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, block: { _, _ in
 			self.count += 1
-        })
+		})
 
 		XCTAssertEqual(observation!.isValid, true, "Observer should be valid after adding it")
 
@@ -186,7 +186,7 @@ class ApiTests: TestCase {
 		let notificationProxy = SampleNotification.eraseTypes()
 		observation = TypedNotificationCenter.default.observe(notificationProxy, block: {
 			self.count += 1
-        })
+		})
 
 		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 		XCTAssertEqual(count, 1, "Observer block should've been called once")
