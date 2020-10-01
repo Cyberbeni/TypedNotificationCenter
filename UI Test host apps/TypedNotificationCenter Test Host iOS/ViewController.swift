@@ -65,7 +65,7 @@ class ViewController: UIViewController {
 			userInfo.removeValue(forKey: UIResponder.keyboardFrameEndUserInfoKey)
 			_ = try? UIResponder.KeyboardNotificationPayload(userInfo)
 			self?.addToReceivedNotifications(type.self)
-        }))
+		}))
 	}
 
 	private func addToReceivedNotifications<T: BridgedNotification>(_ type: T.Type) {

@@ -42,7 +42,7 @@ final class _BridgedNotificationObservation<T: BridgedNotification>: TypedNotifi
 				TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
 				return
 			}
-        })
+		})
 	}
 
 	// MARK: - TypedNotificationObservation conformance
