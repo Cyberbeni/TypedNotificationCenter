@@ -20,9 +20,9 @@ jobs:
     - name: Codecov
       shell: bash
       run: |
-        apt update
-        apt install llvm
-        apt install curl
+        sudo apt update
+        sudo apt install llvm
+        sudo apt install curl
         llvm-cov export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
         bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux' -y 'codecov.yml'
       env:
