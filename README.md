@@ -1,3 +1,5 @@
+Testing workflows
+
 # TypedNotificationCenter
 
 [![Build Status](https://github.com/Cyberbeni/TypedNotificationCenter/workflows/Test%20latest%20OSs/badge.svg)](https://github.com/Cyberbeni/TypedNotificationCenter/actions) [![Code coverage](https://codecov.io/github/Cyberbeni/TypedNotificationCenter/coverage.svg?branch=master)](https://codecov.io/github/Cyberbeni/TypedNotificationCenter?branch=master) [![codebeat badge](https://codebeat.co/badges/a94b1565-4033-4efb-b60b-76ba952ff4ad)](https://codebeat.co/projects/github-com-cyberbeni-typednotificationcenter-master) [![GitHub release](https://img.shields.io/github/release/Cyberbeni/TypedNotificationCenter.svg)](https://GitHub.com/Cyberbeni/TypedNotificationCenter/releases/)
