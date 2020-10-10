@@ -1,0 +1,22 @@
+
+name: "Manual Format"
+
+on: workflow_dispatch
+
+jobs:
+  swiftformat:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install SwiftFormat
+      uses: Cyberbeni/install-swift-tool@v2
+      with:
+        url: https://github.com/nicklockwood/SwiftFormat
+    - name: Format
+      run: swiftformat .
+    - name: Commit
+      uses: EndBug/add-and-commit@v5
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
