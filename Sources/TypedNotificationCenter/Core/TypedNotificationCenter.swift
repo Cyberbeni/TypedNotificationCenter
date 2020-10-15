@@ -89,7 +89,7 @@ public final class TypedNotificationCenter {
 		nilObservations?.forEach { observation in
 			guard let observation = observation.object as? _TypedNotificationObservation<T> else { return }
 			if let queue = observation.queue,
-				let block = observation.block
+			   let block = observation.block
 			{
 				queue.addOperation {
 					block(sender, payload)
@@ -100,10 +100,10 @@ public final class TypedNotificationCenter {
 		}
 		objectObservations?.forEach { observation in
 			guard let observation = observation.object as? _TypedNotificationObservation<T>,
-				observation.sender != nil
+			      observation.sender != nil
 			else { return }
 			if let queue = observation.queue,
-				let block = observation.block
+			   let block = observation.block
 			{
 				queue.addOperation {
 					block(sender, payload)

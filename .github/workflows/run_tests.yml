@@ -12,6 +12,7 @@ jobs:
       uses: Cyberbeni/install-swift-tool@v2
       with:
         url: https://github.com/thii/xcbeautify
+        version: '*'
     - name: Test
       shell: bash
       run: |
@@ -20,10 +21,8 @@ jobs:
     - name: Codecov
       shell: bash
       run: |
-        sudo apt update
-        sudo apt install llvm-10
-        llvm-cov-10 export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
-        bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux' -y 'codecov.yml'
+        llvm-cov-9 export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
+        bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       

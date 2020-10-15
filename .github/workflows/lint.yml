@@ -1,9 +1,9 @@
 name: Lint
 
-on: 
+on:
   pull_request:
   push:
-    branches: master # Provide cached tool for other branches: https://docs.github.com/en/free-pro-team@latest/actions/guides/caching-dependencies-to-speed-up-workflows#restrictions-for-accessing-a-cache
+    branches: master
 
 jobs:
   swiftformat-lint:
