@@ -12,6 +12,7 @@ jobs:
       uses: Cyberbeni/install-swift-tool@v2
       with:
         url: https://github.com/thii/xcbeautify
+        version: '*'
     - name: Test
       shell: bash
       run: |
