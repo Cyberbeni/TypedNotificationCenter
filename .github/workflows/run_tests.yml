@@ -21,7 +21,7 @@ jobs:
       shell: bash
       run: |
         llvm-cov-9 export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
-        bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux' -y 'codecov.yml'
+        bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
