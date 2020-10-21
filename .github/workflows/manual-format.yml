@@ -1,12 +1,10 @@
-name: Lint
 
-on:
-  pull_request:
-  push:
-    branches: master
+name: "Manual Format"
+
+on: workflow_dispatch
 
 jobs:
-  swiftformat-lint:
+  swiftformat:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -15,5 +13,10 @@ jobs:
       uses: Cyberbeni/install-swift-tool@v2
       with:
         url: https://github.com/nicklockwood/SwiftFormat
-    - name: Lint
-      run: swiftformat --lint .
+    - name: Format
+      run: swiftformat .
+    - name: Commit
+      uses: EndBug/add-and-commit@v5
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        

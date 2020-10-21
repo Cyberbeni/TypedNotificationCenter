@@ -56,7 +56,7 @@ class PerformanceTestsSubscribing: TestCase {
 	func testPerformance_nilSenders_own() {
 		measure {
 			let notificationCenter = TypedNotificationCenter()
-			for _ in 1 ... 500 {
+			for _ in 1 ... 300 {
 				TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
@@ -66,7 +66,7 @@ class PerformanceTestsSubscribing: TestCase {
 	func testPerformance_nilSenders_apple() {
 		measure {
 			let aNotificationCenter = NotificationCenter()
-			for _ in 1 ... 500 {
+			for _ in 1 ... 300 {
 				for notificationName in TestData.notificationNames {
 					aObservations.append(aNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
 				}
@@ -79,7 +79,7 @@ class PerformanceTestsSubscribing: TestCase {
 		measure {
 			let notificationCenter = TypedNotificationCenter()
 			let otherSender = NSObject()
-			for _ in 1 ... 5 {
+			for _ in 1 ... 3 {
 				TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
 				TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
 				for _ in 1 ... 98 {
@@ -94,7 +94,7 @@ class PerformanceTestsSubscribing: TestCase {
 		measure {
 			let aNotificationCenter = NotificationCenter()
 			let otherSender = NSObject()
-			for _ in 1 ... 5 {
+			for _ in 1 ... 3 {
 				for notificationName in TestData.notificationNames {
 					aObservations.append(aNotificationCenter.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
 					aObservations.append(aNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
@@ -113,7 +113,7 @@ class PerformanceTestsSubscribing: TestCase {
 		measure {
 			let notificationCenter = TypedNotificationCenter()
 			var otherSenders = [NSObject]()
-			for _ in 1 ... 5 {
+			for _ in 1 ... 3 {
 				for _ in 1 ... 99 {
 					otherSenders.append(NSObject())
 				}
@@ -130,7 +130,7 @@ class PerformanceTestsSubscribing: TestCase {
 		measure {
 			let aNotificationCenter = NotificationCenter()
 			var otherSenders = [NSObject]()
-			for _ in 1 ... 5 {
+			for _ in 1 ... 3 {
 				for _ in 1 ... 99 {
 					otherSenders.append(NSObject())
 				}

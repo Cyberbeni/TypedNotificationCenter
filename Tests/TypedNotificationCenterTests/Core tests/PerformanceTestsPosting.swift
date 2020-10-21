@@ -65,7 +65,7 @@ class PerformanceTestsPosting: TestCase {
 		}
 		notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
 		measure {
-			for _ in 1 ... 500 {
+			for _ in 1 ... 250 {
 				TestData.postToAll(sender: sender, notificationCenter: notificationCenter)
 			}
 		}
@@ -83,7 +83,7 @@ class PerformanceTestsPosting: TestCase {
 		measure {
 			for queue in queues {
 				queue.async {
-					for _ in 1 ... 100 {
+					for _ in 1 ... 50 {
 						TestData.postToAll(sender: self.sender, notificationCenter: self.notificationCenter)
 					}
 				}
@@ -102,7 +102,7 @@ class PerformanceTestsPosting: TestCase {
 		}
 		aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
 		measure {
-			for _ in 1 ... 500 {
+			for _ in 1 ... 250 {
 				for notificationName in TestData.notificationNames {
 					aNotificationCenter.post(name: notificationName, object: sender, userInfo: [:])
 				}
@@ -119,7 +119,7 @@ class PerformanceTestsPosting: TestCase {
 		}
 		notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
 		measure {
-			for _ in 1 ... 500 {
+			for _ in 1 ... 250 {
 				TestData.postToAll(sender: sender, notificationCenter: notificationCenter)
 			}
 		}
@@ -138,7 +138,7 @@ class PerformanceTestsPosting: TestCase {
 		}
 		aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
 		measure {
-			for _ in 1 ... 500 {
+			for _ in 1 ... 250 {
 				for notificationName in TestData.notificationNames {
 					aNotificationCenter.post(name: notificationName, object: sender, userInfo: [:])
 				}
@@ -157,7 +157,7 @@ class PerformanceTestsPosting: TestCase {
 		}
 		notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
 		measure {
-			for _ in 1 ... 1000 {
+			for _ in 1 ... 500 {
 				TestData.postToAll(sender: sender, notificationCenter: notificationCenter)
 			}
 		}
@@ -176,7 +176,7 @@ class PerformanceTestsPosting: TestCase {
 		}
 		aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
 		measure {
-			for _ in 1 ... 1000 {
+			for _ in 1 ... 500 {
 				for notificationName in TestData.notificationNames {
 					aNotificationCenter.post(name: notificationName, object: sender, userInfo: [:])
 				}

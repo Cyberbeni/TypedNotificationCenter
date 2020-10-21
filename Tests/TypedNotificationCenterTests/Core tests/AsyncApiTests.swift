@@ -50,7 +50,7 @@ class AsyncApiTests: TestCase {
 		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, queue: queue, block: { _, _ in
 			self.count += 1
 			expectation.fulfill()
-        })
+		})
 
 		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
@@ -72,7 +72,7 @@ class AsyncApiTests: TestCase {
 		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: queue, block: { _, _ in
 			self.count += 1
 			expectation.fulfill()
-        })
+		})
 
 		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 
@@ -96,7 +96,7 @@ class AsyncApiTests: TestCase {
 			lock.lock()
 			self.count += 1
 			lock.unlock()
-        })
+		})
 
 		queue1.async {
 			for _ in 1 ... 1000 {

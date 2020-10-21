@@ -8,19 +8,20 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Install Swift
-      uses: YOCKOW/Action-setup-swift@master
     - name: Install xcbeautify
-      uses: Cyberbeni/install-swift-tool@v1
+      uses: Cyberbeni/install-swift-tool@v2
       with:
         url: https://github.com/thii/xcbeautify
+        version: '*'
     - name: Test
+      shell: bash
       run: |
         set -o pipefail
         swift test --enable-test-discovery --enable-code-coverage | xcbeautify
     - name: Codecov
+      shell: bash
       run: |
-        llvm-cov export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
+        llvm-cov-9 export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
         bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
@@ -33,11 +34,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Select latest Xcode
-      run: |
-        ls -l "/Applications" | grep "Xcode"
-        sudo xcode-select --switch "$(find /Applications -mindepth 1 -maxdepth 1 ! -type l | grep "Xcode_[\.0-9]*app" | sort -V | tail -1)/Contents/Developer"
-        xcodebuild -version
     - name: Test
       run: fastlane scan --scheme "TypedNotificationCenter ${{ matrix.os }}" --disable_slide_to_type false
     - name: Codecov
@@ -53,11 +49,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Select latest Xcode
-      run: |
-        ls -l "/Applications" | grep "Xcode"
-        sudo xcode-select --switch "$(find /Applications -mindepth 1 -maxdepth 1 ! -type l | grep "Xcode_[\.0-9]*app" | sort -V | tail -1)/Contents/Developer"
-        xcodebuild -version
     - name: Test
       run: fastlane scan --scheme "TNC UI Test Host ${{ matrix.os }}"
     - name: Codecov
