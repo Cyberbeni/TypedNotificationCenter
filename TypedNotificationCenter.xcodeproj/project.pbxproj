@@ -896,7 +896,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "Benedek Kozma";
 				TargetAttributes = {
 					5C8195E522A7D22100312EA9 = {
@@ -1414,7 +1414,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V63P53K235;
 				IBSC_MODULE = TypedNotificationCenterExampleWatch_Extension;
-				INFOPLIST_FILE = "$(SRCROOT)/UI Test host apps/TypedNotificationCenter Test Hot Watch/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/UI Test host apps/TypedNotificationCenter Test Host Watch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.cyberbeni.TypedNotificationCenterExample.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1433,7 +1433,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V63P53K235;
 				IBSC_MODULE = TypedNotificationCenterExampleWatch_Extension;
-				INFOPLIST_FILE = "$(SRCROOT)/UI Test host apps/TypedNotificationCenter Test Hot Watch/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/UI Test host apps/TypedNotificationCenter Test Host Watch/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.cyberbeni.TypedNotificationCenterExample.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1675,6 +1675,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1736,6 +1737,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
