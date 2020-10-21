@@ -2,8 +2,8 @@
 //  TypedNotificationCenter.swift
 //  TypedNotificationCenter
 //
-//  Created by Benedek Kozma on 2019. 05. 05..
-//  Copyright © 2019. Benedek Kozma.
+//  Created by Benedek Kozma on 2019. 05. 05.
+//  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,90 +30,113 @@ typealias NotificationIdentifier = ObjectIdentifier
 typealias SenderIdentifier = ObjectIdentifier
 
 public final class TypedNotificationCenter {
-    private let observerQueue: DispatchQueue
-    private var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox]]]()
+	private let observerQueue: DispatchQueue
+	private var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox]]]()
 
-    // MARK: - Utility functions
+	// MARK: - Utility functions
 
-    private func filter<T: TypedNotification>(_: T.Type, sender: AnyObject) -> (nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?, objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?) {
-        let notificationIdentifier = NotificationIdentifier(T.self)
-        let senderIdentifier = SenderIdentifier(sender)
+	private func filter<T: TypedNotification>(_: T.Type, sender: AnyObject)
+		-> (nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?, objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?)
+	{
+		let notificationIdentifier = NotificationIdentifier(T.self)
+		let senderIdentifier = SenderIdentifier(sender)
 
-        let observationsForNotification = observers[notificationIdentifier]
+		let observationsForNotification = observers[notificationIdentifier]
 
-        let nilObservations = observationsForNotification?[nilSenderIdentifier]?.values
-        let objectObservations = observationsForNotification?[senderIdentifier]?.values
+		let nilObservations = observationsForNotification?[nilSenderIdentifier]?.values
+		let objectObservations = observationsForNotification?[senderIdentifier]?.values
 
-        return (nilObservations, objectObservations)
-    }
+		return (nilObservations, objectObservations)
+	}
 
-    // MARK: - Internal functions
+	// MARK: - Internal functions
 
-    func remove<T>(observation: _TypedNotificationObservation<T>) {
-        let notificationIdentifier = NotificationIdentifier(T.self)
-        let senderIdentifier = observation.senderIdentifier
-        let observerIdentifier = ObjectIdentifier(observation)
-        observerQueue.async(flags: .barrier) {
-            self.observers[notificationIdentifier]?[senderIdentifier]?.removeValue(forKey: observerIdentifier)
-            if self.observers[notificationIdentifier]?[senderIdentifier]?.isEmpty == true {
-                self.observers[notificationIdentifier]?.removeValue(forKey: senderIdentifier)
-            }
-        }
-    }
+	func remove<T>(observation: _TypedNotificationObservation<T>) {
+		let notificationIdentifier = NotificationIdentifier(T.self)
+		let senderIdentifier = observation.senderIdentifier
+		let observerIdentifier = ObjectIdentifier(observation)
+		observerQueue.async(flags: .barrier) {
+			self.observers[notificationIdentifier]?[senderIdentifier]?.removeValue(forKey: observerIdentifier)
+			if self.observers[notificationIdentifier]?[senderIdentifier]?.isEmpty == true {
+				self.observers[notificationIdentifier]?.removeValue(forKey: senderIdentifier)
+			}
+		}
+	}
 
-    // MARK: - Public interface
+	func _observe<T: TypedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+		let object = T.Sender.self is NSNull.Type ? nil : object
 
-    public init(queueName: String = UUID().uuidString, queueQos: DispatchQoS = .userInitiated) {
-        observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", qos: queueQos, attributes: [.concurrent], autoreleaseFrequency: .inherit, target: nil)
-    }
+		let observation = _TypedNotificationObservation<T>(notificationCenter: self, sender: object, queue: queue, block: block)
 
-    public static let `default` = TypedNotificationCenter(queueName: "default")
+		let notificationIdentifier = NotificationIdentifier(T.self)
+		let senderIdentifier = observation.senderIdentifier
+		let observerIdentifier = ObjectIdentifier(observation)
+		let boxedObservation = WeakBox(observation)
 
-    public func observe<T: TypedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
-        let object = T.Sender.self is NSNull.Type ? nil : object
+		observerQueue.async(flags: .barrier) {
+			self.observers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
+		}
 
-        let observation = _TypedNotificationObservation<T>(notificationCenter: self, sender: object, queue: queue, block: block)
+		return observation
+	}
 
-        let notificationIdentifier = NotificationIdentifier(T.self)
-        let senderIdentifier = observation.senderIdentifier
-        let observerIdentifier = ObjectIdentifier(observation)
-        let boxedObservation = WeakBox(observation)
+	func _post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
+		var nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
+		var objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
+		observerQueue.sync {
+			(nilObservations, objectObservations) = self.filter(T.self, sender: sender)
+		}
+		nilObservations?.forEach { observation in
+			guard let observation = observation.object as? _TypedNotificationObservation<T> else { return }
+			if let queue = observation.queue,
+			   let block = observation.block
+			{
+				queue.addOperation {
+					block(sender, payload)
+				}
+			} else {
+				observation.block?(sender, payload)
+			}
+		}
+		objectObservations?.forEach { observation in
+			guard let observation = observation.object as? _TypedNotificationObservation<T>,
+			      observation.sender != nil
+			else { return }
+			if let queue = observation.queue,
+			   let block = observation.block
+			{
+				queue.addOperation {
+					block(sender, payload)
+				}
+			} else {
+				observation.block?(sender, payload)
+			}
+		}
+	}
 
-        observerQueue.async(flags: .barrier) {
-            self.observers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
-        }
+	// MARK: - Public interface
 
-        return observation
-    }
+	public init(queueName: String = UUID().uuidString, queueQos: DispatchQoS = .userInitiated) {
+		observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", qos: queueQos, attributes: [.concurrent], autoreleaseFrequency: .inherit, target: nil)
+	}
 
-    public func post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
-        var nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
-        var objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
-        observerQueue.sync {
-            (nilObservations, objectObservations) = self.filter(T.self, sender: sender)
-        }
-        nilObservations?.forEach { observation in
-            guard let observation = observation.object as? _TypedNotificationObservation<T> else { return }
-            if let queue = observation.queue,
-                let block = observation.block {
-                queue.addOperation {
-                    block(sender, payload)
-                }
-            } else {
-                observation.block?(sender, payload)
-            }
-        }
-        objectObservations?.forEach { observation in
-            guard let observation = observation.object as? _TypedNotificationObservation<T>,
-                observation.sender != nil else { return }
-            if let queue = observation.queue,
-                let block = observation.block {
-                queue.addOperation {
-                    block(sender, payload)
-                }
-            } else {
-                observation.block?(sender, payload)
-            }
-        }
-    }
+	public static let `default` = TypedNotificationCenter(queueName: "default")
+
+	public func observe<T: TypedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+		if T.Payload.self is DictionaryRepresentable.Type {
+			let proxy = T.eraseNotificationName()
+			return observe(proxy, object: object, queue: queue, block: block)
+		} else {
+			return _observe(T.self, object: object, queue: queue, block: block)
+		}
+	}
+
+	public func post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
+		if T.Payload.self is DictionaryRepresentable.Type {
+			let proxy = T.eraseNotificationName()
+			post(proxy, sender: sender, payload: payload)
+		} else {
+			_post(T.self, sender: sender, payload: payload)
+		}
+	}
 }

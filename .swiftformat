@@ -1,0 +1,9 @@
+--swiftversion 5.3
+
+--exclude Tests/TypedNotificationCenterTests/Core\ tests/Utility/PerformanceTestNotifications.swift
+
+--maxwidth 200
+--indent tab
+--tabwidth 3
+
+--enable isEmpty

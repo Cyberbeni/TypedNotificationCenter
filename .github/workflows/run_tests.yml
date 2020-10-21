@@ -1,4 +1,4 @@
-name: run_tests
+name: Test latest OSs
 
 on: [push, pull_request]
 
@@ -6,54 +6,52 @@ jobs:
   test-linux:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Install Swift & Run tests
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install xcbeautify
+      uses: Cyberbeni/install-swift-tool@v2
+      with:
+        url: https://github.com/thii/xcbeautify
+        version: '*'
+    - name: Test
+      shell: bash
       run: |
-        eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
-        swift test
-      
-  test-macos:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Run the tests
-      run: xcodebuild test -scheme TypedNotificationCenter\ macOS -destination 'platform=OS X,arch=x86_64'
+        set -o pipefail
+        swift test --enable-test-discovery --enable-code-coverage | xcbeautify
     - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
+      shell: bash
+      run: |
+        llvm-cov-9 export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
+        bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
-  test-ios:
+  test-darwin-unit:
+    strategy:
+      matrix:
+        os: [macOS, iOS, tvOS]
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Run the tests
-      run: xcodebuild test -scheme TypedNotificationCenter\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Test
+      run: fastlane scan --scheme "TypedNotificationCenter ${{ matrix.os }}" --disable_slide_to_type false
     - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
+      run: bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n '${{ matrix.os }}' -F '${{ matrix.os }}'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       
-  test-tvos:
+  test-darwin-ui:
+    strategy:
+      matrix:
+        os: [iOS]
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Run the tests
-      run: xcodebuild test -scheme TypedNotificationCenter\ tvOS -destination 'platform=tvOS Simulator,name=Apple TV 4k,OS=12.2'
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Test
+      run: fastlane scan --scheme "TNC UI Test Host ${{ matrix.os }}"
     - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
+      run: bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n '${{ matrix.os }}-ui' -F '${{ matrix.os }}'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      
-  test-ios-ui:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Run the tests
-      run: xcodebuild test -scheme TNC\ UI\ Test\ Host\ iOS -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2'
-    - name: Codecov
-      run: bash <(curl -s https://codecov.io/bash) -J 'TypedNotificationCenter'
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      
-    

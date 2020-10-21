@@ -2,8 +2,8 @@
 //  XCTestCase+Utils.swift
 //  TypedNotificationCenterTests
 //
-//  Created by Benedek Kozma on 2019. 05. 05..
-//  Copyright © 2019. Benedek Kozma.
+//  Created by Benedek Kozma on 2019. 05. 05.
+//  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,11 +28,11 @@ import Foundation
 import XCTest
 
 extension XCTestCase {
-    func wait(_ seconds: Double) {
-        let expectation = self.expectation(description: "Wait")
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: seconds + 1)
-    }
+	func wait(_ seconds: Double) {
+		let expectation = self.expectation(description: "Wait")
+		DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+			expectation.fulfill()
+		}
+		wait(for: [expectation], timeout: seconds + 1)
+	}
 }

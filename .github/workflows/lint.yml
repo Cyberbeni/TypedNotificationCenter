@@ -1,0 +1,19 @@
+name: Lint
+
+on:
+  pull_request:
+  push:
+    branches: master
+
+jobs:
+  swiftformat-lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install SwiftFormat
+      uses: Cyberbeni/install-swift-tool@v2
+      with:
+        url: https://github.com/nicklockwood/SwiftFormat
+    - name: Lint
+      run: swiftformat --lint .

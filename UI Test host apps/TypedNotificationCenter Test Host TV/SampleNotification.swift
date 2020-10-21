@@ -2,8 +2,8 @@
 //  SampleNotification.swift
 //  TypedNotificationCenterExampleTV
 //
-//  Created by Benedek Kozma on 2019. 05. 05..
-//  Copyright © 2019. Benedek Kozma.
+//  Created by Benedek Kozma on 2019. 05. 05.
+//  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,9 +29,9 @@ import TypedNotificationCenter
 import UIKit
 
 enum SampleNotification: TypedNotification {
-    struct Payload {
-        let type = "tv"
-    }
+	struct Payload {
+		let type = "tv"
+	}
 
-    typealias Sender = UIViewController
+	typealias Sender = UIViewController
 }

@@ -27,7 +27,7 @@
 import Foundation
 
 guard CommandLine.arguments.count == 2 else {
-    exit(1)
+	exit(1)
 }
 
 let baseName = "PerformanceTestNotification"
@@ -41,71 +41,68 @@ var output = """
 // swiftformat:disable all
 
 import Foundation
-@testable import TypedNotificationCenter
+import TypedNotificationCenter
 
 enum TestData {
 
-    struct DummyPayload {
-        var name = "test"
-    }
+	struct DummyPayload {
+		var name = "test"
+	}
 
-    static func subscribeToAll(observationContainer: inout [TypedNotificationObservation], notificationCenter: TypedNotificationCenter, sender: AnyObject?) {
+	static func subscribeToAll(observationContainer: inout [TypedNotificationObservation], notificationCenter: TypedNotificationCenter, sender: AnyObject?) {
 
 """
 
 for i in 1 ... numberOfNotifications {
-    let newName = "\(baseName)\(i)"
-    names.append(newName)
-    output.append("""
-            observationContainer.append(notificationCenter.observe(\(newName).self, object: sender) { _, _ in })
-
-    """)
+	let newName = "\(baseName)\(i)"
+	names.append(newName)
+	output.append("\t\tobservationContainer.append(notificationCenter.observe(\(newName).self, object: sender) { _, _ in })\n")
 }
 
 output.append("""
-    }
+	}
 
-    static func postToAll(sender: AnyObject, notificationCenter: TypedNotificationCenter) {
+	static func postToAll(sender: AnyObject, notificationCenter: TypedNotificationCenter) {
 
 """)
 
 for name in names {
-    output.append("        notificationCenter.post(\(name).self, sender: sender, payload: DummyPayload())\n")
+	output.append("\t\tnotificationCenter.post(\(name).self, sender: sender, payload: DummyPayload())\n")
 }
 
 output.append("""
-    }
+	}
 
-    static var notificationNames: [Notification.Name] = [
+	static var notificationNames: [Notification.Name] = [
 
 """)
 
 for name in names {
-    output.append("        Notification.Name(rawValue: \"\(name)\"),\n")
+	output.append("\t\tNotification.Name(rawValue: \"\(name)\"),\n")
 }
 
 output.append("""
-    ]
+	]
 
 
 """)
 
 for name in names {
-    output.append("""
-        enum \(name): TypedNotification {
-            typealias Sender = AnyObject
-            typealias Payload = DummyPayload
-        }
+	output.append("""
+		enum \(name): TypedNotification {
+			typealias Sender = AnyObject
+			typealias Payload = DummyPayload
+		}
 
 
-    """)
+	""")
 }
 
 output.append("}\n")
 
 do {
-    try output.write(toFile: outputFile, atomically: true, encoding: .utf8)
+	try output.write(toFile: outputFile, atomically: true, encoding: .utf8)
 } catch {
-    print(error)
-    exit(1)
+	print(error)
+	exit(1)
 }

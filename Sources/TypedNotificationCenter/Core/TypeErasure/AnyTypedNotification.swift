@@ -1,8 +1,8 @@
 //
-//  SampleBridgedNotification.swift
+//  AnyTypedNotification.swift
 //  TypedNotificationCenter
 //
-//  Created by Benedek Kozma on 2019. 06. 06.
+//  Created by Benedek Kozma on 2019. 12. 01.
 //  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,36 +25,42 @@
 //
 
 import Foundation
-import TypedNotificationCenter
 
-class MySender: NSObject {}
+// MARK: Unrelated types
 
-enum SampleBridgedNotification: BridgedNotification {
-	static var notificationName = Notification.Name(rawValue: "TypedNotificationCenter.SampleBridgedNotification")
+public extension TypedNotification {
+	static func eraseTypes() -> AnyTypedNotification {
+		AnyTypedNotification(self)
+	}
+}
 
-	struct Payload: DictionaryRepresentable {
-		init(samplePayloadProperty: String) {
-			self.samplePayloadProperty = samplePayloadProperty
-		}
+public extension BridgedNotification {
+	static func eraseTypes() -> AnyTypedNotification {
+		AnyTypedNotification(self)
+	}
+}
 
-		init(_ dictionary: [AnyHashable: Any]) throws {
-			guard let samplePayloadProperty = dictionary[Payload.samplePayloadPropertyUserInfoKey] as? String else {
-				throw NotificationDecodingError(type: type(of: self), source: dictionary)
+public final class AnyTypedNotification {
+	fileprivate let observeBlock: (TypedNotificationCenter, OperationQueue?, @escaping () -> Void) -> TypedNotificationObservation
+	init<T: TypedNotification>(_: T.Type) {
+		observeBlock = { notificationCenter, queue, notificationBlock in
+			notificationCenter._observe(T.self, object: nil, queue: queue) { _, _ in
+				notificationBlock()
 			}
-			self.samplePayloadProperty = samplePayloadProperty
 		}
-
-		func asDictionary() -> [AnyHashable: Any] {
-			var retVal = [AnyHashable: Any]()
-
-			retVal[Payload.samplePayloadPropertyUserInfoKey] = samplePayloadProperty as NSString
-
-			return retVal
-		}
-
-		static let samplePayloadPropertyUserInfoKey = "samplePayloadPropertyUserInfoKey"
-		let samplePayloadProperty: String
 	}
 
-	typealias Sender = MySender
+	init<T: BridgedNotification>(_: T.Type) {
+		observeBlock = { notificationCenter, queue, notificationBlock in
+			notificationCenter._observe(T.self, object: nil, queue: queue) { _, _ in
+				notificationBlock()
+			}
+		}
+	}
+}
+
+public extension TypedNotificationCenter {
+	func observe(_ proxy: AnyTypedNotification, queue: OperationQueue? = nil, block: @escaping () -> Void) -> TypedNotificationObservation {
+		proxy.observeBlock(self, queue, block)
+	}
 }

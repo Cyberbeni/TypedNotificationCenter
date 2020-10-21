@@ -2,8 +2,8 @@
 //  InterfaceController.swift
 //  TypedNotificationCenterExampleWatch Extension
 //
-//  Created by Benedek Kozma on 2019. 05. 05..
-//  Copyright © 2019. Benedek Kozma.
+//  Created by Benedek Kozma on 2019. 05. 05.
+//  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,27 +29,16 @@ import TypedNotificationCenter
 import WatchKit
 
 class InterfaceController: WKInterfaceController {
-    var observation: Any?
+	var observation: Any?
 
-    override func awake(withContext context: Any?) {
-        super.awake(withContext: context)
+	override func willActivate() {
+		// This method is called when watch view controller is about to be visible to user
+		super.willActivate()
 
-        // Configure interface objects here.
-    }
+		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { sender, payload in
+			print("IT WORKS! sender: \(sender), payload: \(payload)")
+		})
 
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
-
-        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { sender, payload in
-            print("IT WORKS! sender: \(sender), payload: \(payload)")
-        })
-
-        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
-    }
-
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+	}
 }

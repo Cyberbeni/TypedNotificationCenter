@@ -1,9 +1,9 @@
 //
-//  TypedNotificationCenter+BridgedNotification.swift
+//  InternalTests.swift
 //  TypedNotificationCenter
 //
-//  Created by Benedek Kozma on 2019. 06. 06.
-//  Copyright (c) 2019. Benedek Kozma
+//  Created by Benedek Kozma on 2020. 02. 26.
+//  Copyright (c) 2020. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,17 +25,20 @@
 //
 
 import Foundation
+@testable import TypedNotificationCenter
+import XCTest
 
-extension TypedNotificationCenter {
-	func _observe<T: BridgedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
-		let object = T.Sender.self is NSNull.Type ? nil : object
+class InternalTests: TestCase {
+	var observation: TypedNotificationObservation?
 
-		let observation = _BridgedNotificationObservation<T>(sender: object, queue: queue, block: block)
-
-		return observation
+	override func tearDown() {
+		observation = nil
 	}
 
-	func _post<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
-		NotificationCenter.default.post(name: T.notificationName, object: sender, userInfo: payload.asDictionary())
+	func testInvalidBaseObservation() {
+		observation = TypedNotificationObservation()
+		XCTAssertFalse(observation!.isValid, "Base class' init should produce invalid observation")
+		observation?.invalidate()
+		XCTAssertFalse(observation!.isValid, "Observation should stay invalid after calling invalidate")
 	}
 }

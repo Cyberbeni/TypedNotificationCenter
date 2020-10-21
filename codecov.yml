@@ -1,9 +1,11 @@
 ignore:
     - "Tests/**"
     - "Sources/TypedNotificationCenter/BridgedNotifications/Core/BridgedNotification\+ErrorHandlingCustomization\.swift"
+    - "\.build/**"
 
 codecov:
   notify:
+    after_n_builds: 10 # 5x2 because we upload for both pull request and push
     require_ci_to_pass: yes
 
 coverage:
@@ -14,7 +16,7 @@ coverage:
   status:
     project: yes
     patch: yes
-    changes: no
+    changes: yes
 
 parsers:
   gcov:
@@ -27,4 +29,4 @@ parsers:
 comment:
   layout: "header, diff"
   behavior: default
-  require_changes: no
+  require_changes: yes

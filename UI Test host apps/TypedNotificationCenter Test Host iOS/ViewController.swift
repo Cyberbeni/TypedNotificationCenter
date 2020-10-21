@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  TypedNotificationCenterExample
 //
-//  Created by Benedek Kozma on 2019. 05. 05..
-//  Copyright © 2019. Benedek Kozma.
+//  Created by Benedek Kozma on 2019. 05. 05.
+//  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,50 +28,50 @@ import TypedNotificationCenter
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet var testingTextField: UITextField! {
-        didSet {
-            testingTextField.accessibilityIdentifier = "testingTextField"
-        }
-    }
+	@IBOutlet var testingTextField: UITextField! {
+		didSet {
+			testingTextField.accessibilityIdentifier = "testingTextField"
+		}
+	}
 
-    @IBOutlet var testResultLabel: UILabel! {
-        didSet {
-            testResultLabel.text = "KeyboardNotificationTesting in progress"
-        }
-    }
+	@IBOutlet var testResultLabel: UILabel! {
+		didSet {
+			testResultLabel.text = "KeyboardNotificationTesting in progress"
+		}
+	}
 
-    var observations = [TypedNotificationObservation]()
-    let notificationCenter = TypedNotificationCenter.default
-    var receivedNotifications = Set<ObjectIdentifier>()
+	var observations = [TypedNotificationObservation]()
+	let notificationCenter = TypedNotificationCenter.default
+	var receivedNotifications = Set<ObjectIdentifier>()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
-        observe(UIResponder.KeyboardWillShowNotification.self)
-        observe(UIResponder.KeyboardDidShowNotification.self)
-        observe(UIResponder.KeyboardWillHideNotification.self)
-        observe(UIResponder.KeyboardDidHideNotification.self)
-        observe(UIResponder.KeyboardWillChangeFrameNotification.self)
-        observe(UIResponder.KeyboardDidChangeFrameNotification.self)
-    }
+		observe(UIResponder.KeyboardWillShowNotification.self)
+		observe(UIResponder.KeyboardDidShowNotification.self)
+		observe(UIResponder.KeyboardWillHideNotification.self)
+		observe(UIResponder.KeyboardDidHideNotification.self)
+		observe(UIResponder.KeyboardWillChangeFrameNotification.self)
+		observe(UIResponder.KeyboardDidChangeFrameNotification.self)
+	}
 
-    private func observe<T: BridgedNotification>(_ type: T.Type) {
-        observations.append(notificationCenter.observe(type.self, object: nil, block: { [weak self] _, payload in
-            var userInfo = payload.asDictionary()
-            if #available(iOS 9.0, *) {
-                userInfo.removeValue(forKey: UIResponder.keyboardIsLocalUserInfoKey)
-                _ = try? UIResponder.KeyboardNotificationPayload(userInfo)
-            }
-            userInfo.removeValue(forKey: UIResponder.keyboardFrameEndUserInfoKey)
-            _ = try? UIResponder.KeyboardNotificationPayload(userInfo)
-            self?.addToReceivedNotifications(type.self)
-        }))
-    }
+	private func observe<T: BridgedNotification>(_ type: T.Type) {
+		observations.append(notificationCenter.observe(type.self, object: nil, block: { [weak self] _, payload in
+			var userInfo = payload.asDictionary()
+			if #available(iOS 9.0, *) {
+				userInfo.removeValue(forKey: UIResponder.keyboardIsLocalUserInfoKey)
+				_ = try? UIResponder.KeyboardNotificationPayload(userInfo)
+			}
+			userInfo.removeValue(forKey: UIResponder.keyboardFrameEndUserInfoKey)
+			_ = try? UIResponder.KeyboardNotificationPayload(userInfo)
+			self?.addToReceivedNotifications(type.self)
+		}))
+	}
 
-    private func addToReceivedNotifications<T: BridgedNotification>(_ type: T.Type) {
-        receivedNotifications.insert(ObjectIdentifier(type))
-        if receivedNotifications.count == 6 {
-            testResultLabel.text = "KeyboardNotificationTesting passed"
-        }
-    }
+	private func addToReceivedNotifications<T: BridgedNotification>(_ type: T.Type) {
+		receivedNotifications.insert(ObjectIdentifier(type))
+		if receivedNotifications.count == 6 {
+			testResultLabel.text = "KeyboardNotificationTesting passed"
+		}
+	}
 }

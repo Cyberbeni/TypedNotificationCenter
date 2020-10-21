@@ -27,23 +27,23 @@
 import XCTest
 
 class TypedNotificationCenteriOSUITests: XCTestCase {
-    let application = XCUIApplication()
+	let application = XCUIApplication()
 
-    override func setUp() {
-        super.setUp()
+	override func setUp() {
+		super.setUp()
 
-        continueAfterFailure = false
-        application.launch()
-    }
+		continueAfterFailure = false
+		application.launch()
+	}
 
-    override func tearDown() {
-        super.tearDown()
-        application.terminate()
-    }
+	override func tearDown() {
+		super.tearDown()
+		application.terminate()
+	}
 
-    func testKeyboardNotifications() {
-        application.textFields["testingTextField"].tap()
-        application.textFields["testingTextField"].typeText("a\n")
-        XCTAssertTrue(application.staticTexts["KeyboardNotificationTesting passed"].waitForExistence(timeout: 1))
-    }
+	func testKeyboardNotifications() {
+		application.textFields["testingTextField"].tap()
+		application.textFields["testingTextField"].typeText("a\n")
+		XCTAssertTrue(application.staticTexts["KeyboardNotificationTesting passed"].waitForExistence(timeout: 1))
+	}
 }

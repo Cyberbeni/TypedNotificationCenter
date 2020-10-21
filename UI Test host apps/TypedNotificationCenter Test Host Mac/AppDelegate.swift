@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  TypedNotificationCenterExampleMac
 //
-//  Created by Benedek Kozma on 2019. 05. 05..
-//  Copyright © 2019. Benedek Kozma.
+//  Created by Benedek Kozma on 2019. 05. 05.
+//  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,21 +29,17 @@ import TypedNotificationCenter
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var observation: Any?
+	var observation: Any?
 
-    @IBOutlet var window: NSWindow!
+	@IBOutlet var window: NSWindow!
 
-    func applicationDidFinishLaunching(_: Notification) {
-        // Insert code here to initialize your application
+	func applicationDidFinishLaunching(_: Notification) {
+		// Insert code here to initialize your application
 
-        observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { sender, payload in
-            print("IT WORKS! sender: \(sender), payload: \(payload)")
-        })
+		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: self, block: { sender, payload in
+			print("IT WORKS! sender: \(sender), payload: \(payload)")
+		})
 
-        TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
-    }
-
-    func applicationWillTerminate(_: Notification) {
-        // Insert code here to tear down your application
-    }
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: self, payload: SampleNotification.Payload())
+	}
 }
