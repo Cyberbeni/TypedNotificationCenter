@@ -21,7 +21,7 @@ jobs:
     - name: Codecov
       shell: bash
       run: |
-        /usr/share/swift/usr/bin/llvm-cov export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
+        "$(dirname "$(realpath "$(which swift)")")/llvm-cov" export -format="lcov" .build/debug/TypedNotificationCenterPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
         bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
