@@ -28,8 +28,5 @@ let package = Package(
 			name: "TypedNotificationCenterTests",
 			dependencies: ["TypedNotificationCenter"]
 		),
-	],
-	swiftLanguageVersions: [
-		.v5,
 	]
 )
