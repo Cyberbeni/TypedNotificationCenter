@@ -9,7 +9,7 @@ This framework is about rethinking Apple's NotificationCenter to be more typesaf
 
 ## Example usage
 
-```
+```swift
 // SampleNotification.swift
 import TypedNotificationCenter
 
@@ -21,7 +21,7 @@ enum SampleNotification: TypedNotification {
 }
 ```
 
-```
+```swift
 // OtherFile.swift
 // Observe a notification and execute a block with the sender and the payload
 var observations = [TypedNotificationObservation]()
