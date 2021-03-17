@@ -117,7 +117,7 @@ public final class TypedNotificationCenter {
 	// MARK: - Public interface
 
 	public init(queueName: String = UUID().uuidString, queueQos: DispatchQoS = .userInitiated) {
-		observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", qos: queueQos, attributes: [.concurrent], autoreleaseFrequency: .inherit, target: nil)
+		observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", qos: queueQos, attributes: [.concurrent], autoreleaseFrequency: .workItem, target: DispatchQueue.global())
 	}
 
 	public static let `default` = TypedNotificationCenter(queueName: "default")
