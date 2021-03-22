@@ -12,3 +12,7 @@ fastlane/report.xml
 # SPM
 .build/
 .swiftpm/
+
+# Sripts
+.DerivedData-Archive.noindex/
+Archives/

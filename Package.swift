@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
 	name: "TypedNotificationCenter",
 	platforms: [
-		.macOS(.v10_10),
+		.macOS("10.9"),
 		.iOS(.v8),
 		.watchOS(.v2),
 		.tvOS(.v9),
