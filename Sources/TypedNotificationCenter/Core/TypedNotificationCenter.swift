@@ -30,7 +30,7 @@ typealias NotificationIdentifier = ObjectIdentifier
 typealias SenderIdentifier = ObjectIdentifier
 
 public final class TypedNotificationCenter {
-	private let observerQueue: DispatchQueue
+	private let observerLock = NSLock()
 	private var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox]]]()
 
 	// MARK: - Utility functions
@@ -55,12 +55,12 @@ public final class TypedNotificationCenter {
 		let notificationIdentifier = NotificationIdentifier(T.self)
 		let senderIdentifier = observation.senderIdentifier
 		let observerIdentifier = ObjectIdentifier(observation)
-		observerQueue.async(flags: .barrier) {
-			self.observers[notificationIdentifier]?[senderIdentifier]?.removeValue(forKey: observerIdentifier)
-			if self.observers[notificationIdentifier]?[senderIdentifier]?.isEmpty == true {
-				self.observers[notificationIdentifier]?.removeValue(forKey: senderIdentifier)
-			}
+		observerLock.lock()
+		observers[notificationIdentifier]?[senderIdentifier]?.removeValue(forKey: observerIdentifier)
+		if observers[notificationIdentifier]?[senderIdentifier]?.isEmpty == true {
+			observers[notificationIdentifier]?.removeValue(forKey: senderIdentifier)
 		}
+		observerLock.unlock()
 	}
 
 	func _observe<T: TypedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
@@ -73,9 +73,9 @@ public final class TypedNotificationCenter {
 		let observerIdentifier = ObjectIdentifier(observation)
 		let boxedObservation = WeakBox(observation)
 
-		observerQueue.async(flags: .barrier) {
-			self.observers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
-		}
+		observerLock.lock()
+		observers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
+		observerLock.unlock()
 
 		return observation
 	}
@@ -83,9 +83,9 @@ public final class TypedNotificationCenter {
 	func _post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
 		var nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
 		var objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
-		observerQueue.sync {
-			(nilObservations, objectObservations) = self.filter(T.self, sender: sender)
-		}
+		observerLock.lock()
+		(nilObservations, objectObservations) = filter(T.self, sender: sender)
+		observerLock.unlock()
 		nilObservations?.forEach { observation in
 			guard let observation = observation.object as? _TypedNotificationObservation<T> else { return }
 			if let queue = observation.queue,
@@ -116,17 +116,9 @@ public final class TypedNotificationCenter {
 
 	// MARK: - Public interface
 
-	public init(queueName: String = UUID().uuidString, queueQos: DispatchQoS = .userInitiated) {
-		let autoreleaseFrequency: DispatchQueue.AutoreleaseFrequency
-		if #available(iOS 10.0, macOS 10.12, tvOS 10.0, watchOS 3.0, *) {
-			autoreleaseFrequency = .workItem
-		} else {
-			autoreleaseFrequency = .inherit
-		}
-		observerQueue = DispatchQueue(label: "TypedNotificationCenter.\(queueName)", qos: queueQos, attributes: [.concurrent], autoreleaseFrequency: autoreleaseFrequency, target: DispatchQueue.global())
-	}
+	public init() {}
 
-	public static let `default` = TypedNotificationCenter(queueName: "default")
+	public static let `default` = TypedNotificationCenter()
 
 	public func observe<T: TypedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
 		if T.Payload.self is DictionaryRepresentable.Type {
