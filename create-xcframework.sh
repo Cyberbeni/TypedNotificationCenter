@@ -14,11 +14,15 @@ mkdir -p "$ARCHIVES_ROOT_PATH"
 
 CREATE_XCFRAMEWORK_ARGUMENTS=()
 
-for PLATFORM in "macOS" "iOS" "iOS Simulator" "tvOS" "tvOS Simulator" "watchOS" "watchOS Simulator"; do
+for PLATFORM in "macOS" "macOS,variant=Mac Catalyst" "iOS" "iOS Simulator" "tvOS" "tvOS Simulator" "watchOS" "watchOS Simulator"; do
 	case $PLATFORM in
 	"macOS")
 	ARCHIVE_NAME="Release-macos"
 	SCHEME="TypedNotificationCenter macOS"
+	;;
+	"macOS,variant=Mac Catalyst")
+	ARCHIVE_NAME="Release-maccatalyst"
+	SCHEME="TypedNotificationCenter iOS"
 	;;
 	"iOS")
 	ARCHIVE_NAME="Release-iphoneos"
