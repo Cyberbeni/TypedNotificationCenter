@@ -56,9 +56,9 @@ public final class TypedNotificationCenter {
 		let senderIdentifier = observation.senderIdentifier
 		let observerIdentifier = ObjectIdentifier(observation)
 		observerLock.lock()
-		self.observers[notificationIdentifier]?[senderIdentifier]?.removeValue(forKey: observerIdentifier)
-		if self.observers[notificationIdentifier]?[senderIdentifier]?.isEmpty == true {
-			self.observers[notificationIdentifier]?.removeValue(forKey: senderIdentifier)
+		observers[notificationIdentifier]?[senderIdentifier]?.removeValue(forKey: observerIdentifier)
+		if observers[notificationIdentifier]?[senderIdentifier]?.isEmpty == true {
+			observers[notificationIdentifier]?.removeValue(forKey: senderIdentifier)
 		}
 		observerLock.unlock()
 	}
@@ -74,7 +74,7 @@ public final class TypedNotificationCenter {
 		let boxedObservation = WeakBox(observation)
 
 		observerLock.lock()
-		self.observers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
+		observers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
 		observerLock.unlock()
 
 		return observation
@@ -84,7 +84,7 @@ public final class TypedNotificationCenter {
 		var nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
 		var objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
 		observerLock.lock()
-		(nilObservations, objectObservations) = self.filter(T.self, sender: sender)
+		(nilObservations, objectObservations) = filter(T.self, sender: sender)
 		observerLock.unlock()
 		nilObservations?.forEach { observation in
 			guard let observation = observation.object as? _TypedNotificationObservation<T> else { return }
@@ -116,7 +116,7 @@ public final class TypedNotificationCenter {
 
 	// MARK: - Public interface
 
-	public init() { }
+	public init() {}
 
 	public static let `default` = TypedNotificationCenter()
 
