@@ -896,7 +896,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Benedek Kozma";
 				TargetAttributes = {
 					5C8195E522A7D22100312EA9 = {
@@ -1600,7 +1600,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "hu.cyberbeni.TypedNotificationCenter-macOS";
 				PRODUCT_MODULE_NAME = TypedNotificationCenter;
@@ -1636,7 +1636,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "hu.cyberbeni.TypedNotificationCenter-macOS";
 				PRODUCT_MODULE_NAME = TypedNotificationCenter;
 				PRODUCT_NAME = TypedNotificationCenter;
@@ -1949,15 +1949,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = "";
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
-				VALID_ARCHS = "";
-				"VALID_ARCHS[sdk=appletvos*]" = arm64;
-				"VALID_ARCHS[sdk=appletvsimulator*]" = x86_64;
-				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
-				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
-				"VALID_ARCHS[sdk=macosx*]" = "i386 x86_64";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
@@ -1981,15 +1975,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = "";
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
-				VALID_ARCHS = "";
-				"VALID_ARCHS[sdk=appletvos*]" = arm64;
-				"VALID_ARCHS[sdk=appletvsimulator*]" = x86_64;
-				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
-				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
-				"VALID_ARCHS[sdk=macosx*]" = "i386 x86_64";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;

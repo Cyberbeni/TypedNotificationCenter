@@ -29,11 +29,14 @@ jobs:
   test-darwin-unit:
     strategy:
       matrix:
-        os: [macOS, iOS, tvOS]
-    runs-on: macos-latest
+        os: [macOS, iOS, tvOS, watchOS]
+    runs-on: ${{ matrix.os == 'watchOS' && 'macos-11.0' || 'macos-latest' }}
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: ${{ matrix.os == 'watchOS' && 'latest-beta' || 'latest' }}
     - name: Test
       run: fastlane scan --scheme "TypedNotificationCenter ${{ matrix.os }}" --disable_slide_to_type false
     - name: Codecov

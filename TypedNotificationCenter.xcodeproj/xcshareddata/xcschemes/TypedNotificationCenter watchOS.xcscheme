@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1210"
+   LastUpgradeVersion = "1240"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -17,6 +17,20 @@
                BlueprintIdentifier = "7530BA89227F476100D57E4F"
                BuildableName = "TypedNotificationCenter.framework"
                BlueprintName = "TypedNotificationCenter watchOS"
+               ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "75BFD91E227F553C0037271E"
+               BuildableName = "TypedNotificationCenterTests.xctest"
+               BlueprintName = "TypedNotificationCenterTests"
                ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -38,6 +52,16 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "75BFD91E227F553C0037271E"
+               BuildableName = "TypedNotificationCenterTests.xctest"
+               BlueprintName = "TypedNotificationCenterTests"
+               ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
