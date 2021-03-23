@@ -32,16 +32,12 @@ extension TypedNotificationCenter {
 		assert(!bridgedObservers.keys.contains(T.notificationName), "Using BridgedNotification and Notification.Name for the same notification is not supported")
 		if !nsnotificationObservers.keys.contains(T.notificationName) {
 			nsnotificationObservers[T.notificationName] = _NsNotificationObservation<T>(sender: nil, queue: nil, block: { [weak self] sender, payload in
-				self?.forwardPost(T.self, sender: sender, payload: payload)
+				self?._post(T.self, sender: sender, payload: payload)
 			})
 		}
 		observerLock.unlock()
 
 		return _observe(T.self, object: object, queue: queue, block: block)
-	}
-
-	private func forwardPost<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
-		_post(T.self, sender: sender, payload: payload)
 	}
 
 	func _bridgePost<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
