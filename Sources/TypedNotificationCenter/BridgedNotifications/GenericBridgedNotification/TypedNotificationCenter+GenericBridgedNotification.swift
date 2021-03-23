@@ -29,22 +29,22 @@ import Foundation
 extension TypedNotificationCenter {
 	// MARK: - Utility functions
 
-	private func filter(_ notificationName: Notification.Name, sender: AnyObject)
+	private func filter(_ notificationName: Notification.Name, sender: AnyObject?)
 		-> (nilObservations: Dictionary<ObjectIdentifier, WeakBox<_GenericBridgedNotificationObservation>>.Values?,
 		    objectObservations: Dictionary<ObjectIdentifier, WeakBox<_GenericBridgedNotificationObservation>>.Values?)
 	{
 		let notificationIdentifier = notificationName
-		let senderIdentifier = SenderIdentifier(sender)
+		let senderIdentifier = sender.map { SenderIdentifier($0) }
 
 		let observationsForNotification = bridgedObservers[notificationIdentifier]
 
 		let nilObservations = observationsForNotification?[nilSenderIdentifier]?.values
-		let objectObservations = observationsForNotification?[senderIdentifier]?.values
+		let objectObservations = senderIdentifier.flatMap { observationsForNotification?[$0]?.values }
 
 		return (nilObservations, objectObservations)
 	}
 
-	func forwardGenericPost(_ notificationName: Notification.Name, sender: AnyObject, payload: [AnyHashable: Any]) {
+	func forwardGenericPost(_ notificationName: Notification.Name, sender: AnyObject?, payload: [AnyHashable: Any]?) {
 		var nilObservations: Dictionary<ObjectIdentifier, WeakBox<_GenericBridgedNotificationObservation>>.Values?
 		var objectObservations: Dictionary<ObjectIdentifier, WeakBox<_GenericBridgedNotificationObservation>>.Values?
 		observerLock.lock()
@@ -105,9 +105,7 @@ extension TypedNotificationCenter {
 		observerLock.lock()
 		if !genericNsnotificationObservers.keys.contains(notificationName) {
 			genericNsnotificationObservers[notificationName] = _GenericNsNotificationObservation(notificationName: notificationName, sender: nil, queue: nil, block: { [weak self] notification in
-				let sender = notification.object as AnyObject
-				let payload = notification.userInfo ?? [:]
-				self?.forwardGenericPost(notification.name, sender: sender, payload: payload)
+				self?.forwardGenericPost(notification.name, sender: notification.object as AnyObject?, payload: notification.userInfo)
 			})
 		}
 		bridgedObservers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
