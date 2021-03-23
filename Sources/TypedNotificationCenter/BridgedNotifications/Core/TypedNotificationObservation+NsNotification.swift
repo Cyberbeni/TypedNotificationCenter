@@ -1,5 +1,5 @@
 //
-//  TypedNotificationObservation+BridgedNotification.swift
+//  TypedNotificationObservation+NsNotification.swift
 //  TypedNotificationCenter
 //
 //  Created by Benedek Kozma on 2019. 06. 06.
@@ -26,7 +26,7 @@
 
 import Foundation
 
-final class _BridgedNotificationObservation<T: BridgedNotification>: TypedNotificationObservation {
+final class _NsNotificationObservation<T: BridgedNotification>: TypedNotificationObservation {
 	private var observation: Any
 
 	init(sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {

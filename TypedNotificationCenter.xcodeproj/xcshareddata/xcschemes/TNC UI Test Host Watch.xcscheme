@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1210"
+   LastUpgradeVersion = "1240"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -73,8 +73,10 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/TypedNotificationCenterExample">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7530BA5F227F457500D57E4F"
@@ -82,7 +84,7 @@
             BlueprintName = "TNCExampleWatch"
             ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -90,8 +92,10 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/TypedNotificationCenterExample">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7530BA5F227F457500D57E4F"
@@ -99,7 +103,16 @@
             BlueprintName = "TNCExampleWatch"
             ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7530BA5F227F457500D57E4F"
+            BuildableName = "TNCExampleWatch.app"
+            BlueprintName = "TNCExampleWatch"
+            ReferencedContainer = "container:TypedNotificationCenter.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

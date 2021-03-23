@@ -1,9 +1,9 @@
 //
-//  TypedNotificationObservation.swift
+//  TypedNotificationObservation+GenericBridgedNotification.swift
 //  TypedNotificationCenter
 //
-//  Created by Benedek Kozma on 2019. 05. 05.
-//  Copyright (c) 2019. Benedek Kozma
+//  Created by Benedek Kozma on 2021. 03. 23.
+//  Copyright (c) 2021. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,31 +26,10 @@
 
 import Foundation
 
-public class TypedNotificationObservation {
-	internal init() {}
-	deinit {
-		invalidate()
-	}
-
-	public func invalidate() {}
-	public var isValid: Bool { false }
-}
-
-extension TypedNotificationObservation: Hashable {
-	public final func hash(into hasher: inout Hasher) {
-		hasher.combine(ObjectIdentifier(self))
-	}
-
-	public static func == (lhs: TypedNotificationObservation, rhs: TypedNotificationObservation) -> Bool {
-		lhs === rhs
-	}
-}
-
-let nilSenderIdentifier = ObjectIdentifier(WeakBox<AnyObject>.self)
-
-final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificationObservation {
-	init(notificationCenter: TypedNotificationCenter, sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
+final class _GenericBridgedNotificationObservation: TypedNotificationObservation {
+	init(notificationCenter: TypedNotificationCenter, notificationName: Notification.Name, sender: AnyObject?, queue: OperationQueue?, block: @escaping (Notification) -> Void) {
 		self.notificationCenter = notificationCenter
+		self.notificationName = notificationName
 		self.sender = sender
 		senderIdentifier = sender.map { SenderIdentifier($0) } ?? nilSenderIdentifier
 		self.queue = queue
@@ -58,10 +37,11 @@ final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificati
 	}
 
 	private weak var notificationCenter: TypedNotificationCenter?
-	weak var sender: T.Sender?
+	let notificationName: Notification.Name
+	weak var sender: AnyObject?
 	let senderIdentifier: SenderIdentifier
 	var queue: OperationQueue?
-	var block: T.ObservationBlock?
+	var block: ((Notification) -> Void)?
 
 	private var isRemoved = false
 

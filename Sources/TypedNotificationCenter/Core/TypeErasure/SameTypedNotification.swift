@@ -56,12 +56,12 @@ public final class SameTypedNotification<Sender, Payload> {
 
 	init<T: BridgedNotification>(_: T.Type) where T.Sender == Sender, T.Payload == Payload {
 		observeBlock = { notificationCenter, sender, queue, notificationBlock in
-			notificationCenter._observe(T.self, object: sender, queue: queue) { sender, payload in
+			notificationCenter._bridgeObserve(T.self, object: sender, queue: queue) { sender, payload in
 				notificationBlock(sender, payload)
 			}
 		}
 		postBlock = { notificationCenter, sender, payload in
-			notificationCenter._post(T.self, sender: sender, payload: payload)
+			notificationCenter._bridgePost(T.self, sender: sender, payload: payload)
 		}
 	}
 }

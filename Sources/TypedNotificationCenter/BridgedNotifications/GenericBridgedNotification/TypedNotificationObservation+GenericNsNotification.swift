@@ -1,9 +1,9 @@
 //
-//  WeakBox.swift
+//  TypedNotificationObservation+GenericNsNotification.swift
 //  TypedNotificationCenter
 //
-//  Created by Benedek Kozma on 2019. 05. 31.
-//  Copyright (c) 2019. Benedek Kozma
+//  Created by Benedek Kozma on 2021. 03. 23.
+//  Copyright (c) 2021. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,10 +26,22 @@
 
 import Foundation
 
-final class WeakBox<T: AnyObject> {
-	weak var object: T?
+final class _GenericNsNotificationObservation: TypedNotificationObservation {
+	private var observation: Any
 
-	init(_ object: T) {
-		self.object = object
+	init(notificationName: Notification.Name, sender: AnyObject?, queue: OperationQueue?, block: @escaping (Notification) -> Void) {
+		observation = NotificationCenter.default.addObserver(forName: notificationName, object: sender, queue: queue, using: { notification in
+			block(notification)
+		})
 	}
+
+	// MARK: - TypedNotificationObservation conformance
+
+	override func invalidate() {
+		_isValid = false
+		NotificationCenter.default.removeObserver(observation)
+	}
+
+	private var _isValid = true
+	override var isValid: Bool { _isValid }
 }
