@@ -44,7 +44,7 @@ extension TypedNotificationCenter {
 		return (nilObservations, objectObservations)
 	}
 
-	private func forwardPost(_ notificationName: Notification.Name, sender: AnyObject, payload: [AnyHashable: Any]) {
+	func forwardGenericPost(_ notificationName: Notification.Name, sender: AnyObject, payload: [AnyHashable: Any]) {
 		var nilObservations: Dictionary<ObjectIdentifier, WeakBox<_GenericBridgedNotificationObservation>>.Values?
 		var objectObservations: Dictionary<ObjectIdentifier, WeakBox<_GenericBridgedNotificationObservation>>.Values?
 		observerLock.lock()
@@ -107,7 +107,7 @@ extension TypedNotificationCenter {
 			nsnotificationObservers[notificationName] = _GenericNsNotificationObservation(notificationName: notificationName, sender: nil, queue: nil, block: { [weak self] notification in
 				let sender = notification.object as AnyObject
 				let payload = notification.userInfo ?? [:]
-				self?.forwardPost(notification.name, sender: sender, payload: payload)
+				self?.forwardGenericPost(notification.name, sender: sender, payload: payload)
 			})
 		}
 		bridgedObservers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation

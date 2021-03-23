@@ -29,10 +29,12 @@ import Foundation
 extension TypedNotificationCenter {
 	func _bridgeObserve<T: BridgedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
 		observerLock.lock()
-		assert(!bridgedObservers.keys.contains(T.notificationName), "Using BridgedNotification and Notification.Name for the same notification is not supported")
-		if !nsnotificationObservers.keys.contains(T.notificationName) {
+		if !bridgedTypes.contains(T.notificationName) {
+			bridgedTypes.insert(T.notificationName)
+			nsnotificationObservers[T.notificationName]?.invalidate()
 			nsnotificationObservers[T.notificationName] = _NsNotificationObservation<T>(sender: nil, queue: nil, block: { [weak self] sender, payload in
 				self?._post(T.self, sender: sender, payload: payload)
+				self?.forwardGenericPost(T.notificationName, sender: sender, payload: payload.asDictionary())
 			})
 		}
 		observerLock.unlock()
