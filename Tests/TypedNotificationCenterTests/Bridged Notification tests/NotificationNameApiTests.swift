@@ -33,9 +33,19 @@ class NotificationNameApiTests: TestCase {
 	let sender = MySender()
 	let otherSender = MySender()
 
-	func testCrossSendingFromNotificationCenter() {
-		let notificationCenter = TypedNotificationCenter()
+	var notificationCenter: TypedNotificationCenter!
 
+	override func setUp() {
+		super.setUp()
+		notificationCenter = TypedNotificationCenter()
+	}
+
+	override func tearDown() {
+		super.tearDown()
+		notificationCenter = nil
+	}
+
+	func testCrossSendingFromNotificationCenter() {
 		var count = 0
 		let observation1 = notificationCenter.observe(notificationName, object: nil) { _ in
 			count += 1
@@ -54,6 +64,31 @@ class NotificationNameApiTests: TestCase {
 		XCTAssertFalse(observation1.isValid, "Observation should become invalid after calling invalidate")
 		NotificationCenter.default.post(name: notificationName, object: sender, userInfo: nil)
 		XCTAssertEqual(count, 4, "Observer block should've been called four times")
+		_ = observation2
+	}
+
+	func testOperationQueue() {
+		let queue = OperationQueue()
+		let expectation1 = expectation(description: "Call Block")
+		let expectation2 = expectation(description: "Call Block")
+
+		var count = 0
+		let observation1 = notificationCenter.observe(notificationName, object: sender, queue: queue, block: { _ in
+			count += 1
+			expectation1.fulfill()
+		})
+		let observation2 = notificationCenter.observe(notificationName, object: nil, queue: queue, block: { _ in
+			count += 1
+			expectation2.fulfill()
+		})
+
+		NotificationCenter.default.post(name: notificationName, object: sender, userInfo: nil)
+		waitForExpectations(timeout: 1, handler: nil)
+
+		wait(0.1)
+
+		XCTAssertEqual(count, 2, "Observer block should've been called twice")
+		_ = observation1
 		_ = observation2
 	}
 }
