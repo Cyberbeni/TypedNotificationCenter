@@ -30,8 +30,9 @@ typealias NotificationIdentifier = ObjectIdentifier
 typealias SenderIdentifier = ObjectIdentifier
 
 public final class TypedNotificationCenter {
-	private let observerLock = NSLock()
-	private var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox]]]()
+	let observerLock = NSLock()
+	var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox]]]()
+    var bridgedObservers = [Notification.Name: Any]()
 
 	// MARK: - Utility functions
 

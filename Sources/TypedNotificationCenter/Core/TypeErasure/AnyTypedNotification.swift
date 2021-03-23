@@ -52,7 +52,7 @@ public final class AnyTypedNotification {
 
 	init<T: BridgedNotification>(_: T.Type) {
 		observeBlock = { notificationCenter, queue, notificationBlock in
-			notificationCenter._observe(T.self, object: nil, queue: queue) { _, _ in
+			notificationCenter._bridgeObserve(T.self, object: nil, queue: queue) { _, _ in
 				notificationBlock()
 			}
 		}

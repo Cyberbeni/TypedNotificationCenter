@@ -52,7 +52,7 @@ public final class AnyPayloadTypedNotification<Sender> {
 
 	init<T: BridgedNotification>(_: T.Type) where T.Sender == Sender {
 		observeBlock = { notificationCenter, sender, queue, notificationBlock in
-			notificationCenter._observe(T.self, object: sender, queue: queue) { sender, _ in
+			notificationCenter._bridgeObserve(T.self, object: sender, queue: queue) { sender, _ in
 				notificationBlock(sender)
 			}
 		}
