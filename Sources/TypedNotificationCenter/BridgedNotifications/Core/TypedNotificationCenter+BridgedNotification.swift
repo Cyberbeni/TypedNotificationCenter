@@ -33,6 +33,8 @@ extension TypedNotificationCenter {
 			bridgedNsnotificationObservers[T.notificationName] = _NsNotificationObservation<T>(sender: nil, queue: nil, block: { [weak self] sender, payload in
 				self?._post(T.self, sender: sender, payload: payload)
 			})
+		} else {
+			assert(bridgedNsnotificationObservers[T.notificationName] is _NsNotificationObservation<T>, "Two BridgedNotification types (\(String(describing: T.self)) and \(String(describing: type(of: bridgedNsnotificationObservers[T.notificationName])))) are using the same name: \(T.notificationName)")
 		}
 		observerLock.unlock()
 
