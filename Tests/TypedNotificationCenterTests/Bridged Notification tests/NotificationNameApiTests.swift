@@ -91,4 +91,28 @@ class NotificationNameApiTests: TestCase {
 		_ = observation1
 		_ = observation2
 	}
+
+	func testNilObject() {
+		var count = 0
+		let observation1 = notificationCenter.observe(notificationName, object: nil) { notification in
+			XCTAssertEqual(notification.object, nil)
+			XCTAssertNotEqual(notification.object, NSNull())
+			count += 1
+		}
+
+		NotificationCenter.default.post(name: notificationName, object: nil, userInfo: nil)
+		XCTAssertEqual(count, 1, "Observer block should've been called once")
+	}
+
+	func testNsNullObject() {
+		var count = 0
+		let observation1 = notificationCenter.observe(notificationName, object: nil) { notification in
+			XCTAssertNotEqual(notification.object, nil)
+			XCTAssertEqual(notification.object, NSNull())
+			count += 1
+		}
+
+		NotificationCenter.default.post(name: notificationName, object: NSNull(), userInfo: nil)
+		XCTAssertEqual(count, 1, "Observer block should've been called once")
+	}
 }
