@@ -104,11 +104,11 @@ extension TypedNotificationCenter {
 
 		observerLock.lock()
 		if !nsnotificationObservers.keys.contains(notificationName) {
-			nsnotificationObservers[notificationName] = _GenericNsNotificationObservation(notificationName: notificationName, sender: nil, queue: nil, block: { [weak self] notification in
+            nsnotificationObservers[notificationName] = (observation: _GenericNsNotificationObservation(notificationName: notificationName, sender: nil, queue: nil, block: { [weak self] notification in
 				let sender = notification.object as AnyObject
 				let payload = notification.userInfo ?? [:]
 				self?.forwardGenericPost(notification.name, sender: sender, payload: payload)
-			})
+            }), isTyped: false)
 		}
 		bridgedObservers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
 		observerLock.unlock()
