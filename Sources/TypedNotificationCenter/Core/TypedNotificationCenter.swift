@@ -33,7 +33,8 @@ public final class TypedNotificationCenter {
 	let observerLock = NSLock()
 	var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox<AnyObject>]]]()
 	var bridgedObservers = [Notification.Name: [SenderIdentifier: [ObjectIdentifier: WeakBox<_GenericBridgedNotificationObservation>]]]()
-    var nsnotificationObservers = [Notification.Name: (observation: TypedNotificationObservation, isTyped: Bool)]()
+    var bridgedNsnotificationObservers = [Notification.Name: Any]()
+    var genericNsnotificationObservers = [Notification.Name: _GenericNsNotificationObservation]()
 
 	// MARK: - Utility functions
 

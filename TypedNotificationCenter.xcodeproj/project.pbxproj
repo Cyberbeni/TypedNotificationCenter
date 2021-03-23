@@ -919,7 +919,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Benedek Kozma";
 				TargetAttributes = {
 					5C8195E522A7D22100312EA9 = {
