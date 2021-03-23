@@ -28,25 +28,15 @@ import Foundation
 
 extension TypedNotificationCenter {
 	func _bridgeObserve<T: BridgedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
-		let object = T.Sender.self is NSNull.Type ? nil : object
-        
-        let observation = _TypedNotificationObservation<T>(notificationCenter: self, sender: object, queue: queue, block: block)
-
-        let notificationIdentifier = NotificationIdentifier(T.self)
-        let senderIdentifier = observation.senderIdentifier
-        let observerIdentifier = ObjectIdentifier(observation)
-        let boxedObservation = WeakBox(observation)
-
         observerLock.lock()
         if !bridgedObservers.keys.contains(T.notificationName) {
             bridgedObservers[T.notificationName] = _BridgedNotificationObservation<T>(sender: nil, queue: nil, block: { [weak self] (sender, payload) in
                 self?.forwardPost(T.self, sender: sender, payload: payload)
             })
         }
-        observers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
         observerLock.unlock()
-
-		return observation
+        
+        return self._observe(T.self, object: object, queue: queue, block: block)
 	}
     
     func forwardPost<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
