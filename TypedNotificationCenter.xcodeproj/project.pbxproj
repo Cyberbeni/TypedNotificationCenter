@@ -34,6 +34,7 @@
 		5C8052502609EDF700D52C7A /* TypedNotificationObservation+GenericBridgedNotificaion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C80524E2609EDF700D52C7A /* TypedNotificationObservation+GenericBridgedNotificaion.swift */; };
 		5C8052512609EDF700D52C7A /* TypedNotificationObservation+GenericBridgedNotificaion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C80524E2609EDF700D52C7A /* TypedNotificationObservation+GenericBridgedNotificaion.swift */; };
 		5C8052522609EDF700D52C7A /* TypedNotificationObservation+GenericBridgedNotificaion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C80524E2609EDF700D52C7A /* TypedNotificationObservation+GenericBridgedNotificaion.swift */; };
+		5C8052642609FC8700D52C7A /* NotificationNameApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8052632609FC8700D52C7A /* NotificationNameApiTests.swift */; };
 		5C8195E122A7D10C00312EA9 /* PerformanceTestsPosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E022A7D10C00312EA9 /* PerformanceTestsPosting.swift */; };
 		5C8195E922A7D22100312EA9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E822A7D22100312EA9 /* main.swift */; };
 		5C8195EE22A7D69000312EA9 /* PerformanceTestNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */; };
@@ -231,6 +232,7 @@
 		5C32934222A7EF4400DBA352 /* PerformanceTestsSubscribing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTestsSubscribing.swift; sourceTree = "<group>"; };
 		5C8052412609ECAB00D52C7A /* TypedNotificationObservation+GenericBridgedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedNotificationObservation+GenericBridgedNotification.swift"; sourceTree = "<group>"; };
 		5C80524E2609EDF700D52C7A /* TypedNotificationObservation+GenericBridgedNotificaion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedNotificationObservation+GenericBridgedNotificaion.swift"; sourceTree = "<group>"; };
+		5C8052632609FC8700D52C7A /* NotificationNameApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameApiTests.swift; sourceTree = "<group>"; };
 		5C8195E022A7D10C00312EA9 /* PerformanceTestsPosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTestsPosting.swift; sourceTree = "<group>"; };
 		5C8195E622A7D22100312EA9 /* GenerateTestCode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GenerateTestCode; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8195E822A7D22100312EA9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 			children = (
 				5C03EC7722A8FDC800C9BCFD /* Utility */,
 				5C03EC7422A8F8F400C9BCFD /* BridgedNotificationApiTests.swift */,
+				5C8052632609FC8700D52C7A /* NotificationNameApiTests.swift */,
 			);
 			path = "Bridged Notification tests";
 			sourceTree = "<group>";
@@ -1221,6 +1224,7 @@
 				75896018227F587D003F3EDD /* SampleNotification.swift in Sources */,
 				7589601A227F5C41003F3EDD /* AsyncApiTests.swift in Sources */,
 				75BFD922227F553D0037271E /* ApiTests.swift in Sources */,
+				5C8052642609FC8700D52C7A /* NotificationNameApiTests.swift in Sources */,
 				5C8195E122A7D10C00312EA9 /* PerformanceTestsPosting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -28,21 +28,21 @@ import Foundation
 
 extension TypedNotificationCenter {
 	func _bridgeObserve<T: BridgedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
-        observerLock.lock()
-        assert(!bridgedObservers.keys.contains(T.notificationName), "Using BridgedNotification and Notification.Name for the same notification is not supported")
-        if !nsnotificationObservers.keys.contains(T.notificationName) {
-            nsnotificationObservers[T.notificationName] = _NsNotificationObservation<T>(sender: nil, queue: nil, block: { [weak self] (sender, payload) in
-                self?.forwardPost(T.self, sender: sender, payload: payload)
-            })
-        }
-        observerLock.unlock()
+		observerLock.lock()
+		assert(!bridgedObservers.keys.contains(T.notificationName), "Using BridgedNotification and Notification.Name for the same notification is not supported")
+		if !nsnotificationObservers.keys.contains(T.notificationName) {
+			nsnotificationObservers[T.notificationName] = _NsNotificationObservation<T>(sender: nil, queue: nil, block: { [weak self] sender, payload in
+				self?.forwardPost(T.self, sender: sender, payload: payload)
+			})
+		}
+		observerLock.unlock()
 
-        return self._observe(T.self, object: object, queue: queue, block: block)
+		return _observe(T.self, object: object, queue: queue, block: block)
 	}
-    
-    private func forwardPost<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
-        _post(T.self, sender: sender, payload: payload)
-    }
+
+	private func forwardPost<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
+		_post(T.self, sender: sender, payload: payload)
+	}
 
 	func _bridgePost<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
 		NotificationCenter.default.post(name: T.notificationName, object: sender, userInfo: payload.asDictionary())
