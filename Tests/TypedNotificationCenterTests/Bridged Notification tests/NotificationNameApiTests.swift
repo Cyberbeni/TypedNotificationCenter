@@ -95,8 +95,8 @@ class NotificationNameApiTests: TestCase {
 	func testNilObject() {
 		var count = 0
 		let observation1 = notificationCenter.observe(notificationName, object: nil) { notification in
-			XCTAssertEqual(notification.object, nil)
-			XCTAssertNotEqual(notification.object, NSNull())
+			XCTAssert(notification.object == nil)
+			XCTAssert(notification.object !== NSNull())
 			count += 1
 		}
 
@@ -107,8 +107,8 @@ class NotificationNameApiTests: TestCase {
 	func testNsNullObject() {
 		var count = 0
 		let observation1 = notificationCenter.observe(notificationName, object: nil) { notification in
-			XCTAssertNotEqual(notification.object, nil)
-			XCTAssertEqual(notification.object, NSNull())
+			XCTAssert(notification.object != nil)
+			XCTAssert(notification.object === NSNull())
 			count += 1
 		}
 
