@@ -26,93 +26,36 @@
 
 import Foundation
 
-extension TypedNotificationCenter {
-	// MARK: - Utility functions
-
-	private func filter(_ notificationName: Notification.Name, sender: AnyObject)
-		-> (nilObservations: Dictionary<ObjectIdentifier, WeakBox<_GenericBridgedNotificationObservation>>.Values?,
-		    objectObservations: Dictionary<ObjectIdentifier, WeakBox<_GenericBridgedNotificationObservation>>.Values?)
-	{
-		let notificationIdentifier = notificationName
-		let senderIdentifier = SenderIdentifier(sender)
-
-		let observationsForNotification = bridgedObservers[notificationIdentifier]
-
-		let nilObservations = observationsForNotification?[nilSenderIdentifier]?.values
-		let objectObservations = observationsForNotification?[senderIdentifier]?.values
-
-		return (nilObservations, objectObservations)
+final class _GenericBridgedNotificationObservation: TypedNotificationObservation {
+	init(notificationCenter: TypedNotificationCenter, notificationName: Notification.Name, sender: AnyObject?, queue: OperationQueue?, block: @escaping (Notification) -> Void) {
+		self.notificationCenter = notificationCenter
+		self.notificationName = notificationName
+		self.sender = sender
+		senderIdentifier = sender.map { SenderIdentifier($0) } ?? nilSenderIdentifier
+		self.queue = queue
+		self.block = block
 	}
 
-	func forwardGenericPost(_ notificationName: Notification.Name, sender: AnyObject, payload: [AnyHashable: Any]) {
-		var nilObservations: Dictionary<ObjectIdentifier, WeakBox<_GenericBridgedNotificationObservation>>.Values?
-		var objectObservations: Dictionary<ObjectIdentifier, WeakBox<_GenericBridgedNotificationObservation>>.Values?
-		observerLock.lock()
-		(nilObservations, objectObservations) = filter(notificationName, sender: sender)
-		observerLock.unlock()
-		nilObservations?.forEach { observation in
-			guard let observation = observation.object else { return }
-			if let queue = observation.queue,
-			   let block = observation.block
-			{
-				queue.addOperation {
-					block(Notification(name: notificationName, object: sender, userInfo: payload))
-				}
-			} else {
-				observation.block?(Notification(name: notificationName, object: sender, userInfo: payload))
-			}
-		}
-		objectObservations?.forEach { observation in
-			guard let observation = observation.object,
-			      observation.sender != nil
-			else { return }
-			if let queue = observation.queue,
-			   let block = observation.block
-			{
-				queue.addOperation {
-					block(Notification(name: notificationName, object: sender, userInfo: payload))
-				}
-			} else {
-				observation.block?(Notification(name: notificationName, object: sender, userInfo: payload))
-			}
-		}
+	private weak var notificationCenter: TypedNotificationCenter?
+	let notificationName: Notification.Name
+	weak var sender: AnyObject?
+	let senderIdentifier: SenderIdentifier
+	var queue: OperationQueue?
+	var block: ((Notification) -> Void)?
+
+	private var isRemoved = false
+
+	// MARK: - TypedNotificationObservation conformance
+
+	override var isValid: Bool {
+		!isRemoved && (notificationCenter != nil) && !(senderIdentifier != nilSenderIdentifier && sender == nil)
 	}
 
-	// MARK: - Internal functions
-
-	func remove(observation: _GenericBridgedNotificationObservation) {
-		let notificationIdentifier = observation.notificationName
-		let senderIdentifier = observation.senderIdentifier
-		let observerIdentifier = ObjectIdentifier(observation)
-		observerLock.lock()
-		bridgedObservers[notificationIdentifier]?[senderIdentifier]?.removeValue(forKey: observerIdentifier)
-		if bridgedObservers[notificationIdentifier]?[senderIdentifier]?.isEmpty == true {
-			bridgedObservers[notificationIdentifier]?.removeValue(forKey: senderIdentifier)
-		}
-		observerLock.unlock()
-	}
-
-	// MARK: - Public interface
-
-	public func observe(_ notificationName: Notification.Name, object: AnyObject?, queue: OperationQueue? = nil, block: @escaping (Notification) -> Void) -> TypedNotificationObservation {
-		let observation = _GenericBridgedNotificationObservation(notificationCenter: self, notificationName: notificationName, sender: object, queue: queue, block: block)
-
-		let notificationIdentifier = notificationName
-		let senderIdentifier = observation.senderIdentifier
-		let observerIdentifier = ObjectIdentifier(observation)
-		let boxedObservation = WeakBox<_GenericBridgedNotificationObservation>(observation)
-
-		observerLock.lock()
-		if !genericNsnotificationObservers.keys.contains(notificationName) {
-			genericNsnotificationObservers[notificationName] = _GenericNsNotificationObservation(notificationName: notificationName, sender: nil, queue: nil, block: { [weak self] notification in
-				let sender = notification.object as AnyObject
-				let payload = notification.userInfo ?? [:]
-				self?.forwardGenericPost(notification.name, sender: sender, payload: payload)
-			})
-		}
-		bridgedObservers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
-		observerLock.unlock()
-
-		return observation
+	override func invalidate() {
+		guard !isRemoved else { return }
+		isRemoved = true
+		notificationCenter?.remove(observation: self)
+		block = nil
+		queue = nil
 	}
 }

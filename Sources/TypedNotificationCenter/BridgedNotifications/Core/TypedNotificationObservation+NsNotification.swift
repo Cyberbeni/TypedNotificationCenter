@@ -1,5 +1,5 @@
 //
-//  TypedNotificationObservation+BridgedNotification.swift
+//  TypedNotificationObservation+NsNotification.swift
 //  TypedNotificationCenter
 //
 //  Created by Benedek Kozma on 2019. 06. 06.
