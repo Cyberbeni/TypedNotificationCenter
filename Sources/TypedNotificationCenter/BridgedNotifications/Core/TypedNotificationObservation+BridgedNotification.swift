@@ -26,7 +26,7 @@
 
 import Foundation
 
-final class _BridgedNotificationObservation<T: BridgedNotification>: TypedNotificationObservation {
+final class _NsNotificationObservation<T: BridgedNotification>: TypedNotificationObservation {
 	private var observation: Any
 
 	init(sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {

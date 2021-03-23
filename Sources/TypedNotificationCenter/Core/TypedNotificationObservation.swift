@@ -46,7 +46,7 @@ extension TypedNotificationObservation: Hashable {
 	}
 }
 
-let nilSenderIdentifier = ObjectIdentifier(WeakBox.self)
+let nilSenderIdentifier = ObjectIdentifier(WeakBox<AnyObject>.self)
 
 final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificationObservation {
 	init(notificationCenter: TypedNotificationCenter, sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {

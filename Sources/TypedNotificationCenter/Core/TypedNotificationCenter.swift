@@ -31,13 +31,14 @@ typealias SenderIdentifier = ObjectIdentifier
 
 public final class TypedNotificationCenter {
 	let observerLock = NSLock()
-	var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox]]]()
-    var bridgedObservers = [Notification.Name: Any]()
+	var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox<AnyObject>]]]()
+    var bridgedObservers = [Notification.Name: [SenderIdentifier: [ObjectIdentifier: WeakBox<_GenericBridgedNotificationObservation>]]]()
+    var nsnotificationObservers = [Notification.Name: Any]()
 
 	// MARK: - Utility functions
 
 	private func filter<T: TypedNotification>(_: T.Type, sender: AnyObject)
-		-> (nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?, objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?)
+		-> (nilObservations: Dictionary<ObjectIdentifier, WeakBox<AnyObject>>.Values?, objectObservations: Dictionary<ObjectIdentifier, WeakBox<AnyObject>>.Values?)
 	{
 		let notificationIdentifier = NotificationIdentifier(T.self)
 		let senderIdentifier = SenderIdentifier(sender)
@@ -72,7 +73,7 @@ public final class TypedNotificationCenter {
 		let notificationIdentifier = NotificationIdentifier(T.self)
 		let senderIdentifier = observation.senderIdentifier
 		let observerIdentifier = ObjectIdentifier(observation)
-		let boxedObservation = WeakBox(observation)
+		let boxedObservation = WeakBox<AnyObject>(observation)
 
 		observerLock.lock()
 		observers[notificationIdentifier, default: [:]][senderIdentifier, default: [:]][observerIdentifier] = boxedObservation
@@ -82,8 +83,8 @@ public final class TypedNotificationCenter {
 	}
 
 	func _post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
-		var nilObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
-		var objectObservations: Dictionary<ObjectIdentifier, WeakBox>.Values?
+		var nilObservations: Dictionary<ObjectIdentifier, WeakBox<AnyObject>>.Values?
+		var objectObservations: Dictionary<ObjectIdentifier, WeakBox<AnyObject>>.Values?
 		observerLock.lock()
 		(nilObservations, objectObservations) = filter(T.self, sender: sender)
 		observerLock.unlock()
