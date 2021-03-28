@@ -54,7 +54,7 @@ enum KeyboardWillShowNotification: BridgedNotification {
 
 ```swift
 var observations = [TypedNotificationObservation]()
-observations.append(TypedNotificationCenter.default.observe(NSCurrentLocaleDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { notification in
+observations.append(TypedNotificationCenter.default.observe(NSLocale.currentLocaleDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { notification in
     print("The user's locale changed to: \(NSLocale.currentLocale().localeIdentifier)")
 })
 ```
