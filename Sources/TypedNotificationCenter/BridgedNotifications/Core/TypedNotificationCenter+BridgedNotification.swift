@@ -30,11 +30,14 @@ extension TypedNotificationCenter {
 	func _bridgeObserve<T: BridgedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
 		observerLock.lock()
 		if !bridgedNsnotificationObservers.keys.contains(T.notificationName) {
-			bridgedNsnotificationObservers[T.notificationName] = _NsNotificationObservation<T>(sender: nil, queue: nil, block: { [weak self] sender, payload in
+			bridgedNsnotificationObservers[T.notificationName] = _NsNotificationObservation<T>(nsNotificationCenter: nsNotificationCenterForBridging, block: { [weak self] sender, payload in
 				self?._post(T.self, sender: sender, payload: payload)
 			})
 		} else {
-			assert(bridgedNsnotificationObservers[T.notificationName] is _NsNotificationObservation<T>, "Two BridgedNotification types (\(String(describing: T.self)) and \(String(describing: type(of: bridgedNsnotificationObservers[T.notificationName])))) are using the same name: \(T.notificationName)")
+			assert(
+				bridgedNsnotificationObservers[T.notificationName] is _NsNotificationObservation<T>,
+				"Two BridgedNotification types (\(String(describing: T.self)) and \(String(describing: type(of: bridgedNsnotificationObservers[T.notificationName])))) are using the same name: \(T.notificationName)"
+			)
 		}
 		observerLock.unlock()
 
@@ -42,6 +45,6 @@ extension TypedNotificationCenter {
 	}
 
 	func _bridgePost<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
-		NotificationCenter.default.post(name: T.notificationName, object: sender, userInfo: payload.asDictionary())
+		nsNotificationCenterForBridging.post(name: T.notificationName, object: sender, userInfo: payload.asDictionary())
 	}
 }

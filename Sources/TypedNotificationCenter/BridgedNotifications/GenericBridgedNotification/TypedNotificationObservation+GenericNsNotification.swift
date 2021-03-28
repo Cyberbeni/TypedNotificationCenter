@@ -27,10 +27,12 @@
 import Foundation
 
 final class _GenericNsNotificationObservation: TypedNotificationObservation {
-	private var observation: Any
+	private let observation: Any
+	private weak var nsNotificationCenter: NotificationCenter?
 
-	init(notificationName: Notification.Name, sender: AnyObject?, queue: OperationQueue?, block: @escaping (Notification) -> Void) {
-		observation = NotificationCenter.default.addObserver(forName: notificationName, object: sender, queue: queue, using: { notification in
+	init(nsNotificationCenter: NotificationCenter, notificationName: Notification.Name, block: @escaping (Notification) -> Void) {
+		self.nsNotificationCenter = nsNotificationCenter
+		observation = nsNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil, using: { notification in
 			block(notification)
 		})
 	}
@@ -39,7 +41,7 @@ final class _GenericNsNotificationObservation: TypedNotificationObservation {
 
 	override func invalidate() {
 		_isValid = false
-		NotificationCenter.default.removeObserver(observation)
+		nsNotificationCenter?.removeObserver(observation)
 	}
 
 	private var _isValid = true

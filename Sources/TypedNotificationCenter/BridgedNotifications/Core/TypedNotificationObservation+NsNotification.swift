@@ -27,10 +27,12 @@
 import Foundation
 
 final class _NsNotificationObservation<T: BridgedNotification>: TypedNotificationObservation {
-	private var observation: Any
+	private let observation: Any
+	private weak var nsNotificationCenter: NotificationCenter?
 
-	init(sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
-		observation = NotificationCenter.default.addObserver(forName: T.notificationName, object: sender, queue: queue, using: { notification in
+	init(nsNotificationCenter: NotificationCenter, block: @escaping T.ObservationBlock) {
+		self.nsNotificationCenter = nsNotificationCenter
+		observation = nsNotificationCenter.addObserver(forName: T.notificationName, object: nil, queue: nil, using: { notification in
 			guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
 				TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
 				return
@@ -49,7 +51,7 @@ final class _NsNotificationObservation<T: BridgedNotification>: TypedNotificatio
 
 	override func invalidate() {
 		_isValid = false
-		NotificationCenter.default.removeObserver(observation)
+		nsNotificationCenter?.removeObserver(observation)
 	}
 
 	private var _isValid = true
