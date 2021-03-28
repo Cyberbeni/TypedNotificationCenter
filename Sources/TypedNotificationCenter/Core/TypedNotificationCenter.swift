@@ -32,6 +32,7 @@ typealias SenderIdentifier = ObjectIdentifier
 public final class TypedNotificationCenter {
 	let observerLock = NSLock()
 	var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox<AnyObject>]]]()
+	let nsNotificationCenterForBridging: NotificationCenter
 	var bridgedObservers = [Notification.Name: [SenderIdentifier: [ObjectIdentifier: WeakBox<_GenericBridgedNotificationObservation>]]]()
 	var bridgedNsnotificationObservers = [Notification.Name: TypedNotificationObservation]()
 	var genericNsnotificationObservers = [Notification.Name: _GenericNsNotificationObservation]()
@@ -119,7 +120,9 @@ public final class TypedNotificationCenter {
 
 	// MARK: - Public interface
 
-	public init() {}
+	public init(nsNotificationCenterForBridging: NotificationCenter = .default) {
+		self.nsNotificationCenterForBridging = nsNotificationCenterForBridging
+	}
 
 	public static let `default` = TypedNotificationCenter()
 
