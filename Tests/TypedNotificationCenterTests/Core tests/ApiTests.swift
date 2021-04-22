@@ -38,6 +38,7 @@ class ApiTests: TestCase {
 	}
 
 	override func tearDown() {
+		observation?.invalidate()
 		observation = nil
 	}
 
@@ -217,7 +218,7 @@ class ApiTests: TestCase {
 
 	func testRemoveDuringPost() {
 		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: nil, block: { _, _ in
-			observation?.invalidate()
+			self.observation?.invalidate()
 			self.count += 1
 			TypedNotificationCenter.default.post(SampleNotification.self, sender: self.sender, payload: SampleNotification.Payload())
 		})
