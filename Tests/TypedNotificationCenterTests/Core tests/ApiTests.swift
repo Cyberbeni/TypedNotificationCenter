@@ -217,13 +217,13 @@ class ApiTests: TestCase {
 
 	func testRemoveDuringPost() {
 		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: nil, block: { _, _ in
-			observation.invalidate()
+			observation?.invalidate()
 			self.count += 1
 			TypedNotificationCenter.default.post(SampleNotification.self, sender: self.sender, payload: SampleNotification.Payload())
 		})
 		var observation2: TypedNotificationObservation? 
 		observation2 = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: nil, block: { _, _ in
-			observation2.invalidate()
+			observation2?.invalidate()
 			self.count += 1
 			TypedNotificationCenter.default.post(SampleNotification.self, sender: self.sender, payload: SampleNotification.Payload())
 		})
