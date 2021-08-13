@@ -69,6 +69,10 @@
 		7530BAB7227F48AC00D57E4F /* TypedNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */; };
 		7530BAB8227F48AC00D57E4F /* TypedNotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */; };
 		7530BAB9227F48AC00D57E4F /* TypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641658227F19AA0090F4D6 /* TypedNotification.swift */; };
+		753D4CC126C6C9FC00AE72A7 /* ReadWriteLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753D4CC026C6C9FC00AE72A7 /* ReadWriteLock.swift */; };
+		753D4CC226C6C9FC00AE72A7 /* ReadWriteLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753D4CC026C6C9FC00AE72A7 /* ReadWriteLock.swift */; };
+		753D4CC326C6C9FC00AE72A7 /* ReadWriteLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753D4CC026C6C9FC00AE72A7 /* ReadWriteLock.swift */; };
+		753D4CC426C6C9FC00AE72A7 /* ReadWriteLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753D4CC026C6C9FC00AE72A7 /* ReadWriteLock.swift */; };
 		7563B2B82393E24100235328 /* AnyPayloadTypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7563B2B72393E24100235328 /* AnyPayloadTypedNotification.swift */; };
 		7563B2B92393E24100235328 /* AnyPayloadTypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7563B2B72393E24100235328 /* AnyPayloadTypedNotification.swift */; };
 		7563B2BA2393E24100235328 /* AnyPayloadTypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7563B2B72393E24100235328 /* AnyPayloadTypedNotification.swift */; };
@@ -263,6 +267,7 @@
 		7530BA8A227F476100D57E4F /* TypedNotificationCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TypedNotificationCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7530BA9C227F482000D57E4F /* TypedNotificationCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TypedNotificationCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7530BAA9227F487400D57E4F /* TypedNotificationCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TypedNotificationCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		753D4CC026C6C9FC00AE72A7 /* ReadWriteLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWriteLock.swift; sourceTree = "<group>"; };
 		7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationCenter.swift; sourceTree = "<group>"; };
 		7563B2B72393E24100235328 /* AnyPayloadTypedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPayloadTypedNotification.swift; sourceTree = "<group>"; };
 		7563B2BC2393E28800235328 /* AnyTypedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTypedNotification.swift; sourceTree = "<group>"; };
@@ -397,6 +402,7 @@
 				75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */,
 				75641658227F19AA0090F4D6 /* TypedNotification.swift */,
 				75EA5FA122A1381B00462F7F /* WeakBox.swift */,
+				753D4CC026C6C9FC00AE72A7 /* ReadWriteLock.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1129,6 +1135,7 @@
 				5C8052432609ECAB00D52C7A /* TypedNotificationCenter+GenericBridgedNotification.swift in Sources */,
 				5CA2FC6622A91F5C00625F8D /* BridgedNotification+ErrorHandlingCustomization.swift in Sources */,
 				75EA5FA322A1381B00462F7F /* WeakBox.swift in Sources */,
+				753D4CC226C6C9FC00AE72A7 /* ReadWriteLock.swift in Sources */,
 				7530BAB1227F48AB00D57E4F /* TypedNotificationCenter.swift in Sources */,
 				5C03EC6722A8EE8900C9BCFD /* TypedNotificationObservation+NsNotification.swift in Sources */,
 				5C03EC5722A80E8500C9BCFD /* UIResponder.swift in Sources */,
@@ -1151,6 +1158,7 @@
 				5C8052442609ECAB00D52C7A /* TypedNotificationCenter+GenericBridgedNotification.swift in Sources */,
 				5CA2FC6722A91F5C00625F8D /* BridgedNotification+ErrorHandlingCustomization.swift in Sources */,
 				75EA5FA422A1381B00462F7F /* WeakBox.swift in Sources */,
+				753D4CC326C6C9FC00AE72A7 /* ReadWriteLock.swift in Sources */,
 				7530BAB4227F48AC00D57E4F /* TypedNotificationCenter.swift in Sources */,
 				5C03EC6822A8EE8900C9BCFD /* TypedNotificationObservation+NsNotification.swift in Sources */,
 				5C03EC5822A80E8500C9BCFD /* UIResponder.swift in Sources */,
@@ -1173,6 +1181,7 @@
 				5C8052452609ECAB00D52C7A /* TypedNotificationCenter+GenericBridgedNotification.swift in Sources */,
 				5CA2FC6822A91F5C00625F8D /* BridgedNotification+ErrorHandlingCustomization.swift in Sources */,
 				75EA5FA522A1381B00462F7F /* WeakBox.swift in Sources */,
+				753D4CC426C6C9FC00AE72A7 /* ReadWriteLock.swift in Sources */,
 				7530BAB7227F48AC00D57E4F /* TypedNotificationCenter.swift in Sources */,
 				5C03EC6922A8EE8900C9BCFD /* TypedNotificationObservation+NsNotification.swift in Sources */,
 				5C03EC5922A80E8500C9BCFD /* UIResponder.swift in Sources */,
@@ -1205,6 +1214,7 @@
 				5C8052422609ECAB00D52C7A /* TypedNotificationCenter+GenericBridgedNotification.swift in Sources */,
 				5CA2FC6522A91F5C00625F8D /* BridgedNotification+ErrorHandlingCustomization.swift in Sources */,
 				75EA5FA222A1381B00462F7F /* WeakBox.swift in Sources */,
+				753D4CC126C6C9FC00AE72A7 /* ReadWriteLock.swift in Sources */,
 				756416CB227F351D0090F4D6 /* TypedNotificationCenter.swift in Sources */,
 				5C03EC6622A8EE8900C9BCFD /* TypedNotificationObservation+NsNotification.swift in Sources */,
 				5C03EC5622A80E8500C9BCFD /* UIResponder.swift in Sources */,

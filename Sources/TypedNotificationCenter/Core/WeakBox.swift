@@ -24,8 +24,6 @@
 // THE SOFTWARE.
 //
 
-import Foundation
-
 final class WeakBox<T: AnyObject> {
 	weak var object: T?
 

@@ -30,7 +30,7 @@ typealias NotificationIdentifier = ObjectIdentifier
 typealias SenderIdentifier = ObjectIdentifier
 
 public final class TypedNotificationCenter {
-	let observerLock = NSLock()
+    let observerLock = ReadWriteLock()
 	var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox<AnyObject>]]]()
 	let nsNotificationCenterForBridging: NotificationCenter
 	var bridgedObservers = [Notification.Name: [SenderIdentifier: [ObjectIdentifier: WeakBox<_GenericBridgedNotificationObservation>]]]()
@@ -87,7 +87,7 @@ public final class TypedNotificationCenter {
 	func _post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
 		var nilObservations: Dictionary<ObjectIdentifier, WeakBox<AnyObject>>.Values?
 		var objectObservations: Dictionary<ObjectIdentifier, WeakBox<AnyObject>>.Values?
-		observerLock.lock()
+		observerLock.readLock()
 		(nilObservations, objectObservations) = filter(T.self, sender: sender)
 		observerLock.unlock()
 		nilObservations?.forEach { observation in
