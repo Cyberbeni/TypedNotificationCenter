@@ -34,7 +34,7 @@ final class ReadWriteLock: NSLocking {
     init() {
         _lock = UnsafeMutablePointer<pthread_rwlock_t>.allocate(capacity: 1)
         _lock.initialize(to: pthread_rwlock_t())
-        assert(pthread_rwlock_init(_lock, nil) == 0)
+        precondition(pthread_rwlock_init(_lock, nil) == 0)
     }
     
     deinit {
