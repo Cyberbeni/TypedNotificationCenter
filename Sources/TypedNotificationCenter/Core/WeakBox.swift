@@ -26,10 +26,10 @@
 
 import Foundation
 
-final class WeakBox {
-	weak var object: AnyObject?
+final class WeakBox<T: AnyObject> {
+	weak var object: T?
 
-	init(_ object: AnyObject) {
+	init(_ object: T) {
 		self.object = object
 	}
 }

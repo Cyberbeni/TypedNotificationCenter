@@ -1,8 +1,8 @@
 //
-//  AnyTypedNotification.swift
+//  TypedNotificationObservation+NsNotification.swift
 //  TypedNotificationCenter
 //
-//  Created by Benedek Kozma on 2019. 12. 01.
+//  Created by Benedek Kozma on 2019. 06. 06.
 //  Copyright (c) 2019. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,41 +26,34 @@
 
 import Foundation
 
-// MARK: Unrelated types
+final class _NsNotificationObservation<T: BridgedNotification>: TypedNotificationObservation {
+	private let observation: Any
+	private weak var nsNotificationCenter: NotificationCenter?
 
-public extension TypedNotification {
-	static func eraseTypes() -> AnyTypedNotification {
-		AnyTypedNotification(self)
-	}
-}
-
-public extension BridgedNotification {
-	static func eraseTypes() -> AnyTypedNotification {
-		AnyTypedNotification(self)
-	}
-}
-
-public final class AnyTypedNotification {
-	fileprivate let observeBlock: (TypedNotificationCenter, OperationQueue?, @escaping () -> Void) -> TypedNotificationObservation
-	init<T: TypedNotification>(_: T.Type) {
-		observeBlock = { notificationCenter, queue, notificationBlock in
-			notificationCenter._observe(T.self, object: nil, queue: queue) { _, _ in
-				notificationBlock()
+	init(nsNotificationCenter: NotificationCenter, block: @escaping T.ObservationBlock) {
+		self.nsNotificationCenter = nsNotificationCenter
+		observation = nsNotificationCenter.addObserver(forName: T.notificationName, object: nil, queue: nil, using: { notification in
+			guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
+				TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
+				return
 			}
-		}
-	}
-
-	init<T: BridgedNotification>(_: T.Type) {
-		observeBlock = { notificationCenter, queue, notificationBlock in
-			notificationCenter._bridgeObserve(T.self, object: nil, queue: queue) { _, _ in
-				notificationBlock()
+			do {
+				let payload = try T.Payload(notification.userInfo ?? [:])
+				block(sender, payload)
+			} catch {
+				TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
+				return
 			}
-		}
+		})
 	}
-}
 
-public extension TypedNotificationCenter {
-	func observe(_ proxy: AnyTypedNotification, queue: OperationQueue? = nil, block: @escaping () -> Void) -> TypedNotificationObservation {
-		proxy.observeBlock(self, queue, block)
+	// MARK: - TypedNotificationObservation conformance
+
+	override func invalidate() {
+		_isValid = false
+		nsNotificationCenter?.removeObserver(observation)
 	}
+
+	private var _isValid = true
+	override var isValid: Bool { _isValid }
 }

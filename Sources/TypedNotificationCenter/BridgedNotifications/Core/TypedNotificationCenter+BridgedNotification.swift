@@ -27,15 +27,24 @@
 import Foundation
 
 extension TypedNotificationCenter {
-	func _observe<T: BridgedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
-		let object = T.Sender.self is NSNull.Type ? nil : object
+	func _bridgeObserve<T: BridgedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+		observerLock.lock()
+		if !bridgedNsnotificationObservers.keys.contains(T.notificationName) {
+			bridgedNsnotificationObservers[T.notificationName] = _NsNotificationObservation<T>(nsNotificationCenter: nsNotificationCenterForBridging, block: { [weak self] sender, payload in
+				self?._post(T.self, sender: sender, payload: payload)
+			})
+		} else {
+			assert(
+				bridgedNsnotificationObservers[T.notificationName] is _NsNotificationObservation<T>,
+				"Two BridgedNotification types (\(String(describing: T.self)) and \(String(describing: type(of: bridgedNsnotificationObservers[T.notificationName])))) are using the same name: \(T.notificationName)"
+			)
+		}
+		observerLock.unlock()
 
-		let observation = _BridgedNotificationObservation<T>(sender: object, queue: queue, block: block)
-
-		return observation
+		return _observe(T.self, object: object, queue: queue, block: block)
 	}
 
-	func _post<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
-		NotificationCenter.default.post(name: T.notificationName, object: sender, userInfo: payload.asDictionary())
+	func _bridgePost<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
+		nsNotificationCenterForBridging.post(name: T.notificationName, object: sender, userInfo: payload.asDictionary())
 	}
 }

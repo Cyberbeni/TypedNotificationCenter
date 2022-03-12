@@ -1,9 +1,9 @@
 //
-//  TypedNotificationObservation+BridgedNotification.swift
+//  TypedNotificationObservation+GenericNsNotification.swift
 //  TypedNotificationCenter
 //
-//  Created by Benedek Kozma on 2019. 06. 06.
-//  Copyright (c) 2019. Benedek Kozma
+//  Created by Benedek Kozma on 2021. 03. 23.
+//  Copyright (c) 2021. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,22 +26,14 @@
 
 import Foundation
 
-final class _BridgedNotificationObservation<T: BridgedNotification>: TypedNotificationObservation {
-	private var observation: Any
+final class _GenericNsNotificationObservation: TypedNotificationObservation {
+	private let observation: Any
+	private weak var nsNotificationCenter: NotificationCenter?
 
-	init(sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
-		observation = NotificationCenter.default.addObserver(forName: T.notificationName, object: sender, queue: queue, using: { notification in
-			guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
-				TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
-				return
-			}
-			do {
-				let payload = try T.Payload(notification.userInfo ?? [:])
-				block(sender, payload)
-			} catch {
-				TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
-				return
-			}
+	init(nsNotificationCenter: NotificationCenter, notificationName: Notification.Name, block: @escaping (Notification) -> Void) {
+		self.nsNotificationCenter = nsNotificationCenter
+		observation = nsNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil, using: { notification in
+			block(notification)
 		})
 	}
 
@@ -49,7 +41,7 @@ final class _BridgedNotificationObservation<T: BridgedNotification>: TypedNotifi
 
 	override func invalidate() {
 		_isValid = false
-		NotificationCenter.default.removeObserver(observation)
+		nsNotificationCenter?.removeObserver(observation)
 	}
 
 	private var _isValid = true
