@@ -7,4 +7,4 @@ on:
 
 jobs:
   swiftformat-lint:
-    uses: Cyberbeni/workflows/swift/swiftformat-lint.yml
+    uses: Cyberbeni/workflows/swift/swiftformat-lint.yml@master
