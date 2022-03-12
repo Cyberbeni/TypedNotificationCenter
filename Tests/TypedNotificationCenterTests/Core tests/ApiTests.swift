@@ -222,14 +222,14 @@ class ApiTests: TestCase {
 			self.count += 1
 			TypedNotificationCenter.default.post(SampleNotification.self, sender: self.sender, payload: SampleNotification.Payload())
 		})
-		var observation2: TypedNotificationObservation? 
+		var observation2: TypedNotificationObservation?
 		observation2 = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: nil, block: { _, _ in
 			observation2?.invalidate()
 			self.count += 1
 			TypedNotificationCenter.default.post(SampleNotification.self, sender: self.sender, payload: SampleNotification.Payload())
 		})
 
-		TypedNotificationCenter.default.post(SampleNotification.self, sender: self.sender, payload: SampleNotification.Payload())
-		XCTAssertEqual(self.count, 2, "Each observation should've been called once")
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		XCTAssertEqual(count, 2, "Each observation should've been called once")
 	}
 }
