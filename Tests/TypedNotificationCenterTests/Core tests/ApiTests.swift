@@ -38,6 +38,7 @@ class ApiTests: TestCase {
 	}
 
 	override func tearDown() {
+		observation?.invalidate()
 		observation = nil
 	}
 
@@ -213,5 +214,22 @@ class ApiTests: TestCase {
 		XCTAssertNotEqual(observation, otherObservation, "The two observations shouldn't be equal")
 		XCTAssertNil(observations.remove(otherObservation), "Observations with same parameters shouldn't be equal")
 		XCTAssertEqual(observations.count, 1, "Observation set should contain 1 element")
+	}
+
+	func testRemoveDuringPost() {
+		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: nil, block: { _, _ in
+			self.observation?.invalidate()
+			self.count += 1
+			TypedNotificationCenter.default.post(SampleNotification.self, sender: self.sender, payload: SampleNotification.Payload())
+		})
+		var observation2: TypedNotificationObservation?
+		observation2 = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: nil, block: { _, _ in
+			observation2?.invalidate()
+			self.count += 1
+			TypedNotificationCenter.default.post(SampleNotification.self, sender: self.sender, payload: SampleNotification.Payload())
+		})
+
+		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
+		XCTAssertEqual(count, 2, "Each observation should've been called once")
 	}
 }
