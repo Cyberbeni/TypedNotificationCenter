@@ -6,4 +6,4 @@ jobs:
   test-swift-version:
     uses: Cyberbeni/workflows/.github/workflows/test-minimum-swift-version.yml@master
     with:
-      swift-version: 5.1
+      swift-version: 5.5
