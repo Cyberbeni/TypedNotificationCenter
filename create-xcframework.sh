@@ -59,7 +59,8 @@ for PLATFORM in "macOS" "macOS,variant=Mac Catalyst" "iOS" "iOS Simulator" "tvOS
 		-destination "generic/platform=$PLATFORM" \
 		-configuration "Release" \
 		-archivePath "$ARCHIVE_PATH" \
-      -derivedDataPath "$DERIVED_DATA_PATH" \
+		-derivedDataPath "$DERIVED_DATA_PATH" \
+		-IDEBuildLocationStyle=Unique \
 		SKIP_INSTALL=NO \
 		BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
 		| tee "$LOG_PATH"
