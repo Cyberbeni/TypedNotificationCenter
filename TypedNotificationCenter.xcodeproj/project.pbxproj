@@ -67,10 +67,11 @@
 		7530BAB8227F48AC00D57E4F /* TypedNotificationObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641656227F194A0090F4D6 /* TypedNotificationObservation.swift */; };
 		7530BAB9227F48AC00D57E4F /* TypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75641658227F19AA0090F4D6 /* TypedNotification.swift */; };
 		753C5340281C5F070036900A /* TypedNotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7530BAA9227F487400D57E4F /* TypedNotificationCenter.framework */; };
-		753C5346281C5F540036900A /* PerformanceTestsPosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E022A7D10C00312EA9 /* PerformanceTestsPosting.swift */; };
-		753C5347281C5F540036900A /* PerformanceTestsSubscribing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32934222A7EF4400DBA352 /* PerformanceTestsSubscribing.swift */; };
+		753C5346281C5F540036900A /* Posting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195E022A7D10C00312EA9 /* Posting.swift */; };
+		753C5347281C5F540036900A /* Subscribing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32934222A7EF4400DBA352 /* Subscribing.swift */; };
 		753C534A281C5FA10036900A /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C5349281C5FA10036900A /* TestCase.swift */; };
 		753C534B281C60400036900A /* PerformanceTestNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */; };
+		753C534E281C6D770036900A /* BridgedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C534D281C6D770036900A /* BridgedNotification.swift */; };
 		7563B2B82393E24100235328 /* AnyPayloadTypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7563B2B72393E24100235328 /* AnyPayloadTypedNotification.swift */; };
 		7563B2B92393E24100235328 /* AnyPayloadTypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7563B2B72393E24100235328 /* AnyPayloadTypedNotification.swift */; };
 		7563B2BA2393E24100235328 /* AnyPayloadTypedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7563B2B72393E24100235328 /* AnyPayloadTypedNotification.swift */; };
@@ -243,13 +244,13 @@
 		5C03EC6522A8EE8900C9BCFD /* TypedNotificationObservation+NsNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedNotificationObservation+NsNotification.swift"; sourceTree = "<group>"; };
 		5C03EC7422A8F8F400C9BCFD /* BridgedNotificationApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgedNotificationApiTests.swift; sourceTree = "<group>"; };
 		5C03EC7822A8FDDD00C9BCFD /* SampleBridgedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBridgedNotification.swift; sourceTree = "<group>"; };
-		5C32934222A7EF4400DBA352 /* PerformanceTestsSubscribing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTestsSubscribing.swift; sourceTree = "<group>"; };
+		5C32934222A7EF4400DBA352 /* Subscribing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscribing.swift; sourceTree = "<group>"; };
 		5C8052412609ECAB00D52C7A /* TypedNotificationCenter+GenericBridgedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedNotificationCenter+GenericBridgedNotification.swift"; sourceTree = "<group>"; };
 		5C80524E2609EDF700D52C7A /* TypedNotificationObservation+GenericBridgedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedNotificationObservation+GenericBridgedNotification.swift"; sourceTree = "<group>"; };
 		5C8052632609FC8700D52C7A /* NotificationNameApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameApiTests.swift; sourceTree = "<group>"; };
 		5C805295260A11F100D52C7A /* TypedNotificationObservation+GenericNsNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedNotificationObservation+GenericNsNotification.swift"; sourceTree = "<group>"; };
 		5C8052BF260A16D000D52C7A /* BridgedNotificationInternalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgedNotificationInternalTests.swift; sourceTree = "<group>"; };
-		5C8195E022A7D10C00312EA9 /* PerformanceTestsPosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTestsPosting.swift; sourceTree = "<group>"; };
+		5C8195E022A7D10C00312EA9 /* Posting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posting.swift; sourceTree = "<group>"; };
 		5C8195E622A7D22100312EA9 /* GenerateTestCode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GenerateTestCode; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8195E822A7D22100312EA9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5C8195ED22A7D69000312EA9 /* PerformanceTestNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTestNotifications.swift; sourceTree = "<group>"; };
@@ -274,6 +275,7 @@
 		7530BAA9227F487400D57E4F /* TypedNotificationCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TypedNotificationCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		753C533C281C5F070036900A /* TypedNotificationCenterPerformanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TypedNotificationCenterPerformanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		753C5349281C5FA10036900A /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
+		753C534D281C6D770036900A /* BridgedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgedNotification.swift; sourceTree = "<group>"; };
 		7553355F227F163F0030F2FB /* TypedNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedNotificationCenter.swift; sourceTree = "<group>"; };
 		7563B2B72393E24100235328 /* AnyPayloadTypedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPayloadTypedNotification.swift; sourceTree = "<group>"; };
 		7563B2BC2393E28800235328 /* AnyTypedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTypedNotification.swift; sourceTree = "<group>"; };
@@ -555,8 +557,9 @@
 		753C533D281C5F070036900A /* TypedNotificationCenterPerformanceTests */ = {
 			isa = PBXGroup;
 			children = (
-				5C8195E022A7D10C00312EA9 /* PerformanceTestsPosting.swift */,
-				5C32934222A7EF4400DBA352 /* PerformanceTestsSubscribing.swift */,
+				5C8195E022A7D10C00312EA9 /* Posting.swift */,
+				753C534D281C6D770036900A /* BridgedNotification.swift */,
+				5C32934222A7EF4400DBA352 /* Subscribing.swift */,
 				753C534C281C60430036900A /* Utility */,
 			);
 			name = TypedNotificationCenterPerformanceTests;
@@ -1253,10 +1256,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				753C5347281C5F540036900A /* PerformanceTestsSubscribing.swift in Sources */,
+				753C5347281C5F540036900A /* Subscribing.swift in Sources */,
 				753C534B281C60400036900A /* PerformanceTestNotifications.swift in Sources */,
-				753C5346281C5F540036900A /* PerformanceTestsPosting.swift in Sources */,
+				753C5346281C5F540036900A /* Posting.swift in Sources */,
 				753C534A281C5FA10036900A /* TestCase.swift in Sources */,
+				753C534E281C6D770036900A /* BridgedNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

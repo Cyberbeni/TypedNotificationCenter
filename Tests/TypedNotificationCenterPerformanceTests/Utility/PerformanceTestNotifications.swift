@@ -10,6 +10,13 @@ enum TestData {
 		var name = "test"
 	}
 
+    struct DummyBridgedPayload: DictionaryRepresentable {
+        var name = "test"
+        init() {}
+        init(_ dictionary: [AnyHashable: Any]) throws {}
+        func asDictionary() -> [AnyHashable: Any] { return [:] }
+    }
+
 	static func subscribeToAll(observationContainer: inout [TypedNotificationObservation], notificationCenter: TypedNotificationCenter, sender: AnyObject?) {
 		observationContainer.append(notificationCenter.observe(PerformanceTestNotification1.self, object: sender) { _, _ in })
 		observationContainer.append(notificationCenter.observe(PerformanceTestNotification2.self, object: sender) { _, _ in })
@@ -819,4 +826,808 @@ enum TestData {
 		typealias Payload = DummyPayload
 	}
 
+    enum PerformanceTestNotification1Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification1") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification2Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification2") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification3Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification3") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification4Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification4") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification5Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification5") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification6Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification6") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification7Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification7") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification8Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification8") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification9Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification9") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification10Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification10") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification11Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification11") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification12Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification12") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification13Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification13") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification14Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification14") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification15Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification15") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification16Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification16") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification17Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification17") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification18Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification18") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification19Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification19") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification20Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification20") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification21Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification21") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification22Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification22") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification23Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification23") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification24Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification24") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification25Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification25") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification26Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification26") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification27Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification27") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification28Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification28") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification29Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification29") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification30Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification30") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification31Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification31") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification32Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification32") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification33Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification33") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification34Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification34") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification35Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification35") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification36Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification36") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification37Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification37") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification38Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification38") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification39Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification39") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification40Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification40") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification41Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification41") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification42Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification42") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification43Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification43") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification44Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification44") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification45Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification45") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification46Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification46") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification47Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification47") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification48Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification48") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification49Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification49") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification50Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification50") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification51Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification51") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification52Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification52") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification53Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification53") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification54Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification54") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification55Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification55") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification56Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification56") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification57Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification57") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification58Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification58") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification59Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification59") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification60Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification60") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification61Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification61") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification62Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification62") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification63Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification63") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification64Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification64") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification65Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification65") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification66Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification66") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification67Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification67") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification68Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification68") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification69Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification69") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification70Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification70") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification71Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification71") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification72Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification72") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification73Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification73") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification74Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification74") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification75Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification75") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification76Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification76") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification77Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification77") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification78Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification78") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification79Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification79") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification80Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification80") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification81Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification81") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification82Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification82") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification83Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification83") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification84Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification84") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification85Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification85") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification86Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification86") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification87Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification87") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification88Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification88") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification89Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification89") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification90Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification90") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification91Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification91") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification92Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification92") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification93Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification93") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification94Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification94") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification95Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification95") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification96Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification96") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification97Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification97") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification98Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification98") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification99Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification99") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    enum PerformanceTestNotification100Bridged: BridgedNotification {
+        static var notificationName: Notification.Name { .init(rawValue: "PerformanceTestNotification100") }
+        typealias Sender = AnyObject
+        typealias Payload = DummyBridgedPayload
+    }
+
+    static func subscribeToAllBridged(observationContainer: inout [TypedNotificationObservation], notificationCenter: TypedNotificationCenter, sender: AnyObject?) {
+    		observationContainer.append(notificationCenter.observe(PerformanceTestNotification1Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification2Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification3Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification4Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification5Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification6Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification7Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification8Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification9Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification10Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification11Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification12Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification13Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification14Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification15Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification16Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification17Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification18Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification19Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification20Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification21Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification22Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification23Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification24Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification25Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification26Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification27Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification28Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification29Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification30Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification31Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification32Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification33Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification34Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification35Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification36Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification37Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification38Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification39Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification40Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification41Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification42Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification43Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification44Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification45Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification46Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification47Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification48Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification49Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification50Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification51Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification52Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification53Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification54Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification55Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification56Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification57Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification58Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification59Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification60Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification61Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification62Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification63Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification64Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification65Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification66Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification67Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification68Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification69Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification70Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification71Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification72Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification73Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification74Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification75Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification76Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification77Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification78Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification79Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification80Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification81Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification82Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification83Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification84Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification85Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification86Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification87Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification88Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification89Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification90Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification91Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification92Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification93Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification94Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification95Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification96Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification97Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification98Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification99Bridged.self, object: sender) { _, _ in })
+		observationContainer.append(notificationCenter.observe(PerformanceTestNotification100Bridged.self, object: sender) { _, _ in })
 }
+
+    static func postToAllBridged(sender: AnyObject, notificationCenter: TypedNotificationCenter) {
+		notificationCenter.post(PerformanceTestNotification1Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification2Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification3Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification4Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification5Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification6Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification7Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification8Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification9Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification10Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification11Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification12Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification13Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification14Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification15Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification16Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification17Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification18Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification19Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification20Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification21Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification22Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification23Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification24Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification25Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification26Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification27Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification28Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification29Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification30Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification31Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification32Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification33Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification34Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification35Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification36Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification37Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification38Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification39Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification40Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification41Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification42Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification43Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification44Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification45Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification46Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification47Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification48Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification49Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification50Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification51Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification52Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification53Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification54Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification55Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification56Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification57Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification58Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification59Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification60Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification61Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification62Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification63Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification64Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification65Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification66Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification67Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification68Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification69Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification70Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification71Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification72Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification73Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification74Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification75Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification76Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification77Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification78Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification79Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification80Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification81Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification82Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification83Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification84Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification85Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification86Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification87Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification88Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification89Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification90Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification91Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification92Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification93Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification94Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification95Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification96Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification97Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification98Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification99Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+		notificationCenter.post(PerformanceTestNotification100Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))
+    }}
