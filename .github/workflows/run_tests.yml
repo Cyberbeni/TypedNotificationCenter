@@ -31,6 +31,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
+    steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Install xcbeautify
@@ -43,7 +44,7 @@ jobs:
       run: |
         set -o pipefail
         swift test --configuration release --filter TypedNotificationCenterPerformanceTests 2>&1 | xcbeautify
-      
+
   test-darwin-unit:
     strategy:
       matrix:
@@ -58,7 +59,7 @@ jobs:
       run: bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n '${{ matrix.os }}' -F '${{ matrix.os }}'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      
+
   test-darwin-ui:
     strategy:
       matrix:
