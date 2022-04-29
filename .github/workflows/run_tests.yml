@@ -17,7 +17,7 @@ jobs:
       shell: bash
       run: |
         set -o pipefail
-        swift test --enable-test-discovery --enable-code-coverage --filter TypedNotificationCenterTests 2>&1 | xcbeautify
+        swift test --enable-code-coverage --filter TypedNotificationCenterTests 2>&1 | xcbeautify
     - name: Codecov
       shell: bash
       run: |
@@ -29,7 +29,7 @@ jobs:
   test-performance:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-12]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout
@@ -43,13 +43,13 @@ jobs:
       shell: bash
       run: |
         set -o pipefail
-        swift test --enable-test-discovery --configuration release --filter TypedNotificationCenterPerformanceTests 2>&1 | xcbeautify
+        swift test --configuration release --filter TypedNotificationCenterPerformanceTests 2>&1 | xcbeautify
 
   test-darwin-unit:
     strategy:
       matrix:
         os: [macOS, iOS, tvOS]
-    runs-on: macos-latest
+    runs-on: macos-12
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -64,7 +64,7 @@ jobs:
     strategy:
       matrix:
         os: [iOS]
-    runs-on: macos-latest
+    runs-on: macos-12
     steps:
     - name: Checkout
       uses: actions/checkout@v2
