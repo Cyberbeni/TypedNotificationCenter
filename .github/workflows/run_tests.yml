@@ -11,13 +11,13 @@ jobs:
     - name: Install xcbeautify
       uses: Cyberbeni/install-swift-tool@v2
       with:
-        url: https://github.com/thii/xcbeautify
+        url: https://github.com/tuist/xcbeautify
         version: '*'
     - name: Test
       shell: bash
       run: |
         set -o pipefail
-        swift test --enable-test-discovery --enable-code-coverage | xcbeautify
+        swift test --enable-code-coverage --filter TypedNotificationCenterTests 2>&1 | xcbeautify
     - name: Codecov
       shell: bash
       run: |
@@ -25,6 +25,21 @@ jobs:
         bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  test-performance:
+    runs-on: [ubuntu-latest, macos-latest]
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install xcbeautify
+      uses: Cyberbeni/install-swift-tool@v2
+      with:
+        url: https://github.com/tuist/xcbeautify
+        version: '*'
+    - name: Test
+      shell: bash
+      run: |
+        set -o pipefail
+        swift test --configuration release --filter TypedNotificationCenterPerformanceTests 2>&1 | xcbeautify
       
   test-darwin-unit:
     strategy:

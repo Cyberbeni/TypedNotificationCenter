@@ -61,7 +61,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "&quot;${PROJECT_DIR}/Tests/TypedNotificationCenterTests/Core tests/Utility/PerformanceTestNotifications.swift&quot;"
+            argument = "&quot;${PROJECT_DIR}/Tests/TypedNotificationCenterPerformanceTests/Utility/PerformanceTestNotifications.swift&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
