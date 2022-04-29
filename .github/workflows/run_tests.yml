@@ -17,7 +17,7 @@ jobs:
       shell: bash
       run: |
         set -o pipefail
-        swift test --enable-code-coverage --filter TypedNotificationCenterTests 2>&1 | xcbeautify
+        swift test --enable-test-discovery --enable-code-coverage --filter TypedNotificationCenterTests 2>&1 | xcbeautify
     - name: Codecov
       shell: bash
       run: |
@@ -43,7 +43,7 @@ jobs:
       shell: bash
       run: |
         set -o pipefail
-        swift test --configuration release --filter TypedNotificationCenterPerformanceTests 2>&1 | xcbeautify
+        swift test --enable-test-discovery --configuration release --filter TypedNotificationCenterPerformanceTests 2>&1 | xcbeautify
 
   test-darwin-unit:
     strategy:
