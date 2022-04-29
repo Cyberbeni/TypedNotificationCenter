@@ -49,6 +49,13 @@ enum TestData {
 		var name = "test"
 	}
 
+    struct DummyBridgedPayload: DictionaryRepresentable {
+        var name = "test"
+        init() {}
+        init(_ dictionary: [AnyHashable: Any]) throws {}
+        func asDictionary() -> [AnyHashable: Any] { return [:] }
+    }
+
 	static func subscribeToAll(observationContainer: inout [TypedNotificationObservation], notificationCenter: TypedNotificationCenter, sender: AnyObject?) {
 
 """
@@ -97,6 +104,42 @@ for name in names {
 
 	""")
 }
+
+for name in names {
+	output.append("""
+	    enum \(name)Bridged: BridgedNotification {
+	        static var notificationName: Notification.Name { .init(rawValue: "\(name)") }
+	        typealias Sender = AnyObject
+	        typealias Payload = DummyBridgedPayload
+	    }
+
+
+	""")
+}
+
+output.append("""
+    static func subscribeToAllBridged(observationContainer: inout [TypedNotificationObservation], notificationCenter: TypedNotificationCenter, sender: AnyObject?) {
+
+""")
+
+for name in names {
+	output.append("\t\tobservationContainer.append(notificationCenter.observe(\(name)Bridged.self, object: sender) { _, _ in })\n")
+}
+
+output.append("""
+}
+
+    static func postToAllBridged(sender: AnyObject, notificationCenter: TypedNotificationCenter) {
+
+""")
+
+for name in names {
+	output.append("\t\tnotificationCenter.post(\(name)Bridged.self, sender: sender, payload: try! DummyBridgedPayload([:]))\n")
+}
+
+output.append("""
+    }
+""")
 
 output.append("}\n")
 

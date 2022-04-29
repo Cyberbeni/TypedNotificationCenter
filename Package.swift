@@ -28,5 +28,9 @@ let package = Package(
 			name: "TypedNotificationCenterTests",
 			dependencies: ["TypedNotificationCenter"]
 		),
+		.testTarget(
+			name: "TypedNotificationCenterPerformanceTests",
+			dependencies: ["TypedNotificationCenter"]
+		),
 	]
 )

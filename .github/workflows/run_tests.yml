@@ -11,13 +11,13 @@ jobs:
     - name: Install xcbeautify
       uses: Cyberbeni/install-swift-tool@v2
       with:
-        url: https://github.com/thii/xcbeautify
+        url: https://github.com/tuist/xcbeautify
         version: '*'
     - name: Test
       shell: bash
       run: |
         set -o pipefail
-        swift test --enable-test-discovery --enable-code-coverage | xcbeautify
+        swift test --enable-test-discovery --enable-code-coverage --filter TypedNotificationCenterTests 2>&1 | xcbeautify
     - name: Codecov
       shell: bash
       run: |
@@ -25,7 +25,26 @@ jobs:
         bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n 'Linux' -F 'Linux'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      
+
+  test-performance:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install xcbeautify
+      uses: Cyberbeni/install-swift-tool@v2
+      with:
+        url: https://github.com/tuist/xcbeautify
+        version: '*'
+    - name: Test
+      shell: bash
+      run: |
+        set -o pipefail
+        swift test --enable-test-discovery --configuration release --filter TypedNotificationCenterPerformanceTests 2>&1 | xcbeautify
+
   test-darwin-unit:
     strategy:
       matrix:
@@ -40,7 +59,7 @@ jobs:
       run: bash <(curl -s https://codecov.io/bash) -J '^TypedNotificationCenter$' -n '${{ matrix.os }}' -F '${{ matrix.os }}'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      
+
   test-darwin-ui:
     strategy:
       matrix:

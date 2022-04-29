@@ -78,8 +78,6 @@ for PLATFORM in "macOS" "macOS,variant=Mac Catalyst" "iOS" "iOS Simulator" "tvOS
 	done
 done
 
-echo "${CREATE_XCFRAMEWORK_ARGUMENTS[@]}"
-
 xcodebuild -create-xcframework \
 	"${CREATE_XCFRAMEWORK_ARGUMENTS[@]}" \
 	-output "$ARCHIVES_ROOT_PATH/TypedNotificationCenter.xcframework"
