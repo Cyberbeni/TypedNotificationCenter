@@ -45,7 +45,7 @@ class AsyncApiTests: TestCase {
 
 	func testSuspendedQueue() {
 		queue.isSuspended = true
-		let expectation = self.expectation(description: "Call Block")
+		let expectation = expectation(description: "Call Block")
 
 		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: sender, queue: queue, block: { _, _ in
 			self.count += 1
@@ -67,7 +67,7 @@ class AsyncApiTests: TestCase {
 
 	func testSuspendedQueueNilSender() {
 		queue.isSuspended = true
-		let expectation = self.expectation(description: "Call Block")
+		let expectation = expectation(description: "Call Block")
 
 		observation = TypedNotificationCenter.default.observe(SampleNotification.self, object: nil, queue: queue, block: { _, _ in
 			self.count += 1

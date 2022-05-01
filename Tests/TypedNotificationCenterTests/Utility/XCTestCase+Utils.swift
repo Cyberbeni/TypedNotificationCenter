@@ -29,7 +29,7 @@ import XCTest
 
 extension XCTestCase {
 	func wait(_ seconds: Double) {
-		let expectation = self.expectation(description: "Wait")
+		let expectation = expectation(description: "Wait")
 		DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
 			expectation.fulfill()
 		}
