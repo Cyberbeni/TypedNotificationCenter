@@ -27,24 +27,34 @@
 import Foundation
 
 extension TypedNotificationCenter {
-	func _bridgeObserve<T: BridgedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+	func _bridgeObserve<T: BridgedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
+		_bridgeObserve(T.self, T.self)
+		return _observe(T.self, object: object, queue: queue, block: block)
+	}
+
+	func _bridgeObserve<T: TypedNotification>(_: T.Type, _ U: any BridgedNotification.Type) {
+		assert(T.self == U.self)
 		observerLock.lock()
-		if !bridgedNsnotificationObservers.keys.contains(T.notificationName) {
-			bridgedNsnotificationObservers[T.notificationName] = _NsNotificationObservation<T>(nsNotificationCenter: nsNotificationCenterForBridging, block: { [weak self] sender, payload in
-				self?._post(T.self, sender: sender, payload: payload)
-			})
+		if !bridgedNsnotificationObservers.keys.contains(U.notificationName) {
+			bridgedNsnotificationObservers[U.notificationName] = _NsNotificationObservation<T>(nsNotificationCenter: nsNotificationCenterForBridging, type: U.self,
+			                                                                                   block: { [weak self] sender, payload in
+			                                                                                   	self?._post(T.self, sender: sender, payload: payload)
+			                                                                                   })
 		} else {
 			assert(
-				bridgedNsnotificationObservers[T.notificationName] is _NsNotificationObservation<T>,
-				"Two BridgedNotification types (\(String(describing: T.self)) and \(String(describing: type(of: bridgedNsnotificationObservers[T.notificationName])))) are using the same name: \(T.notificationName)"
+				bridgedNsnotificationObservers[U.notificationName] is _NsNotificationObservation<T>,
+				"Two BridgedNotification types (\(String(describing: T.self)) and \(String(describing: type(of: bridgedNsnotificationObservers[U.notificationName])))) are using the same name: \(U.notificationName)"
 			)
 		}
 		observerLock.unlock()
-
-		return _observe(T.self, object: object, queue: queue, block: block)
 	}
 
 	func _bridgePost<T: BridgedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
 		nsNotificationCenterForBridging.post(name: T.notificationName, object: sender, userInfo: payload.asDictionary())
+	}
+
+	func _bridgePost<T: TypedNotification>(_: T.Type, _ U: any BridgedNotification.Type, sender: T.Sender, payload: T.Payload) {
+		assert(T.self == U.self)
+		nsNotificationCenterForBridging.post(name: U.notificationName, object: sender, userInfo: (payload as! DictionaryRepresentable).asDictionary())
 	}
 }
