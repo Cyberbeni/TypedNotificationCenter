@@ -30,9 +30,16 @@ final class _GenericNsNotificationObservation: TypedNotificationObservation {
 	private let observation: Any
 	private weak var nsNotificationCenter: NotificationCenter?
 
-	init(nsNotificationCenter: NotificationCenter, notificationName: Notification.Name, block: @escaping (Notification) -> Void) {
+	init(typedNotificationCenter: TypedNotificationCenter, notificationName: Notification.Name) {
+		let nsNotificationCenter = typedNotificationCenter.nsNotificationCenterForBridging
 		self.nsNotificationCenter = nsNotificationCenter
-		observation = nsNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil, using: block)
+		observation = nsNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil, using: { [weak typedNotificationCenter] notification in
+			typedNotificationCenter?.forwardGenericPost(
+				notification.name,
+				sender: notification.object as AnyObject?,
+				payload: notification.userInfo
+			)
+		})
 	}
 
 	// MARK: - TypedNotificationObservation conformance
