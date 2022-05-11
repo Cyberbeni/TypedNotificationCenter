@@ -35,7 +35,7 @@ class UnsubscribingTests: TestCase {
 		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
 			let aNotificationCenter = NotificationCenter()
 			let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
-			var observations: [TypedNotificationObservation]!
+			var observations = [TypedNotificationObservation]()
 
 			for _ in 1 ... 60000 {
 				observations.append(notificationCenter.observe(TestData.PerformanceTestNotification1.self, object: sender) { _, _ in })
@@ -47,6 +47,7 @@ class UnsubscribingTests: TestCase {
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
 			stopMeasuring()
+			_ = notificationCenter
 		}
 	}
 
@@ -66,6 +67,7 @@ class UnsubscribingTests: TestCase {
 			}
 			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
 			stopMeasuring()
+			_ = aNotificationCenter
 		}
 	}
 
@@ -73,7 +75,7 @@ class UnsubscribingTests: TestCase {
 		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
 			let aNotificationCenter = NotificationCenter()
 			let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
-			var observations: [TypedNotificationObservation]!
+			var observations = [TypedNotificationObservation]()
 
 			for _ in 1 ... 600 {
 				TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
@@ -85,6 +87,7 @@ class UnsubscribingTests: TestCase {
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
 			stopMeasuring()
+			_ = notificationCenter
 		}
 	}
 
@@ -106,6 +109,7 @@ class UnsubscribingTests: TestCase {
 			}
 			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
 			stopMeasuring()
+			_ = aNotificationCenter
 		}
 	}
 }

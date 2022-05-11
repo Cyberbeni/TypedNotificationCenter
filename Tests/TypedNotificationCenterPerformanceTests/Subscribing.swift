@@ -42,6 +42,8 @@ class SubscribingTests: TestCase {
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
 			stopMeasuring()
+			_ = notificationCenter
+			_ = observations
 		}
 	}
 
@@ -58,6 +60,8 @@ class SubscribingTests: TestCase {
 			}
 			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
 			stopMeasuring()
+			_ = aNotificationCenter
+			_ = aObservations
 		}
 	}
 
@@ -77,6 +81,8 @@ class SubscribingTests: TestCase {
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
 			stopMeasuring()
+			_ = notificationCenter
+			_ = observations
 		}
 	}
 
@@ -100,6 +106,8 @@ class SubscribingTests: TestCase {
 			}
 			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
 			stopMeasuring()
+			_ = aNotificationCenter
+			_ = aObservations
 		}
 	}
 
@@ -121,6 +129,8 @@ class SubscribingTests: TestCase {
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
 			stopMeasuring()
+			_ = notificationCenter
+			_ = observations
 		}
 	}
 
@@ -144,6 +154,8 @@ class SubscribingTests: TestCase {
 			}
 			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
 			stopMeasuring()
+			_ = aNotificationCenter
+			_ = aObservations
 		}
 	}
 }
