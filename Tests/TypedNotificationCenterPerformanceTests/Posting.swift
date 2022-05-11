@@ -29,7 +29,7 @@ import TypedNotificationCenter
 import XCTest
 
 class PostingTests: TestCase {
-	var sender: NSObject = NSObject()
+	var sender: NSObject = .init()
 
 	// TypedNotificationCenter
 	var notificationCenter: TypedNotificationCenter!

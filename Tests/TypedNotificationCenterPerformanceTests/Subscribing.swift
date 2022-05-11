@@ -29,7 +29,7 @@ import TypedNotificationCenter
 import XCTest
 
 class SubscribingTests: TestCase {
-	var sender: NSObject = NSObject()
+	var sender: NSObject = .init()
 
 	func test_nilSenders_own() {
 		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
