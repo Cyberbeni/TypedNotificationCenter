@@ -32,9 +32,7 @@ final class _GenericNsNotificationObservation: TypedNotificationObservation {
 
 	init(nsNotificationCenter: NotificationCenter, notificationName: Notification.Name, block: @escaping (Notification) -> Void) {
 		self.nsNotificationCenter = nsNotificationCenter
-		observation = nsNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil, using: { notification in
-			block(notification)
-		})
+		observation = nsNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil, using: block)
 	}
 
 	// MARK: - TypedNotificationObservation conformance

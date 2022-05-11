@@ -30,9 +30,7 @@ extension TypedNotificationCenter {
 	func _bridgeObserve<T: BridgedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
 		observerLock.lock()
 		if !bridgedNsnotificationObservers.keys.contains(T.notificationName) {
-			bridgedNsnotificationObservers[T.notificationName] = _NsNotificationObservation<T>(nsNotificationCenter: nsNotificationCenterForBridging, block: { [weak self] sender, payload in
-				self?._post(T.self, sender: sender, payload: payload)
-			})
+			bridgedNsnotificationObservers[T.notificationName] = _NsNotificationObservation<T>(typedNotificationCenter: self)
 		} else {
 			assert(
 				bridgedNsnotificationObservers[T.notificationName] is _NsNotificationObservation<T>,
