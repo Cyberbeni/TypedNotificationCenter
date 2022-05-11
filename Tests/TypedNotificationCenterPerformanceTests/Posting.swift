@@ -94,7 +94,8 @@ class PostingTests: TestCase {
 		}
 	}
 
-	func test_all_apple() {
+	func test_all_apple() throws {
+		XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
 		for _ in 1 ... 10 {
 			for notificationName in TestData.notificationNames {
 				aObservations.append(aNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
@@ -125,7 +126,8 @@ class PostingTests: TestCase {
 		}
 	}
 
-	func test_20percent_apple() {
+	func test_20percent_apple() throws {
+		XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
 		let otherSender = NSObject()
 		for notificationName in TestData.notificationNames {
 			aObservations.append(aNotificationCenter.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
@@ -163,7 +165,8 @@ class PostingTests: TestCase {
 		}
 	}
 
-	func test_1percent_apple() {
+	func test_1percent_apple() throws {
+		XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
 		var otherSenders = [NSObject]()
 		for _ in 1 ... 99 {
 			otherSenders.append(NSObject())
