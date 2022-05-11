@@ -48,7 +48,8 @@ class UnsubscribingTests: TestCase {
 	}
 
 	func test_1_own() {
-		let notificationCenter = TypedNotificationCenter()
+		let aNotificationCenter = NotificationCenter()
+		let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
 		for _ in 1 ... 60000 {
 			observations.append(notificationCenter.observe(TestData.PerformanceTestNotification1.self, object: sender) { _, _ in })
 		}
@@ -77,7 +78,8 @@ class UnsubscribingTests: TestCase {
 	}
 
 	func test_all_own() {
-		let notificationCenter = TypedNotificationCenter()
+		let aNotificationCenter = NotificationCenter()
+		let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
 		for _ in 1 ... 600 {
 			TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
 		}

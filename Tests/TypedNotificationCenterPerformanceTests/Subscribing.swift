@@ -48,7 +48,8 @@ class SubscribingTests: TestCase {
 	}
 
 	func test_nilSenders_own() {
-		let notificationCenter = TypedNotificationCenter()
+		let aNotificationCenter = NotificationCenter()
+		let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
 		measure {
 			for _ in 1 ... 300 {
 				TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
@@ -71,7 +72,8 @@ class SubscribingTests: TestCase {
 	}
 
 	func test_2senders_own() {
-		let notificationCenter = TypedNotificationCenter()
+		let aNotificationCenter = NotificationCenter()
+		let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
 		let otherSender = NSObject()
 		measure {
 			for _ in 1 ... 3 {
@@ -106,7 +108,8 @@ class SubscribingTests: TestCase {
 	}
 
 	func test_100senders_own() {
-		let notificationCenter = TypedNotificationCenter()
+		let aNotificationCenter = NotificationCenter()
+		let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
 		var otherSenders = [NSObject]()
 		measure {
 			for _ in 1 ... 3 {

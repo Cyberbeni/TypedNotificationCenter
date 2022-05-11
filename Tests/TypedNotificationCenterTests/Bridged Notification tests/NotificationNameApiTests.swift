@@ -33,11 +33,13 @@ class NotificationNameApiTests: TestCase {
 	let sender = MySender()
 	let otherSender = MySender()
 
+	var aNotificationCenter: NotificationCenter!
 	var notificationCenter: TypedNotificationCenter!
 
 	override func setUp() {
 		super.setUp()
-		notificationCenter = TypedNotificationCenter()
+		aNotificationCenter = NotificationCenter()
+		notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
 	}
 
 	override func tearDown() {
