@@ -11,8 +11,8 @@ jobs:
     - name: Install xcbeautify
       uses: Cyberbeni/install-swift-tool@v2
       with:
-        url: https://github.com/tuist/xcbeautify
-        version: '*'
+        url: https://github.com/Cyberbeni/xcbeautify
+        branch: measurement-parsing
     - name: Test
       shell: bash
       run: |
@@ -37,8 +37,8 @@ jobs:
     - name: Install xcbeautify
       uses: Cyberbeni/install-swift-tool@v2
       with:
-        url: https://github.com/tuist/xcbeautify
-        version: '*'
+        url: https://github.com/Cyberbeni/xcbeautify
+        branch: measurement-parsing
     - name: Test
       shell: bash
       run: |
