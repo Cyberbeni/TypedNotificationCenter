@@ -108,8 +108,8 @@ class SubscribingTests: TestCase {
 	}
 
 	func test_100senders_own() {
-		var otherSenders = [NSObject]()
 		measure {
+			var otherSenders = [NSObject]()
 			for _ in 1 ... 3 {
 				for _ in 1 ... 99 {
 					otherSenders.append(NSObject())
@@ -125,8 +125,8 @@ class SubscribingTests: TestCase {
 
 	func test_100senders_apple() throws {
 		try XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
-		var otherSenders = [NSObject]()
 		measure {
+			var otherSenders = [NSObject]()
 			for _ in 1 ... 3 {
 				for _ in 1 ... 99 {
 					otherSenders.append(NSObject())
