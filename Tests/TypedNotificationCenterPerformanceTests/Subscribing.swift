@@ -31,52 +31,43 @@ import XCTest
 class SubscribingTests: TestCase {
 	var sender: NSObject = NSObject()
 
-	// Apple's NotificationCenter
-	var aNotificationCenter: NotificationCenter!
-	var aObservations: [Any]!
-
-	// TypedNotificationCenter
-	var notificationCenter: TypedNotificationCenter!
-	var observations: [TypedNotificationObservation]!
-
-	override func setUp() {
-		aNotificationCenter = NotificationCenter()
-		aObservations = [Any]()
-		notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
-		observations = [TypedNotificationObservation]()
-	}
-
-	override func tearDown() {
-		aObservations = nil
-		aNotificationCenter = nil
-		observations = nil
-		notificationCenter = nil
-	}
-
 	func test_nilSenders_own() {
-		measure {
+		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+			let aNotificationCenter = NotificationCenter()
+			let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
+			var observations = [TypedNotificationObservation]()
+			startMeasuring()
 			for _ in 1 ... 300 {
 				TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
+			stopMeasuring()
 		}
 	}
 
 	func test_nilSenders_apple() throws {
 		try XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
-		measure {
+		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+			let aNotificationCenter = NotificationCenter()
+			var aObservations = [Any]()
+			startMeasuring()
 			for _ in 1 ... 300 {
 				for notificationName in TestData.notificationNames {
 					aObservations.append(aNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
 				}
 			}
 			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
+			stopMeasuring()
 		}
 	}
 
 	func test_2senders_own() {
-		let otherSender = NSObject()
-		measure {
+		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+			let aNotificationCenter = NotificationCenter()
+			let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
+			var observations = [TypedNotificationObservation]()
+			let otherSender = NSObject()
+			startMeasuring()
 			for _ in 1 ... 3 {
 				TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
 				TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
@@ -85,13 +76,17 @@ class SubscribingTests: TestCase {
 				}
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
+			stopMeasuring()
 		}
 	}
 
 	func test_2senders_apple() throws {
 		try XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
-		let otherSender = NSObject()
-		measure {
+		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+			let aNotificationCenter = NotificationCenter()
+			var aObservations = [Any]()
+			let otherSender = NSObject()
+			startMeasuring()
 			for _ in 1 ... 3 {
 				for notificationName in TestData.notificationNames {
 					aObservations.append(aNotificationCenter.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
@@ -104,13 +99,13 @@ class SubscribingTests: TestCase {
 				}
 			}
 			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
+			stopMeasuring()
 		}
 	}
 
 	func test_100senders_own() {
 		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
 			let aNotificationCenter = NotificationCenter()
-			var aObservations = [Any]()
 			let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
 			var observations = [TypedNotificationObservation]()
 			var otherSenders = [NSObject]()
