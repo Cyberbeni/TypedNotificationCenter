@@ -108,7 +108,7 @@ class SubscribingTests: TestCase {
 	}
 
 	func test_100senders_own() {
-		measureMetrics(defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
 			let aNotificationCenter = NotificationCenter()
 			let aObservations = [Any]()
 			let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
@@ -131,7 +131,7 @@ class SubscribingTests: TestCase {
 
 	func test_100senders_apple() throws {
 		try XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
-		measureMetrics(defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
 			let aNotificationCenter = NotificationCenter()
 			let aObservations = [Any]()
 			var otherSenders = [NSObject]()
