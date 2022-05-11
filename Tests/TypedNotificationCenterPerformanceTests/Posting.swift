@@ -29,7 +29,7 @@ import TypedNotificationCenter
 import XCTest
 
 class PostingTests: TestCase {
-	var sender: NSObject!
+	var sender: NSObject = .init()
 
 	// TypedNotificationCenter
 	var notificationCenter: TypedNotificationCenter!
@@ -40,18 +40,14 @@ class PostingTests: TestCase {
 	var aObservations: [Any]!
 
 	override func setUp() {
-		sender = NSObject()
-
-		notificationCenter = TypedNotificationCenter()
-		observations = [TypedNotificationObservation]()
-
 		aNotificationCenter = NotificationCenter()
 		aObservations = [Any]()
+
+		notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
+		observations = [TypedNotificationObservation]()
 	}
 
 	override func tearDown() {
-		sender = nil
-
 		notificationCenter = nil
 		observations = nil
 

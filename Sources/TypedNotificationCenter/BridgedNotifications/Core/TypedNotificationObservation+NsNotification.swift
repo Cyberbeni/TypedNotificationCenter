@@ -30,16 +30,17 @@ final class _NsNotificationObservation<T: BridgedNotification>: TypedNotificatio
 	private let observation: Any
 	private weak var nsNotificationCenter: NotificationCenter?
 
-	init(nsNotificationCenter: NotificationCenter, block: @escaping T.ObservationBlock) {
+	init(typedNotificationCenter: TypedNotificationCenter) {
+		let nsNotificationCenter = typedNotificationCenter.nsNotificationCenterForBridging
 		self.nsNotificationCenter = nsNotificationCenter
-		observation = nsNotificationCenter.addObserver(forName: T.notificationName, object: nil, queue: nil, using: { notification in
+		observation = nsNotificationCenter.addObserver(forName: T.notificationName, object: nil, queue: nil, using: { [weak typedNotificationCenter] notification in
 			guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
 				TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
 				return
 			}
 			do {
 				let payload = try T.Payload(notification.userInfo ?? [:])
-				block(sender, payload)
+				typedNotificationCenter?._post(T.self, sender: sender, payload: payload)
 			} catch {
 				TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
 				return

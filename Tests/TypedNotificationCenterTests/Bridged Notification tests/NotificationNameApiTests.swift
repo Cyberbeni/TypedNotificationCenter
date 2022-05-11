@@ -33,11 +33,13 @@ class NotificationNameApiTests: TestCase {
 	let sender = MySender()
 	let otherSender = MySender()
 
+	var aNotificationCenter: NotificationCenter!
 	var notificationCenter: TypedNotificationCenter!
 
 	override func setUp() {
 		super.setUp()
-		notificationCenter = TypedNotificationCenter()
+		aNotificationCenter = NotificationCenter()
+		notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
 	}
 
 	override func tearDown() {
@@ -53,16 +55,16 @@ class NotificationNameApiTests: TestCase {
 		let observation2 = notificationCenter.observe(notificationName, object: sender) { _ in
 			count += 1
 		}
-		NotificationCenter.default.post(name: notificationName, object: sender, userInfo: nil)
+		aNotificationCenter.post(name: notificationName, object: sender, userInfo: nil)
 		XCTAssertEqual(count, 2, "Observer block should've been called twice")
 
-		NotificationCenter.default.post(name: notificationName, object: otherSender, userInfo: nil)
+		aNotificationCenter.post(name: notificationName, object: otherSender, userInfo: nil)
 		XCTAssertEqual(count, 3, "Observer block should've been called three times")
 
 		XCTAssertTrue(observation1.isValid, "Observation should be valid by default")
 		observation1.invalidate()
 		XCTAssertFalse(observation1.isValid, "Observation should become invalid after calling invalidate")
-		NotificationCenter.default.post(name: notificationName, object: sender, userInfo: nil)
+		aNotificationCenter.post(name: notificationName, object: sender, userInfo: nil)
 		XCTAssertEqual(count, 4, "Observer block should've been called four times")
 		_ = observation2
 	}
@@ -82,7 +84,7 @@ class NotificationNameApiTests: TestCase {
 			expectation2.fulfill()
 		})
 
-		NotificationCenter.default.post(name: notificationName, object: sender, userInfo: nil)
+		aNotificationCenter.post(name: notificationName, object: sender, userInfo: nil)
 		waitForExpectations(timeout: 1, handler: nil)
 
 		wait(0.1)
@@ -100,7 +102,7 @@ class NotificationNameApiTests: TestCase {
 			count += 1
 		}
 
-		NotificationCenter.default.post(name: notificationName, object: nil, userInfo: nil)
+		aNotificationCenter.post(name: notificationName, object: nil, userInfo: nil)
 		XCTAssertEqual(count, 1, "Observer block should've been called once")
 		_ = observation
 	}
@@ -113,7 +115,7 @@ class NotificationNameApiTests: TestCase {
 			count += 1
 		}
 
-		NotificationCenter.default.post(name: notificationName, object: NSNull(), userInfo: nil)
+		aNotificationCenter.post(name: notificationName, object: NSNull(), userInfo: nil)
 		XCTAssertEqual(count, 1, "Observer block should've been called once")
 		_ = observation
 	}

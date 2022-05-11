@@ -31,79 +31,85 @@ import XCTest
 class UnsubscribingTests: TestCase {
 	let sender = NSObject()
 
-	// TypedNotificationCenter
-	var observations: [TypedNotificationObservation]!
-
-	// Apple's NotificationCenter
-	var aObservations: [Any]!
-
-	override func setUp() {
-		observations = [TypedNotificationObservation]()
-		aObservations = [Any]()
-	}
-
-	override func tearDown() {
-		observations = nil
-		aObservations = nil
-	}
-
 	func test_1_own() {
-		let notificationCenter = TypedNotificationCenter()
-		for _ in 1 ... 60000 {
-			observations.append(notificationCenter.observe(TestData.PerformanceTestNotification1.self, object: sender) { _, _ in })
-		}
-		notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
-		measure {
+		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+			let aNotificationCenter = NotificationCenter()
+			let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
+			var observations = [TypedNotificationObservation]()
+
+			for _ in 1 ... 60000 {
+				observations.append(notificationCenter.observe(TestData.PerformanceTestNotification1.self, object: sender) { _, _ in })
+			}
+			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
+			startMeasuring()
 			for observation in observations {
 				observation.invalidate()
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
+			stopMeasuring()
+			_ = notificationCenter
 		}
 	}
 
 	func test_1_apple() throws {
 		try XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
-		let aNotificationCenter = NotificationCenter()
-		for _ in 1 ... 60000 {
-			aObservations.append(aNotificationCenter.addObserver(forName: TestData.notificationNames.first!, object: sender, queue: nil) { _ in })
-		}
-		aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
-		measure {
+		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+			let aNotificationCenter = NotificationCenter()
+			var aObservations = [Any]()
+
+			for _ in 1 ... 60000 {
+				aObservations.append(aNotificationCenter.addObserver(forName: TestData.notificationNames.first!, object: sender, queue: nil) { _ in })
+			}
+			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
+			startMeasuring()
 			for observation in aObservations {
 				aNotificationCenter.removeObserver(observation)
 			}
 			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
+			stopMeasuring()
+			_ = aNotificationCenter
 		}
 	}
 
 	func test_all_own() {
-		let notificationCenter = TypedNotificationCenter()
-		for _ in 1 ... 600 {
-			TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
-		}
-		notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
-		measure {
+		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+			let aNotificationCenter = NotificationCenter()
+			let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
+			var observations = [TypedNotificationObservation]()
+
+			for _ in 1 ... 600 {
+				TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
+			}
+			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
+			startMeasuring()
 			for observation in observations {
 				observation.invalidate()
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
+			stopMeasuring()
+			_ = notificationCenter
 		}
 	}
 
 	func test_all_apple() throws {
 		try XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
-		let aNotificationCenter = NotificationCenter()
-		for _ in 1 ... 600 {
-			for notificationName in TestData.notificationNames {
-				aObservations.append(aNotificationCenter.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
+		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+			let aNotificationCenter = NotificationCenter()
+			var aObservations = [Any]()
+
+			for _ in 1 ... 600 {
+				for notificationName in TestData.notificationNames {
+					aObservations.append(aNotificationCenter.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
+				}
 			}
-		}
-		aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
-		measure {
+			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
+			startMeasuring()
 			for observation in aObservations {
 				aNotificationCenter.removeObserver(observation)
 			}
 			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
+			stopMeasuring()
+			_ = aNotificationCenter
 		}
 	}
 }

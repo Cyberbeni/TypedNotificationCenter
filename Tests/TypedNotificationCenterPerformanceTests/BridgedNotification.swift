@@ -32,27 +32,12 @@ class BridgedNotificationTests: TestCase {
 	let sender = NSObject()
 	let otherSender = NSObject()
 
-	var aNotificationCenter: NotificationCenter!
-	var notificationCenter: TypedNotificationCenter!
-
-	var observations: [TypedNotificationObservation]!
-
-	override func setUp() {
-		super.setUp()
-
-		aNotificationCenter = NotificationCenter()
-		notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
-		observations = []
-	}
-
-	override func tearDown() {
-		aNotificationCenter = nil
-		notificationCenter = nil
-		observations = nil
-	}
-
 	func test_subscribing_2senders_notificationName() {
-		measure {
+		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+			let aNotificationCenter = NotificationCenter()
+			let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
+			var observations = [TypedNotificationObservation]()
+			startMeasuring()
 			for _ in 1 ... 3 {
 				for notificationName in TestData.notificationNames {
 					observations.append(notificationCenter.observe(notificationName, object: sender, block: { _ in }))
@@ -65,11 +50,18 @@ class BridgedNotificationTests: TestCase {
 				}
 			}
 			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
+			stopMeasuring()
+			_ = notificationCenter
+			_ = observations
 		}
 	}
 
 	func test_subscribing_2senders_bridgedNotification() {
-		measure {
+		measureMetrics(Self.defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+			let aNotificationCenter = NotificationCenter()
+			let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
+			var observations = [TypedNotificationObservation]()
+			startMeasuring()
 			for _ in 1 ... 3 {
 				TestData.subscribeToAllBridged(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
 				TestData.subscribeToAllBridged(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
@@ -78,10 +70,17 @@ class BridgedNotificationTests: TestCase {
 				}
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1Bridged.self, sender: sender, payload: .init())
+			stopMeasuring()
+			_ = notificationCenter
+			_ = observations
 		}
 	}
 
 	func test_posting_20percent_notificationName() {
+		let aNotificationCenter = NotificationCenter()
+		let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
+		var observations = [TypedNotificationObservation]()
+
 		for notificationName in TestData.notificationNames {
 			observations.append(notificationCenter.observe(notificationName, object: sender, block: { _ in }))
 			observations.append(notificationCenter.observe(notificationName, object: nil, block: { _ in }))
@@ -102,6 +101,10 @@ class BridgedNotificationTests: TestCase {
 	}
 
 	func test_posting_20percent_bridgedNotification() {
+		let aNotificationCenter = NotificationCenter()
+		let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
+		var observations = [TypedNotificationObservation]()
+
 		TestData.subscribeToAllBridged(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
 		TestData.subscribeToAllBridged(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
 		for _ in 1 ... 8 {
