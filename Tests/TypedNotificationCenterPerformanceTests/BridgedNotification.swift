@@ -51,6 +51,7 @@ class BridgedNotificationTests: TestCase {
 			}
 			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
 			stopMeasuring()
+			observations.removeAll()
 		}
 	}
 
@@ -69,6 +70,7 @@ class BridgedNotificationTests: TestCase {
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1Bridged.self, sender: sender, payload: .init())
 			stopMeasuring()
+			observations.removeAll()
 		}
 	}
 
