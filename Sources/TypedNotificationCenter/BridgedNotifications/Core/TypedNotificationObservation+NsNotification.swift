@@ -35,7 +35,7 @@ final class _NsNotificationObservation<T: BridgedNotification>: TypedNotificatio
 		observation = typedNotificationCenter.nsNotificationCenterForBridging.addObserver(self, selector: #selector(forward(notification:)), name: T.notificationName, object: nil)
 	}
 
-	@objc private forward(notification: Notification) {
+	@objc private func forward(notification: Notification) {
 		guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
 			TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
 			return

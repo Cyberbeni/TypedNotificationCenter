@@ -35,7 +35,7 @@ final class _GenericNsNotificationObservation: TypedNotificationObservation {
 		observation = typedNotificationCenter.nsNotificationCenterForBridging.addObserver(self, selector: #selector(forward(notification:)), name: notificationName, object: nil)
 	}
 
-	@objc private forward(notification: Notification) {
+	@objc private func forward(notification: Notification) {
 		typedNotificationCenter?.forwardGenericPost(
 			notification.name,
 			sender: notification.object as AnyObject?,
