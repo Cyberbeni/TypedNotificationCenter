@@ -71,7 +71,7 @@ final class _NsNotificationObservation<T: BridgedNotification>: TypedNotificatio
 
 	override func invalidate() {
 		_isValid = false
-		typedNotificationCenter?.nsNotificationCenterForBridging.removeObserver(observation)
+		typedNotificationCenter?.nsNotificationCenterForBridging.removeObserver(observation!)
 	}
 
 	private var _isValid = true
