@@ -28,25 +28,26 @@ import Foundation
 
 final class _GenericNsNotificationObservation: TypedNotificationObservation {
 	private let observation: Any
-	private weak var nsNotificationCenter: NotificationCenter?
+	private weak var typedNotificationCenter: TypedNotificationCenter?
 
 	init(typedNotificationCenter: TypedNotificationCenter, notificationName: Notification.Name) {
-		let nsNotificationCenter = typedNotificationCenter.nsNotificationCenterForBridging
-		self.nsNotificationCenter = nsNotificationCenter
-		observation = nsNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil, using: { [weak typedNotificationCenter] notification in
-			typedNotificationCenter?.forwardGenericPost(
-				notification.name,
-				sender: notification.object as AnyObject?,
-				payload: notification.userInfo
-			)
-		})
+		self.typedNotificationCenter = typedNotificationCenter
+		observation = typedNotificationCenter.nsNotificationCenterForBridging.addObserver(self, selector: #selector(forward(notification:)), name: notificationName, object: nil)
+	}
+
+	@objc private forward(notification: Notification) {
+		typedNotificationCenter?.forwardGenericPost(
+			notification.name,
+			sender: notification.object as AnyObject?,
+			payload: notification.userInfo
+		)
 	}
 
 	// MARK: - TypedNotificationObservation conformance
 
 	override func invalidate() {
 		_isValid = false
-		nsNotificationCenter?.removeObserver(observation)
+		typedNotificationCenter?.nsNotificationCenterForBridging.removeObserver(observation)
 	}
 
 	private var _isValid = true

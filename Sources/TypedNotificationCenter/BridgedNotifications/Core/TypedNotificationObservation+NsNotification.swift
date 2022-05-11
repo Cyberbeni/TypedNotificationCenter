@@ -28,24 +28,24 @@ import Foundation
 
 final class _NsNotificationObservation<T: BridgedNotification>: TypedNotificationObservation {
 	private let observation: Any
-	private weak var nsNotificationCenter: NotificationCenter?
+	private weak var typedNotificationCenter: TypedNotificationCenter?
 
 	init(typedNotificationCenter: TypedNotificationCenter) {
-		let nsNotificationCenter = typedNotificationCenter.nsNotificationCenterForBridging
-		self.nsNotificationCenter = nsNotificationCenter
-		observation = nsNotificationCenter.addObserver(forName: T.notificationName, object: nil, queue: nil, using: { [weak typedNotificationCenter] notification in
-			guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
-				TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
-				return
-			}
-			do {
-				let payload = try T.Payload(notification.userInfo ?? [:])
-				typedNotificationCenter?._post(T.self, sender: sender, payload: payload)
-			} catch {
-				TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
-				return
-			}
-		})
+		self.typedNotificationCenter = typedNotificationCenter
+		observation = typedNotificationCenter.nsNotificationCenterForBridging.addObserver(self, selector: #selector(forward(notification:)), name: T.notificationName, object: nil)
+	}
+
+	@objc private forward(notification: Notification) {
+		guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
+			TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
+			return
+		}
+		do {
+			let payload = try T.Payload(notification.userInfo ?? [:])
+			typedNotificationCenter?._post(T.self, sender: sender, payload: payload)
+		} catch {
+			TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
+		}
 	}
 
 	// MARK: - TypedNotificationObservation conformance
