@@ -27,11 +27,7 @@
 import XCTest
 
 class TestCase: XCTestCase {
-	#if canImport(Darwin)
-		static let skipNsNotificationCenterTests = true
-	#else
-		static let skipNsNotificationCenterTests = false
-	#endif
+	static let skipNsNotificationCenterTests = false
 
 	override func setUp() {
 		super.setUp()
