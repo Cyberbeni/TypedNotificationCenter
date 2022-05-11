@@ -42,11 +42,11 @@ class PostingTests: TestCase {
 	override func setUp() {
 		sender = NSObject()
 
-		notificationCenter = TypedNotificationCenter()
-		observations = [TypedNotificationObservation]()
-
 		aNotificationCenter = NotificationCenter()
 		aObservations = [Any]()
+
+		notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
+		observations = [TypedNotificationObservation]()
 	}
 
 	override func tearDown() {
