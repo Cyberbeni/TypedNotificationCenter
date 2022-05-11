@@ -61,7 +61,8 @@ class UnsubscribingTests: TestCase {
 		}
 	}
 
-	func test_1_apple() {
+	func test_1_apple() throws {
+		try XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
 		let aNotificationCenter = NotificationCenter()
 		for _ in 1 ... 60000 {
 			aObservations.append(aNotificationCenter.addObserver(forName: TestData.notificationNames.first!, object: sender, queue: nil) { _ in })
@@ -89,7 +90,8 @@ class UnsubscribingTests: TestCase {
 		}
 	}
 
-	func test_all_apple() {
+	func test_all_apple() throws {
+		try XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
 		let aNotificationCenter = NotificationCenter()
 		for _ in 1 ... 600 {
 			for notificationName in TestData.notificationNames {

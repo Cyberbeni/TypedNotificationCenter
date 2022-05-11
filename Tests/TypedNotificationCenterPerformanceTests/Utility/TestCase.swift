@@ -27,6 +27,12 @@
 import XCTest
 
 class TestCase: XCTestCase {
+	#if !os(Linux)
+		static let skipNsNotificationCenterTests = true
+	#else
+		static let skipNsNotificationCenterTests = false
+	#endif
+
 	override func setUp() {
 		super.setUp()
 
