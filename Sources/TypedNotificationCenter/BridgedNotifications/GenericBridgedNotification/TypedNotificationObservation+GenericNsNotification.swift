@@ -27,11 +27,12 @@
 import Foundation
 
 final class _GenericNsNotificationObservation: TypedNotificationObservation {
-	private let observation: Any
+	private var observation: Any!
 	private weak var typedNotificationCenter: TypedNotificationCenter?
 
 	init(typedNotificationCenter: TypedNotificationCenter, notificationName: Notification.Name) {
 		self.typedNotificationCenter = typedNotificationCenter
+		super.init()
 		#if canImport(ObjectiveC)
 		observation = typedNotificationCenter.nsNotificationCenterForBridging.addObserver(self, selector: #selector(forward(notification:)), name: notificationName, object: nil)
 		#else
