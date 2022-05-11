@@ -108,8 +108,13 @@ class SubscribingTests: TestCase {
 	}
 
 	func test_100senders_own() {
-		measure {
+		measureMetrics(defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+			let aNotificationCenter = NotificationCenter()
+			let aObservations = [Any]()
+			let notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
+			let observations = [TypedNotificationObservation]()
 			var otherSenders = [NSObject]()
+			startMeasuring()
 			for _ in 1 ... 3 {
 				for _ in 1 ... 99 {
 					otherSenders.append(NSObject())
@@ -120,13 +125,17 @@ class SubscribingTests: TestCase {
 				}
 			}
 			notificationCenter.post(TestData.PerformanceTestNotification1.self, sender: sender, payload: TestData.DummyPayload())
+			stopMeasuring()
 		}
 	}
 
 	func test_100senders_apple() throws {
 		try XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
-		measure {
+		measureMetrics(defaultPerformanceMetrics, automaticallyStartMeasuring: false) {
+			let aNotificationCenter = NotificationCenter()
+			let aObservations = [Any]()
 			var otherSenders = [NSObject]()
+			startMeasuring()
 			for _ in 1 ... 3 {
 				for _ in 1 ... 99 {
 					otherSenders.append(NSObject())
@@ -139,6 +148,7 @@ class SubscribingTests: TestCase {
 				}
 			}
 			aNotificationCenter.post(name: TestData.notificationNames.first!, object: sender, userInfo: [:])
+			stopMeasuring()
 		}
 	}
 }
