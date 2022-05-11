@@ -32,9 +32,20 @@ final class _GenericNsNotificationObservation: TypedNotificationObservation {
 
 	init(typedNotificationCenter: TypedNotificationCenter, notificationName: Notification.Name) {
 		self.typedNotificationCenter = typedNotificationCenter
+		#if canImport(ObjectiveC)
 		observation = typedNotificationCenter.nsNotificationCenterForBridging.addObserver(self, selector: #selector(forward(notification:)), name: notificationName, object: nil)
+		#else
+		observation = typedNotificationCenter.nsNotificationCenterForBridging.addObserver(forName: notificationName, object: nil, queue: nil, using: { [weak typedNotificationCenter] notification in
+			typedNotificationCenter?.forwardGenericPost(
+				notification.name,
+				sender: notification.object as AnyObject?,
+				payload: notification.userInfo
+			)
+		})
+		#endif
 	}
 
+	#if canImport(ObjectiveC)
 	@objc private func forward(notification: Notification) {
 		typedNotificationCenter?.forwardGenericPost(
 			notification.name,
@@ -42,6 +53,7 @@ final class _GenericNsNotificationObservation: TypedNotificationObservation {
 			payload: notification.userInfo
 		)
 	}
+	#endif
 
 	// MARK: - TypedNotificationObservation conformance
 

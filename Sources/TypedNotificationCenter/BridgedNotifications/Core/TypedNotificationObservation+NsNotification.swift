@@ -32,9 +32,26 @@ final class _NsNotificationObservation<T: BridgedNotification>: TypedNotificatio
 
 	init(typedNotificationCenter: TypedNotificationCenter) {
 		self.typedNotificationCenter = typedNotificationCenter
+		#if canImport(ObjectiveC)
 		observation = typedNotificationCenter.nsNotificationCenterForBridging.addObserver(self, selector: #selector(forward(notification:)), name: T.notificationName, object: nil)
+		#else
+		observation = typedNotificationCenter.nsNotificationCenterForBridging.addObserver(forName: T.notificationName, object: nil, queue: nil, using: { [weak typedNotificationCenter] notification in
+			guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
+				TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
+				return
+			}
+			do {
+				let payload = try T.Payload(notification.userInfo ?? [:])
+				typedNotificationCenter?._post(T.self, sender: sender, payload: payload)
+			} catch {
+				TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
+				return
+			}
+		})
+		#endif
 	}
 
+	#if canImport(ObjectiveC)
 	@objc private func forward(notification: Notification) {
 		guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
 			TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
@@ -47,12 +64,13 @@ final class _NsNotificationObservation<T: BridgedNotification>: TypedNotificatio
 			TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
 		}
 	}
+	#endif
 
 	// MARK: - TypedNotificationObservation conformance
 
 	override func invalidate() {
 		_isValid = false
-		nsNotificationCenter?.removeObserver(observation)
+		typedNotificationCenter?.nsNotificationCenterForBridging.removeObserver(observation)
 	}
 
 	private var _isValid = true
