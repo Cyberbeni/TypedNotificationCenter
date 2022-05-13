@@ -27,7 +27,7 @@
 import Foundation
 
 final class _GenericNsNotificationObservation: TypedNotificationObservation {
-	private var observation: Any!
+	private var observation: Any?
 	private weak var typedNotificationCenter: TypedNotificationCenter?
 
 	init(typedNotificationCenter: TypedNotificationCenter, notificationName: Notification.Name) {
@@ -60,7 +60,7 @@ final class _GenericNsNotificationObservation: TypedNotificationObservation {
 
 	override func invalidate() {
 		_isValid = false
-		typedNotificationCenter?.nsNotificationCenterForBridging.removeObserver(observation!)
+		observation.map { typedNotificationCenter?.nsNotificationCenterForBridging.removeObserver($0) }
 	}
 
 	private var _isValid = true
