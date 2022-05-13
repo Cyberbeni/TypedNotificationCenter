@@ -27,13 +27,19 @@
 import XCTest
 
 class TestCase: XCTestCase {
+	#if canImport(Darwin)
+		static let skipNsNotificationCenterTests = true
+	#else
+		static let skipNsNotificationCenterTests = false
+	#endif
+
 	override func setUp() {
 		super.setUp()
 
 		continueAfterFailure = false
 	}
 
-	#if !os(Linux)
+	#if canImport(Darwin)
 		// https://indiestack.com/2018/02/xcodes-secret-performance-tests/
 		override class var defaultPerformanceMetrics: [XCTPerformanceMetric] {
 			[

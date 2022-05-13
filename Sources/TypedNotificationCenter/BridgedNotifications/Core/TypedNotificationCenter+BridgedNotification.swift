@@ -36,10 +36,7 @@ extension TypedNotificationCenter {
 		assert(T.self == U.self)
 		observerLock.lock()
 		if !bridgedNsnotificationObservers.keys.contains(U.notificationName) {
-			bridgedNsnotificationObservers[U.notificationName] = _NsNotificationObservation<T>(nsNotificationCenter: nsNotificationCenterForBridging, type: U.self,
-			                                                                                   block: { [weak self] sender, payload in
-			                                                                                   	self?._post(T.self, sender: sender, payload: payload)
-			                                                                                   })
+			bridgedNsnotificationObservers[U.notificationName] = _NsNotificationObservation<T>(typedNotificationCenter: self, type: U)
 		} else {
 			assert(
 				bridgedNsnotificationObservers[U.notificationName] is _NsNotificationObservation<T>,

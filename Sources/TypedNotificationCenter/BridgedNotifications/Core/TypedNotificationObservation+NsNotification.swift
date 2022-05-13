@@ -30,10 +30,11 @@ final class _NsNotificationObservation<T: TypedNotification>: TypedNotificationO
 	private let observation: Any
 	private weak var nsNotificationCenter: NotificationCenter?
 
-	init(nsNotificationCenter: NotificationCenter, type: any BridgedNotification.Type, block: @escaping T.ObservationBlock) {
+	init(typedNotificationCenter: TypedNotificationCenter, type: any BridgedNotification.Type) {
 		assert(T.self == type.self)
+		let nsNotificationCenter = typedNotificationCenter.nsNotificationCenterForBridging
 		self.nsNotificationCenter = nsNotificationCenter
-		observation = nsNotificationCenter.addObserver(forName: type.notificationName, object: nil, queue: nil, using: { notification in
+		observation = nsNotificationCenter.addObserver(forName: type.notificationName, object: nil, queue: nil, using: { [weak typedNotificationCenter] notification in
 			guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
 				TypedNotificationCenter.invalidSenderBlock(notification.object, type.notificationName)
 				return
@@ -42,7 +43,7 @@ final class _NsNotificationObservation<T: TypedNotification>: TypedNotificationO
 				let PayloadType = T.Payload.self as! DictionaryRepresentable.Type
 				// swiftformat:disable:next redundantInit
 				let payload = try PayloadType.init(notification.userInfo ?? [:]) as! T.Payload
-				block(sender, payload)
+				typedNotificationCenter?._post(T.self, sender: sender, payload: payload)
 			} catch {
 				TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, type.notificationName)
 				return
