@@ -48,7 +48,7 @@ jobs:
   test-darwin-unit:
     strategy:
       matrix:
-        os: [macOS, iOS, tvOS]
+        os: [macOS, iOS, tvOS, watchOS]
     runs-on: macos-latest
     steps:
     - name: Checkout
