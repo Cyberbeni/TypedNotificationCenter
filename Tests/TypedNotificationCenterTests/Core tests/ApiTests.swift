@@ -111,7 +111,8 @@ class ApiTests: TestCase {
 	}
 
 	func testValidityNotificationCenterDeallocated() {
-		var notificationCenter: TypedNotificationCenter? = TypedNotificationCenter()
+		let aNotificationCenter = NotificationCenter()
+		var notificationCenter: TypedNotificationCenter? = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
 		observation = notificationCenter?.observe(SampleNotification.self, object: nil, block: { _, _ in
 			self.count += 1
 		})

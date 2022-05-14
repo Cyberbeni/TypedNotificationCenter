@@ -1,6 +1,6 @@
 //
-//  PerformanceTestsPosting.swift
-//  TypedNotificationCenter
+//  Posting.swift
+//  TypedNotificationCenterPerformanceTests
 //
 //  Created by Benedek Kozma on 2019. 06. 05.
 //  Copyright (c) 2019. Benedek Kozma
@@ -28,8 +28,8 @@ import Foundation
 import TypedNotificationCenter
 import XCTest
 
-class PerformanceTestsPosting: TestCase {
-	var sender: NSObject!
+class PostingTests: TestCase {
+	var sender: NSObject = .init()
 
 	// TypedNotificationCenter
 	var notificationCenter: TypedNotificationCenter!
@@ -40,18 +40,14 @@ class PerformanceTestsPosting: TestCase {
 	var aObservations: [Any]!
 
 	override func setUp() {
-		sender = NSObject()
-
-		notificationCenter = TypedNotificationCenter()
-		observations = [TypedNotificationObservation]()
-
 		aNotificationCenter = NotificationCenter()
 		aObservations = [Any]()
+
+		notificationCenter = TypedNotificationCenter(nsNotificationCenterForBridging: aNotificationCenter)
+		observations = [TypedNotificationObservation]()
 	}
 
 	override func tearDown() {
-		sender = nil
-
 		notificationCenter = nil
 		observations = nil
 
@@ -59,7 +55,7 @@ class PerformanceTestsPosting: TestCase {
 		aObservations = nil
 	}
 
-	func testPerformance_all_own() {
+	func test_all_own() {
 		for _ in 1 ... 10 {
 			TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
 		}
@@ -71,7 +67,7 @@ class PerformanceTestsPosting: TestCase {
 		}
 	}
 
-	func testPerformance_all_own_concurrentPost() {
+	func test_all_own_concurrentPost() {
 		for _ in 1 ... 10 {
 			TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
 		}
@@ -94,7 +90,8 @@ class PerformanceTestsPosting: TestCase {
 		}
 	}
 
-	func testPerformance_all_apple() {
+	func test_all_apple() throws {
+		try XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
 		for _ in 1 ... 10 {
 			for notificationName in TestData.notificationNames {
 				aObservations.append(aNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil) { _ in })
@@ -110,7 +107,7 @@ class PerformanceTestsPosting: TestCase {
 		}
 	}
 
-	func testPerformance_20percent_own() {
+	func test_20percent_own() {
 		let otherSender = NSObject()
 		TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: sender)
 		TestData.subscribeToAll(observationContainer: &observations, notificationCenter: notificationCenter, sender: nil)
@@ -125,7 +122,8 @@ class PerformanceTestsPosting: TestCase {
 		}
 	}
 
-	func testPerformance_20percent_apple() {
+	func test_20percent_apple() throws {
+		try XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
 		let otherSender = NSObject()
 		for notificationName in TestData.notificationNames {
 			aObservations.append(aNotificationCenter.addObserver(forName: notificationName, object: sender, queue: nil) { _ in })
@@ -146,7 +144,7 @@ class PerformanceTestsPosting: TestCase {
 		}
 	}
 
-	func testPerformance_1percent_own() {
+	func test_1percent_own() {
 		var otherSenders = [NSObject]()
 		for _ in 1 ... 99 {
 			otherSenders.append(NSObject())
@@ -163,7 +161,8 @@ class PerformanceTestsPosting: TestCase {
 		}
 	}
 
-	func testPerformance_1percent_apple() {
+	func test_1percent_apple() throws {
+		try XCTSkipIf(Self.skipNsNotificationCenterTests, "Skipping NSNotificationCenter test")
 		var otherSenders = [NSObject]()
 		for _ in 1 ... 99 {
 			otherSenders.append(NSObject())
