@@ -67,6 +67,7 @@ public final class TypedNotificationCenter {
 		observerLock.unlock()
 	}
 
+    @usableFromInline
 	func _observe<T: TypedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
 		let object = T.Sender.self is NSNull.Type ? nil : object
 
@@ -84,6 +85,7 @@ public final class TypedNotificationCenter {
 		return observation
 	}
 
+    @usableFromInline
 	func _post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
 		var nilObservations: Dictionary<ObjectIdentifier, WeakBox<AnyObject>>.Values?
 		var objectObservations: Dictionary<ObjectIdentifier, WeakBox<AnyObject>>.Values?
@@ -126,6 +128,7 @@ public final class TypedNotificationCenter {
 
 	public static let `default` = TypedNotificationCenter()
 
+    @inlinable
 	public func observe<T: TypedNotification>(_: T.Type, object: T.Sender?, queue: OperationQueue? = nil, block: @escaping T.ObservationBlock) -> TypedNotificationObservation {
 		if T.Payload.self is DictionaryRepresentable.Type {
 			let proxy = T.eraseNotificationName()
@@ -135,6 +138,7 @@ public final class TypedNotificationCenter {
 		}
 	}
 
+    @inlinable
 	public func post<T: TypedNotification>(_: T.Type, sender: T.Sender, payload: T.Payload) {
 		if T.Payload.self is DictionaryRepresentable.Type {
 			let proxy = T.eraseNotificationName()
