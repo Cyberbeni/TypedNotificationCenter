@@ -45,6 +45,6 @@ public protocol DictionaryRepresentable {
 	func asDictionary() -> [AnyHashable: Any]
 }
 
-public protocol BridgedNotification: TypedNotification where Payload: DictionaryRepresentable {
+public protocol BridgedNotification<Sender, Payload>: TypedNotification where Payload: DictionaryRepresentable {
 	static var notificationName: Notification.Name { get }
 }
