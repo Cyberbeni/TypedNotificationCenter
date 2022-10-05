@@ -41,7 +41,6 @@ final class _NsNotificationObservation<T: TypedNotification>: TypedNotificationO
 			}
 			do {
 				let PayloadType = T.Payload.self as! DictionaryRepresentable.Type
-				// swiftformat:disable:next redundantInit
 				let payload = try PayloadType.init(notification.userInfo ?? [:]) as! T.Payload
 				typedNotificationCenter?._post(T.self, sender: sender, payload: payload)
 			} catch {
