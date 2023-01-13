@@ -55,7 +55,7 @@ class ViewController: UIViewController {
 		observe(UIResponder.KeyboardDidChangeFrameNotification.self)
 	}
 
-	private func observe<T: BridgedNotification>(_ type: T.Type) {
+	private func observe(_ type: (some BridgedNotification).Type) {
 		observations.append(notificationCenter.observe(type.self, object: nil, block: { [weak self] _, payload in
 			var userInfo = payload.asDictionary()
 			if #available(iOS 9.0, *) {
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
 		}))
 	}
 
-	private func addToReceivedNotifications<T: BridgedNotification>(_ type: T.Type) {
+	private func addToReceivedNotifications(_ type: (some BridgedNotification).Type) {
 		receivedNotifications.insert(ObjectIdentifier(type))
 		if receivedNotifications.count == 6 {
 			testResultLabel.text = "KeyboardNotificationTesting passed"
