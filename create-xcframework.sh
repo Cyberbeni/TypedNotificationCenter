@@ -72,10 +72,6 @@ for PLATFORM in "macOS" "macOS,variant=Mac Catalyst" "iOS" "iOS Simulator" "tvOS
 	if [ -n "$DSYM_PATH" ]; then
 		CREATE_XCFRAMEWORK_ARGUMENTS+=( "-debug-symbols" "$PWD/$DSYM_PATH" )
 	fi
-	BCSYMBOLMAP_PATHS=$(find "$ARCHIVE_PATH" -name "*.bcsymbolmap")
-	for BCSYMBOLMAP_PATH in $BCSYMBOLMAP_PATHS; do
-		CREATE_XCFRAMEWORK_ARGUMENTS+=( "-debug-symbols" "$PWD/$BCSYMBOLMAP_PATH" )
-	done
 done
 
 xcodebuild -create-xcframework \
