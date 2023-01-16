@@ -77,37 +77,43 @@ import Foundation
 
 		enum KeyboardWillShowNotification: BridgedNotification {
 			public static var notificationName: Notification.Name = UIResponder.keyboardWillShowNotification
-			public typealias Sender = NSNull
+			public static var defaultSender: UIScreen? { UIScreen.main }
+			public typealias Sender = UIScreen
 			public typealias Payload = KeyboardNotificationPayload
 		}
 
 		enum KeyboardDidShowNotification: BridgedNotification {
 			public static var notificationName: Notification.Name = UIResponder.keyboardDidShowNotification
-			public typealias Sender = NSNull
+			public static var defaultSender: UIScreen? { UIScreen.main }
+			public typealias Sender = UIScreen
 			public typealias Payload = KeyboardNotificationPayload
 		}
 
 		enum KeyboardWillHideNotification: BridgedNotification {
 			public static var notificationName: Notification.Name = UIResponder.keyboardWillHideNotification
-			public typealias Sender = NSNull
+			public static var defaultSender: UIScreen? { UIScreen.main }
+			public typealias Sender = UIScreen
 			public typealias Payload = KeyboardNotificationPayload
 		}
 
 		enum KeyboardDidHideNotification: BridgedNotification {
 			public static var notificationName: Notification.Name = UIResponder.keyboardDidHideNotification
-			public typealias Sender = NSNull
+			public static var defaultSender: UIScreen? { UIScreen.main }
+			public typealias Sender = UIScreen
 			public typealias Payload = KeyboardNotificationPayload
 		}
 
 		enum KeyboardWillChangeFrameNotification: BridgedNotification {
 			public static var notificationName: Notification.Name = UIResponder.keyboardWillChangeFrameNotification
-			public typealias Sender = NSNull
+			public static var defaultSender: UIScreen? { UIScreen.main }
+			public typealias Sender = UIScreen
 			public typealias Payload = KeyboardNotificationPayload
 		}
 
 		enum KeyboardDidChangeFrameNotification: BridgedNotification {
 			public static var notificationName: Notification.Name = UIResponder.keyboardDidChangeFrameNotification
-			public typealias Sender = NSNull
+			public static var defaultSender: UIScreen? { UIScreen.main }
+			public typealias Sender = UIScreen
 			public typealias Payload = KeyboardNotificationPayload
 		}
 	}

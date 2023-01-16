@@ -35,7 +35,19 @@ final class _NsNotificationObservation<T: TypedNotification>: TypedNotificationO
 		let nsNotificationCenter = typedNotificationCenter.nsNotificationCenterForBridging
 		self.nsNotificationCenter = nsNotificationCenter
 		observation = nsNotificationCenter.addObserver(forName: type.notificationName, object: nil, queue: nil, using: { [weak typedNotificationCenter] notification in
-			guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
+			let sender: T.Sender
+			if T.Sender.self == NSNull.self,
+			   let aSender = NSNull() as? T.Sender
+			{
+				sender = aSender
+				if notification.object != nil, !(notification.object is NSNull) {
+					TypedNotificationCenter.invalidSenderBlock(notification.object, type.notificationName)
+				}
+			} else if let aSender = (notification.object ?? NSNull()) as? T.Sender {
+				sender = aSender
+			} else if let aSender = type.defaultSender as? T.Sender {
+				sender = aSender
+			} else {
 				TypedNotificationCenter.invalidSenderBlock(notification.object, type.notificationName)
 				return
 			}

@@ -1,9 +1,9 @@
 //
-//  BridgedNotification.swift
+//  PDFView.swift
 //  TypedNotificationCenter
 //
-//  Created by Benedek Kozma on 2019. 06. 05.
-//  Copyright (c) 2019. Benedek Kozma
+//  Created by Benedek Kozma on 2023. 01. 16.
+//  Copyright (c) 2023. Benedek Kozma
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,30 +26,32 @@
 
 import Foundation
 
-public struct NotificationDecodingError: LocalizedError {
-	public var type: Any.Type
-	public var source: [AnyHashable: Any]
+// TODO: It should be available for macOS too but Xcode 14.2 gives compiler error
+#if os(iOS)
+	import PDFKit
 
-	public init(type: Any.Type, source: [AnyHashable: Any]) {
-		self.type = type
-		self.source = source
+	@available(macCatalyst 13.1, *)
+	public extension PDFView {
+		enum AnnotationHitNotification: BridgedNotification {
+			public static var notificationName: Notification.Name = .PDFViewAnnotationHit
+			public typealias Sender = PDFView
+			public struct Payload: DictionaryRepresentable {
+				let annotation: PDFAnnotation
+
+				private static let PDFAnnotationHitKey = "PDFAnnotationHit"
+				public init(_ dictionary: [AnyHashable: Any]) throws {
+					guard let annotation = dictionary[Self.PDFAnnotationHitKey] as? PDFAnnotation else {
+						throw NotificationDecodingError(type: type(of: self), source: dictionary)
+					}
+					self.annotation = annotation
+				}
+
+				public func asDictionary() -> [AnyHashable: Any] {
+					var retVal = [AnyHashable: Any]()
+					retVal[Self.PDFAnnotationHitKey] = annotation
+					return retVal
+				}
+			}
+		}
 	}
-
-	public var errorDescription: String? {
-		String(describing: self)
-	}
-}
-
-public protocol DictionaryRepresentable {
-	init(_ dictionary: [AnyHashable: Any]) throws
-	func asDictionary() -> [AnyHashable: Any]
-}
-
-public protocol BridgedNotification<Sender, Payload>: TypedNotification where Payload: DictionaryRepresentable {
-	static var notificationName: Notification.Name { get }
-	static var defaultSender: Sender? { get }
-}
-
-public extension BridgedNotification {
-	static var defaultSender: Sender? { nil }
-}
+#endif
