@@ -77,3 +77,6 @@ done
 xcodebuild -create-xcframework \
 	"${CREATE_XCFRAMEWORK_ARGUMENTS[@]}" \
 	-output "$ARCHIVES_ROOT_PATH/TypedNotificationCenter.xcframework"
+
+# https://developer.apple.com/forums/thread/123253
+find "$ARCHIVES_ROOT_PATH/TypedNotificationCenter.xcframework" -name "*.swiftinterface" -exec sed -i -e 's/ TypedNotificationCenter\./ /g' {} \;
