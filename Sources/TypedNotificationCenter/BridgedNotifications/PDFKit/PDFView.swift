@@ -26,7 +26,8 @@
 
 import Foundation
 
-#if os(iOS) || os(macOS)
+// TODO: It should be available for macOS too but Xcode 14.2 gives compiler error
+#if os(iOS)
 	import PDFKit
 
 	@available(macCatalyst 13.1, *)
