@@ -26,23 +26,25 @@
 
 import Foundation
 
-final class _NsNotificationObservation<T: BridgedNotification>: TypedNotificationObservation {
+final class _NsNotificationObservation<T: TypedNotification>: TypedNotificationObservation {
 	private let observation: Any
 	private weak var nsNotificationCenter: NotificationCenter?
 
-	init(typedNotificationCenter: TypedNotificationCenter) {
+	init(typedNotificationCenter: TypedNotificationCenter, type: any BridgedNotification.Type) {
+		assert(T.self == type.self)
 		let nsNotificationCenter = typedNotificationCenter.nsNotificationCenterForBridging
 		self.nsNotificationCenter = nsNotificationCenter
-		observation = nsNotificationCenter.addObserver(forName: T.notificationName, object: nil, queue: nil, using: { [weak typedNotificationCenter] notification in
+		observation = nsNotificationCenter.addObserver(forName: type.notificationName, object: nil, queue: nil, using: { [weak typedNotificationCenter] notification in
 			guard let sender = (notification.object ?? NSNull()) as? T.Sender else {
-				TypedNotificationCenter.invalidSenderBlock(notification.object, T.notificationName)
+				TypedNotificationCenter.invalidSenderBlock(notification.object, type.notificationName)
 				return
 			}
 			do {
-				let payload = try T.Payload(notification.userInfo ?? [:])
+				let PayloadType = T.Payload.self as! DictionaryRepresentable.Type
+				let payload = try PayloadType.init(notification.userInfo ?? [:]) as! T.Payload
 				typedNotificationCenter?._post(T.self, sender: sender, payload: payload)
 			} catch {
-				TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, T.notificationName)
+				TypedNotificationCenter.invalidPayloadBlock(error, notification.userInfo, type.notificationName)
 				return
 			}
 		})

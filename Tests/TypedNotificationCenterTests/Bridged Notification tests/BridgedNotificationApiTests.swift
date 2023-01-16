@@ -38,7 +38,7 @@ class BridgedNotificationApiTests: TestCase {
 
 	func testCrossSendingFromNotificationCenter() {
 		let stringToSend = "TestString"
-		let expectation = self.expectation(description: "Notification should arrive")
+		let expectation = expectation(description: "Notification should arrive")
 		var count = 0
 		let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { _, payload in
 			XCTAssert(payload.samplePayloadProperty == stringToSend, "Sent and received string should be the same")
@@ -59,7 +59,7 @@ class BridgedNotificationApiTests: TestCase {
 
 	func testCrossSendingFromTypedNotificationCenter() {
 		let stringToSend = "TestString"
-		let expectation = self.expectation(description: "Notification should arrive")
+		let expectation = expectation(description: "Notification should arrive")
 		let observation = NotificationCenter.default.addObserver(forName: SampleBridgedNotification.notificationName, object: nil, queue: nil) { notification in
 			XCTAssert(stringToSend == notification.userInfo?[SampleBridgedNotification.Payload.samplePayloadPropertyUserInfoKey] as? String)
 			expectation.fulfill()
@@ -71,7 +71,7 @@ class BridgedNotificationApiTests: TestCase {
 
 	func testSending() {
 		let stringToSend = "TestString"
-		let expectation = self.expectation(description: "Notification should arrive")
+		let expectation = expectation(description: "Notification should arrive")
 		let observation = TypedNotificationCenter.default.observe(SampleBridgedNotification.self, object: nil) { _, payload in
 			XCTAssert(payload.samplePayloadProperty == stringToSend, "Sent and received string should be the same")
 			expectation.fulfill()
@@ -83,7 +83,7 @@ class BridgedNotificationApiTests: TestCase {
 
 	func testInvalidSender() {
 		let stringToSend = "TestString"
-		let expectation = self.expectation(description: "Invalid sender block should be called")
+		let expectation = expectation(description: "Invalid sender block should be called")
 		TypedNotificationCenter.invalidSenderBlock = { _, _ in
 			expectation.fulfill()
 		}
@@ -96,7 +96,7 @@ class BridgedNotificationApiTests: TestCase {
 	}
 
 	func testInvalidPayload() {
-		let expectation = self.expectation(description: "Invalid payload block should be called")
+		let expectation = expectation(description: "Invalid payload block should be called")
 		TypedNotificationCenter.invalidPayloadBlock = { error, _, _ in
 			XCTAssertEqual(error.localizedDescription, String(describing: error))
 			expectation.fulfill()
