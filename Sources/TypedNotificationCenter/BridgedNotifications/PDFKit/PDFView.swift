@@ -29,6 +29,7 @@ import Foundation
 #if os(iOS) || os(macOS)
 	import PDFKit
 
+	@available(macCatalyst 13.1, *)
 	public extension PDFView {
 		enum AnnotationHitNotification: BridgedNotification {
 			public static var notificationName: Notification.Name = .PDFViewAnnotationHit
