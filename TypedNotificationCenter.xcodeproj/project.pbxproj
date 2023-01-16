@@ -25,6 +25,10 @@
 		5C03EC6922A8EE8900C9BCFD /* TypedNotificationObservation+NsNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C03EC6522A8EE8900C9BCFD /* TypedNotificationObservation+NsNotification.swift */; };
 		5C03EC7522A8F8F400C9BCFD /* BridgedNotificationApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C03EC7422A8F8F400C9BCFD /* BridgedNotificationApiTests.swift */; };
 		5C03EC7922A8FDDD00C9BCFD /* SampleBridgedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C03EC7822A8FDDD00C9BCFD /* SampleBridgedNotification.swift */; };
+		5C61E81F29753F3900354613 /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C61E81E29753F3900354613 /* PDFView.swift */; };
+		5C61E82029753F3E00354613 /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C61E81E29753F3900354613 /* PDFView.swift */; };
+		5C61E82129753F3F00354613 /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C61E81E29753F3900354613 /* PDFView.swift */; };
+		5C61E82229753F3F00354613 /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C61E81E29753F3900354613 /* PDFView.swift */; };
 		5C8052422609ECAB00D52C7A /* TypedNotificationCenter+GenericBridgedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8052412609ECAB00D52C7A /* TypedNotificationCenter+GenericBridgedNotification.swift */; };
 		5C8052432609ECAB00D52C7A /* TypedNotificationCenter+GenericBridgedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8052412609ECAB00D52C7A /* TypedNotificationCenter+GenericBridgedNotification.swift */; };
 		5C8052442609ECAB00D52C7A /* TypedNotificationCenter+GenericBridgedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8052412609ECAB00D52C7A /* TypedNotificationCenter+GenericBridgedNotification.swift */; };
@@ -246,6 +250,7 @@
 		5C03EC7422A8F8F400C9BCFD /* BridgedNotificationApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgedNotificationApiTests.swift; sourceTree = "<group>"; };
 		5C03EC7822A8FDDD00C9BCFD /* SampleBridgedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBridgedNotification.swift; sourceTree = "<group>"; };
 		5C32934222A7EF4400DBA352 /* Subscribing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscribing.swift; sourceTree = "<group>"; };
+		5C61E81E29753F3900354613 /* PDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFView.swift; sourceTree = "<group>"; };
 		5C8052412609ECAB00D52C7A /* TypedNotificationCenter+GenericBridgedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedNotificationCenter+GenericBridgedNotification.swift"; sourceTree = "<group>"; };
 		5C80524E2609EDF700D52C7A /* TypedNotificationObservation+GenericBridgedNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypedNotificationObservation+GenericBridgedNotification.swift"; sourceTree = "<group>"; };
 		5C8052632609FC8700D52C7A /* NotificationNameApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameApiTests.swift; sourceTree = "<group>"; };
@@ -430,6 +435,7 @@
 				5C03EC7022A8F84300C9BCFD /* Core */,
 				5C8052332609EB8800D52C7A /* GenericBridgedNotification */,
 				5C03EC5A22A80E9C00C9BCFD /* UIKit */,
+				5C61E81D29753F2000354613 /* PDFKit */,
 			);
 			path = BridgedNotifications;
 			sourceTree = "<group>";
@@ -497,6 +503,14 @@
 				5C03EC7822A8FDDD00C9BCFD /* SampleBridgedNotification.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		5C61E81D29753F2000354613 /* PDFKit */ = {
+			isa = PBXGroup;
+			children = (
+				5C61E81E29753F3900354613 /* PDFView.swift */,
+			);
+			path = PDFKit;
 			sourceTree = "<group>";
 		};
 		5C8052332609EB8800D52C7A /* GenericBridgedNotification */ = {
@@ -1206,6 +1220,7 @@
 				5C03EC6722A8EE8900C9BCFD /* TypedNotificationObservation+NsNotification.swift in Sources */,
 				5C03EC5722A80E8500C9BCFD /* UIResponder.swift in Sources */,
 				5C805297260A11F100D52C7A /* TypedNotificationObservation+GenericNsNotification.swift in Sources */,
+				5C61E82029753F3E00354613 /* PDFView.swift in Sources */,
 				7563B2BE2393E28800235328 /* AnyTypedNotification.swift in Sources */,
 				7530BAB2227F48AB00D57E4F /* TypedNotificationObservation.swift in Sources */,
 			);
@@ -1228,6 +1243,7 @@
 				5C03EC6822A8EE8900C9BCFD /* TypedNotificationObservation+NsNotification.swift in Sources */,
 				5C03EC5822A80E8500C9BCFD /* UIResponder.swift in Sources */,
 				5C805298260A11F100D52C7A /* TypedNotificationObservation+GenericNsNotification.swift in Sources */,
+				5C61E82129753F3F00354613 /* PDFView.swift in Sources */,
 				7563B2BF2393E28800235328 /* AnyTypedNotification.swift in Sources */,
 				7530BAB5227F48AC00D57E4F /* TypedNotificationObservation.swift in Sources */,
 			);
@@ -1250,6 +1266,7 @@
 				5C03EC6922A8EE8900C9BCFD /* TypedNotificationObservation+NsNotification.swift in Sources */,
 				5C03EC5922A80E8500C9BCFD /* UIResponder.swift in Sources */,
 				5C805299260A11F100D52C7A /* TypedNotificationObservation+GenericNsNotification.swift in Sources */,
+				5C61E82229753F3F00354613 /* PDFView.swift in Sources */,
 				7563B2C02393E28800235328 /* AnyTypedNotification.swift in Sources */,
 				7530BAB8227F48AC00D57E4F /* TypedNotificationObservation.swift in Sources */,
 			);
@@ -1295,6 +1312,7 @@
 				5C03EC6622A8EE8900C9BCFD /* TypedNotificationObservation+NsNotification.swift in Sources */,
 				5C03EC5622A80E8500C9BCFD /* UIResponder.swift in Sources */,
 				5C805296260A11F100D52C7A /* TypedNotificationObservation+GenericNsNotification.swift in Sources */,
+				5C61E81F29753F3900354613 /* PDFView.swift in Sources */,
 				7563B2BD2393E28800235328 /* AnyTypedNotification.swift in Sources */,
 				756416CC227F351D0090F4D6 /* TypedNotificationObservation.swift in Sources */,
 			);
