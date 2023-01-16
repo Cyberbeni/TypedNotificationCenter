@@ -164,23 +164,23 @@ class ApiTests: TestCase {
 		TypedNotificationCenter.default.post(SampleNotification.self, sender: sender, payload: SampleNotification.Payload())
 		XCTAssertEqual(count, 2, "Observer block should've been called once")
 	}
-    
-    func testTypeErasureSameTypeBridged() {
-        let bridgedNotificationProxy = SampleBridgedNotification.eraseNotificationName()
-        let bridgedSender = MySender()
-        self.count = 0
-        observation = TypedNotificationCenter.default.observe(bridgedNotificationProxy, object: nil, block: { _,_ in
-            self.count += 1
-        })
-        
-        TypedNotificationCenter.default.post(SampleBridgedNotification.self, sender: bridgedSender, payload: SampleBridgedNotification.Payload(samplePayloadProperty: "test"))
-        XCTAssertEqual(count, 1, "Observer block should've been called once")
 
-        observation?.invalidate()
+	func testTypeErasureSameTypeBridged() {
+		let bridgedNotificationProxy = SampleBridgedNotification.eraseNotificationName()
+		let bridgedSender = MySender()
+		count = 0
+		observation = TypedNotificationCenter.default.observe(bridgedNotificationProxy, object: nil, block: { _, _ in
+			self.count += 1
+		})
 
-        TypedNotificationCenter.default.post(bridgedNotificationProxy, sender: bridgedSender, payload: SampleBridgedNotification.Payload(samplePayloadProperty: "test"))
-        XCTAssertEqual(count, 1, "Observer block should've been called once")
-    }
+		TypedNotificationCenter.default.post(SampleBridgedNotification.self, sender: bridgedSender, payload: SampleBridgedNotification.Payload(samplePayloadProperty: "test"))
+		XCTAssertEqual(count, 1, "Observer block should've been called once")
+
+		observation?.invalidate()
+
+		TypedNotificationCenter.default.post(bridgedNotificationProxy, sender: bridgedSender, payload: SampleBridgedNotification.Payload(samplePayloadProperty: "test"))
+		XCTAssertEqual(count, 1, "Observer block should've been called once")
+	}
 
 	func testTypeErasureSameSender() {
 		let otherSender = NSObject()
