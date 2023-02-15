@@ -62,6 +62,7 @@ for PLATFORM in "macOS" "macOS,variant=Mac Catalyst" "iOS" "iOS Simulator" "tvOS
 		-derivedDataPath "$DERIVED_DATA_PATH" \
 		-IDEBuildLocationStyle=Unique \
 		SKIP_INSTALL=NO \
+		SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO \
 		BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
 		| tee "$LOG_PATH"
 	
