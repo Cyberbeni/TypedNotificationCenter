@@ -60,18 +60,14 @@ for PLATFORM in "macOS" "macOS,variant=Mac Catalyst" "iOS" "iOS Simulator" "tvOS
 		-configuration "Release" \
 		-archivePath "$ARCHIVE_PATH" \
 		-derivedDataPath "$DERIVED_DATA_PATH" \
+		-IDEBuildLocationStyle=Unique \
 		SKIP_INSTALL=NO \
+		SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO \
 		BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
 		| tee "$LOG_PATH"
 	
-	FRAMEWORK_PATH=$(find "$ARCHIVE_PATH" -name "*.framework" -print -quit)
-	if [ -n "$FRAMEWORK_PATH" ]; then
-		CREATE_XCFRAMEWORK_ARGUMENTS+=( "-framework" "$PWD/$FRAMEWORK_PATH" )
-	fi
-	DSYM_PATH=$(find "$ARCHIVE_PATH" -name "*.framework.dSYM" -print -quit)
-	if [ -n "$DSYM_PATH" ]; then
-		CREATE_XCFRAMEWORK_ARGUMENTS+=( "-debug-symbols" "$PWD/$DSYM_PATH" )
-	fi
+	CREATE_XCFRAMEWORK_ARGUMENTS+=( "-archive" "$PWD/$ARCHIVE_PATH" )
+	CREATE_XCFRAMEWORK_ARGUMENTS+=( "-framework" "TypedNotificationCenter.framework" )
 done
 
 xcodebuild -create-xcframework \
