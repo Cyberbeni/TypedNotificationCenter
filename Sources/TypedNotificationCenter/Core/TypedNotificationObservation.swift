@@ -26,8 +26,8 @@
 
 import Foundation
 
-public class TypedNotificationObservation {
-	internal init() {}
+public class TypedNotificationObservation: @unchecked Sendable {
+	init() {}
 	deinit {
 		invalidate()
 	}
@@ -48,7 +48,7 @@ extension TypedNotificationObservation: Hashable {
 
 let nilSenderIdentifier = ObjectIdentifier(WeakBox<AnyObject>.self)
 
-final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificationObservation {
+final class _TypedNotificationObservation<T: TypedNotification>: TypedNotificationObservation, @unchecked Sendable {
 	init(notificationCenter: TypedNotificationCenter, sender: T.Sender?, queue: OperationQueue?, block: @escaping T.ObservationBlock) {
 		self.notificationCenter = notificationCenter
 		self.sender = sender

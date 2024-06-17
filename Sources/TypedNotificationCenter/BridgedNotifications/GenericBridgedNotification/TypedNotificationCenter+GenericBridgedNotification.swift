@@ -1,5 +1,5 @@
 //
-//  TypedNotificationObservation+GenericBridgedNotification.swift
+//  TypedNotificationCenter+GenericBridgedNotification.swift
 //  TypedNotificationCenter
 //
 //  Created by Benedek Kozma on 2021. 03. 23.
@@ -44,22 +44,20 @@ extension TypedNotificationCenter {
 		return (nilObservations, objectObservations)
 	}
 
-	func forwardGenericPost(_ notificationName: Notification.Name, sender: AnyObject?, payload: [AnyHashable: Any]?) {
+	func forwardGenericPost(_ notification: Notification) {
 		var nilObservations: Dictionary<ObjectIdentifier, WeakBox<_GenericBridgedNotificationObservation>>.Values?
 		var objectObservations: Dictionary<ObjectIdentifier, WeakBox<_GenericBridgedNotificationObservation>>.Values?
 		observerLock.lock()
-		(nilObservations, objectObservations) = filter(notificationName, sender: sender)
+		(nilObservations, objectObservations) = filter(notification.name, sender: notification.object as? AnyObject)
 		observerLock.unlock()
 		nilObservations?.forEach { observation in
 			guard let observation = observation.object else { return }
 			if let queue = observation.queue,
 			   let block = observation.block
 			{
-				queue.addOperation {
-					block(Notification(name: notificationName, object: sender, userInfo: payload))
-				}
+				queue.addOperation(_GenericNsNotificationObservation.ExecuteBlockOperation(block: block, notification: notification))
 			} else {
-				observation.block?(Notification(name: notificationName, object: sender, userInfo: payload))
+				observation.block?(notification)
 			}
 		}
 		objectObservations?.forEach { observation in
@@ -69,11 +67,9 @@ extension TypedNotificationCenter {
 			if let queue = observation.queue,
 			   let block = observation.block
 			{
-				queue.addOperation {
-					block(Notification(name: notificationName, object: sender, userInfo: payload))
-				}
+				queue.addOperation(_GenericNsNotificationObservation.ExecuteBlockOperation(block: block, notification: notification))
 			} else {
-				observation.block?(Notification(name: notificationName, object: sender, userInfo: payload))
+				observation.block?(notification)
 			}
 		}
 	}
@@ -94,7 +90,7 @@ extension TypedNotificationCenter {
 
 	// MARK: - Public interface
 
-	public func observe(_ notificationName: Notification.Name, object: AnyObject?, queue: OperationQueue? = nil, block: @escaping (Notification) -> Void) -> TypedNotificationObservation {
+	public func observe(_ notificationName: Notification.Name, object: AnyObject?, queue: OperationQueue? = nil, block: @escaping @Sendable (Notification) -> Void) -> TypedNotificationObservation {
 		let observation = _GenericBridgedNotificationObservation(notificationCenter: self, notificationName: notificationName, sender: object, queue: queue, block: block)
 
 		let notificationIdentifier = notificationName

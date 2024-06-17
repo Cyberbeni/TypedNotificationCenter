@@ -26,7 +26,7 @@
 
 import Foundation
 
-final class _NsNotificationObservation<T: TypedNotification>: TypedNotificationObservation {
+final class _NsNotificationObservation<T: TypedNotification>: TypedNotificationObservation, @unchecked Sendable {
 	private let observation: Any
 	private weak var nsNotificationCenter: NotificationCenter?
 

@@ -26,7 +26,7 @@
 
 import Foundation
 
-final class _GenericNsNotificationObservation: TypedNotificationObservation {
+final class _GenericNsNotificationObservation: TypedNotificationObservation, @unchecked Sendable {
 	private let observation: Any
 	private weak var nsNotificationCenter: NotificationCenter?
 
@@ -34,11 +34,7 @@ final class _GenericNsNotificationObservation: TypedNotificationObservation {
 		let nsNotificationCenter = typedNotificationCenter.nsNotificationCenterForBridging
 		self.nsNotificationCenter = nsNotificationCenter
 		observation = nsNotificationCenter.addObserver(forName: notificationName, object: nil, queue: nil, using: { [weak typedNotificationCenter] notification in
-			typedNotificationCenter?.forwardGenericPost(
-				notification.name,
-				sender: notification.object as AnyObject?,
-				payload: notification.userInfo
-			)
+			typedNotificationCenter?.forwardGenericPost(notification)
 		})
 	}
 

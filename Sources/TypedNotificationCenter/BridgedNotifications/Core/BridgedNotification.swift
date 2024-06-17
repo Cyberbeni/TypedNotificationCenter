@@ -28,7 +28,7 @@ import Foundation
 
 public struct NotificationDecodingError: LocalizedError {
 	public var type: Any.Type
-	public var source: [AnyHashable: Any]
+	public nonisolated(unsafe) var source: [AnyHashable: Any]
 
 	public init(type: Any.Type, source: [AnyHashable: Any]) {
 		self.type = type

@@ -29,13 +29,14 @@ import Foundation
 typealias NotificationIdentifier = ObjectIdentifier
 typealias SenderIdentifier = ObjectIdentifier
 
-public final class TypedNotificationCenter {
+public final class TypedNotificationCenter: Sendable {
 	let observerLock = NSLock()
-	var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox<AnyObject>]]]()
 	let nsNotificationCenterForBridging: NotificationCenter
-	var bridgedObservers = [Notification.Name: [SenderIdentifier: [ObjectIdentifier: WeakBox<_GenericBridgedNotificationObservation>]]]()
-	var bridgedNsnotificationObservers = [Notification.Name: TypedNotificationObservation]()
-	var genericNsnotificationObservers = [Notification.Name: _GenericNsNotificationObservation]()
+	// The access to these dictionaries is locked behind observerLock, so they should be thread safe
+	nonisolated(unsafe) var observers = [NotificationIdentifier: [SenderIdentifier: [ObjectIdentifier: WeakBox<AnyObject>]]]()
+	nonisolated(unsafe) var bridgedObservers = [Notification.Name: [SenderIdentifier: [ObjectIdentifier: WeakBox<_GenericBridgedNotificationObservation>]]]()
+	nonisolated(unsafe) var bridgedNsnotificationObservers = [Notification.Name: TypedNotificationObservation]()
+	nonisolated(unsafe) var genericNsnotificationObservers = [Notification.Name: _GenericNsNotificationObservation]()
 
 	// MARK: - Utility functions
 

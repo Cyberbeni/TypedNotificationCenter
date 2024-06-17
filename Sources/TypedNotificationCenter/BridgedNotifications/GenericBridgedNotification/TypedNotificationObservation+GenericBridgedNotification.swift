@@ -26,8 +26,8 @@
 
 import Foundation
 
-final class _GenericBridgedNotificationObservation: TypedNotificationObservation {
-	init(notificationCenter: TypedNotificationCenter, notificationName: Notification.Name, sender: AnyObject?, queue: OperationQueue?, block: @escaping (Notification) -> Void) {
+final class _GenericBridgedNotificationObservation: TypedNotificationObservation, @unchecked Sendable {
+	init(notificationCenter: TypedNotificationCenter, notificationName: Notification.Name, sender: AnyObject?, queue: OperationQueue?, block: @escaping ObservationBlock) {
 		self.notificationCenter = notificationCenter
 		self.notificationName = notificationName
 		self.sender = sender
@@ -36,12 +36,14 @@ final class _GenericBridgedNotificationObservation: TypedNotificationObservation
 		self.block = block
 	}
 
+	typealias ObservationBlock = @Sendable (Notification) -> Void
+
 	private weak var notificationCenter: TypedNotificationCenter?
 	let notificationName: Notification.Name
 	weak var sender: AnyObject?
 	let senderIdentifier: SenderIdentifier
 	var queue: OperationQueue?
-	var block: ((Notification) -> Void)?
+	var block: ObservationBlock?
 
 	private var isRemoved = false
 
@@ -57,5 +59,22 @@ final class _GenericBridgedNotificationObservation: TypedNotificationObservation
 		notificationCenter?.remove(observation: self)
 		block = nil
 		queue = nil
+	}
+}
+
+extension _GenericNsNotificationObservation {
+	class ExecuteBlockOperation: Operation, @unchecked Sendable {
+		var block: _GenericBridgedNotificationObservation.ObservationBlock?
+		let notification: Notification
+
+		init(block: @escaping _GenericBridgedNotificationObservation.ObservationBlock, notification: Notification) {
+			self.block = block
+			self.notification = notification
+		}
+
+		override func main() {
+			block?(notification)
+			block = nil
+		}
 	}
 }

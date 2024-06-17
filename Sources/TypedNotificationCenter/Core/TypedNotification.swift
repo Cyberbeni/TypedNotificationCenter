@@ -27,9 +27,9 @@
 import Foundation
 
 public protocol TypedNotification<Sender, Payload> {
-	typealias ObservationBlock = (Self.Sender, Self.Payload) -> Void
-	associatedtype Payload
-	associatedtype Sender: AnyObject
+	typealias ObservationBlock = @Sendable (Self.Sender, Self.Payload) -> Void
+	associatedtype Payload: Sendable
+	associatedtype Sender: AnyObject, Sendable
 
 	static func eraseNotificationName() -> SameTypedNotification<Sender, Payload>
 	static func erasePayloadType() -> AnyPayloadTypedNotification<Sender>

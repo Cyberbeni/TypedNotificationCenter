@@ -24,7 +24,7 @@
 // THE SOFTWARE.
 //
 
-import Foundation
+@preconcurrency import Foundation
 import TypedNotificationCenter
 
 enum SampleNotification: TypedNotification {
