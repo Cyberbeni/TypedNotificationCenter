@@ -27,7 +27,7 @@
 import Foundation
 
 public class TypedNotificationObservation {
-	internal init() {}
+	init() {}
 	deinit {
 		invalidate()
 	}

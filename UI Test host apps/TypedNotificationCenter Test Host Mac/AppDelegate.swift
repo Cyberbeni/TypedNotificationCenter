@@ -27,7 +27,7 @@
 import Cocoa
 import TypedNotificationCenter
 
-@NSApplicationMain
+@main
 class AppDelegate: NSObject, NSApplicationDelegate {
 	var observation: Any?
 
