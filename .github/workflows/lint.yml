@@ -8,3 +8,5 @@ on:
 jobs:
   swiftformat-lint:
     uses: Cyberbeni/workflows/.github/workflows/swiftformat-lint.yml@master
+    with:
+      version: '*'
