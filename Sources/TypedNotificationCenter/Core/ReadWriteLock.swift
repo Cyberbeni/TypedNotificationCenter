@@ -38,7 +38,8 @@ final class ReadWriteLock: NSLocking {
     }
     
     deinit {
-        assert(pthread_rwlock_destroy(_lock) == 0)
+        let ret = pthread_rwlock_destroy(_lock)
+        assert(ret == 0)
         _lock.deinitialize(count: 1)
         _lock.deallocate()
     }
